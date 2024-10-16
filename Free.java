@@ -4,7 +4,7 @@
 
 public class Free extends Assignment {
 
-    public Free(int period, String semester, String name, int day, Teacher teacher) {
+    public Free(int period, String semester, String name, String day, Teacher teacher) {
         super(period, semester, name, day, teacher);
 
     }
