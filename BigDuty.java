@@ -10,33 +10,40 @@ public class BigDuty
    private ArrayList<Assignment> assignments;
    
    private ArrayList<Teacher> teachers;
+
+   public static String M_FORMAT = "01234L5678";
+   public static String T_FORMAT = "0123L567";
+   public static String W_FORMAT = "0412L856";
+   public static String R_FORMAT = "0341L785";
+   public static String F_FORMAT = "234L678";
    
    public BigDuty(ArrayList<Assignment> assignments, ArrayList<Teacher> teachers)
    {
       this.assignments = assignments;
       this.teachers = teachers;
+
+//	  populateAssignments();
+
+
    }
    
-   // returns a list of teachers with an attached score going from largest score to smallest
-   public ArrayList<TeacherWithScore> getListOfRankedTeachers(int day, int period)
+   public ArrayList<TeacherWithScore> getListOfRankedTeachers(String day, int period)
    {	   
 	   ArrayList<TeacherWithScore> tScores = new ArrayList<TeacherWithScore>();
-	   ArrayList<Teacher> fTeachers = getFreeTeachers(day, period);
-	   for(int i = 0; i < fTeachers.size(); i++)
+	   ArrayList<Teacher> teachers = getFreeTeachers(day, period);
+	   for(int i = 0; i < teachers.size(); i++)
 	   {
-		   int score = fTeachers.get(i).scoreAssignment(day, period);
-		   tScores.add(new TeacherWithScore(fTeachers.get(i),score));
+		   int score = teachers.get(i).scoreAssignment(day, period);
+		   tScores.add(new TeacherWithScore(teachers.get(i),score));
 	   }
 	   
 	   Collections.sort(tScores);
 	   
 	   return tScores;
-	   
-//		   sort scores
 
    }
    
-   public ArrayList<Teacher> getFreeTeachers(int day, int period)
+   public ArrayList<Teacher> getFreeTeachers(String day, int period)
    {	 
 	   ArrayList<Teacher> freeTeachers = new ArrayList<Teacher>();
 	   
@@ -49,11 +56,51 @@ public class BigDuty
 	   return freeTeachers;
    }
    
-   public Teacher getBestTeacher(int day, int period)
+   public Teacher getBestTeacher(String day, int period)
    {
-	   ArrayList<TeacherWithScore> possTeachers = getListOfRankedTeachers(day, period);
+	   ArrayList<TeacherWithScore> teachers = getListOfRankedTeachers(day, period);
 	   
-	   return possTeachers.get(0).getTeacher();
+	   return teachers.get(0).getTeacher();
+   }
+
+   public void populateAssignments(ArrayList<Teacher> teachers) {
+
+	   for(Teacher teacher : teachers) {
+
+		   ArrayList<Assignment> monSchedule = teacher.getDayAssignments("M");
+
+//           fill out rest of week schedule
+           for(Assignment assignment : monSchedule) {
+
+               String p = assignment.getPeriod() == Assignment.LUNCH ? "L" : "" + assignment.getPeriod();
+
+
+
+           }
+
+
+
+
+
+
+	   }
+
+
+   }
+
+   public Assignment populateDay(String daySchedule, String period, String day, Assignment assignment) {
+
+       if(daySchedule.indexOf(period) == -1) return null;
+
+       int p = daySchedule.indexOf(period);
+
+       if(p > 3) ;
+
+
+       return assignment.dupeAssignment(day, daySchedule.indexOf(period));
+
+
+
    }
    
     

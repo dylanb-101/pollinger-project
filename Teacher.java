@@ -3,76 +3,66 @@
 //9/16/24
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class Teacher {
 
-    private static int nextId = 0;
+    private static int previousId = 0;
     private String firstName;
-    private String lastName;
+    private String lastname;
+
     private ArrayList<Assignment> assignments;
-//    private ArrayList<Assignment> courses;
+
     private int id;
+
     private int socialCredit;
-    private String department;
-    private String room;
 
-    
-    public Teacher(String lastName, String firstName) {
-        this.id = nextId++;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    
-    public Teacher(String lastName, String firstName, String department, String room) {
-    	this.id = nextId++;
-    	this.firstName = firstName;
-    	this.lastName = lastName;
-    	this.department = department;
-    	this.room = room;
-    }
-    
-    
-    public void addAssignment(Assignment a)
-    {
-    	assignments.add(a);
-    }
-
-//    public Teacher(String name, ArrayList<Assignment> courses) {
-//    	this.id = previousId++;
-//    	firstName = name.substring(1, name.indexOf(','));
-//    	lastname = name.substring(name.indexOf(' '+1), -1);
-//    	this.assignments = new ArrayList<Assignment>();
-//    	this.assignments.addAll(courses);
-//    }
-//    
-    
-    public ArrayList<Assignment> getDayAssignments(int day) {
+    public ArrayList<Assignment> getDayAssignments(String day) {
 
         ArrayList<Assignment> daySchedule = new ArrayList<>();
 
         for(Assignment assignment : assignments) {
-            if(assignment.getDay() == day) daySchedule.add(assignment);
+            if(assignment.getDay().equals(day)) daySchedule.add(assignment);
         }
 
         return daySchedule;
 
     }
-    
-    public Assignment getAssignment(int day, int period) {
+
+    public Assignment getAssignment(String day, int period) {
 
         for(Assignment assignment : assignments)
-            if(assignment.getDay() == day && assignment.getPeriod() == period)
+            if(assignment.getDay().equals(day) && assignment.getPeriod() == period)
                 return assignment;
 
         return null;
     }
 
+    public Teacher(String name, ArrayList<Assignment> courses) {
+
+        this.id = previousId++;
+
+        firstName = name.substring(1, name.indexOf(','));
+        lastname = name.substring(name.indexOf(' '+1), -1);
+
+        this.assignments = new ArrayList<Assignment>();
 
 
-	public Lunch getDayLunch(int day) {
+        this.assignments.addAll(courses);
+
+    }
+
+    public Teacher(String name) {
+        this.id = previousId++;
+
+        firstName = name;
+
+        this.assignments = new ArrayList<>();
+
+    }
+
+    public Lunch getDayLunch(String day) {
         for(Assignment assignment : assignments) {
-            if(assignment instanceof Lunch && assignment.getDay() == day) return (Lunch) assignment;
+            if(assignment instanceof Lunch && assignment.getDay().equals(day)) return (Lunch) assignment;
         }
 
         return null;
@@ -89,7 +79,7 @@ public class Teacher {
         return frees;
     }
 
-    public ArrayList<Assignment> getFrees(int day) {
+    public ArrayList<Assignment> getFrees(String day) {
 
         ArrayList<Assignment> frees = new ArrayList<>();
 
@@ -103,18 +93,18 @@ public class Teacher {
 
     public Assignment getPeriodBefore(Assignment assignment) {
 
-        if(assignment.getPeriod() == 1) {
-            return new Free(0, assignment.getSemester(), "Before School", assignment.getDay(), assignment.getTeacher());
+        if(assignment.getPeriod() == Assignment.P1) {
+            return new Free(Assignment.P0, assignment.getSemester(), "Before School", assignment.getDay(), assignment.getTeacher());
         }
 
-        if(assignment.getDay() == 1 && assignment.getPeriod() == 4) return getDayLunch(assignment.getDay());
-
-        if(assignment.getDay() != 1 && assignment.getPeriod() == 3) return getDayLunch(assignment.getDay());
+//        if(assignment.getDay() == 1 && assignment.getPeriod() == Assignment.P4) return getDayLunch(assignment.getDay());
+//
+//        if(assignment.getDay() != 1 && assignment.getPeriod() == Assignment.P3) return getDayLunch(assignment.getDay());
 
         ArrayList<Assignment> daySchedule = getDayAssignments(assignment.getDay());
 
         for(Assignment ass : daySchedule) {
-            if(ass.getPeriod() == assignment.getPeriod()-1) return ass;
+            if(ass.getPeriod() == assignment.getPeriod()- 1) return ass;
         }
 
         return null;
@@ -122,12 +112,12 @@ public class Teacher {
 
     public Assignment getPeriodAfter(Assignment assignment) {
 
-        if(assignment.getPeriod() == 8 || (assignment.getPeriod() == 7 && assignment.getDay() == 1)) {
-            return new Free(9, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher());
+        if(assignment.getPeriod() == Assignment.P8 || (assignment.getPeriod() == Assignment.P7 && !assignment.getDay().equals("M"))) {
+            return new Free(Assignment.AFTER_SCHOOL, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher());
         }
 
         for(Assignment ass: getDayAssignments(assignment.getDay())) {
-            if(ass.getDay() == assignment.getDay()+1) return ass;
+            if(ass.getPeriod() == assignment.getPeriod()+1) return ass;
         }
 
         return null;
@@ -178,11 +168,11 @@ public class Teacher {
         return sum;
     }
 
-    private int rankAssignment(Assignment assignment) {
+    public int rankAssignment(Assignment assignment) {
 
         int score = adjustForSocialCredit();
 
-        if(assignment instanceof Course) score = -1000;
+        if(assignment instanceof Course) score = -1000000;
 
         if(getFrees(assignment.getDay()).size() <= 1) score = -1000;
 
@@ -205,20 +195,10 @@ public class Teacher {
         return score;
 
     }
-    
-    public int rankAssignment(int day, int period) {
+
+    public int rankAssignment(String day, int period) {
 
         return rankAssignment(getAssignment(day, period));
-
-    }
-    
-    public int scoreAssignment(int day, int period) {
-
-        int score = rankAssignment(day, period);
-
-        double multi = (score * 1.0)/getAverageScore();
-
-        return (int) (score * multi);
 
     }
 
@@ -231,8 +211,16 @@ public class Teacher {
         return (int) (score * multi);
 
     }
-    
-    
+
+    public int scoreAssignment(String day, int period) {
+
+        int score = rankAssignment(day, period);
+
+        double multi = (score * 1.0)/getAverageScore();
+
+        return (int) (score * multi);
+
+    }
 
     public int getAverageScore() {
 
@@ -245,6 +233,24 @@ public class Teacher {
         }
 
         return sum/getFrees().size();
+
+    }
+
+
+    public Assignment getBestPeriod() {
+
+        Assignment bestPer = getFrees().get(0);
+
+        for(int i = 1; i < getFrees().size(); i++) {
+
+            int currentScore = scoreAssignment(getFrees().get(i));
+
+            if(currentScore > scoreAssignment(bestPer)) {
+                bestPer = getFrees().get(i);
+            }
+        }
+
+        return bestPer;
 
     }
 
@@ -276,83 +282,17 @@ public class Teacher {
 
     public String getName() {
 
-        return firstName + " " + lastName;
+        return firstName;
 
     }
 
-	public static int getNextId() {
-		return nextId;
-	}
+    public void addAssignment(Assignment assignment) {
+        assignments.add(assignment);
+    }
 
-	public static void setNextId(int nextId) {
-		Teacher.nextId = nextId;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public ArrayList<Assignment> getAssignments() {
-		return assignments;
-	}
-
-	public void setAssignments(ArrayList<Assignment> assignments) {
-		this.assignments = assignments;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getSocialCredit() {
-		return socialCredit;
-	}
-
-	public void setSocialCredit(int socialCredit) {
-		this.socialCredit = socialCredit;
-	}
-
-	public String getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-	public String getRoom() {
-		return room;
-	}
-
-	public void setRoom(String room) {
-		this.room = room;
-	}
-
-	@Override
-	public String toString() {
-		return "Teacher [firstName=" + firstName + ", lastname=" + lastName + ", assignments=" + assignments + ", id="
-				+ id + ", socialCredit=" + socialCredit + ", department=" + department + ", room=" + room + "]";
-	}
-    
-//    public void addCourse(Course course) {
-//		courses.add(course);
-//	}
+    public ArrayList<Assignment> getAssignments() {
+        return assignments;
+    }
 
 
 }

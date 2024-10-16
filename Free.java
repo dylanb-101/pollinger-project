@@ -4,6 +4,11 @@
 
 public class Free extends Assignment {
 
+
+
+
+
+
     public Free(int period, String semester, String name, String day, Teacher teacher) {
         super(period, semester, name, day, teacher);
 
@@ -18,5 +23,10 @@ public class Free extends Assignment {
     @Override
     public double getWeight() {
         return 0;
+    }
+
+    @Override
+    public Assignment dupeAssignment(String day, int period) {
+        return new Free(period, getSemester(), getName(), day, getTeacher());
     }
 }
