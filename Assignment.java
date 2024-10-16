@@ -61,5 +61,9 @@ public abstract class Assignment {
 
     public abstract double getWeight();
 
+    @Override
+	public String toString() {
+		return "Assignment [period=" + period + ", semester=" + semester + ", name=" + name + ", day=" + day + "]";
+	}
 
 }
