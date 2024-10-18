@@ -3,7 +3,7 @@
 //9/23/24
 
 public abstract class Assignment {
-    public static int BEFORE_SCHOOL = -1;
+    public static int P0 = 0;
     public static int P1 = 1;
     public static int P2 = 2;
     public static int P3 = 3;

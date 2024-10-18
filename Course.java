@@ -42,4 +42,16 @@ public class Course extends Assignment {
     public double getWeight() {
         return -10000;
     }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public int getSection() {
+        return section;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
 }

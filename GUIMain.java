@@ -55,8 +55,8 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
    private Object[][] data;
    private Teacher teacher;
    private Course course;
-   private FileReadIn dataset;
-   
+//   private FileReadIn dataset;
+   private BigDuty bigDuty;
    //Panels
    private CustomPanel panel1, panel2, panel1Right;
 
@@ -67,6 +67,9 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
       this.addKeyListener(this);
       this.addMouseListener(this);
       this.setFocusable(true);
+
+//      init big duty and data stuff
+       this.bigDuty = new BigDuty("src/PollingerProject-DutyData.csv");
       
       String[] colHeadings = {"TEACHER","COURSE", "PERIOD", "SEM", "SEC", "ROOM", "DEPT", "YEAR"}; //tables
       String[] demoHeading = {"Demo"}; //tables
@@ -135,11 +138,11 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
       //****************************************************PANEL 1 TABLE FILLING IT IN***********************************//
 
        //testing data
-        data = new Object[5][colHeadings.length]; //size of the dataframe
+        data = new Object[bigDuty.getTeachers().size()][colHeadings.length]; //size of the dataframe
         
         for(int i = 0; i < data.length; i++)
         { //basically import data kinda like teacher.getCourse(0).getName(); or .getCourseID() or something like that
-           data[i][0] = (int)(Math.random()*20);
+//           data[i][0] = (int)(Math.random()*20);
            data[i][1] = (int)(Math.random()*20);
            data[i][2] = (int)(Math.random()*20);
            data[i][3] = (int)(Math.random()*20);
@@ -147,6 +150,12 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
            data[i][5] = (int)(Math.random()*20);
            data[i][6] = (int)(Math.random()*20);
            data[i][7] = (int)(Math.random()*20);
+
+            Teacher t = bigDuty.getTeacher(i);
+
+            data[i][0] = t.getLastName();
+
+
         }
        
         DefaultTableModel model = new DefaultTableModel(data, colHeadings) {

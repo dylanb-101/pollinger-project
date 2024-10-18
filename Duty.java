@@ -16,7 +16,7 @@ public class Duty extends Assignment {
 
 
 
-    public Duty(int period, int semester, String name, String room, int day, Teacher teacher) {
+    public Duty(int period, String semester, String name, String room, String day, Teacher teacher) {
         super(period, semester, name, day, teacher);
 
         this.room = room;
