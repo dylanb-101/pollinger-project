@@ -77,4 +77,9 @@ public abstract class Assignment {
     public abstract Assignment dupeAssignment(String day, int period);
 
 
+    @Override
+	public String toString() {
+		return "Assignment [period=" + period + ", semester=" + semester + ", name=" + name + ", day=" + day + "]";
+	}
+
 }

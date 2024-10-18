@@ -27,8 +27,18 @@ public class Course extends Assignment {
 
     @Override
     public Assignment dupeAssignment(String day, int period) {
-
         return new Course(period, getSemester(), getName(), room, day, getTeacher());
+    }
 
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public int getSection() {
+        return section;
+    }
+
+    public String getDepartment() {
+        return department;
     }
 }
