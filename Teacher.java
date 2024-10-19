@@ -124,29 +124,29 @@ public class Teacher {
 
         String[] days = {"M", "T", "W", "R", "F"};
 
-        for(int i = 0; i < days.length; i++) {
-
-            if(!dayHasLunchPeriod(days[i])) {
-
-                newAssignments.add(new Lunch(Assignment.LUNCH, "FY", "Lunch", days[i], this));
-
-            }
-
-
-
-            while(!dayIsFull(days[i])) {
-
-//                System.out.println(dayIsFull(days[i]));
-
-                int period = getNextEmptyPeriod(days[i]);
-
-//                if(period == -1)
-
-                Assignment free = new Free(period,"FY", "Free", days[i], this);
-                newAssignments.add(free);
-
-            }
-        }
+//        for(int i = 0; i < days.length; i++) {
+//
+//            if(!dayHasLunchPeriod(days[i])) {
+//
+//                newAssignments.add(new Lunch(Assignment.LUNCH, "FY", "Lunch", days[i], this));
+//
+//            }
+//
+//
+//
+//            while(!dayIsFull(days[i])) {
+//
+////                System.out.println(dayIsFull(days[i]));
+//
+//                int period = getNextEmptyPeriod(days[i]);
+//
+////                if(period == -1)
+//
+//                Assignment free = new Free(period,"FY", "Free", days[i], this);
+//                newAssignments.add(free);
+//
+//            }
+//        }
 
     }
 
@@ -154,14 +154,19 @@ public class Teacher {
 
         ArrayList<Assignment> dayAssigments = getDayAssignments(day);
 
-        if(dayAssigments.size() > BigDuty.schedule.get(day+"_SCHEDULE").length()) {
-            System.out.println(dayAssigments.size() + ", " + BigDuty.schedule.get(day + "_SCHEDULE").length());
-//            printAssignments();
+//        if(dayAssigments.size() > BigDuty.schedule.get(day+"_SCHEDULE").length()) {
+//            System.out.println(dayAssigments.size() + ", " + BigDuty.schedule.get(day + "_SCHEDULE").length());
+//        }
+
+        String schedule = BigDuty.schedule.get(day+"_SCHEDULE");
+
+        for(int i = 0; i < schedule.length();i++) {
+
+            if(!dayAssignmentExists(day, String.valueOf(schedule.charAt(i)))) return false;
+
         }
 
-        if(dayAssigments.size() >= BigDuty.schedule.get(day+"_SCHEDULE").length()) return true;
-
-        return false;
+        return true;
     }
 
     public ArrayList<Assignment> getDayAssignments(ArrayList<Assignment> assignments, String day) {
@@ -205,9 +210,9 @@ public class Teacher {
 
             if(period.equals("-1")) continue;
 
-            if(period.equals("L")) if(!dayAssignmentExists(day, Assignment.LUNCH)) return Assignment.LUNCH;
+            if(period.equals("L")) if(!dayAssignmentExists(day, "" + Assignment.LUNCH)) return Assignment.LUNCH;
 
-            if(!dayAssignmentExists(day, BigDuty.translatePeriod(Integer.parseInt(period), day))) return BigDuty.translatePeriod(Integer.parseInt(period), day);
+            if(!dayAssignmentExists(day, "" + BigDuty.translatePeriod(Integer.parseInt(period), day))) return BigDuty.translatePeriod(Integer.parseInt(period), day);
 
         }
         return -1;
@@ -219,11 +224,11 @@ public class Teacher {
 
     }
 
-    public boolean dayAssignmentExists(String day, int period) {
+    public boolean dayAssignmentExists(String day, String period) {
 
         for(Assignment a : assignments) {
 
-            if(a.getPeriod() == period && a.getDay() == day) return true;
+            if(String.valueOf(a.getPeriod()).equals(period) && a.getDay().equals(day)) return true;
 
         }
 
