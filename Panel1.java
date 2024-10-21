@@ -1,9 +1,12 @@
+import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -22,22 +25,25 @@ public class Panel1 extends CustomPanel
    private int numRows;
    private String[] colHeadings;
    private Object[][] data;
+   private String hover;
 
-   public Panel1(String panelName, Dimension d, BorderLayout b, BigDuty bigduty, String[] colheadings, int numRows, Object[][] data)
+   public Panel1(String panelName, Dimension d, BorderLayout b, BigDuty bigduty, String[] colheadings, int numRows, Object[][] data, String hover)
    {
       super(panelName, d, b);
       bigDuty = bigduty;
       colHeadings = colheadings;
       this.data = data;
+      this.hover = hover;
       
       //buttons
-      JButton b1 = new JButton("Header"); //demo
+      JButton b1 = new JButton("SmartSort"); //demo
       b1.addActionListener(new ActionListener() {
 
        @Override
        public void actionPerformed(ActionEvent e)
        {
-          System.out.println("Top Pressed");
+          System.out.println("Smartly Sorted!");
+         
        }
       });
       JButton b2 = new JButton("Footer"); //demo
@@ -56,17 +62,14 @@ public class Panel1 extends CustomPanel
       //test filler
       for(int i = 0; i < data.length; i++)
       { //basically import data kinda like teacher.getCourse(0).getName(); or .getCourseID() or something like that
-         data[i][1] = (int)(Math.random()*20);
-         data[i][2] = (int)(Math.random()*20);
-         data[i][3] = (int)(Math.random()*20);
-         data[i][4] = (int)(Math.random()*20);
-         data[i][5] = (int)(Math.random()*20);
-         data[i][6] = (int)(Math.random()*20);
-         data[i][7] = (int)(Math.random()*20);
 
           Teacher t = bigDuty.getTeacher(i);
 
           data[i][0] = t.getLastName();
+          data[i][1] = t.getId();
+          data[i][2] = t.getRoom();
+          data[i][3] = t.getDepartment();
+  
 
 
       }
@@ -103,6 +106,7 @@ public class Panel1 extends CustomPanel
       table.setGridColor(Color.LIGHT_GRAY);
       this.add(pane);
    }
+   
 
    public JScrollPane getPane()
    {
@@ -112,6 +116,56 @@ public class Panel1 extends CustomPanel
    public void setPane(JScrollPane pane)
    {
       this.pane = pane;
+   }
+
+   public BigDuty getBigDuty()
+   {
+      return bigDuty;
+   }
+
+   public void setBigDuty(BigDuty bigDuty)
+   {
+      this.bigDuty = bigDuty;
+   }
+
+   public int getNumRows()
+   {
+      return numRows;
+   }
+
+   public void setNumRows(int numRows)
+   {
+      this.numRows = numRows;
+   }
+
+   public String[] getColHeadings()
+   {
+      return colHeadings;
+   }
+
+   public void setColHeadings(String[] colHeadings)
+   {
+      this.colHeadings = colHeadings;
+   }
+
+   public Object[][] getData()
+   {
+      return data;
+   }
+
+   public void setData(Object[][] data)
+   {
+      this.data = data;
+   }
+
+   public String getHover()
+   {
+      return hover;
+   }
+
+   public void setHover(String hover)
+   {
+      this.hover = hover;
    }
 
 }

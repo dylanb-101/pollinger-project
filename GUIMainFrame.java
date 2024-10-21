@@ -13,7 +13,7 @@ import javax.swing.JRadioButtonMenuItem;
 //Program Description:
 //Oct 18, 2024
 
-public class GUIMainFrame extends JFrame
+public class GUIMainFrame extends JPanel
 {
   public GUIMainFrame()
   {
