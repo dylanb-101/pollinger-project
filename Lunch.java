@@ -5,8 +5,8 @@
 public class Lunch extends Assignment {
 
 
-    public Lunch(int period, String semester, String name, String day, Teacher teacher) {
-        super(period, semester, name, day, teacher);
+    public Lunch(String period, String semester, String name, String day, Teacher teacher) {
+        super(period, semester, name, day, teacher, false);
     }
 
     @Override
@@ -17,5 +17,10 @@ public class Lunch extends Assignment {
     @Override
     public double getWeight() {
         return -10000;
+    }
+
+    @Override
+    public String getDepartment() {
+        return "None";
     }
 }

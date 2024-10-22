@@ -111,7 +111,7 @@ public class FileUtility {
             String semester = tokens[5].substring(1, tokens[5].length() - 1);
             String courseCode = tokens[2].substring(1, tokens[2].length() - 1);
             String day = tokens[4].substring(1, tokens[4].length() - 1);
-            int period = Integer.parseInt(tokens[4].substring(1, 2));
+            String period = tokens[4].substring(1, 2);
             int section = Integer.parseInt(tokens[3].substring(1, tokens[3].length() - 1));
             String department = tokens[8].substring(1, tokens[8].length() - 1);
             String room = tokens[7].substring(1, tokens[7].length() - 1);
@@ -120,7 +120,7 @@ public class FileUtility {
 
             if(addCourse) {
                 Course nextCourse = new Course(name, courseCode, section, period, day,
-                        semester, room, department, teacher);
+                        semester, room, department, teacher, true);
                 teacher.addAssignment(nextCourse);
             }
         }

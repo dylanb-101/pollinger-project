@@ -72,14 +72,14 @@ public class Teacher {
 
 //                    System.out.println("Lab! " + assignment.getName());
 
-                    int period = BigDuty.translatePeriod(Integer.parseInt(String.valueOf(day.charAt(0))), String.valueOf(day.charAt(1)));
+                    String period = String.valueOf(day.charAt(0));
 
-                    if(period == -1) {
+                    if(period.equals("-1")) {
                         System.out.println("Skipping an assignment, class does not run on specified day!");
                         continue;
                     }
 
-                    Assignment lab = new Course(assignment.getName() + " Lab", ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), period, String.valueOf(day.charAt(1)), assignment.getSemester(), assignment.getRoom(), ((Course) assignment).getDepartment(), assignment.getTeacher());
+                    Assignment lab = new Course(assignment.getName() + " Lab", ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), period, String.valueOf(day.charAt(1)), assignment.getSemester(), assignment.getRoom(), ((Course) assignment).getDepartment(), assignment.getTeacher(), true);
 
                     newAssignments.add(lab);
                     continue;
@@ -90,28 +90,30 @@ public class Teacher {
                 if(periods.length > 1 && (day.length() == 2 || day.contains("Lab")) && !assignment.getName().contains("AP")) {
 
                     if(day.contains("Lab")) {
-                        day = day.substring(3);
+                        day = day.substring(4);
+                        System.out.println(day);
+                    } else {
                     }
 
 //                    int period = BigDuty.translatePeriod(Integer.parseInt(String.valueOf(day.charAt(0))), String.valueOf(day.charAt(1)));
 
-                    Assignment lunchLab = new Course(assignment.getName() + " Lunch Lab", ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), Assignment.LUNCH, String.valueOf(day.charAt(1)), assignment.getSemester(), assignment.getRoom(), ((Course) assignment).getDepartment(), assignment.getTeacher());
+                    Assignment lunchLab = new Course(assignment.getName() + " Lunch Lab", ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), Assignment.LUNCH, String.valueOf(day.charAt(1)), assignment.getSemester(), assignment.getRoom(), ((Course) assignment).getDepartment(), assignment.getTeacher(), true);
 
                     newAssignments.add(lunchLab);
                     continue;
                 }
 
-                int monNumber = Integer.parseInt(String.valueOf(day.charAt(0)));
+                String monNumber = String.valueOf(day.charAt(0));
 
                 for(int j = 1; j < day.length(); j++) {
 
 //                    System.out.println(day + ", " + j);
 
-                    int translatedPeriod = BigDuty.translatePeriod(monNumber, String.valueOf(day.charAt(j)));
+                    String translatedPeriod = monNumber;
 
-                    if(translatedPeriod == -1) continue;
+                    if(monNumber.equals("-1")) continue;
 
-                    Assignment course = new Course(assignment.getName(), ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), translatedPeriod, String.valueOf(day.charAt(j)), assignment.getSemester(), assignment.getRoom(), ((Course) assignment).getDepartment(), assignment.getTeacher());
+                    Assignment course = new Course(assignment.getName(), ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), translatedPeriod, String.valueOf(day.charAt(j)), assignment.getSemester(), assignment.getRoom(), ((Course) assignment).getDepartment(), assignment.getTeacher(), true);
                     newAssignments.add(course);
 
                 }
@@ -124,45 +126,47 @@ public class Teacher {
 
         String[] days = {"M", "T", "W", "R", "F"};
 
-//        for(int i = 0; i < days.length; i++) {
-//
-//            if(!dayHasLunchPeriod(days[i])) {
-//
-//                newAssignments.add(new Lunch(Assignment.LUNCH, "FY", "Lunch", days[i], this));
-//
-//            }
-//
-//
-//
-//            while(!dayIsFull(days[i])) {
+        for(int i = 0; i < days.length; i++) {
+
+            String day = days[i];
+
+            if(!dayHasLunchPeriod(day)) {
+
+                assignments.add(new Lunch(Assignment.LUNCH, "FY", "Lunch", days[i], this));
+
+            }
+
+
+
+//            while(!dayIsFull(day)) {
 //
 ////                System.out.println(dayIsFull(days[i]));
 //
-//                int period = getNextEmptyPeriod(days[i]);
+//                Period period = getNextEmptyPeriod(day);
 //
 ////                if(period == -1)
 //
-//                Assignment free = new Free(period,"FY", "Free", days[i], this);
-//                newAssignments.add(free);
+//                Assignment free = new Free(period,"FY", "Free", day, this);
+//                assignments.add(free);
 //
 //            }
-//        }
+        }
 
     }
 
-    public boolean dayIsFull(String  day) {
-
-        ArrayList<Assignment> dayAssigments = getDayAssignments(day);
-
-//        if(dayAssigments.size() > BigDuty.schedule.get(day+"_SCHEDULE").length()) {
-//            System.out.println(dayAssigments.size() + ", " + BigDuty.schedule.get(day + "_SCHEDULE").length());
-//        }
+    public boolean dayIsFull(String day) {
 
         String schedule = BigDuty.schedule.get(day+"_SCHEDULE");
 
-        for(int i = 0; i < schedule.length();i++) {
+        for(int i = 0; i < schedule.length(); i++) {
 
-            if(!dayAssignmentExists(day, String.valueOf(schedule.charAt(i)))) return false;
+            if(schedule.charAt(i) == '-') continue;
+
+            Period period = new Period(schedule.charAt(i), day);
+
+            System.out.println(period.getValue() + ", " + schedule.charAt(i));
+
+            if(!dayAssignmentExists(day, period)) return false;
 
         }
 
@@ -188,7 +192,7 @@ public class Teacher {
 
         for(Assignment a : dayAssigments) {
 
-            if(a.getPeriod() == Assignment.LUNCH) return true;
+            if(a.getPeriod().isLunch()) return true;
 
         }
 
@@ -196,9 +200,9 @@ public class Teacher {
 
     }
 
-    public int getNextEmptyPeriod(String day) {
+    public Period getNextEmptyPeriod(String day) {
 
-        ArrayList<Assignment> dayAssigments = getDayAssignments(day);
+        ArrayList<Assignment> dayAssignments = getDayAssignments(day);
 
         String schedule = BigDuty.schedule.get(day+"_SCHEDULE");
 
@@ -206,16 +210,19 @@ public class Teacher {
 
         for(int i = 0; i < schedule.length(); i++) {
 
-            String period = String.valueOf(schedule.indexOf(i));
+            Period p;
 
-            if(period.equals("-1")) continue;
+            if(day.equals("M")) p = new Period(i);
 
-            if(period.equals("L")) if(!dayAssignmentExists(day, "" + Assignment.LUNCH)) return Assignment.LUNCH;
+            Period period = new Period(schedule.indexOf(i), day);
 
-            if(!dayAssignmentExists(day, "" + BigDuty.translatePeriod(Integer.parseInt(period), day))) return BigDuty.translatePeriod(Integer.parseInt(period), day);
+            if(String.valueOf(schedule.indexOf(i)).equals("-1")) continue;
 
+            if(period.isLunch() && !dayAssignmentExists(day, new Period("L"))) return new Period("L");
+
+            if(!dayAssignmentExists(day, period)) return period;
         }
-        return -1;
+        return new Period("-1");
     }
 
     public boolean afterLunch(String schedule, int i) {
@@ -224,33 +231,22 @@ public class Teacher {
 
     }
 
-    public boolean dayAssignmentExists(String day, String period) {
+    public boolean dayAssignmentExists(String day, Period period) {
 
         for(Assignment a : assignments) {
 
-            if(String.valueOf(a.getPeriod()).equals(period) && a.getDay().equals(day)) return true;
+            if(a.getPeriod().getValue() == period.getValue() && a.getDay().equals(day)) return true;
 
         }
 
         return false;
 
     }
-
-    
     
     public void addAssignment(Assignment a)
     {
     	assignments.add(a);
     }
-
-//    public Teacher(String name, ArrayList<Assignment> courses) {
-//    	this.id = previousId++;
-//    	firstName = name.substring(1, name.indexOf(','));
-//    	lastname = name.substring(name.indexOf(' '+1), -1);
-//    	this.assignments = new ArrayList<Assignment>();
-//    	this.assignments.addAll(courses);
-//    }
-//    
     
     public ArrayList<Assignment> getDayAssignments(String day) {
 
@@ -264,10 +260,10 @@ public class Teacher {
 
     }
     
-    public Assignment getAssignment(String day, int period) {
+    public Assignment getAssignment(String day, Period period) {
 
         for(Assignment assignment : assignments)
-            if(assignment.getDay().equals(day) && assignment.getPeriod() == period)
+            if(assignment.getDay().equals(day) && assignment.getPeriod().equals(period))
                 return assignment;
 
         return null;
@@ -308,18 +304,18 @@ public class Teacher {
 
     public Assignment getPeriodBefore(Assignment assignment) {
 
-        if(assignment.getPeriod() == 1) {
-            return new Free(0, assignment.getSemester(), "Before School", assignment.getDay(), assignment.getTeacher());
+        if(assignment.getPeriod().getValue() == 0) {
+            return new Free(0, assignment.getSemester(), "Before School", assignment.getDay(), assignment.getTeacher(), false);
         }
 
-        if(assignment.getDay().equals("M") && assignment.getPeriod() == Assignment.P4) return getDayLunch(assignment.getDay());
+        if(assignment.getDay().equals("M") && assignment.getPeriod().getValue() == 4) return getDayLunch(assignment.getDay());
 
-        if(assignment.getDay().equals("M") && assignment.getPeriod() == Assignment.P3) return getDayLunch(assignment.getDay());
+        if(assignment.getDay().equals("M") && assignment.getPeriod().getValue() == 3) return getDayLunch(assignment.getDay());
 
         ArrayList<Assignment> daySchedule = getDayAssignments(assignment.getDay());
 
         for(Assignment ass : daySchedule) {
-            if(ass.getPeriod() == assignment.getPeriod()-1) return ass;
+            if(ass.getPeriod().getValue() == ass.getPeriod().increment(-1)) return ass;
         }
 
         return null;
@@ -327,12 +323,12 @@ public class Teacher {
 
     public Assignment getPeriodAfter(Assignment assignment) {
 
-        if(assignment.getPeriod() == 8 || (assignment.getPeriod() == 7 && !assignment.getDay().equals("M"))) {
-            return new Free(9, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher());
+        if(assignment.getPeriod().getValue() == 8 || (assignment.getPeriod().getValue() == 7 && !assignment.getDay().equals("M"))) {
+            return new Free(9, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher(), false);
         }
 
         for(Assignment ass: getDayAssignments(assignment.getDay())) {
-            if(ass.getPeriod() == assignment.getPeriod()+1) return ass;
+            if(ass.getPeriod().getValue() == assignment.getPeriod().increment(1)) return ass;
         }
 
         return null;
@@ -341,9 +337,9 @@ public class Teacher {
 
     public boolean touchesFree(Assignment assignment) {
 
-        if(getPeriodBefore(assignment) instanceof Free || getPeriodBefore(assignment) instanceof Lunch && getPeriodBefore(assignment).getPeriod() != 0) return true;
+        if(getPeriodBefore(assignment) instanceof Free || getPeriodBefore(assignment) instanceof Lunch && getPeriodBefore(assignment).getPeriod().getValue() != 0) return true;
 
-        if(getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod() != 9) return true;
+        if(getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9) return true;
 
         return false;
 
@@ -353,13 +349,13 @@ public class Teacher {
 
         ArrayList<Assignment> day = getDayAssignments(assignment.getDay());
 
-        day.sort((o1, o2) -> o1.getPeriod() - o2.getPeriod());
+        day.sort((o1, o2) -> o1.getPeriod().compareTo(o2));
 
         int min = 0;
         int max = day.size()/2;
         int count = 0;
 
-        if(assignment.getPeriod() > 4) {
+        if(assignment.getPeriod().greaterThan(4)) {
             min = day.size()/2;
             max = day.size();
         }
@@ -399,9 +395,9 @@ public class Teacher {
 
         if(freesInHalf(assignment) == 4) score = 100;
 
-        if(getPeriodBefore(assignment).getPeriod() == 0) score -= 20;
+        if(getPeriodBefore(assignment).getPeriod().getValue() == 0) score -= 20;
 
-        if(getPeriodAfter(assignment).getPeriod() == 9) score -= 10;
+        if(getPeriodAfter(assignment).getPeriod().getValue() == 9) score -= 10;
 
         if(touchesFree(assignment)) score += 50;
 
@@ -411,13 +407,13 @@ public class Teacher {
 
     }
     
-    public int rankAssignment(String day, int period) {
+    public int rankAssignment(String day, Period period) {
 
         return rankAssignment(getAssignment(day, period));
 
     }
     
-    public int scoreAssignment(String day, int period) {
+    public int scoreAssignment(String day, Period period) {
 
         int score = rankAssignment(day, period);
 
