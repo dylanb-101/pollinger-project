@@ -16,8 +16,8 @@ public class Duty extends Assignment {
 
 
 
-    public Duty(int period, String semester, String name, String room, String day, Teacher teacher) {
-        super(period, semester, name, day, teacher);
+    public Duty(String period, String semester, String name, String room, String day, Teacher teacher, boolean adjustPeriod) {
+        super(period, semester, name, day, teacher, adjustPeriod);
 
         this.room = room;
 
@@ -30,12 +30,17 @@ public class Duty extends Assignment {
 
     public double getWeight() {
 
-        if(getName() == UNFILLED) return 0;
-        if(getName() == FROSH_PASCACK) return -10;
-        if(getName() == HALL) return 5;
-        if(getName() == PASCACK) return -5;
-        if(getName() == COVERAGE) return 10;
+        if(getName().equals(UNFILLED)) return 0;
+        if(getName().equals(FROSH_PASCACK)) return -10;
+        if(getName().equals(HALL)) return 5;
+        if(getName().equals(PASCACK)) return -5;
+        if(getName().equals(COVERAGE)) return 10;
         return 1000000;
 
+    }
+
+    @Override
+    public String getDepartment() {
+        return "None";
     }
 }

@@ -21,15 +21,13 @@ public class Panel2 extends CustomPanel
    private int numRows;
    private String[] colHeadings;
    private Object[][] data;
-   private String hover;
    
-   public Panel2(String panelName, Dimension d, BorderLayout b, BigDuty bigduty, String[] colheadings, int numRows, Object[][] data, String s)
+   public Panel2(String panelName, Dimension d, BorderLayout b, BigDuty bigduty, String[] colheadings, int numRows, Object[][] data)
    {
       super(panelName, d, b);
       bigDuty = bigduty;
       colHeadings = colheadings;
       this.data = data;
-      hover = s;
       
       //buttons
       JButton p2b1 = new JButton("--"); //demo
@@ -85,66 +83,6 @@ public class Panel2 extends CustomPanel
       p2table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
       this.add(p2pane);
-   }
-
-   public BigDuty getBigDuty()
-   {
-      return bigDuty;
-   }
-
-   public void setBigDuty(BigDuty bigDuty)
-   {
-      this.bigDuty = bigDuty;
-   }
-
-   public JScrollPane getPane()
-   {
-      return pane;
-   }
-
-   public void setPane(JScrollPane pane)
-   {
-      this.pane = pane;
-   }
-
-   public int getNumRows()
-   {
-      return numRows;
-   }
-
-   public void setNumRows(int numRows)
-   {
-      this.numRows = numRows;
-   }
-
-   public String[] getColHeadings()
-   {
-      return colHeadings;
-   }
-
-   public void setColHeadings(String[] colHeadings)
-   {
-      this.colHeadings = colHeadings;
-   }
-
-   public Object[][] getData()
-   {
-      return data;
-   }
-
-   public void setData(Object[][] data)
-   {
-      this.data = data;
-   }
-
-   public String getHover()
-   {
-      return hover;
-   }
-
-   public void setHover(String hover)
-   {
-      this.hover = hover;
    }
    
    

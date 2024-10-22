@@ -22,7 +22,7 @@ public class BigDuty
 	   schedule.put("T_SCHEDULE", "0123L5679");
 	   schedule.put("W_SCHEDULE", "0412L8569");
 	   schedule.put("R_SCHEDULE", "0341L7859");
-	   schedule.put("F_SCHEDULE", "234L6789");
+	   schedule.put("F_SCHEDULE", "-234L6789");
 
 	   System.out.println("Reading in teachers...");
       this.teachers = FileUtility.createTeachers(dataFile);
@@ -35,7 +35,7 @@ public class BigDuty
    }
    
    // returns a list of teachers with an attached score going from largest score to smallest
-   public ArrayList<TeacherWithScore> getListOfRankedTeachers(String day, int period)
+   public ArrayList<TeacherWithScore> getListOfRankedTeachers(String day, Period period)
    {	   
 	   ArrayList<TeacherWithScore> tScores = new ArrayList<TeacherWithScore>();
 	   ArrayList<Teacher> fTeachers = getFreeTeachers(day, period);
@@ -53,20 +53,19 @@ public class BigDuty
 
    }
    
-   public ArrayList<Teacher> getFreeTeachers(String day, int period)
+   public ArrayList<Teacher> getFreeTeachers(String day, Period period)
    {	 
 	   ArrayList<Teacher> freeTeachers = new ArrayList<Teacher>();
 	   
 	   for(int i = 0; i < teachers.size(); i++)
 		   for(int k = 0; k < teachers.get(i).getFrees().size(); k++)
-			   if(teachers.get(i).getFrees().get(k).getDay() == day &&  
-			      teachers.get(i).getFrees().get(k).getPeriod() == period)
+			   if(teachers.get(i).getFrees().get(k).getDay().equals(day) && teachers.get(i).getFrees().get(k).getPeriod().equals(period))
 				   freeTeachers.add(teachers.get(i));
 	   
 	   return freeTeachers;
    }
    
-   public Teacher getBestTeacher(String day, int period)
+   public Teacher getBestTeacher(String day, Period period)
    {
 	   ArrayList<TeacherWithScore> possTeachers = getListOfRankedTeachers(day, period);
 	   
@@ -98,27 +97,17 @@ public class BigDuty
 	   return teachers.get(i);
    }
 
-   public static int translatePeriod(int period, String day) {
+	/**
+	 * Gets the Assignment in the Assignments ArrayList at index i
+	 * @param i the index of the Assignment
+	 * @return the Assignment at the specified index
+	 */
+   public Assignment getAssignment(int i) {
+		return assignments.get(i);
+   }
 
-//	   System.out.println(day+"_SCHEDULE");
-
-	   int i = schedule.get(day+"_SCHEDULE").indexOf("" + period);
-
-
-		if(period == 9) return Assignment.AFTER_SCHOOL;
-
-		if(i == -1) return -1;
-
-		boolean inFirstHalf = i < schedule.get(day+"_SCHEDULE").indexOf("L");
-
-		if(!day.equals("F") && !inFirstHalf) return i+1;
-
-		if(day.equals("F") && !inFirstHalf) return i+2;
-
-		if(day.equals("F") && inFirstHalf) return i+1;
-
-		return i;
-
+   public ArrayList<Assignment> getAssignments() {
+		return assignments;
    }
 
     

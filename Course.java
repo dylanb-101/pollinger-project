@@ -9,9 +9,9 @@ public class Course extends Assignment {
     private String department;
     private String room;
     
-    public Course(String name, String courseCode, int section, int period, String day, 
-		      String semester , String room, String department, Teacher teacher) {
-        super(period, semester, name, day, teacher);
+    public Course(String name, String courseCode, int section, String period, String day,
+                  String semester , String room, String department, Teacher teacher, boolean adjustPeriod) {
+        super(period, semester, name, day, teacher, adjustPeriod);
         this.courseCode = courseCode;
         this.section = section;
         this.department = department;

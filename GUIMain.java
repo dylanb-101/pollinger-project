@@ -70,36 +70,31 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
          this.addMouseListener(this);
          this.setFocusable(true);
 
-         //********************DATA BEGIN************************//
-         
-         String[] colHeadingsPanel1 = {"TEACHER","COURSE", "ROOM", "DEPT", "YEAR"}; //tables
+         //init big duty and data stuff
+         String[] colHeadings = {"TEACHER","COURSE", "PERIOD", "DAY", "SEM", "ROOM", "DEPT", "YEAR"}; //tables
          int numRows = 50; //number of rows
          this.setLayout(new BorderLayout()); //setting layout
       
          this.bigDuty = new BigDuty("src/PollingerProject-DutyData.csv"); //cleaned-up data import
-         Object[][]data = new Object[bigDuty.getTeachers().size()][colHeadingsPanel1.length]; //size of the dataframe
+         Object[][]data = new Object[bigDuty.getAssignments().size()][colHeadings.length]; //size of the dataframe
       
-         //********************DATA END**************************//
-         
-         
-         //JTabbedPane ADD
+         //JTabbedPane
          JTabbedPane panedTabs = new JTabbedPane();
          panedTabs.setVisible(true);
 
          //*********************PANELS BEGIN**********************//
    
           //Panel1 #homepage#
-          String panel1HoverMessage = "Shows all teachers' general information";
-          panel1 = new Panel1("All Teacher View", getPreferredSize(), new BorderLayout(), bigDuty, colHeadingsPanel1, numRows, data, panel1HoverMessage);
-          panedTabs.addTab(panel1.getName(), null, panel1, ((Panel1) panel1).getHover());
+          panel1 = new Panel1("Panel 1", getPreferredSize(), new BorderLayout(), bigDuty, colHeadings, numRows, data);
+          panedTabs.addTab("Panel 1", null, panel1, "Hovering...");
   
           //panel2 #no function yet#
-          String panel2HoverMessage = "Shows individual teachers' general information";
-          panel2 = new Panel2("Individual Teacher View", getPreferredSize(), new BorderLayout(), bigDuty, colHeadingsPanel1, numRows, data, panel2HoverMessage);
-          panedTabs.addTab(panel2.getName(), null, panel2, ((Panel2)(panel2)).getHover());
+          panel2 = new Panel2("Panel 1", getPreferredSize(), new BorderLayout(), bigDuty, colHeadings, numRows, data);
+          panedTabs.addTab("Panel 2", null, panel2, "Hovering..."); 
           
           
           //********************PANELS END*************************//
+          
           //Initialization
           this.add(panedTabs);
    }
@@ -146,18 +141,15 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
    {
       return new Dimension(WIDTH, HEIGHT);
    }
+
    @Override
    public void mouseClicked(MouseEvent e)
    {
-//      int x = e.getX();
-//      int y = e.getY();
-//      System.out.println(x + " " + y);
    }
 
    @Override
    public void mousePressed(MouseEvent e)
    {
-      
    }
 
    @Override
