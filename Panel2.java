@@ -1,10 +1,17 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -17,75 +24,134 @@ import javax.swing.table.JTableHeader;
 public class Panel2 extends CustomPanel
 {
    private BigDuty bigDuty;
-   JScrollPane pane;
+   private JScrollPane pane;
    private int numRows;
    private String[] colHeadings;
    private Object[][] data;
-   private String hover;
+   private String hover, selected;
+   private static JPanel tPanel, wrapper;
+   private boolean isClicked;
    
-   public Panel2(String panelName, Dimension d, BorderLayout b, BigDuty bigduty, String[] colheadings, int numRows, Object[][] data, String s)
+   public Panel2(String panelName, Dimension d, BorderLayout b, BigDuty bigduty, String[] colheadings, int numRows, String s)
    {
       super(panelName, d, b);
       bigDuty = bigduty;
       colHeadings = colheadings;
-      this.data = data;
       hover = s;
+ 
       
-      //buttons
-      JButton p2b1 = new JButton("--"); //demo
-      p2b1.addActionListener(new ActionListener() {
+      //************************************************************//
+      
+      wrapper = new JPanel();   
+      JPanel panel = new JPanel();
+      panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // added code
+      JLabel lbl = new JLabel("Select one of the possible choices and click OK");
+      lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
+      String[] choices = new String[bigDuty.getTeachers().size()];
+      for(int i = 0; i < bigDuty.getTeachers().size(); i++)
+         choices[i] = bigDuty.getTeacher(i).getLastName() + ", " + bigDuty.getTeacher(i).getFirstName();
+      Arrays.sort(choices);
+      
+      
+      final JComboBox<String> cb = new JComboBox<String>(choices);
+      cb.setMaximumSize(cb.getPreferredSize()); // added code
+      cb.setAlignmentX(Component.CENTER_ALIGNMENT);// added code
+      JButton btn = new JButton("OK");
+      btn.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e)
+         {
+            System.out.println("Selected " + (String) cb.getSelectedItem() + "!");
+            GUIMain.setWarningMsg("Selected " + (String) cb.getSelectedItem() + "!");
+            doClicked();
+            revalidate();
+            repaint();
+         }
+        });
+      btn.setAlignmentX(Component.CENTER_ALIGNMENT); // added code
+      
+      
+      panel.add(lbl);
+      panel.add(cb);
+      panel.add(btn);
+      wrapper.add(panel);
+      this.add(wrapper);
+
+      
+     
+
+      //************************************************************// 
+      
+      tPanel = new JPanel();
+      JButton b1 = new JButton("Return to Menu"); //demo
+      b1.addActionListener(new ActionListener() {
+
        @Override
        public void actionPerformed(ActionEvent e)
        {
-          System.out.println("Top Pressed");
+          System.out.println("Returned!");
+          returnMenu();
        }
       });
-      JButton p2b2 = new JButton("Footer"); //demo
-      p2b2.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e)
-         {
-            System.out.println("Bottom Pressed");
-         }
-        });
-      JButton p2b3 = new JButton("East"); //demo
-      p2b3.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e)
-         {
-            System.out.println("Right Pressed");
-         }
-        });
-      JButton p2b4 = new JButton("West"); //demo
-      p2b4.addActionListener(new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e)
-         {
-            System.out.println("Left Pressed");
-         }
-        });
+      tPanel.add(b1, BorderLayout.SOUTH);
       
-      //adding buttons
-      this.add(p2b1, BorderLayout.NORTH); 
-      this.add(p2b2, BorderLayout.SOUTH);
-      this.add(p2b3, BorderLayout.EAST);
-      this.add(p2b4, BorderLayout.WEST);
+      selected = (String)cb.getSelectedItem();
+      int teacherIndex = 0;
+      for(int i = 0; i < bigDuty.getTeachers().size(); i++)
+         if(selected.equals(bigDuty.getTeacher(i).getName()))
+            teacherIndex = i;
       
-      //adding tab to pane tabs
-    
-      DefaultTableModel p2model = new DefaultTableModel(numRows, colHeadings.length) ;
-      p2model.setColumnIdentifiers(colHeadings);
-      JTable p2table = new JTable(p2model); 
-      
-      //p2 table
-      this.add(p2table, BorderLayout.CENTER);        
-      JTableHeader p2header = p2table.getTableHeader();
-      p2header.setBackground(Color.yellow);
-      JScrollPane p2pane = new JScrollPane(p2table);
-      p2table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+         data = new Object[numRows][colHeadings.length];
+          Teacher t = bigDuty.getTeacher(teacherIndex);
+          data[teacherIndex][0] = t.getLastName();
+          data[teacherIndex][1] = t.getId();
+          data[teacherIndex][2] = t.getRoom();
+          data[teacherIndex][3] = t.getDepartment();
+          
+      DefaultTableModel model = new DefaultTableModel(data, colHeadings) {
+      private static final long serialVersionUID = 1L;
+      @Override
+      public Class<?> getColumnClass(int column){
+         if(column > 0 || column < 9)
+            return Integer.class;
+         return super.getColumnClass(column);
+      }
+      public boolean isCellEditable(int row, int column) {
+         return false;
+      }
+      };  
+      JTable table = new JTable(model);
+      table.setVisible(true);
+      table.setAutoCreateRowSorter(true);
+      table.setFont(new Font("Tratatello", Font.PLAIN, 14));
 
-      this.add(p2pane);
+      tPanel.add(table, BorderLayout.NORTH); //add table to the center  
+      JTableHeader header = table.getTableHeader();
+      header.setBackground(Color.yellow);
+      pane = new JScrollPane(table);
+      table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+      table.setGridColor(Color.LIGHT_GRAY);
+      tPanel.add(pane);
+      //*********************************************************************************************************//
    }
+   
+   
+   
+   public void doClicked()
+   {
+      this.remove(wrapper);
+      this.add(tPanel);
+   }
+   
+   public void returnMenu()
+   {
+      this.add(wrapper);
+      this.remove(tPanel);
+      selected = "";
+   }
+   
+   
+   
 
    public BigDuty getBigDuty()
    {
