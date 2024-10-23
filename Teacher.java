@@ -334,6 +334,34 @@ public class Teacher {
         return null;
 
     }
+    
+    public Assignment getTwoPeriodSAfter(Assignment assignment) {
+       
+       if(assignment.getPeriod().getValue() == 8 || (assignment.getPeriod().getValue() == 7 && !assignment.getDay().equals("M"))) {
+          return new Free(9, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher(), false);
+       }
+       
+       for(Assignment ass: getDayAssignments(assignment.getDay())) {
+          if(ass.getPeriod().getValue() == assignment.getPeriod().increment(2)) return ass;
+       }
+       
+       return null;
+       
+    }
+    
+    public Assignment getTwoPeriodSBefore(Assignment assignment) {
+       
+       if(assignment.getPeriod().getValue() == 8 || (assignment.getPeriod().getValue() == 7 && !assignment.getDay().equals("M"))) {
+          return new Free(9, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher(), false);
+       }
+       
+       for(Assignment ass: getDayAssignments(assignment.getDay())) {
+          if(ass.getPeriod().getValue() == assignment.getPeriod().increment(-2)) return ass;
+       }
+       
+       return null;
+       
+    }
 
     public boolean touchesFree(Assignment assignment) {
 
@@ -343,6 +371,26 @@ public class Teacher {
 
         return false;
 
+    }
+    
+    public boolean inBetweenFrees(Assignment assignment) {
+       
+       if((getPeriodBefore(assignment) instanceof Free || getPeriodBefore(assignment) instanceof Lunch && getPeriodBefore(assignment).getPeriod().getValue() != 0)
+       
+       && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9)) return true;
+       
+       return false;
+       
+    }
+    
+    public boolean beforeTwoFrees(Assignment assignment) {
+       
+       if((!(getPeriodBefore(assignment) instanceof Free) || !(getPeriodBefore(assignment) instanceof Lunch))
+             
+             && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9)) return true;
+       
+       return false;
+       
     }
 
     public int freesInHalf(Assignment assignment) {
@@ -367,6 +415,29 @@ public class Teacher {
         return count;
 
     }
+    
+    public int freesInOtherHalf(Assignment assignment) {
+       
+       ArrayList<Assignment> day = getDayAssignments(assignment.getDay());
+       
+       day.sort((o1, o2) -> o1.getPeriod().compareTo(o2));
+       
+       int min = day.size();
+       int max = day.size()/2;
+       int count = 0;
+       
+       if(assignment.getPeriod().greaterThan(4)) {
+          min = 0;
+          max = day.size()/2;
+       }
+       
+       for(int i = min; i < max; i++) {
+          if(day.get(i) instanceof Free) count++;
+       }
+       
+       return count;
+       
+    }
 
     public int totalDuties() {
 
@@ -386,6 +457,8 @@ public class Teacher {
         if(assignment instanceof Course) score = -1000;
 
         if(getFrees(assignment.getDay()).size() <= 1) score = -1000;
+        
+        if(assignment.getPeriod().getValue() == 1) score -= 20;
 
         if(freesInHalf(assignment) == 1) score = 0;
 
@@ -394,12 +467,23 @@ public class Teacher {
         if(freesInHalf(assignment) == 3) score = 50;
 
         if(freesInHalf(assignment) == 4) score = 100;
+        
+        if(freesInOtherHalf(assignment) == 2) score -= 20;
+        
+        if(freesInOtherHalf(assignment) == 3) score -= 50;
+        
+        if(freesInOtherHalf(assignment) == 4) score -= 100;
 
         if(getPeriodBefore(assignment).getPeriod().getValue() == 0) score -= 20;
 
         if(getPeriodAfter(assignment).getPeriod().getValue() == 9) score -= 10;
 
         if(touchesFree(assignment)) score += 50;
+        
+        if(inBetweenFrees(assignment)) score += 50;
+        
+        if(beforeTwoFrees(assignment)) score += 50;
+        
 
         score -= totalDuties()*20;
 
