@@ -7,7 +7,8 @@ import java.util.*;
 public class BigDuty
 {
 
-	public static Map<String, String> schedule = new HashMap<>();
+   public static Map<String, String> schedule = new HashMap<>();
+
 
    private ArrayList<Assignment> assignments;
    
@@ -103,12 +104,26 @@ public class BigDuty
 	 * @return the Assignment at the specified index
 	 */
    public Assignment getAssignment(int i) {
-		return assignments.get(i);
+	return assignments.get(i);
    }
 
    public ArrayList<Assignment> getAssignments() {
-		return assignments;
+	return assignments;
    }
 
-    
+   public void assignDutys()
+   {
+   	for(int x = 0; x < schedule.size(); x++){
+		String day = days[x];
+   		for(int i = 0; i < schedule.get().length()-1; i++) {
+	   		assignRelevantDuty(getBestTeacher(day, i));
+		}
+	}
+   	
+   }
+
+   public void assignRelevantDuty(Teacher bestTeacher) {
+   	if
+   }
+	
 }
