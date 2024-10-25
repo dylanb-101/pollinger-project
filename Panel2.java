@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.BoxLayout;
@@ -31,31 +32,40 @@ public class Panel2 extends CustomPanel
    private String hover, selected;
    private static JPanel tPanel, wrapper;
    private boolean isClicked;
+   private JComboBox<String> cb;
+   private String[] choices;
    
    public Panel2(String panelName, Dimension d, BorderLayout b, BigDuty bigduty, String[] colheadings, int numRows, String s)
    {
       super(panelName, d, b);
       bigDuty = bigduty;
       colHeadings = colheadings;
+      this.numRows = numRows;
       hover = s;
  
       
       //************************************************************//
+      choices = new String[bigDuty.getTeachers().size()];
+      for(int i = 0; i < bigDuty.getTeachers().size(); i++)
+         choices[i] = bigDuty.getTeacher(i).getLastName() + ", " + bigDuty.getTeacher(i).getFirstName();
+      Arrays.sort(choices);
+      cb = new JComboBox<String>(choices);
+      cb.setMaximumSize(cb.getPreferredSize()); // added code
+      cb.setAlignmentX(Component.CENTER_ALIGNMENT);// added code
       
-      wrapper = new JPanel();   
+      makeWrapper(); 
+      makeTPanel();
+      this.add(wrapper);
+      //*********************************************************************************************************//
+   }
+   public void makeWrapper()
+   {
+      wrapper = new JPanel();
       JPanel panel = new JPanel();
       panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // added code
       JLabel lbl = new JLabel("Select one of the possible choices and click OK");
       lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
-      String[] choices = new String[bigDuty.getTeachers().size()];
-      for(int i = 0; i < bigDuty.getTeachers().size(); i++)
-         choices[i] = bigDuty.getTeacher(i).getLastName() + ", " + bigDuty.getTeacher(i).getFirstName();
-      Arrays.sort(choices);
-      
-      
-      final JComboBox<String> cb = new JComboBox<String>(choices);
-      cb.setMaximumSize(cb.getPreferredSize()); // added code
-      cb.setAlignmentX(Component.CENTER_ALIGNMENT);// added code
+
       JButton btn = new JButton("OK");
       btn.addActionListener(new ActionListener() {
          @Override
@@ -75,13 +85,9 @@ public class Panel2 extends CustomPanel
       panel.add(cb);
       panel.add(btn);
       wrapper.add(panel);
-      this.add(wrapper);
-
-      
-     
-
-      //************************************************************// 
-      
+   }
+   public void makeTPanel()
+   {
       tPanel = new JPanel();
       JButton b1 = new JButton("Return to Menu"); //demo
       b1.addActionListener(new ActionListener() {
@@ -101,7 +107,9 @@ public class Panel2 extends CustomPanel
          if(selected.equals(bigDuty.getTeacher(i).getName()))
             teacherIndex = i;
       
-         data = new Object[numRows][colHeadings.length];
+      //need a getTeachers() that is sorted from Teacher class
+      
+          data = new Object[numRows][colHeadings.length];
           Teacher t = bigDuty.getTeacher(teacherIndex);
           data[teacherIndex][0] = t.getLastName();
           data[teacherIndex][1] = t.getId();
@@ -132,21 +140,21 @@ public class Panel2 extends CustomPanel
       table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
       table.setGridColor(Color.LIGHT_GRAY);
       tPanel.add(pane);
-      //*********************************************************************************************************//
    }
-   
-   
    
    public void doClicked()
    {
       this.remove(wrapper);
       this.add(tPanel);
    }
-   
+
    public void returnMenu()
    {
-      this.add(wrapper);
       this.remove(tPanel);
+      this.add(wrapper);
+      revalidate();
+      repaint();
+      
       selected = "";
    }
    
