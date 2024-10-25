@@ -37,14 +37,13 @@ public class Period implements Comparable {
         else if(day.length() > 1) this.period = period + "";
         else {
 
-            System.out.println(day);
-
             String schedule = BigDuty.schedule.get(day+"_SCHEDULE");
 
-            System.out.println(schedule + ", " + period + ", " + schedule.indexOf(period + ""));
-
             if(schedule.indexOf(period + "") == 8) this.period = AFTER_SCHOOL;
-            this.period = schedule.indexOf(period + "") + "";
+            else {
+                System.out.println(schedule.indexOf(period + "") + "");
+                this.period = schedule.indexOf(period + "") + "";
+            }
         }
 
 
@@ -139,5 +138,9 @@ public class Period implements Comparable {
 
         return getValue() - p.getValue();
 
+    }
+
+    public String toString() {
+        return getPeriod();
     }
 }
