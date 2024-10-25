@@ -8,6 +8,7 @@ public class BigDuty
 {
 
    public static Map<String, String> schedule = new HashMap<>();
+   public static String[] days;
 
 
    private ArrayList<Assignment> assignments;
@@ -25,6 +26,9 @@ public class BigDuty
 	   schedule.put("R_SCHEDULE", "0341L7859");
 	   schedule.put("F_SCHEDULE", "-234L6789");
 
+	   String[] day = {"M", "T", "W", "R", "F"};
+
+	   
 	   System.out.println("Reading in teachers...");
       this.teachers = FileUtility.createTeachers(dataFile);
 	  System.out.println("Filling In assignments...");
@@ -113,17 +117,39 @@ public class BigDuty
 
    public void assignDutys()
    {
+	//start by assigning the pascack periods 
+	   //pascack is not first or last period and is periods 4, 6, and 
    	for(int x = 0; x < schedule.size(); x++){
 		String day = days[x];
    		for(int i = 0; i < schedule.get().length()-1; i++) {
-	   		assignRelevantDuty(getBestTeacher(day, i));
+	   		if(isFreshmanPasckack)
+				
 		}
 	}
    	
    }
 
-   public void assignRelevantDuty(Teacher bestTeacher) {
-   	if
+  //must make the variables for when pascack period is variable
+   public boolean isFreshmanPascack(String day, Period period)
+   {
+
+	//chekcing its period
+	int[] FreshmanPascackPeriods = {4, 6, 7};
+	for(int i = 0; i < FreshmanPascackPeriods.length; i++)
+	{
+		if(period.getValue() == FreshmanPascackPeriods[i]) 
+		{
+			String[] FreshmanPascackDays = {"W", "W", "T"};
+			if(day.equals(FreshmanPascackDays[i]))
+				return false;
+			return true;
+		}	
+	}
+	return false;
    }
+
+   // public void assignRelevantDuty(Teacher bestTeacher) {
+   // 	if
+   // }
 	
 }
