@@ -45,10 +45,8 @@ public class Teacher implements Comparable {
 
         for(Assignment assignment : assignments) {
 
-//            System.out.println(assignment.getName() + ", " + assignment.getDay());
 
             String[] periods = assignment.getDay().split(",");
-//            System.out.println(Arrays.toString(periods));
 
             for(int i = 0; i < periods.length;i++) {
 
@@ -70,7 +68,6 @@ public class Teacher implements Comparable {
 //                checks if there is an ap science class lab
                 if(periods.length > 1 && assignment.getName().contains("AP") && (day.length() == 2)) {
 
-//                    System.out.println("Lab! " + assignment.getName());
 
                     String period = String.valueOf(day.charAt(0));
 
@@ -107,8 +104,6 @@ public class Teacher implements Comparable {
 
                 for(int j = 1; j < day.length(); j++) {
 
-//                    System.out.println(day + ", " + j);
-
                     String translatedPeriod = monNumber;
 
                     if(monNumber.equals("-1")) continue;
@@ -126,6 +121,7 @@ public class Teacher implements Comparable {
 
         String[] days = {"M", "T", "W", "R", "F"};
 
+
         for(int i = 0; i < days.length; i++) {
 
             String day = days[i];
@@ -138,18 +134,26 @@ public class Teacher implements Comparable {
 
 
 
-//            while(!dayIsFull(day)) {
-//
-////                System.out.println(dayIsFull(days[i]));
-//
-//                Period period = getNextEmptyPeriod(day);
-//
-////                if(period == -1)
-//
-//                Assignment free = new Free(period,"FY", "Free", day, this);
-//                assignments.add(free);
-//
-//            }
+            int count = 0;
+
+            while(!dayIsFull(day)) {
+                count++;
+
+                Period period = getNextEmptyPeriod(day);
+
+//                System.out.println(period.toString());
+
+                if(period.getValue() != -1) {
+                    Assignment free = new Free(period,"FY", "Free", day, this);
+                    assignments.add(free);
+                }
+
+                if(count > 9) {
+                    printAssignments(day);
+                    System.out.println("------" + assignments.size());
+                }
+
+            }
         }
 
     }
@@ -162,9 +166,13 @@ public class Teacher implements Comparable {
 
             if(schedule.charAt(i) == '-') continue;
 
-            Period period = new Period(schedule.charAt(i), day);
+            Period period = new Period(schedule.charAt(i) +"", day);
 
-            System.out.println(period.getValue() + ", " + schedule.charAt(i));
+            if(!dayAssignmentExists(day, period)) {
+
+                System.out.println(period + ", " + day + ", " + schedule.charAt(i));
+
+            }
 
             if(!dayAssignmentExists(day, period)) return false;
 
@@ -206,21 +214,18 @@ public class Teacher implements Comparable {
 
         String schedule = BigDuty.schedule.get(day+"_SCHEDULE");
 
-//        if(schedule.contains("0")) if(!dayAssignmentExists(day, 0)) return 0;
+//        if(schedule.contains("0")) if(!dayAssignmentExists(day, new Period(0))) return new Period(0);
 
         for(int i = 0; i < schedule.length(); i++) {
 
-            Period p;
+            if(schedule.charAt(i) == '-') continue;
 
-            if(day.equals("M")) p = new Period(i);
+            Period p = new Period(schedule.charAt(i) + "", day);
 
-            Period period = new Period(schedule.indexOf(i), day);
+//            System.out.println(p);
 
-            if(String.valueOf(schedule.indexOf(i)).equals("-1")) continue;
+            if(!dayAssignmentExists(day, p)) return p;
 
-            if(period.isLunch() && !dayAssignmentExists(day, new Period("L"))) return new Period("L");
-
-            if(!dayAssignmentExists(day, period)) return period;
         }
         return new Period("-1");
     }
@@ -242,12 +247,12 @@ public class Teacher implements Comparable {
         return false;
 
     }
-    
+
     public void addAssignment(Assignment a)
     {
-    	assignments.add(a);
+        assignments.add(a);
     }
-    
+
     public ArrayList<Assignment> getDayAssignments(String day) {
 
         ArrayList<Assignment> daySchedule = new ArrayList<>();
@@ -259,7 +264,7 @@ public class Teacher implements Comparable {
         return daySchedule;
 
     }
-    
+
     public Assignment getAssignment(String day, Period period) {
 
         for(Assignment assignment : assignments)
@@ -271,7 +276,7 @@ public class Teacher implements Comparable {
 
 
 
-	public Lunch getDayLunch(String day) {
+    public Lunch getDayLunch(String day) {
         for(Assignment assignment : assignments) {
             if(assignment instanceof Lunch && assignment.getDay().equals(day)) return (Lunch) assignment;
         }
@@ -334,33 +339,33 @@ public class Teacher implements Comparable {
         return null;
 
     }
-    
+
     public Assignment getTwoPeriodSAfter(Assignment assignment) {
-       
-       if(assignment.getPeriod().getValue() == 8 || (assignment.getPeriod().getValue() == 7 && !assignment.getDay().equals("M"))) {
-          return new Free(9, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher(), false);
-       }
-       
-       for(Assignment ass: getDayAssignments(assignment.getDay())) {
-          if(ass.getPeriod().getValue() == assignment.getPeriod().increment(2)) return ass;
-       }
-       
-       return null;
-       
+
+        if(assignment.getPeriod().getValue() == 8 || (assignment.getPeriod().getValue() == 7 && !assignment.getDay().equals("M"))) {
+            return new Free(9, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher(), false);
+        }
+
+        for(Assignment ass: getDayAssignments(assignment.getDay())) {
+            if(ass.getPeriod().getValue() == assignment.getPeriod().increment(2)) return ass;
+        }
+
+        return null;
+
     }
-    
+
     public Assignment getTwoPeriodSBefore(Assignment assignment) {
-       
-       if(assignment.getPeriod().getValue() == 8 || (assignment.getPeriod().getValue() == 7 && !assignment.getDay().equals("M"))) {
-          return new Free(9, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher(), false);
-       }
-       
-       for(Assignment ass: getDayAssignments(assignment.getDay())) {
-          if(ass.getPeriod().getValue() == assignment.getPeriod().increment(-2)) return ass;
-       }
-       
-       return null;
-       
+
+        if(assignment.getPeriod().getValue() == 8 || (assignment.getPeriod().getValue() == 7 && !assignment.getDay().equals("M"))) {
+            return new Free(9, assignment.getSemester(), "After School", assignment.getDay(), assignment.getTeacher(), false);
+        }
+
+        for(Assignment ass: getDayAssignments(assignment.getDay())) {
+            if(ass.getPeriod().getValue() == assignment.getPeriod().increment(-2)) return ass;
+        }
+
+        return null;
+
     }
 
     public boolean touchesFree(Assignment assignment) {
@@ -372,25 +377,25 @@ public class Teacher implements Comparable {
         return false;
 
     }
-    
+
     public boolean inBetweenFrees(Assignment assignment) {
-       
-       if((getPeriodBefore(assignment) instanceof Free || getPeriodBefore(assignment) instanceof Lunch && getPeriodBefore(assignment).getPeriod().getValue() != 0)
-       
-       && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9)) return true;
-       
-       return false;
-       
+
+        if((getPeriodBefore(assignment) instanceof Free || getPeriodBefore(assignment) instanceof Lunch && getPeriodBefore(assignment).getPeriod().getValue() != 0)
+
+                && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9)) return true;
+
+        return false;
+
     }
-    
+
     public boolean beforeTwoFrees(Assignment assignment) {
-       
-       if((!(getPeriodBefore(assignment) instanceof Free) || !(getPeriodBefore(assignment) instanceof Lunch))
-             
-             && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9)) return true;
-       
-       return false;
-       
+
+        if((!(getPeriodBefore(assignment) instanceof Free) || !(getPeriodBefore(assignment) instanceof Lunch))
+
+                && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9)) return true;
+
+        return false;
+
     }
 
     public int freesInHalf(Assignment assignment) {
@@ -415,28 +420,28 @@ public class Teacher implements Comparable {
         return count;
 
     }
-    
+
     public int freesInOtherHalf(Assignment assignment) {
-       
-       ArrayList<Assignment> day = getDayAssignments(assignment.getDay());
-       
-       day.sort((o1, o2) -> o1.getPeriod().compareTo(o2));
-       
-       int min = day.size();
-       int max = day.size()/2;
-       int count = 0;
-       
-       if(assignment.getPeriod().greaterThan(4)) {
-          min = 0;
-          max = day.size()/2;
-       }
-       
-       for(int i = min; i < max; i++) {
-          if(day.get(i) instanceof Free) count++;
-       }
-       
-       return count;
-       
+
+        ArrayList<Assignment> day = getDayAssignments(assignment.getDay());
+
+        day.sort((o1, o2) -> o1.getPeriod().compareTo(o2));
+
+        int min = day.size();
+        int max = day.size()/2;
+        int count = 0;
+
+        if(assignment.getPeriod().greaterThan(4)) {
+            min = 0;
+            max = day.size()/2;
+        }
+
+        for(int i = min; i < max; i++) {
+            if(day.get(i) instanceof Free) count++;
+        }
+
+        return count;
+
     }
 
     public int totalDuties() {
@@ -457,7 +462,7 @@ public class Teacher implements Comparable {
         if(assignment instanceof Course) score = -1000;
 
         if(getFrees(assignment.getDay()).size() <= 1) score = -1000;
-        
+
         if(assignment.getPeriod().getValue() == 1) score -= 20;
 
         if(freesInHalf(assignment) == 1) score = 0;
@@ -467,11 +472,11 @@ public class Teacher implements Comparable {
         if(freesInHalf(assignment) == 3) score = 50;
 
         if(freesInHalf(assignment) == 4) score = 100;
-        
+
         if(freesInOtherHalf(assignment) == 2) score -= 20;
-        
+
         if(freesInOtherHalf(assignment) == 3) score -= 50;
-        
+
         if(freesInOtherHalf(assignment) == 4) score -= 100;
 
         if(getPeriodBefore(assignment).getPeriod().getValue() == 0) score -= 20;
@@ -479,24 +484,24 @@ public class Teacher implements Comparable {
         if(getPeriodAfter(assignment).getPeriod().getValue() == 9) score -= 10;
 
         if(touchesFree(assignment)) score += 50;
-        
+
         if(inBetweenFrees(assignment)) score += 50;
-        
+
         if(beforeTwoFrees(assignment)) score += 50;
-        
+
 
         score -= totalDuties()*20;
 
         return score;
 
     }
-    
+
     public int rankAssignment(String day, Period period) {
 
         return rankAssignment(getAssignment(day, period));
 
     }
-    
+
     public int scoreAssignment(String day, Period period) {
 
         int score = rankAssignment(day, period);
@@ -516,8 +521,8 @@ public class Teacher implements Comparable {
         return (int) (score * multi);
 
     }
-    
-    
+
+
 
     public int getAverageScore() {
 
@@ -565,75 +570,75 @@ public class Teacher implements Comparable {
 
     }
 
-	public static int getNextId() {
-		return nextId;
-	}
+    public static int getNextId() {
+        return nextId;
+    }
 
-	public static void setNextId(int nextId) {
-		Teacher.nextId = nextId;
-	}
+    public static void setNextId(int nextId) {
+        Teacher.nextId = nextId;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public ArrayList<Assignment> getAssignments() {
-		return assignments;
-	}
+    public ArrayList<Assignment> getAssignments() {
+        return assignments;
+    }
 
-	public void setAssignments(ArrayList<Assignment> assignments) {
-		this.assignments = assignments;
-	}
+    public void setAssignments(ArrayList<Assignment> assignments) {
+        this.assignments = assignments;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public int getSocialCredit() {
-		return socialCredit;
-	}
+    public int getSocialCredit() {
+        return socialCredit;
+    }
 
-	public void setSocialCredit(int socialCredit) {
-		this.socialCredit = socialCredit;
-	}
+    public void setSocialCredit(int socialCredit) {
+        this.socialCredit = socialCredit;
+    }
 
-	public String getDepartment() {
-		return department;
-	}
+    public String getDepartment() {
+        return department;
+    }
 
-	public void setDepartment(String department) {
-		this.department = department;
-	}
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
-	public String getRoom() {
-		return room;
-	}
+    public String getRoom() {
+        return room;
+    }
 
-	public void setRoom(String room) {
-		this.room = room;
-	}
+    public void setRoom(String room) {
+        this.room = room;
+    }
 
-	@Override
-	public String toString() {
-		return "Teacher [firstName=" + firstName + ", lastname=" + lastName + ", assignments=" + assignments + ", id="
-				+ id + ", socialCredit=" + socialCredit + ", department=" + department + ", room=" + room + "]";
-	}
+    @Override
+    public String toString() {
+        return "Teacher [firstName=" + firstName + ", lastname=" + lastName + ", assignments=" + assignments + ", id="
+                + id + ", socialCredit=" + socialCredit + ", department=" + department + ", room=" + room + "]";
+    }
 
     public void printAssignments() {
 
@@ -643,7 +648,15 @@ public class Teacher implements Comparable {
 
     }
 
-   @Override
+    public void printAssignments(String day) {
+
+
+        for(Assignment assignment : getDayAssignments(day)) {
+            System.out.println(assignment.toString());
+        }
+    }
+
+    @Override
     public int compareTo(Object o) {
 
         Teacher teacher = (Teacher) o;
@@ -653,7 +666,7 @@ public class Teacher implements Comparable {
 
         return n1.compareTo(n2);
     }
-    
+
 //    public void addCourse(Course course) {
 //		courses.add(course);
 //	}
