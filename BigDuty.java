@@ -122,11 +122,9 @@ public class BigDuty
    	for(int x = 0; x < schedule.size(); x++){
 		String day = days[x];
    		for(int i = 0; i < schedule.get().length()-1; i++) {
-	   		if(isFreshmanPasckack)
-				
+	   		if(isFreshmanPasckack)	
 		}
 	}
-   	
    }
 
   //must make the variables for when pascack period is variable
