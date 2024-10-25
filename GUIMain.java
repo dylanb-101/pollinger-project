@@ -73,12 +73,13 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
          //********************DATA BEGIN************************//
          
          String[] colHeadingsPanel1 = {"TEACHER","COURSE", "ROOM", "DEPT", "YEAR"}; //tables
-         int numRows = 50; //number of rows
+         String[] colHeadingsPanel2 = {"TEACHER", "ROOM", "DEPT", "ASSIGNMENT"};
          this.setLayout(new BorderLayout()); //setting layout
       
          this.bigDuty = new BigDuty("src/PollingerProject-DutyData.csv"); //cleaned-up data import
          Object[][]data = new Object[bigDuty.getTeachers().size()][colHeadingsPanel1.length]; //size of the dataframe
       
+         int numRows = data.length; //number of rows
          //********************DATA END**************************//
          
          
@@ -95,12 +96,12 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
   
           //panel2 #no function yet#
           String panel2HoverMessage = "Shows individual teachers' general information";
-          panel2 = new Panel2("Individual Teacher View", getPreferredSize(), new BorderLayout(), bigDuty, colHeadingsPanel1, numRows, data, panel2HoverMessage);
+          panel2 = new Panel2("Individual Teacher View", getPreferredSize(), new BorderLayout(), bigDuty, colHeadingsPanel2, numRows, panel2HoverMessage);
           panedTabs.addTab(panel2.getName(), null, panel2, ((Panel2)(panel2)).getHover());
           
           
           //********************PANELS END*************************//
-          //Initialization
+          //Initialization 
           this.add(panedTabs);
    }
    public static void setWarningMsg(String text){
