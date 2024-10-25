@@ -5,7 +5,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Teacher {
+public class Teacher implements Comparable {
 
     private static int nextId = 0;
     private String firstName;
@@ -641,6 +641,17 @@ public class Teacher {
             System.out.println(assignment.toString());
         }
 
+    }
+
+   @Override
+    public int compareTo(Object o) {
+
+        Teacher teacher = (Teacher) o;
+
+        String n1 = lastName + " " + firstName;
+        String n2 = teacher.getLastName() + " " + firstName;
+
+        return n1.compareTo(n2);
     }
     
 //    public void addCourse(Course course) {
