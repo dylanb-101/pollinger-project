@@ -117,20 +117,23 @@ public class BigDuty
 
    public void assignDutys()
    {
-	//start by assigning the pascack periods 
-	   //pascack is not first or last period and is periods 4, 6, and 
+   	//start by assigning the pascack periods 
+   	int[] FreshmanPascackPeriods = {4, 6, 7};
    	for(int x = 0; x < schedule.size(); x++){
 		String day = days[x];
-   		for(int i = 0; i < schedule.get().length()-1; i++) {
-	   		if(isFreshmanPasckack)	
+		for(int i = 0; i < schedule.get(day + "_SCHEDULE").length()-1; i++) {
+			Period period = new Period(i);
+			if(isFreshmanPascack(day, period))
+				getBestTeacher(day, period).replaceAssignment();
 		}
-	}
+	   		
+		   
+   	}
    }
 
   //must make the variables for when pascack period is variable
    public boolean isFreshmanPascack(String day, Period period)
    {
-
 	//chekcing its period
 	int[] FreshmanPascackPeriods = {4, 6, 7};
 	for(int i = 0; i < FreshmanPascackPeriods.length; i++)
@@ -148,6 +151,5 @@ public class BigDuty
 
    // public void assignRelevantDuty(Teacher bestTeacher) {
    // 	if
-   // }
-	
+   // }	
 }
