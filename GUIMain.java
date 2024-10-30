@@ -58,7 +58,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
 //   private FileReadIn dataset;
    private BigDuty bigDuty;
    //Panels
-   private CustomPanel panel1, panel2, panel1Right;
+   private CustomPanel panel1, panel2, helpPanel;
    
    private static GUIMainFrame frame;
 
@@ -73,7 +73,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
          //********************DATA BEGIN************************//
          
          String[] colHeadingsPanel1 = {"TEACHER","COURSE", "ROOM", "DEPT", "YEAR"}; //tables
-         String[] colHeadingsPanel2 = {"TEACHER", "ROOM", "DEPT", "ASSIGNMENT"};
+         String[] colHeadingsPanel2 = {"TEACHER", "ROOM", "DEPT", "ASSIGNMENTS"};
          this.setLayout(new BorderLayout()); //setting layout
       
          this.bigDuty = new BigDuty("src/PollingerProject-DutyData.csv"); //cleaned-up data import
@@ -99,6 +99,9 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
           panel2 = new Panel2("Individual Teacher View", getPreferredSize(), new BorderLayout(), bigDuty, colHeadingsPanel2, numRows, panel2HoverMessage);
           panedTabs.addTab(panel2.getName(), null, panel2, ((Panel2)(panel2)).getHover());
           
+          String helpPanelHoverMessage = "\" UHL \" love this help desk!";
+          helpPanel = new helpPanel("Help Panel", getPreferredSize(), new BorderLayout(), helpPanelHoverMessage);
+          panedTabs.addTab(helpPanel.getName(), null, helpPanel, ((helpPanel)(helpPanel)).getHover());
           
           //********************PANELS END*************************//
           //Initialization 
