@@ -149,6 +149,22 @@ public class BigDuty
 	return false;
    }
 
+	public ArrayList<Teacher> getTeachersWithDutyInPeriod(Period period, String day) {
+	   
+	   ArrayList<Teacher> ts = new ArrayList<>();
+	   
+	   for(Assignment a : assignments) {
+		   
+		   if(a.getDay().equals(day) && a.getPeriod().equals(period) && a instanceof Duty) {
+			   ts.add(a.getTeacher());
+		   }
+		   
+	   }
+	   
+	   return ts;
+	   
+   }
+
    // public void assignRelevantDuty(Teacher bestTeacher) {
    // 	if
    // }	
