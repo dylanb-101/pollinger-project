@@ -7,9 +7,7 @@ import java.util.*;
 public class BigDuty
 {
 
-   public static Map<String, String> schedule = new HashMap<>();
-   public static String[] days;
-
+	public static Map<String, String> schedule = new HashMap<>();
 
    private ArrayList<Assignment> assignments;
    
@@ -26,9 +24,6 @@ public class BigDuty
 	   schedule.put("R_SCHEDULE", "0341L7859");
 	   schedule.put("F_SCHEDULE", "-234L6789");
 
-	   String[] day = {"M", "T", "W", "R", "F"};
-
-	   
 	   System.out.println("Reading in teachers...");
       this.teachers = FileUtility.createTeachers(dataFile);
 	  System.out.println("Filling In assignments...");
@@ -55,6 +50,26 @@ public class BigDuty
 	   return tScores;
 	   
 //		   sort scores
+
+   }
+
+   public void rankTeacher(String name) {
+
+	   Teacher t = null;
+
+	   for(Teacher teacher : teachers) {
+
+		   if(teacher.getLastName().equals(name)) {
+			   t = teacher;
+		   }
+
+	   }
+
+	   for(ScoredPeriod assignment : t.rankFrees()) {
+
+		   System.out.println(assignment.toString());
+
+	   }
 
    }
    
@@ -108,64 +123,60 @@ public class BigDuty
 	 * @return the Assignment at the specified index
 	 */
    public Assignment getAssignment(int i) {
-	return assignments.get(i);
+		return assignments.get(i);
    }
 
    public ArrayList<Assignment> getAssignments() {
-	return assignments;
+		return assignments;
    }
 
-   public void assignDutys()
-   {
-   	//start by assigning the pascack periods 
-   	int[] FreshmanPascackPeriods = {4, 6, 7};
-   	for(int x = 0; x < schedule.size(); x++){
-		String day = days[x];
-		for(int i = 0; i < schedule.get(day + "_SCHEDULE").length()-1; i++) {
-			Period period = new Period(i);
-			if(isFreshmanPascack(day, period))
-				getBestTeacher(day, period).replaceAssignment();
-		}
-	   		
-		   
-   	}
-   }
+   public ArrayList<Teacher> getTeachersWithDutyInPeriod(Period period, String day) {
 
-  //must make the variables for when pascack period is variable
-   public boolean isFreshmanPascack(String day, Period period)
-   {
-	//chekcing its period
-	int[] FreshmanPascackPeriods = {4, 6, 7};
-	for(int i = 0; i < FreshmanPascackPeriods.length; i++)
-	{
-		if(period.getValue() == FreshmanPascackPeriods[i]) 
-		{
-			String[] FreshmanPascackDays = {"W", "W", "T"};
-			if(day.equals(FreshmanPascackDays[i]))
-				return false;
-			return true;
-		}	
-	}
-	return false;
-   }
-
-	public ArrayList<Teacher> getTeachersWithDutyInPeriod(Period period, String day) {
-	   
 	   ArrayList<Teacher> ts = new ArrayList<>();
-	   
+
 	   for(Assignment a : assignments) {
-		   
+
 		   if(a.getDay().equals(day) && a.getPeriod().equals(period) && a instanceof Duty) {
 			   ts.add(a.getTeacher());
 		   }
-		   
+
 	   }
-	   
+
 	   return ts;
-	   
+
    }
 
-   // public void assignRelevantDuty(Teacher bestTeacher) {
-   // 	if
-   // }	
+//	public void assignDutys()
+//	{
+//		//start by assigning the pascack periods
+//		for(int x = 0; x < schedule.size(); x++){
+//			String day = days[x];
+//			for(int i = 0; i < schedule.get(day + "_SCHEDULE").length()-1; i++) {
+//				Period period = new Period(i);
+//				if(isFreshmanPascack(day, period))
+//					getBestTeacher(day, period).replaceAssignment();
+//			}
+//
+//
+//		}
+//	}
+
+	public boolean isFreshmanPascack(String day, Period period)
+	{
+		//chekcing its period
+		int[] freshmanPascackPeriods = {4, 6, 7};
+		for(int i = 0; i < freshmanPascackPeriods.length; i++)
+		{
+			if(period.getValue() == freshmanPascackPeriods[i])
+			{
+				String[] FreshmanPascackDays = {"W", "W", "T"};
+				if(day.equals(FreshmanPascackDays[i]))
+					return false;
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 }
