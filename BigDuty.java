@@ -146,5 +146,37 @@ public class BigDuty
 
    }
 
-    
+//	public void assignDutys()
+//	{
+//		//start by assigning the pascack periods
+//		for(int x = 0; x < schedule.size(); x++){
+//			String day = days[x];
+//			for(int i = 0; i < schedule.get(day + "_SCHEDULE").length()-1; i++) {
+//				Period period = new Period(i);
+//				if(isFreshmanPascack(day, period))
+//					getBestTeacher(day, period).replaceAssignment();
+//			}
+//
+//
+//		}
+//	}
+
+	public boolean isFreshmanPascack(String day, Period period)
+	{
+		//chekcing its period
+		int[] freshmanPascackPeriods = {4, 6, 7};
+		for(int i = 0; i < freshmanPascackPeriods.length; i++)
+		{
+			if(period.getValue() == freshmanPascackPeriods[i])
+			{
+				String[] FreshmanPascackDays = {"W", "W", "T"};
+				if(day.equals(FreshmanPascackDays[i]))
+					return false;
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 }
