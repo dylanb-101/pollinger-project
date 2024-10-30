@@ -15,6 +15,7 @@ import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
 
 //Benjamin Smith
 //Program Description:
@@ -25,13 +26,16 @@ public class Panel3 extends CustomPanel
    JScrollPane pane;
    private int numRows;
    private Border b;
+   String[] column;
+   protected BigDuty bd;
 
-   public Panel3(String panelName, Dimension d)
+   public Panel3(String panelName, Dimension d, BigDuty bd)
    {
       super(panelName, d);
       
      b = BorderFactory.createLineBorder(Color.black);
 
+     this.bd = bd;
      // Week creation, panels + layout
       GridLayout week = new GridLayout(1, 5);
       CustomPanel[] weekPanels = new CustomPanel[5];
@@ -49,29 +53,41 @@ public class Panel3 extends CustomPanel
          this.add(weekPanels[x]);
          weekPanels[x].setBorder(b);
       }
-      
+      column = new String[1];
+      column[0] = "Duties";
       
       //Filling this with JLabels for now, real data input will go here
       
- 
+// 
+//         for(int x = 0; x < 5; x++)
+//            for(int y = 0; y < 7; y++) {
+//               JLabel j = new JLabel();
+//               j.setBorder(b);
+//               j.setText(dayNames[x] + " " + (y+1));
+//               weekPanels[x].add(dayNames[x], j);
+//            }
+//         
+//         //extra 2 for monday
+//         JLabel j2 = new JLabel();
+//         j2.setBorder(b);
+//         j2.setText(dayNames[0] + " " + 8);
+//         weekPanels[0].add(dayNames[0], j2);
+//         
+//         JLabel j3 = new JLabel();
+//         j3.setBorder(b);
+//         j3.setText(dayNames[0] + " " + 9);
+//         weekPanels[0].add(dayNames[0], j3);
+      
+      //real input attempted
          for(int x = 0; x < 5; x++)
             for(int y = 0; y < 7; y++) {
-               JLabel j = new JLabel();
-               j.setBorder(b);
-               j.setText(dayNames[x] + " " + (y+1));
-               weekPanels[x].add(dayNames[x], j);
+               weekPanels[x].add(createTable(bd.getTeachersWithDutyInPeriod(/* find a way to put a period object here */ , dayNames[x])));
             }
-         
          //extra 2 for monday
-         JLabel j2 = new JLabel();
-         j2.setBorder(b);
-         j2.setText(dayNames[0] + " " + 8);
-         weekPanels[0].add(dayNames[0], j2);
+         weekPanels[0].add(createTable(null));
+         weekPanels[0].add(createTable(null));
          
-         JLabel j3 = new JLabel();
-         j3.setBorder(b);
-         j3.setText(dayNames[0] + " " + 9);
-         weekPanels[0].add(dayNames[0], j3);
+         
          
             
       
@@ -92,9 +108,13 @@ public class Panel3 extends CustomPanel
 
    
    //next class
-//   public JTable createTable(Period p) {
-//      
-//   }
+   public JTable createTable(Object[][] data) {
+      DefaultTableModel tm = new DefaultTableModel(data, column); //eventual data implementation, make data have things
+      JTable t = new JTable(tm);
+      t.setBorder(b);
+      t.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+      return t;
+   }
    
    
    public JScrollPane getPane()
