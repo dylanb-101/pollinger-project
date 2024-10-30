@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -28,13 +29,18 @@ public class Panel2 extends CustomPanel
    private JScrollPane pane;
    private int numRows;
    private String[] colHeadings;
-   private Object[][] data;
    private String hover, selected;
    private static JPanel tPanel, wrapper;
    private boolean isClicked;
    private JComboBox<String> cb;
    private String[] choices;
+   private ArrayList<Teacher> teachers;
+   private String selectedChoiceBox;
+   private int teacherIndex;
+   private DefaultTableModel model;
+   private JTable table;
    
+   @SuppressWarnings("unchecked")
    public Panel2(String panelName, Dimension d, BorderLayout b, BigDuty bigduty, String[] colheadings, int numRows, String s)
    {
       super(panelName, d, b);
@@ -42,16 +48,20 @@ public class Panel2 extends CustomPanel
       colHeadings = colheadings;
       this.numRows = numRows;
       hover = s;
- 
-      
+      teacherIndex = 0;
+
       //************************************************************//
+      teachers = bigDuty.getTeachers();
+      Collections.sort(teachers);
       choices = new String[bigDuty.getTeachers().size()];
+      
       for(int i = 0; i < bigDuty.getTeachers().size(); i++)
-         choices[i] = bigDuty.getTeacher(i).getLastName() + ", " + bigDuty.getTeacher(i).getFirstName();
+         choices[i] = teachers.get(i).getLastName() + ", " + teachers.get(i).getFirstName();
       Arrays.sort(choices);
       cb = new JComboBox<String>(choices);
-      cb.setMaximumSize(cb.getPreferredSize()); // added code
-      cb.setAlignmentX(Component.CENTER_ALIGNMENT);// added code
+      cb.setMaximumSize(cb.getPreferredSize()); 
+      cb.setAlignmentX(Component.CENTER_ALIGNMENT);
+      
       
       makeWrapper(); 
       makeTPanel();
@@ -66,6 +76,9 @@ public class Panel2 extends CustomPanel
       JLabel lbl = new JLabel("Select one of the possible choices and click OK");
       lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+    
+      
+      
       JButton btn = new JButton("OK");
       btn.addActionListener(new ActionListener() {
          @Override
@@ -73,6 +86,11 @@ public class Panel2 extends CustomPanel
          {
             System.out.println("Selected " + (String) cb.getSelectedItem() + "!");
             GUIMain.setWarningMsg("Selected " + (String) cb.getSelectedItem() + "!");
+            selectedChoiceBox = (String) cb.getSelectedItem();
+            System.out.println("selectedChoiceBox is " +  selectedChoiceBox);
+            System.out.println("ChoiceBoxIndex is " +  cb.getSelectedIndex());
+            teacherIndex = cb.getSelectedIndex();
+            System.out.println("teacherIndex is " + teacherIndex);
             doClicked();
             revalidate();
             repaint();
@@ -89,34 +107,20 @@ public class Panel2 extends CustomPanel
    public void makeTPanel()
    {
       tPanel = new JPanel();
-      JButton b1 = new JButton("Return to Menu"); //demo
-      b1.addActionListener(new ActionListener() {
-
-       @Override
-       public void actionPerformed(ActionEvent e)
-       {
-          System.out.println("Returned!");
-          returnMenu();
-       }
-      });
-      tPanel.add(b1, BorderLayout.SOUTH);
       
-      selected = (String)cb.getSelectedItem();
-      int teacherIndex = 0;
-      for(int i = 0; i < bigDuty.getTeachers().size(); i++)
-         if(selected.equals(bigDuty.getTeacher(i).getName()))
-            teacherIndex = i;
       
-      //need a getTeachers() that is sorted from Teacher class
+      Object[][] data = new Object[numRows][colHeadings.length];
       
-          data = new Object[numRows][colHeadings.length];
-          Teacher t = bigDuty.getTeacher(teacherIndex);
-          data[teacherIndex][0] = t.getLastName();
-          data[teacherIndex][1] = t.getId();
-          data[teacherIndex][2] = t.getRoom();
-          data[teacherIndex][3] = t.getDepartment();
-          
-      DefaultTableModel model = new DefaultTableModel(data, colHeadings) {
+      System.out.println("Drawing teacher object " + teachers.get(teacherIndex).getName());
+      
+      
+      //FROM HERE THE CORRELATED TEACHER CAN BE ADDED NOW
+      data[0][0] = teachers.get(teacherIndex).getLastName();
+      data[0][1] = teachers.get(teacherIndex).getRoom();
+      data[0][2] = teachers.get(teacherIndex).getDepartment();
+      data[0][3] = teachers.get(teacherIndex).getAssignments().size();
+      
+      model = new DefaultTableModel(data, colHeadings) {
       private static final long serialVersionUID = 1L;
       @Override
       public Class<?> getColumnClass(int column){
@@ -128,7 +132,7 @@ public class Panel2 extends CustomPanel
          return false;
       }
       };  
-      JTable table = new JTable(model);
+      table = new JTable(model);
       table.setVisible(true);
       table.setAutoCreateRowSorter(true);
       table.setFont(new Font("Tratatello", Font.PLAIN, 14));
@@ -139,26 +143,46 @@ public class Panel2 extends CustomPanel
       pane = new JScrollPane(table);
       table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
       table.setGridColor(Color.LIGHT_GRAY);
-      tPanel.add(pane);
+      
+      JButton b1 = new JButton("Return to Menu"); //demo
+      b1.addActionListener(new ActionListener() {
+
+       @Override
+       public void actionPerformed(ActionEvent e)
+       {
+          System.out.println("Returned!");
+          
+          returnMenu();
+          repaint();
+       }
+      });
+      tPanel.add(b1, BorderLayout.SOUTH);
+      
+      tPanel.add(pane, BorderLayout.CENTER);
    }
    
    public void doClicked()
    {
+
+    
+      
       this.remove(wrapper);
+      this.remove(tPanel);
+      this.makeTPanel();
       this.add(tPanel);
+      revalidate();
+      repaint();
    }
 
    public void returnMenu()
    {
       this.remove(tPanel);
       this.add(wrapper);
+
+      System.out.println(teacherIndex);
       revalidate();
       repaint();
-      
-      selected = "";
    }
-   
-   
    
 
    public BigDuty getBigDuty()
@@ -200,17 +224,6 @@ public class Panel2 extends CustomPanel
    {
       this.colHeadings = colHeadings;
    }
-
-   public Object[][] getData()
-   {
-      return data;
-   }
-
-   public void setData(Object[][] data)
-   {
-      this.data = data;
-   }
-
    public String getHover()
    {
       return hover;
