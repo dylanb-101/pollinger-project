@@ -2,7 +2,7 @@
 //Description
 //10/1/24
 
-public class ScoredPeriod {
+public class ScoredPeriod implements Comparable {
 
     private int score;
     private Assignment Assignment;
@@ -27,4 +27,19 @@ public class ScoredPeriod {
     public void setAssignment(Assignment assignment) {
         Assignment = assignment;
     }
+
+    @Override
+    public int compareTo(Object o) {
+
+        ScoredPeriod sp = (ScoredPeriod) o;
+
+        return score - sp.getScore();
+    }
+
+    public String toString() {
+
+        return score + ", " + getAssignment().toString();
+
+    }
+
 }

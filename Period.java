@@ -41,7 +41,6 @@ public class Period implements Comparable {
 
             if(schedule.indexOf(period + "") == 8) this.period = AFTER_SCHOOL;
             else {
-                System.out.println(schedule.indexOf(period + "") + "");
                 this.period = schedule.indexOf(period + "") + "";
             }
         }
@@ -79,7 +78,8 @@ public class Period implements Comparable {
      * @param increment the amount to increment the period by, can be positive or negative
      * @return what the value of the period would be
      */
-    public int increment(int increment) {
+    public int increment(int increment, String day) {
+
         if(this.isLunch()) {
             if(increment > 0) {
                 if(4 + increment > Integer.parseInt(Assignment.AFTER_SCHOOL)) return AFTER_SCHOOL_NUM;
@@ -92,6 +92,12 @@ public class Period implements Comparable {
         if(getValue() + increment > AFTER_SCHOOL_NUM) return AFTER_SCHOOL_NUM;
 
         if(getValue() + increment < P0_NUM) return P0_NUM;
+
+        if(getValue() + increment == 4 && !day.equals("M")) return LUNCH_NUM;
+
+        if(getValue() + increment == 5 && day.equals("M")) return LUNCH_NUM;
+
+        if(getValue() + increment == 8 && !day.equals("M")) return AFTER_SCHOOL_NUM;
 
         return getValue() + increment;
 
