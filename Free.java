@@ -4,6 +4,8 @@
 
 public class Free extends Assignment {
 
+    private boolean isLocked;
+
     public Free(int period, String semester, String name, String day, Teacher teacher, boolean adjustPeriod) {
         super(period, semester, name, day, teacher, adjustPeriod);
 
