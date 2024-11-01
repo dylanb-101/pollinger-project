@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -40,7 +41,7 @@ public class Panel3 extends CustomPanel
       GridLayout week = new GridLayout(1, 5);
       CustomPanel[] weekPanels = new CustomPanel[5];
       this.setLayout(week);
-      String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+      String[] dayNames = {"M", "T", "W", "R", "F"};
       
       for(int x = 0; x < 5; x++) {
          weekPanels[x] = new CustomPanel(dayNames[x], new Dimension(100, 100));
@@ -81,7 +82,14 @@ public class Panel3 extends CustomPanel
       //real input attempted
          for(int x = 0; x < 5; x++)
             for(int y = 0; y < 7; y++) {
-               weekPanels[x].add(createTable(bd.getTeachersWithDutyInPeriod(/* find a way to put a period object here */ , dayNames[x])));
+               Period nextPeriod = new Period(1, dayNames[x]);
+               ArrayList<Teacher> teachers = bd.getTeachersWithDutyInPeriod(nextPeriod, dayNames[x]);
+               teachers.add(bd.getTeacher(0));
+               Object[][] tempData = new Object[teachers.size()][1];
+               for(int e = 0; e < teachers.size(); e++)
+                  tempData[e][0] = teachers.get(e).getName();
+               weekPanels[x].add(createTable(tempData));
+               System.out.println("Num Teachers: " + teachers.size());
             }
          //extra 2 for monday
          weekPanels[0].add(createTable(null));
