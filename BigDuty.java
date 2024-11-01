@@ -22,7 +22,7 @@ public class BigDuty
 	   schedule.put("T_SCHEDULE", "0123L5679");
 	   schedule.put("W_SCHEDULE", "0412L8569");
 	   schedule.put("R_SCHEDULE", "0341L7859");
-	   schedule.put("F_SCHEDULE", "-234L6789");
+	   schedule.put("F_SCHEDULE", "0234L6789");
 
 	   System.out.println("Reading in teachers...");
       this.teachers = FileUtility.createTeachers(dataFile);
@@ -65,11 +65,7 @@ public class BigDuty
 
 	   }
 
-	   for(ScoredPeriod assignment : t.rankFrees()) {
-
-		   System.out.println(assignment.toString());
-
-	   }
+	   t.printScoredSchedule();
 
    }
    
