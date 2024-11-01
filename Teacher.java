@@ -426,6 +426,8 @@ public class Teacher implements Comparable {
         if(debug) System.out.println(score);
 
         if(assignment instanceof Course) return -1000000;
+        
+        if(!isAvailable(assignment.getDay(), assignment.getPeriod())) return -1000000;
 
         if(hasDuty(assignment.getDay())) score += -100;
         if(debug) System.out.println(score);
