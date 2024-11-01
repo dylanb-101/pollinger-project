@@ -112,7 +112,21 @@ public class Panel2 extends CustomPanel
       Object[][] data = new Object[numRows][colHeadings.length];
       
       System.out.println("Drawing teacher object " + teachers.get(teacherIndex).getName());
-      
+
+
+      Teacher t = teachers.get(teacherIndex);
+
+      for(int i = 0; i < t.getAssignments().size(); i++) {
+
+         data[i][0] = t.getName();
+         data[i][1] = t.getRoom();
+         data[i][2] = t.getDepartment();
+         data[i][3] = t.getAssignments().get(i).getName();
+         data[i][4] = t.getAssignments().get(i).getPeriod();
+         data[i][5] = t.getAssignments().get(i).getDay();
+         data[i][6] = t.getAssignments().get(i).getSemester();
+
+      }
       
       //FROM HERE THE CORRELATED TEACHER CAN BE ADDED NOW
       data[0][0] = teachers.get(teacherIndex).getLastName();
