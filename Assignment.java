@@ -94,4 +94,8 @@ public abstract class Assignment {
 
     public abstract String getDepartment();
 
+	public boolean isDuringSchool() {
+        return period.getValue() != Period.P0_NUM && period.getValue() != Period.AFTER_SCHOOL_NUM;
+    }
+
 }
