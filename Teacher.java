@@ -16,6 +16,7 @@ public class Teacher implements Comparable {
     private int socialCredit;
     private String department;
     private String room;
+    private boolean isAvailable;
 
     
     public Teacher(String lastName, String firstName) {
@@ -24,6 +25,7 @@ public class Teacher implements Comparable {
         this.lastName = lastName;
         this.assignments = new ArrayList<>();
         this.socialCredit = 0;
+        this.isAvailable = true;
 
     }
     
@@ -35,8 +37,18 @@ public class Teacher implements Comparable {
     	this.room = room;
         this.assignments = new ArrayList<>();
         this.socialCredit = 0;
+        this.isAvailable = true;
 
+    }
 
+    public boolean isAvailable(String day, Period period)
+    {
+       return isAvailable;
+    }
+
+    public void setAvailability(boolean isAvailable)
+    {
+       this.isAvailable = isAvailable;
     }
 
     public void fillInAssignments() {
