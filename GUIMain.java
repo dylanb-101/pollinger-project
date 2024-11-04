@@ -73,7 +73,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
          //********************DATA BEGIN************************//
          
          String[] colHeadingsPanel1 = {"TEACHER","COURSE", "ROOM", "DEPT", "YEAR"}; //tables
-         String[] colHeadingsPanel2 = {"TEACHER", "ROOM", "DEPT", "ASSIGNMENT"};
+         String[] colHeadingsPanel2 = {"TEACHER", "ROOM", "DEPT", "NAME", "PERIOD", "DAY", "SEMESTER"};
          this.setLayout(new BorderLayout()); //setting layout
       
          this.bigDuty = new BigDuty("src/PollingerProject-DutyData.csv"); //cleaned-up data import
