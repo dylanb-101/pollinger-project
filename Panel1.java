@@ -51,10 +51,10 @@ public class Panel1 extends CustomPanel
       JButton b4 = new JButton("West"); //demo
       
       //Add Buttons
-      this.add(b1, BorderLayout.NORTH);
-      this.add(b2, BorderLayout.SOUTH);
-      this.add(b3, BorderLayout.EAST);
-      this.add(b4, BorderLayout.WEST);
+//      this.add(b1, BorderLayout.NORTH);
+//      this.add(b2, BorderLayout.SOUTH);
+//      this.add(b3, BorderLayout.EAST);
+//      this.add(b4, BorderLayout.WEST);
 
      //testing data
       
