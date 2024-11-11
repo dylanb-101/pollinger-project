@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 
 public class helpPanel extends CustomPanel
 {
-   private JPanel wrapper;
+   private JPanel wrapper, helpDesk;
    private JComboBox<String> cb;
    private String[] choices;
    
@@ -27,6 +27,12 @@ public class helpPanel extends CustomPanel
       super(panelName, d, bl);
       this.hover = hover;
       
+      makeWrapper();
+      makeHelpDesk();
+      this.add(wrapper);
+   }
+   private void makeWrapper()
+   {
       wrapper = new JPanel();
       JPanel panel = new JPanel();
       panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // added code
@@ -45,7 +51,7 @@ public class helpPanel extends CustomPanel
          @Override
          public void actionPerformed(ActionEvent e)
          {
-            dowrapperclicked();
+            doClicked();
             revalidate();
             repaint();
          }
@@ -60,10 +66,53 @@ public class helpPanel extends CustomPanel
       panel.add(cb);
       panel.add(btn);
       wrapper.add(panel);
-      this.add(wrapper);
    }
-   private void dowrapperclicked()
+   private void makeHelpDesk() {
+      helpDesk = new JPanel();
+      JLabel lbl = new JLabel(); //exchangable
+      lbl.setText("<html>Menu Bar Tutorial <br> Go to the File Bar and press desired download type!</html>");
+      lbl.setFont(new Font("Tratatello", Font.PLAIN, 18));
+      
+      
+      
+      JButton btn = new JButton("Return");
+      btn.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e)
+         {
+            returnMenu();
+            revalidate();
+            repaint();
+         }
+
+
+        });
+      btn.setAlignmentX(Component.CENTER_ALIGNMENT); // added code
+      btn.setFont(new Font("Tratatello", Font. BOLD, 18));
+      helpDesk.add(lbl);
+      helpDesk.add(btn, BorderLayout.SOUTH);
+   }
+   
+   public void doClicked()
    {
+
+    //justin was here 2024 november 4th i think Trump wins
+      
+      this.remove(wrapper);
+      this.remove(helpDesk);
+      this.makeHelpDesk();
+      this.add(helpDesk);
+      revalidate();
+      repaint();
+   }
+   public void returnMenu()
+   {
+      this.remove(helpDesk);
+      this.add(wrapper);
+
+//      System.out.println(teacherIndex);
+      revalidate();
+      repaint();
    }
    public JPanel getWrapper()
    {
