@@ -30,4 +30,14 @@ public class Free extends Assignment {
     public String getDepartment() {
         return "None";
     }
+
+   public boolean isLocked()
+   {
+      return isLocked;
+   }
+
+   public void setLocked(boolean isLocked)
+   {
+      this.isLocked = isLocked;
+   }
 }
