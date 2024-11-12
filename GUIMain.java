@@ -58,7 +58,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
 //   private FileReadIn dataset;
    private BigDuty bigDuty;
    //Panels
-   private CustomPanel panel1, panel2, panel3, panel1Right;
+   private CustomPanel panel1, panel2, helpPanel, panel3, panel4;
    
    private static GUIMainFrame frame;
 
@@ -72,7 +72,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
 
          //********************DATA BEGIN************************//
          
-         String[] colHeadingsPanel1 = {"TEACHER","COURSE", "ROOM", "DEPT", "YEAR"}; //tables
+         String[] colHeadingsPanel1 = {"TEACHER","COURSES", "ROOM", "DEPT", "YEAR"}; //tables
          String[] colHeadingsPanel2 = {"TEACHER", "ROOM", "DEPT", "NAME", "PERIOD", "DAY", "SEMESTER"};
          this.setLayout(new BorderLayout()); //setting layout
       
@@ -98,10 +98,18 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
           String panel2HoverMessage = "Shows individual teachers' general information";
           panel2 = new Panel2("Individual Teacher View", getPreferredSize(), new BorderLayout(), bigDuty, colHeadingsPanel2, numRows, panel2HoverMessage);
           panedTabs.addTab(panel2.getName(), null, panel2, ((Panel2)(panel2)).getHover());
+
+//          panel3
+            panel3 = new Panel3("Panel 3", new Dimension(WIDTH, HEIGHT), bigDuty);
+            panedTabs.addTab("Panel 3", panel3);
+
+//            panel 4
+       panel4 = new Panel4("Panel 4", new Dimension(WIDTH, HEIGHT), bigDuty);
+       panedTabs.addTab("Panel 4", panel4);
           
-          //panel3
-          panel3 = new Panel3("Panel 3", new Dimension(WIDTH, HEIGHT), bigDuty);
-          panedTabs.addTab("Panel 3", panel3);
+          String helpPanelHoverMessage = "\" UHL \" love this help desk!";
+          helpPanel = new helpPanel("Help Panel", getPreferredSize(), new BorderLayout(), helpPanelHoverMessage);
+          panedTabs.addTab(helpPanel.getName(), null, helpPanel, ((helpPanel)(helpPanel)).getHover());
           
           //********************PANELS END*************************//
           //Initialization 
@@ -153,9 +161,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
    @Override
    public void mouseClicked(MouseEvent e)
    {
-//      int x = e.getX();
-//      int y = e.getY();
-//      System.out.println(x + " " + y);
+
    }
 
    @Override
@@ -187,6 +193,9 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
    @Override
    public void keyPressed(KeyEvent e)
    {
+
+       bigDuty.rankTeacher("Uhl");
+
    }
 
    @Override
