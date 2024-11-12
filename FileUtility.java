@@ -10,6 +10,8 @@ public class FileUtility {
     public static void main(String[] args) {
         ArrayList<Teacher> teachers = createTeachers("src/PollingerProject-DutyData.csv");
 
+    	saveData(teachers);
+        
         System.out.println("Done!");
     }
 
@@ -222,5 +224,79 @@ public class FileUtility {
         return textData;
     }
 
+    
+    /*
+     * exporting / importing saved data -------
+     */
+
+    
+    public static void saveData(ArrayList<Teacher> teachers)
+    {
+    	//saving all the data, append being false as it clears the file so there is no conflict
+    	try (FileWriter writer = new FileWriter("src/saveData.txt", false)) 
+    	{
+    		
+    		//fail safe making sure there are items to save
+            if(teachers.size() == 0) {
+            	System.out.println("no teachers in list");
+            	return;
+            }
+            
+            //saving all teacher assignments
+            writer.write("Space Holder (normal csv has all the sections here but would be useless as our system ignores it)\n");
+            
+            //constants
+            String year = Year.now().getValue() + "";
+            
+            //variable indicators
+            String COURSE_INDACATOR = "#";
+            String FREE_INDACATOR = "$";
+            String DUTY_INDACATOR = "@";
+            
+            for(Teacher t : teachers)
+            {
+            	for(Assignment a : t.getAssignments())
+            	{
+            		String preciseAssingmentToString = "";
+            		
+            		//finding the type and setting what to print
+            		if(a instanceof Course) {
+            			Course c = (Course) a;
+            			preciseAssingmentToString =  COURSE_INDACATOR + " :" + c.getName() + "\",\"" + c.getCourseCode() + "\",\"" + c.getSection() + 
+            												"\",\"" + c.getPeriod() + "\",\"" + c.getDay() + "\",\"" + c.getSemester()
+            												+ "\",\"" + c.getRoom() + "\",\"" + c.getDepartment() + "\",\"" + c.getTeacher();
+            		}
+            		
+            		if(a instanceof Free) {
+            			Free c = (Free) a;
+            			preciseAssingmentToString =  FREE_INDACATOR + " :" + c.getPeriod() + 
+            					"\",\"" + c.getSemester() + "\",\"" + c.getName() + "\",\"" + c.getDay()
+            					+ "\",\"" + c.getTeacher();
+            		}
+            		
+            		if(a instanceof Duty) {
+            			Duty c = (Duty) a;
+            			preciseAssingmentToString =  DUTY_INDACATOR + " :" + c.getPeriod() + 
+            					"\",\"" + c.getSemester() + "\",\"" + c.getName() + "\",\"" + c.getRoom()
+            					+ "\",\"" + c.getDay() + "\",\"" + c.getTeacher();
+            		}
+            		
+            		//printing the data onto the save file
+            		writer.write(preciseAssingmentToString + "\n");
+            	}
+            }            
+        } 
+    	catch (IOException e) 
+    	{
+            System.out.println("no file found");
+        }
+    }
+    
+    public void downloadSchedule(ArrayList<Teacher> teachers)
+    {
+    	saveData(teachers);
+    }
+    
+    
 
 }
