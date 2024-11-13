@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JCheckBoxMenuItem;
@@ -13,12 +14,13 @@ import javax.swing.JRadioButtonMenuItem;
 //Program Description:
 //Oct 18, 2024
 
-public class GUIMainFrame extends JPanel
+public class GUIMainFrame extends JFrame
 {
+   private static JFrame frame;
   public GUIMainFrame()
   {
    //Create and set up the window.
-     JFrame frame = new JFrame("GUIMain");
+     frame = new JFrame("GUIMain");
      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
      //Add content to the window.
@@ -39,7 +41,7 @@ public class GUIMainFrame extends JPanel
      
      menuBar = new JMenuBar();
 
-
+     
    //file
    file = new JMenu("FILE");
    file.setMnemonic(KeyEvent.VK_A);
@@ -105,4 +107,7 @@ public class GUIMainFrame extends JPanel
    
    
   }
+  
+
+  
 }
