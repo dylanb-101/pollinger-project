@@ -206,7 +206,6 @@ public class Panel2 extends CustomPanel
       System.out.println(teacherIndex);
       makeTPanel();
       teacherIndex++;
-//      if((teacherIndex + 1 )> ())
       
       this.add(tPanel);
       this.remove(wrapper);
@@ -221,9 +220,8 @@ public class Panel2 extends CustomPanel
       
       
       makeTPanel();
-//      if(!(teacherIndex - 1 < 0))
       
-         teacherIndex--;
+      teacherIndex--;
       System.out.println(teacherIndex);
 
       this.add(tPanel);
