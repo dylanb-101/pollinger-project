@@ -16,6 +16,7 @@ import javax.swing.JRadioButtonMenuItem;
 
 public class GUIMainFrame extends JFrame
 {
+   private static final long serialVersionUID = 1L;
    private static JFrame frame;
   public GUIMainFrame()
   {
