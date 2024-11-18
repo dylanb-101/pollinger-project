@@ -40,7 +40,7 @@ public class helpPanel extends CustomPanel
       lbl.setFont(new Font("Tratatello", Font. BOLD, 18));
       lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-      choices = new String[] {"Toolbar Help", "Menu Help", "Teacher View Help", "Schedule Edit Help"};
+      choices = new String[] {"Download Help", "Other Help"};
       cb = new JComboBox<String>(choices);
       cb.setMaximumSize(cb.getPreferredSize()); 
       cb.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -70,8 +70,15 @@ public class helpPanel extends CustomPanel
    private void makeHelpDesk() {
       helpDesk = new JPanel();
       JLabel lbl = new JLabel(); //exchangable
-      lbl.setText("<html>Menu Bar Tutorial <br> Go to the File Bar and press desired download type!</html>");
+      JLabel lbl2 = new JLabel();
+      if(cb.getSelectedIndex() == 0) {
+         lbl.setText("Download Tutorial");
+         lbl2.setText("Go to the File Bar and press desired download type!");}
+      if(cb.getSelectedIndex() == 1) {
+         lbl.setText("Other Tutorial");
+         lbl2.setText("Nothing here yet!");}
       lbl.setFont(new Font("Tratatello", Font.PLAIN, 18));
+      lbl2.setFont(new Font("Tratatello", Font.PLAIN, 18));
       
       
       
@@ -89,8 +96,9 @@ public class helpPanel extends CustomPanel
         });
       btn.setAlignmentX(Component.CENTER_ALIGNMENT); // added code
       btn.setFont(new Font("Tratatello", Font. BOLD, 18));
-      helpDesk.add(lbl);
+      helpDesk.add(lbl2);
       helpDesk.add(btn, BorderLayout.SOUTH);
+      helpDesk.add(lbl, BorderLayout.NORTH);
    }
    
    public void doClicked()
