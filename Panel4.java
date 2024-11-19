@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class Panel4 extends CustomPanel {
 
-    private BigDuty bigDuty;
-    private Border border;
+    private final BigDuty bigDuty;
+    private final Border border;
 
-    private String[] column;
-    private int teacherIndex;
+    private final String[] column;
+    private final int teacherIndex;
 
     public Panel4(String panelName, Dimension d, BigDuty bigDuty) {
         super(panelName, d);

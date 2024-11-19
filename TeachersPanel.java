@@ -11,9 +11,9 @@ import java.awt.event.ActionListener;
 
 public class TeachersPanel extends CustomPanel {
 
-    private BigDuty bigDuty;
+    private final BigDuty bigDuty;
 
-    private Border border;
+    private final Border border;
 
     private Teacher activeTeacher;
 

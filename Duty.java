@@ -10,7 +10,7 @@ public class Duty extends Assignment {
     public static final String PASCACK = "PASCACK";
     public static final String COVERAGE = "COVERAGE";
 
-    private String room;
+    private final String room;
 
     private DutyType type;
 

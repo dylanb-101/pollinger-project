@@ -4,10 +4,10 @@
 
 public class Course extends Assignment {
 
-    private String courseCode;
-    private int section;
-    private String department;
-    private String room;
+    private final String courseCode;
+    private final int section;
+    private final String department;
+    private final String room;
     
     public Course(String name, String courseCode, int section, String period, String day,
                   String semester , String room, String department, Teacher teacher, boolean adjustPeriod) {

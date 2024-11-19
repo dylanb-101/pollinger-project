@@ -85,7 +85,7 @@ public class Teacher implements Comparable {
                         continue;
                     }
 
-                    Assignment lab = new Course(assignment.getName() + " Lab", ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), period, String.valueOf(day.charAt(1)), assignment.getSemester(), assignment.getRoom(), ((Course) assignment).getDepartment(), assignment.getTeacher(), true);
+                    Assignment lab = new Course(assignment.getName() + " Lab", ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), period, String.valueOf(day.charAt(1)), assignment.getSemester(), assignment.getRoom(), assignment.getDepartment(), assignment.getTeacher(), true);
 
                     newAssignments.add(lab);
                     continue;
@@ -102,7 +102,7 @@ public class Teacher implements Comparable {
 
 //                    int period = BigDuty.translatePeriod(Integer.parseInt(String.valueOf(day.charAt(0))), String.valueOf(day.charAt(1)));
 
-                    Assignment lunchLab = new Course(assignment.getName() + " Lunch Lab", ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), Assignment.LUNCH, String.valueOf(day.charAt(1)), assignment.getSemester(), assignment.getRoom(), ((Course) assignment).getDepartment(), assignment.getTeacher(), true);
+                    Assignment lunchLab = new Course(assignment.getName() + " Lunch Lab", ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), Assignment.LUNCH, String.valueOf(day.charAt(1)), assignment.getSemester(), assignment.getRoom(), assignment.getDepartment(), assignment.getTeacher(), true);
 
                     newAssignments.add(lunchLab);
                     continue;
@@ -116,7 +116,7 @@ public class Teacher implements Comparable {
 
                     if(monNumber.equals("-1")) continue;
 
-                    Assignment course = new Course(assignment.getName(), ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), translatedPeriod, String.valueOf(day.charAt(j)), assignment.getSemester(), assignment.getRoom(), ((Course) assignment).getDepartment(), assignment.getTeacher(), true);
+                    Assignment course = new Course(assignment.getName(), ((Course) assignment).getCourseCode(), ((Course) assignment).getSection(), translatedPeriod, String.valueOf(day.charAt(j)), assignment.getSemester(), assignment.getRoom(), assignment.getDepartment(), assignment.getTeacher(), true);
                     newAssignments.add(course);
 
                 }
@@ -351,21 +351,17 @@ public class Teacher implements Comparable {
 
     public boolean inBetweenFrees(Assignment assignment) {
 
-        if((getPeriodBefore(assignment) instanceof Free || getPeriodBefore(assignment) instanceof Lunch && getPeriodBefore(assignment).getPeriod().getValue() != 0)
+        return (getPeriodBefore(assignment) instanceof Free || getPeriodBefore(assignment) instanceof Lunch && getPeriodBefore(assignment).getPeriod().getValue() != 0)
 
-                && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9)) return true;
-
-        return false;
+                && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9);
 
     }
 
     public boolean beforeTwoFrees(Assignment assignment) {
 
-        if((!(getPeriodBefore(assignment) instanceof Free) || !(getPeriodBefore(assignment) instanceof Lunch))
+        return (!(getPeriodBefore(assignment) instanceof Free) || !(getPeriodBefore(assignment) instanceof Lunch))
 
-                && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9)) return true;
-
-        return false;
+                && (getPeriodAfter(assignment) instanceof Free || getPeriodAfter(assignment) instanceof Lunch && getPeriodAfter(assignment).getPeriod().getValue() != 9);
 
     }
 
@@ -541,9 +537,7 @@ public class Teacher implements Comparable {
 
     public boolean touchesLunch(Assignment assignment)
     {
-        if(getPeriodBefore(assignment).getPeriod().isLunch() || getPeriodAfter(assignment).getPeriod().isLunch())
-            return true;
-        return false;
+        return getPeriodBefore(assignment).getPeriod().isLunch() || getPeriodAfter(assignment).getPeriod().isLunch();
     }
 
     public void lockFrees() {
@@ -586,9 +580,7 @@ public class Teacher implements Comparable {
 
         if(getPeriodBefore(assignment) instanceof Free && getPeriodBefore(assignment).getPeriod().getValue() != 0) return true;
 
-        if(getPeriodAfter(assignment) instanceof Free && getPeriodAfter(assignment).getPeriod().getValue() != 9) return true;
-
-        return false;
+        return getPeriodAfter(assignment) instanceof Free && getPeriodAfter(assignment).getPeriod().getValue() != 9;
 
     }
 

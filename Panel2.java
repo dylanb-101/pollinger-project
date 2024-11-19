@@ -32,9 +32,9 @@ public class Panel2 extends CustomPanel
    private String hover, selected;
    private static JPanel tPanel, wrapper;
    private boolean isClicked;
-   private JComboBox<String> cb;
-   private String[] choices;
-   private ArrayList<Teacher> teachers;
+   private final JComboBox<String> cb;
+   private final String[] choices;
+   private final ArrayList<Teacher> teachers;
    private String selectedChoiceBox;
    private static int teacherIndex;
    private DefaultTableModel model;
@@ -85,7 +85,7 @@ public class Panel2 extends CustomPanel
          @Override
          public void actionPerformed(ActionEvent e)
          {
-            System.out.println("Selected " + (String) cb.getSelectedItem() + "!");
+            System.out.println("Selected " + cb.getSelectedItem() + "!");
 //            GUIMain.setWarningMsg("Selected " + (String) cb.getSelectedItem() + "!");
             selectedChoiceBox = (String) cb.getSelectedItem();
             System.out.println("selectedChoiceBox is " +  selectedChoiceBox);

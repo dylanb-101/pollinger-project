@@ -9,9 +9,9 @@ import java.awt.event.MouseEvent;
 public class AssignmentPopUp extends JPopupMenu {
 
     private Assignment assignment;
-    private BigDuty bigDuty;
+    private final BigDuty bigDuty;
 
-    private TeachersPanel parent;
+    private final TeachersPanel parent;
     public AssignmentPopUp(Assignment assignment, BigDuty bigDuty, TeachersPanel parent) {
 
         super(assignment.getName());

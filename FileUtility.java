@@ -1,5 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -33,8 +36,10 @@ public class FileUtility {
                 if (nextTeach != null) {
                     for (Teacher t : teachers)
                         if (nextTeach.getLastName().equals(t.getLastName())
-                                && nextTeach.getFirstName().equals(t.getFirstName()))
+                                && nextTeach.getFirstName().equals(t.getFirstName())) {
                             addTeacher = false;
+                            break;
+                        }
                     if (addTeacher)
                         teachers.add(nextTeach);
                 }
@@ -76,7 +81,10 @@ public class FileUtility {
 
                 for(Assignment a : t.getAssignments()) {
 
-                    if((a.getDay() == tokens[4].substring(1, tokens[4].length() - 1))) addCourse = false;
+                    if ((a.getDay() == tokens[4].substring(1, tokens[4].length() - 1))) {
+                        addCourse = false;
+                        break;
+                    }
 
                 }
 
@@ -158,7 +166,7 @@ public class FileUtility {
     public static void saveData(ArrayList<Teacher> teachers)
     {
     	//saving all the data, append being false as it clears the file so there is no conflict
-    	try (FileWriter writer = new FileWriter("src/saveData.txt", false)) 
+    	try (FileWriter writer = new FileWriter("src/saveData.txt", false))
     	{
 
     		//fail safe making sure there are items to save
@@ -185,23 +193,20 @@ public class FileUtility {
             		String preciseAssingmentToString = "";
 
             		//finding the type and setting what to print
-            		if(a instanceof Course) {
-            			Course c = (Course) a;
-            			preciseAssingmentToString =  COURSE_INDACATOR + " :" + c.getName() + "\",\"" + c.getCourseCode() + "\",\"" + c.getSection() + 
+            		if(a instanceof Course c) {
+                        preciseAssingmentToString =  COURSE_INDACATOR + " :" + c.getName() + "\",\"" + c.getCourseCode() + "\",\"" + c.getSection() +
             												"\",\"" + c.getPeriod() + "\",\"" + c.getDay() + "\",\"" + c.getSemester()
             												+ "\",\"" + c.getRoom() + "\",\"" + c.getDepartment() + "\",\"" + c.getTeacher();
             		}
 
-            		if(a instanceof Free) {
-            			Free c = (Free) a;
-            			preciseAssingmentToString =  FREE_INDACATOR + " :" + c.getPeriod() + 
+            		if(a instanceof Free c) {
+                        preciseAssingmentToString =  FREE_INDACATOR + " :" + c.getPeriod() +
             					"\",\"" + c.getSemester() + "\",\"" + c.getName() + "\",\"" + c.getDay()
             					+ "\",\"" + c.getTeacher();
             		}
 
-            		if(a instanceof Duty) {
-            			Duty c = (Duty) a;
-            			preciseAssingmentToString =  DUTY_INDACATOR + " :" + c.getPeriod() + 
+            		if(a instanceof Duty c) {
+                        preciseAssingmentToString =  DUTY_INDACATOR + " :" + c.getPeriod() +
             					"\",\"" + c.getSemester() + "\",\"" + c.getName() + "\",\"" + c.getRoom()
             					+ "\",\"" + c.getDay() + "\",\"" + c.getTeacher();
             		}
@@ -211,7 +216,7 @@ public class FileUtility {
             	}
             }            
         } 
-    	catch (IOException e) 
+    	catch (IOException e)
     	{
             System.out.println("no file found");
         }

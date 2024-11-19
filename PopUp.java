@@ -3,6 +3,6 @@ import java.awt.event.MouseEvent;
 
 public interface PopUp {
 
-    public void popUp(MouseEvent e);
+    void popUp(MouseEvent e);
 
 }

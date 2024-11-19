@@ -9,17 +9,17 @@ public class BigDuty
 
 	public static Map<String, String> schedule = new HashMap<>();
 
-	private ArrayList<Assignment> assignments;
+	private final ArrayList<Assignment> assignments;
 
-	private ArrayList<Teacher> teachers;
+	private final ArrayList<Teacher> teachers;
 
 	private static final int PASCACKS_PER_PERIOD = 2;
 	private static final int HALLS_PER_PERIOD = 1;
-	private static Integer[] FROSH_PASCACK_PERIODS = {4, 6, 7};
+	private static final Integer[] FROSH_PASCACK_PERIODS = {4, 6, 7};
 
 	public static String[] days = {"M", "T", "W", "R", "F"};
 
-	private String semester;
+	private final String semester;
 
 	public BigDuty(String dataFile)
 	{
@@ -426,9 +426,7 @@ public class BigDuty
 			if(period.getValue() == freshmanPascackPeriods[i])
 			{
 				String[] FreshmanPascackDays = {"W", "W", "T"};
-				if(day.equals(FreshmanPascackDays[i]))
-					return false;
-				return true;
+				return !day.equals(FreshmanPascackDays[i]);
 			}
 		}
 		return false;

@@ -16,9 +16,9 @@ public abstract class Assignment {
     public static String AFTER_SCHOOL = "9";
 
 
-    private Period period;
-    private String semester; // do we really need this?
-    private String name;
+    private final Period period;
+    private final String semester; // do we really need this?
+    private final String name;
     private String day;
 
     private Teacher teacher;

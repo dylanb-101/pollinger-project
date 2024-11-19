@@ -68,8 +68,7 @@ public class Period implements Comparable {
 
     public boolean isLunch() {
 
-        if(period.equals("L")) return true;
-        return false;
+        return period.equals("L");
 
     }
 

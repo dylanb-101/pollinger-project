@@ -7,10 +7,10 @@ import java.awt.*;
 
 public class TeacherPopUp extends JPopupMenu {
 
-    private Teacher teacher;
+    private final Teacher teacher;
 
-    private BigDuty bigDuty;
-    private TeachersPanel panel;
+    private final BigDuty bigDuty;
+    private final TeachersPanel panel;
 
     public TeacherPopUp(Teacher teacher, BigDuty bigDuty, TeachersPanel panel) {
 

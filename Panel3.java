@@ -27,7 +27,7 @@ public class Panel3 extends CustomPanel
 {
    JScrollPane pane;
    private int numRows;
-   private Border b;
+   private final Border b;
    String[] column;
    protected BigDuty bd;
 
