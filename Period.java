@@ -95,7 +95,9 @@ public class Period implements Comparable {
 
         if(getValue() + increment == 4 && !day.equals("M")) return LUNCH_NUM;
 
-        if(getValue() + increment == 5 && day.equals("M")) return LUNCH_NUM;
+        if(getValue() + increment == 4 && day.equals("M") && increment < 0) return LUNCH_NUM;
+
+        if(getValue() + increment == 5 && day.equals("M") && increment > 0) return LUNCH_NUM;
 
         if(getValue() + increment == 8 && !day.equals("M")) return AFTER_SCHOOL_NUM;
 
@@ -112,10 +114,12 @@ public class Period implements Comparable {
         if(isLunch()) return period.getValue() < 5;
 
         return getValue() > period.getValue();
-
     }
 
     public boolean greaterThan(int period) {
+        return greaterThan(new Period(period));
+    }
+    public boolean greaterThan(String period) {
         return greaterThan(new Period(period));
     }
 

@@ -36,25 +36,24 @@ public class Panel1 extends CustomPanel
       this.hover = hover;
       
       //buttons
-      JButton b1 = new JButton("SmartSort"); //demo
-      b1.addActionListener(new ActionListener() {
-
-       @Override
-       public void actionPerformed(ActionEvent e)
-       {
-          System.out.println("Smartly Sorted!");
-         
-       }
+      JButton b1 = new JButton("Reassign Duties"); //demo
+      b1.addActionListener(e -> {
+         System.out.println("Smartly Sorted!");
+         bigduty.clearDuties();
+         bigduty.assignDuties();
       });
-      JButton b2 = new JButton("Footer"); //demo
+      JButton b2 = new JButton("Clear Duties"); //demo
+      b2.addActionListener(e -> {
+         bigduty.clearDuties();
+      });
       JButton b3 = new JButton("East"); //demo
       JButton b4 = new JButton("West"); //demo
       
       //Add Buttons
-//      this.add(b1, BorderLayout.NORTH);
-//      this.add(b2, BorderLayout.SOUTH);
-//      this.add(b3, BorderLayout.EAST);
-//      this.add(b4, BorderLayout.WEST);
+      this.add(b1, BorderLayout.NORTH);
+      this.add(b2, BorderLayout.SOUTH);
+      this.add(b3, BorderLayout.EAST);
+      this.add(b4, BorderLayout.WEST);
 
      //testing data
       
@@ -66,8 +65,8 @@ public class Panel1 extends CustomPanel
           Teacher t = bigDuty.getTeacher(i);
 
           data[i][0] = t.getLastName();
-          data[i][1] = t.getId();
-          data[i][2] = t.getRoom();
+          data[i][1] = t.totalCourses();
+          data[i][2] = t.getDuties().size();
           data[i][3] = t.getDepartment();
   
 

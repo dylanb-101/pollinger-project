@@ -36,7 +36,7 @@ public class Panel2 extends CustomPanel
    private String[] choices;
    private ArrayList<Teacher> teachers;
    private String selectedChoiceBox;
-   private static int teacherIndex;
+   private int teacherIndex;
    private DefaultTableModel model;
    private JTable table;
    
@@ -49,7 +49,6 @@ public class Panel2 extends CustomPanel
       this.numRows = numRows;
       hover = s;
       teacherIndex = 0;
-      this.setLayout(new BorderLayout());
 
       //************************************************************//
       teachers = bigDuty.getTeachers();
@@ -85,13 +84,9 @@ public class Panel2 extends CustomPanel
          @Override
          public void actionPerformed(ActionEvent e)
          {
-            System.out.println("Selected " + (String) cb.getSelectedItem() + "!");
 //            GUIMain.setWarningMsg("Selected " + (String) cb.getSelectedItem() + "!");
             selectedChoiceBox = (String) cb.getSelectedItem();
-            System.out.println("selectedChoiceBox is " +  selectedChoiceBox);
-            System.out.println("ChoiceBoxIndex is " +  cb.getSelectedIndex());
-            teacherIndex = cb.getSelectedIndex(); 
-            System.out.println("teacherIndex is " + teacherIndex);
+            teacherIndex = cb.getSelectedIndex();
             doClicked();
             revalidate();
             repaint();
@@ -108,17 +103,13 @@ public class Panel2 extends CustomPanel
    public void makeTPanel()
    {
       tPanel = new JPanel();
-      tPanel.setLayout(new BorderLayout());
-      
-      
-      Object[][] data = new Object[numRows][colHeadings.length];
-      
-      System.out.println("Drawing teacher object " + teachers.get(teacherIndex).getName());
-      //////////////
-     
-      ///////////////
 
       Teacher t = teachers.get(teacherIndex);
+
+
+
+      Object[][] data = new Object[t.getAssignments().size()][colHeadings.length];
+
 
       for(int i = 0; i < t.getAssignments().size(); i++) {
 
@@ -149,14 +140,13 @@ public class Panel2 extends CustomPanel
       table.setAutoCreateRowSorter(true);
       table.setFont(new Font("Tratatello", Font.PLAIN, 14));
 
+      tPanel.add(table, BorderLayout.NORTH); //add table to the center  
       JTableHeader header = table.getTableHeader();
       header.setBackground(Color.yellow);
       pane = new JScrollPane(table);
       table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
       table.setGridColor(Color.LIGHT_GRAY);
-    
       
-      tPanel.add(pane, BorderLayout.CENTER);
       JButton b1 = new JButton("Return to Menu"); //demo
       b1.addActionListener(new ActionListener() {
 
@@ -169,65 +159,9 @@ public class Panel2 extends CustomPanel
           repaint();
        }
       });
-      tPanel.add(b1, BorderLayout.NORTH);
+      tPanel.add(b1, BorderLayout.SOUTH);
       
-      JButton b2 = new JButton("-->"); //demo
-      b2.addActionListener(new ActionListener() {
-
-       @Override
-       public void actionPerformed(ActionEvent e)
-       {
-          System.out.println("NEXT");
-          doNext();
-          repaint();
-       }
-      });
-      tPanel.add(b2, BorderLayout.EAST);
-      JButton b3 = new JButton("<--"); //demo
-      b3.addActionListener(new ActionListener() {
-
-       @Override
-       public void actionPerformed(ActionEvent e)
-       {
-          System.out.println("BACK");
-          doLast();
-          repaint();
-       }
-      });
-      tPanel.add(b3, BorderLayout.WEST);
-      repaint();
-   }
-   
-   public void doNext()
-   {
-      this.remove(tPanel);
-      
-     
-      System.out.println(teacherIndex);
-      makeTPanel();
-      teacherIndex++;
-      
-      this.add(tPanel);
-      this.remove(wrapper);
-      revalidate();
-      repaint();
-   }
-   public void doLast() 
-   {
-      this.remove(tPanel);
-      
-   
-      
-      
-      makeTPanel();
-      
-      teacherIndex--;
-      System.out.println(teacherIndex);
-
-      this.add(tPanel);
-      this.remove(wrapper);
-      revalidate();
-      repaint();
+      tPanel.add(pane, BorderLayout.CENTER);
    }
    
    public void doClicked()
@@ -247,8 +181,7 @@ public class Panel2 extends CustomPanel
    {
       this.remove(tPanel);
       this.add(wrapper);
-      teacherIndex = 0;
-      System.out.println(teacherIndex);
+
       revalidate();
       repaint();
    }

@@ -10,8 +10,6 @@ public class FileUtility {
     public static void main(String[] args) {
         ArrayList<Teacher> teachers = createTeachers("src/PollingerProject-DutyData.csv");
 
-    	saveData(teachers);
-        
         System.out.println("Done!");
     }
 
@@ -28,8 +26,6 @@ public class FileUtility {
 
             for (Teacher nextTeach : getTeachersFromRowData(data.get(i))) {
 
-
-//                System.out.println(data.get(i));
                 boolean addTeacher = true;
 
                 if (nextTeach != null) {
@@ -44,34 +40,11 @@ public class FileUtility {
 
         }
 
-
-//		for(Teacher t : teachers)
-//			System.out.println(t);
-
         //add courses to teachers
 
         for (int i = 1; i < data.size(); i++) {
             addCourseToTeacher(data.get(i), teachers);
         }
-
-//		for(FileUtility line : row)
-//		{
-//			String name = line.firstName + " " + line.lastName;
-//			boolean reTeacher = checkReTeacher(line, name); //checking if there is the same teacher already
-//			
-//			
-//			if(!reTeacher) {
-//				teacher.add(new Teacher(name, new Course(line.period, line.semester,
-//						line.course, line.room, name), 1));
-//			}
-//			
-//			if(reTeacher) {
-//				teacher.get(teacher.size()-1).addCourse(new Course(line.period, line.semester,
-//						line.course, line.room, name));
-////				System.out.println("add course");
-//			}
-
-//		  }
 
         return teachers;
 
@@ -107,7 +80,6 @@ public class FileUtility {
 
             }
 
-//            System.out.println(tokens[4]);
 
             String name = tokens[6].substring(1, tokens[6].length() - 1);
             String semester = tokens[5].substring(1, tokens[5].length() - 1);
@@ -118,12 +90,17 @@ public class FileUtility {
             String department = tokens[8].substring(1, tokens[8].length() - 1);
             String room = tokens[7].substring(1, tokens[7].length() - 1);
 
+            addCourse = !name.contains("TA") && day.length() >= 5;
+            System.out.println(day);
 
+            if(name.contains("Bruh")) System.out.println(day.length() + ", " + addCourse  + "$");
 
             if(addCourse) {
-                Course nextCourse = new Course(name, courseCode, section, period, day,
-                        semester, room, department, teacher, true);
-                teacher.addAssignment(nextCourse);
+                Course nextCourse = new Course(name, courseCode, section, period, day, semester, room, department, teacher, true);
+
+                if(teacher.getAssignment(nextCourse.getDay(), nextCourse.getPeriod()) == null) {
+                    teacher.addAssignment(nextCourse);
+                }
             }
         }
 
@@ -143,26 +120,6 @@ public class FileUtility {
 
     }
 
-
-//	private static boolean checkReTeacher(FileUtility line, String name)
-//	{
-//		boolean reTeacher = false;
-//		try
-//		{
-//			for(Teacher t : teacher)
-//			{
-//				reTeacher = name.equals(t.getName());
-//			}
-//		}
-//		catch(IndexOutOfBoundsException e)
-//		{
-//				teacher.add(new Teacher(name, new Course(line.period, line.semester,
-//										line.course, line.room, name), 1));
-//		}
-//		
-//		return reTeacher;
-//	}
-
     private static ArrayList<Teacher> getTeachersFromRowData(String rowData) {
         /*
          * creating an array list with all the separate items and then
@@ -173,10 +130,8 @@ public class FileUtility {
 
         ArrayList<Teacher> teachers = new ArrayList<>();
 
-//        System.out.println(Arrays.toString(tokens));
         if (tokens[9].length() == 2)
             return teachers;
-//        System.out.println(tokens[9]);
 
         String[] teacherStrings = tokens[9].split(";");
 
@@ -213,7 +168,6 @@ public class FileUtility {
         ArrayList<String> textData = new ArrayList<String>();
         File filePath = new File(fileName);
         try {
-//	         System.out.println("Reading data");
             Scanner dataGetter = new Scanner(filePath);
             while (dataGetter.hasNext())
                 textData.add(dataGetter.nextLine());
@@ -224,79 +178,5 @@ public class FileUtility {
         return textData;
     }
 
-    
-    /*
-     * exporting / importing saved data -------
-     */
-
-    
-    public static void saveData(ArrayList<Teacher> teachers)
-    {
-    	//saving all the data, append being false as it clears the file so there is no conflict
-    	try (FileWriter writer = new FileWriter("src/saveData.txt", false)) 
-    	{
-    		
-    		//fail safe making sure there are items to save
-            if(teachers.size() == 0) {
-            	System.out.println("no teachers in list");
-            	return;
-            }
-            
-            //saving all teacher assignments
-            writer.write("Space Holder (normal csv has all the sections here but would be useless as our system ignores it)\n");
-            
-            //constants
-            String year = Year.now().getValue() + "";
-            
-            //variable indicators
-            String COURSE_INDACATOR = "#";
-            String FREE_INDACATOR = "$";
-            String DUTY_INDACATOR = "@";
-            
-            for(Teacher t : teachers)
-            {
-            	for(Assignment a : t.getAssignments())
-            	{
-            		String preciseAssingmentToString = "";
-            		
-            		//finding the type and setting what to print
-            		if(a instanceof Course) {
-            			Course c = (Course) a;
-            			preciseAssingmentToString =  COURSE_INDACATOR + " :" + c.getName() + "\",\"" + c.getCourseCode() + "\",\"" + c.getSection() + 
-            												"\",\"" + c.getPeriod() + "\",\"" + c.getDay() + "\",\"" + c.getSemester()
-            												+ "\",\"" + c.getRoom() + "\",\"" + c.getDepartment() + "\",\"" + c.getTeacher();
-            		}
-            		
-            		if(a instanceof Free) {
-            			Free c = (Free) a;
-            			preciseAssingmentToString =  FREE_INDACATOR + " :" + c.getPeriod() + 
-            					"\",\"" + c.getSemester() + "\",\"" + c.getName() + "\",\"" + c.getDay()
-            					+ "\",\"" + c.getTeacher();
-            		}
-            		
-            		if(a instanceof Duty) {
-            			Duty c = (Duty) a;
-            			preciseAssingmentToString =  DUTY_INDACATOR + " :" + c.getPeriod() + 
-            					"\",\"" + c.getSemester() + "\",\"" + c.getName() + "\",\"" + c.getRoom()
-            					+ "\",\"" + c.getDay() + "\",\"" + c.getTeacher();
-            		}
-            		
-            		//printing the data onto the save file
-            		writer.write(preciseAssingmentToString + "\n");
-            	}
-            }            
-        } 
-    	catch (IOException e) 
-    	{
-            System.out.println("no file found");
-        }
-    }
-    
-    public void downloadSchedule(ArrayList<Teacher> teachers)
-    {
-    	saveData(teachers);
-    }
-    
-    
 
 }

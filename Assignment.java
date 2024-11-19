@@ -89,13 +89,17 @@ public abstract class Assignment {
 
     @Override
 	public String toString() {
-		return "Assignment [period=" + period + ", semester=" + semester + ", name=" + name + ", day=" + day + "]";
+		return " [period=" + period + ", semester=" + semester + ", name=" + name + ", day=" + day + ", teacher=" + (teacher != null ? teacher.getLastName() : "None")  + "]";
 	}
 
     public abstract String getDepartment();
 
-	public boolean isDuringSchool() {
+    public boolean isDuringSchool() {
         return period.getValue() != Period.P0_NUM && period.getValue() != Period.AFTER_SCHOOL_NUM;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
 }

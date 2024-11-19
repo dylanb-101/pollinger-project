@@ -15,6 +15,12 @@ public class Free extends Assignment {
         super(period.getValue(), semester, name, day, teacher, false);
     }
 
+    public Free(Assignment assignment) {
+
+        super(assignment.getPeriod().getValue(), assignment.getSemester(), "Free", assignment.getDay(), assignment.getTeacher(), false);
+
+    }
+
 
     @Override
     public String getRoom() {
@@ -31,13 +37,17 @@ public class Free extends Assignment {
         return "None";
     }
 
-   public boolean isLocked()
-   {
-      return isLocked;
-   }
+    public void setLocked(boolean locked) {
 
-   public void setLocked(boolean isLocked)
-   {
-      this.isLocked = isLocked;
-   }
+        this.isLocked = locked;
+
+    }
+
+    public boolean isLocked() {
+        return isLocked;
+    }
+
+    public String toString() {
+        return "Free" + super.toString();
+    }
 }
