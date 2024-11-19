@@ -23,4 +23,9 @@ public class Lunch extends Assignment {
     public String getDepartment() {
         return "None";
     }
+
+
+    public String toString() {
+        return "Lunch" + super.toString();
+    }
 }

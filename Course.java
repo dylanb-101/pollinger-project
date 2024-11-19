@@ -18,22 +18,6 @@ public class Course extends Assignment {
         this.room = room;
     }
 
-//	public Course(int period, String semester, String course, String room, String name) {
-//		super(period, semester, name);
-//		this.room = room;
-//	    this.courseCode = course;
-//		
-//	}
-	
-//	public Course(int period, String semester, String course, String room, String courseName)
-//	{
-//		this.period = period;
-//		this.semester = semester;
-//		this.course = course;
-//		this.room = room;
-//		this.courseName = courseName;
-//	}
-
 	public String getRoom() {
         return room;
     }
@@ -53,5 +37,10 @@ public class Course extends Assignment {
 
     public String getDepartment() {
         return department;
+    }
+
+
+    public String toString() {
+        return "Course" + super.toString();
     }
 }

@@ -12,14 +12,33 @@ public class Duty extends Assignment {
 
     private String room;
 
+    private DutyType type;
 
 
 
+    public Duty(Assignment assignment, String name, String room, DutyType type) {
 
-    public Duty(String period, String semester, String name, String room, String day, Teacher teacher, boolean adjustPeriod) {
+        super(assignment.getPeriod().getPeriod(), assignment.getSemester(), name, assignment.getDay(), assignment.getTeacher(), false);
+
+        this.room = room;
+        this.type = type;
+
+    }
+
+    public Duty(Period period, String semester, String name, String room, String day, DutyType type) {
+
+        super(period.getPeriod(), semester, name, day, null, false);
+
+        this.room = room;
+
+    }
+
+
+    public Duty(String period, String semester, String name, String room, String day, Teacher teacher, boolean adjustPeriod, DutyType type) {
         super(period, semester, name, day, teacher, adjustPeriod);
 
         this.room = room;
+        this.type = type;
 
     }
 
@@ -30,11 +49,11 @@ public class Duty extends Assignment {
 
     public double getWeight() {
 
-        if(getName().equals(UNFILLED)) return 0;
-        if(getName().equals(FROSH_PASCACK)) return -10;
-        if(getName().equals(HALL)) return 5;
-        if(getName().equals(PASCACK)) return -5;
-        if(getName().equals(COVERAGE)) return 10;
+        if(type == DutyType.UNASSIGNED) return 0;
+        if(type == DutyType.FROSH_PASCACK) return -10;
+        if(type == DutyType.HALL) return 5;
+        if(type == DutyType.PASCACK) return -5;
+        if(type == DutyType.COVERAGE) return 10;
         return 1000000;
 
     }
@@ -43,4 +62,13 @@ public class Duty extends Assignment {
     public String getDepartment() {
         return "None";
     }
+
+    public DutyType getType() {
+        return type;
+    }
+
+    public String toString() {
+        return "Duty" + super.toString();
+    }
+
 }

@@ -16,12 +16,14 @@ import javax.swing.JRadioButtonMenuItem;
 
 public class GUIMainFrame extends JFrame
 {
-   private static final long serialVersionUID = 1L;
-   private static JFrame frame;
+
+  private static final long serialVersionUID = 1L;
+  private static JFrame frame;
+  
   public GUIMainFrame()
   {
    //Create and set up the window.
-     frame = new JFrame("GUIMain");
+      frame = new JFrame("GUIMain");
      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
      //Add content to the window.
@@ -42,7 +44,7 @@ public class GUIMainFrame extends JFrame
      
      menuBar = new JMenuBar();
 
-     
+
    //file
    file = new JMenu("FILE");
    file.setMnemonic(KeyEvent.VK_A);
@@ -52,17 +54,17 @@ public class GUIMainFrame extends JFrame
    edit = new JMenu("EDIT");
    edit.setMnemonic(KeyEvent.VK_A);
    edit.getAccessibleContext().setAccessibleDescription("Edit");
-//   menuBar.add(edit);
+   // menuBar.add(edit);
    //view
    view = new JMenu("VIEW");
    view.setMnemonic(KeyEvent.VK_A);
    view.getAccessibleContext().setAccessibleDescription("File");
-//   menuBar.add(view);
+   // menuBar.add(view);
    //tools
    tools = new JMenu("TOOLS");
    tools.setMnemonic(KeyEvent.VK_A);
    tools.getAccessibleContext().setAccessibleDescription("TOOLS");
-//   menuBar.add(tools);
+   // menuBar.add(tools);
    
    //file item
    menuItem = new JMenuItem("Print",
@@ -108,7 +110,4 @@ public class GUIMainFrame extends JFrame
    
    
   }
-  
-
-  
 }

@@ -33,7 +33,7 @@ public class ScoredPeriod implements Comparable {
 
         ScoredPeriod sp = (ScoredPeriod) o;
 
-        return score - sp.getScore();
+        return sp.getScore() - score;
     }
 
     public String toString() {
