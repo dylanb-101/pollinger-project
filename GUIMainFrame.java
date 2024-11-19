@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JCheckBoxMenuItem;
@@ -13,12 +14,16 @@ import javax.swing.JRadioButtonMenuItem;
 //Program Description:
 //Oct 18, 2024
 
-public class GUIMainFrame extends JPanel
+public class GUIMainFrame extends JFrame
 {
+
+  private static final long serialVersionUID = 1L;
+  private static JFrame frame;
+  
   public GUIMainFrame()
   {
    //Create and set up the window.
-     JFrame frame = new JFrame("GUIMain");
+      frame = new JFrame("GUIMain");
      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
      //Add content to the window.
@@ -49,17 +54,17 @@ public class GUIMainFrame extends JPanel
    edit = new JMenu("EDIT");
    edit.setMnemonic(KeyEvent.VK_A);
    edit.getAccessibleContext().setAccessibleDescription("Edit");
-   menuBar.add(edit);
+   // menuBar.add(edit);
    //view
    view = new JMenu("VIEW");
    view.setMnemonic(KeyEvent.VK_A);
    view.getAccessibleContext().setAccessibleDescription("File");
-   menuBar.add(view);
+   // menuBar.add(view);
    //tools
    tools = new JMenu("TOOLS");
    tools.setMnemonic(KeyEvent.VK_A);
    tools.getAccessibleContext().setAccessibleDescription("TOOLS");
-   menuBar.add(tools);
+   // menuBar.add(tools);
    
    //file item
    menuItem = new JMenuItem("Print",
