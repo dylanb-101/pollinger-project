@@ -1,13 +1,32 @@
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+//Justin Yoo
+//Program Description:
+//Oct 30, 2024
+
 public class helpPanel extends CustomPanel
 {
    private JPanel wrapper, helpDesk;
    private JComboBox<String> cb;
    private String[] choices;
-
-	@@ -27,20 +27,14 @@ public helpPanel(String panelName, Dimension d, BorderLayout bl, String hover)
+   
+   private String hover;
+   public helpPanel(String panelName, Dimension d, BorderLayout bl, String hover)
+   {
       super(panelName, d, bl);
       this.hover = hover;
-
+      
       makeWrapper();
       makeHelpDesk();
       this.add(wrapper);
@@ -25,7 +44,10 @@ public class helpPanel extends CustomPanel
       cb = new JComboBox<String>(choices);
       cb.setMaximumSize(cb.getPreferredSize()); 
       cb.setAlignmentX(Component.CENTER_ALIGNMENT);
-	@@ -51,7 +45,7 @@ private void makeWrapper()
+      
+      
+      JButton btn = new JButton("OK");
+      btn.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e)
          {
@@ -33,7 +55,14 @@ public class helpPanel extends CustomPanel
             revalidate();
             repaint();
          }
-	@@ -66,61 +60,10 @@ public void actionPerformed(ActionEvent e)
+
+
+        });
+      btn.setAlignmentX(Component.CENTER_ALIGNMENT); // added code
+      btn.setFont(new Font("Tratatello", Font. BOLD, 18));
+      cb.setFont(new Font("Tratatello", Font. BOLD, 14));
+      
+      panel.add(lbl);
       panel.add(cb);
       panel.add(btn);
       wrapper.add(panel);
@@ -50,9 +79,9 @@ public class helpPanel extends CustomPanel
          lbl2.setText("Nothing here yet!");}
       lbl.setFont(new Font("Tratatello", Font.PLAIN, 18));
       lbl2.setFont(new Font("Tratatello", Font.PLAIN, 18));
-
-
-
+      
+      
+      
       JButton btn = new JButton("Return");
       btn.addActionListener(new ActionListener() {
          @Override
@@ -71,12 +100,12 @@ public class helpPanel extends CustomPanel
       helpDesk.add(btn, BorderLayout.SOUTH);
       helpDesk.add(lbl, BorderLayout.NORTH);
    }
-
+   
    public void doClicked()
    {
 
     //justin was here 2024 november 4th i think Trump wins
-
+      
       this.remove(wrapper);
       this.remove(helpDesk);
       this.makeHelpDesk();
@@ -95,7 +124,34 @@ public class helpPanel extends CustomPanel
    }
    public JPanel getWrapper()
    {
-	@@ -155,4 +98,4 @@ public void setHover(String hover)
+      return wrapper;
+   }
+   public void setWrapper(JPanel wrapper)
+   {
+      this.wrapper = wrapper;
+   }
+   public JComboBox<String> getCb()
+   {
+      return cb;
+   }
+   public void setCb(JComboBox<String> cb)
+   {
+      this.cb = cb;
+   }
+   public String[] getChoices()
+   {
+      return choices;
+   }
+   public void setChoices(String[] choices)
+   {
+      this.choices = choices;
+   }
+   public String getHover()
+   {
+      return hover;
+   }
+   public void setHover(String hover)
+   {
       this.hover = hover;
    }
 
