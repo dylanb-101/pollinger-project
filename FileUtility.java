@@ -163,83 +163,197 @@ public class FileUtility {
         return teachers;
     }
 
+     
+    /*
+     * exporting / importing saved data -------
+     */
+
+    
+    //saving data
     public static void saveData(ArrayList<Teacher> teachers)
     {
     	//saving all the data, append being false as it clears the file so there is no conflict
-    	try (FileWriter writer = new FileWriter("src/saveData.txt", false))
+    	try (FileWriter writer = new FileWriter("src/saveData.csv", false)) 
     	{
-
+    		
     		//fail safe making sure there are items to save
             if(teachers.size() == 0) {
             	System.out.println("no teachers in list");
             	return;
             }
-
-            //saving all teacher assignments
-            writer.write("Space Holder (normal csv has all the sections here but would be useless as our system ignores it)\n");
-
-            //constants
-            String year = Year.now().getValue() + "";
-
+                        
+            
             //variable indicators
+            String TEACHER_INDACATOR = "*";
+            
             String COURSE_INDACATOR = "#";
             String FREE_INDACATOR = "$";
             String DUTY_INDACATOR = "@";
-
+            String LUNCH_INDACATOR = "&";
+                        
             for(Teacher t : teachers)
             {
+            	
+            	writer.write(TEACHER_INDACATOR + "," + t.getLastName() + "," + t.getFirstName() + "," + 
+            				 t.getDepartment() + "," + t.getRoom() + "\n");
+            	
             	for(Assignment a : t.getAssignments())
             	{
-            		String preciseAssingmentToString = "";
-
+            		String preciseAssingmentToString = "ERROR! PLEASE SEND FOR HELP!";
+            		
             		//finding the type and setting what to print
-            		if(a instanceof Course c) {
-                        preciseAssingmentToString =  COURSE_INDACATOR + " :" + c.getName() + "\",\"" + c.getCourseCode() + "\",\"" + c.getSection() +
-            												"\",\"" + c.getPeriod() + "\",\"" + c.getDay() + "\",\"" + c.getSemester()
-            												+ "\",\"" + c.getRoom() + "\",\"" + c.getDepartment() + "\",\"" + c.getTeacher();
+            		if(a instanceof Course) {
+            			Course c = (Course) a;
+//            			preciseAssingmentToString = "Course: " + c.toString();
+            			preciseAssingmentToString =  COURSE_INDACATOR + "," + c.getName() + "," + c.getCourseCode() + "," + c.getSection() + 
+            										 "," + c.getPeriod() + "," + c.getDay() + "," + c.getSemester()
+    												 + "," + c.getRoom() + "," + c.getDepartment() + "," + c.getTeacher().getName();
             		}
-
-            		if(a instanceof Free c) {
-                        preciseAssingmentToString =  FREE_INDACATOR + " :" + c.getPeriod() +
-            					"\",\"" + c.getSemester() + "\",\"" + c.getName() + "\",\"" + c.getDay()
-            					+ "\",\"" + c.getTeacher();
+            		
+            		if(a instanceof Free) {
+            			Free c = (Free) a;
+//            			preciseAssingmentToString = "Free: " + c.toString();
+            			preciseAssingmentToString =  FREE_INDACATOR + "," + c.getPeriod() + 
+            										 "," + c.getSemester() + "," + c.getName() + "," + c.getDay()
+            										 + "," + c.getTeacher().getName();
             		}
-
-            		if(a instanceof Duty c) {
-                        preciseAssingmentToString =  DUTY_INDACATOR + " :" + c.getPeriod() +
-            					"\",\"" + c.getSemester() + "\",\"" + c.getName() + "\",\"" + c.getRoom()
-            					+ "\",\"" + c.getDay() + "\",\"" + c.getTeacher();
+            		
+            		if(a instanceof Duty) {
+            			Duty c = (Duty) a;
+//            			preciseAssingmentToString = "Duty: " + c.toString();
+            			preciseAssingmentToString =  DUTY_INDACATOR + "," + c.getPeriod() + 
+            										 "," + c.getSemester() + "," + c.getName() + "," + c.getRoom()
+            										 + "," + c.getDay() + "," + c.getTeacher().getName();
             		}
-
+            		
+            		if(a instanceof Lunch) {
+            			Lunch c = (Lunch) a;
+//            			preciseAssingmentToString = "Duty: " + c.toString();
+            			preciseAssingmentToString =  LUNCH_INDACATOR + "," + c.getPeriod() + 
+            					"," + c.getSemester() + "," + c.getName()
+            					+ "," + c.getDay() + "," + c.getTeacher().getName();
+            		}
+            		
             		//printing the data onto the save file
             		writer.write(preciseAssingmentToString + "\n");
             	}
+            	
             }            
         } 
-    	catch (IOException e)
+    	catch (IOException e) 
     	{
             System.out.println("no file found");
         }
     }
-
-    public void downloadSchedule(ArrayList<Teacher> teachers)
+    
+    private static void copyFile(String sourceFilePath, String destinationFilePath) throws IOException {
+    	File sourceFile = new File(sourceFilePath);
+    	
+    	if (!sourceFile.exists())
+    		throw new IOException("Source file does not exist: " + sourceFilePath);
+    	
+    	FileInputStream inputStream = new FileInputStream(sourceFile);
+    	ReadableByteChannel readableByteChannel = Channels.newChannel(inputStream);
+    	FileOutputStream fileOutputStream = new FileOutputStream(destinationFilePath);
+    	
+    	
+    	fileOutputStream.getChannel().transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
+    	
+    	fileOutputStream.close();
+    	readableByteChannel.close(); 
+    	
+    	inputStream.close();
+    }
+    
+    private static void download()
     {
-    	saveData(teachers);
-    }
+    	//getting the year to add to the file name
+        String nextYear = (Year.now().getValue()+1) + "";
+        String yearCombined = Year.now().getValue() + "-" + nextYear.substring(2);
+    	
+    	String sourceFilePath = "src/saveData.csv"; // Replace with the actual path to your source file
+        String desktopPath = System.getProperty("user.home") + "/Desktop/"; // Get the desktop path
+        String destinationFilePath = desktopPath + "BigDuty" + yearCombined + ".csv"; // Specify the filename
 
-    private static ArrayList<String> readData(String fileName) {
-        ArrayList<String> textData = new ArrayList<String>();
-        File filePath = new File(fileName);
         try {
-            Scanner dataGetter = new Scanner(filePath);
-            while (dataGetter.hasNext())
-                textData.add(dataGetter.nextLine());
-            dataGetter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Cannot find data file.");
-        }
-        return textData;
+			copyFile(sourceFilePath, destinationFilePath);
+		} 
+        catch (IOException e) {
+			System.out.println("ERROR FINDING FILE. PLEASE CONTACT SUPPORT");
+		}
+        
+//        System.out.println("File copied successfully to your desktop!");
     }
-
-
+    
+    public static void downloadCurrentSchedule(ArrayList<Teacher> teachers)
+    {
+        //saving a new set of data
+        saveData(teachers);
+    	download();
+    }
+    
+    public static void downloadPreviousSave()
+    {
+    	download();
+    }
+    
+    //reading/importing data
+    
+    public static ArrayList<Teacher> readSaveFile(String fileLocation)
+    {
+    	return readSave(fileLocation);
+    }
+    public static ArrayList<Teacher> readSaveFile()
+    {
+    	return readSave("src/saveData.csv");
+    }
+    
+    /*
+     * -will never be THREE of ONE duty
+     * -coverages are last
+     */
+    
+    private static ArrayList<Teacher> readSave(String fileLocation)
+    {
+		ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+		ArrayList<String> data = readData(fileLocation);
+		
+		String TEACHER_INDACATOR = "*";
+		
+		String COURSE_INDACATOR = "#";
+		String FREE_INDACATOR = "$";
+		String DUTY_INDACATOR = "@";
+        String LUNCH_INDACATOR = "&";
+    	 
+        int i = 0;
+    	for(String rowData : data)
+    	{
+    		System.out.println("\n" + i + "\n");
+    		i++;
+    		String[] tokens = rowData.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+    		 
+    		if(tokens[0].equals(TEACHER_INDACATOR)) {
+    			 teachers.add(new Teacher(tokens[1], tokens[2], tokens[3], tokens[4]));
+    		}
+    		if(tokens[0].equals(COURSE_INDACATOR)) {
+    			teachers.get(teachers.size()-1).addAssignment(new Course(tokens[1], tokens[2], Integer.parseInt(tokens[3]), tokens[4], tokens[5], 
+    																	 tokens[6], tokens[7], tokens[8], teachers.get(teachers.size()-1), true));
+    		}
+    		if(tokens[0].equals(FREE_INDACATOR)) {
+    			teachers.get(teachers.size()-1).addAssignment(new Free(new Period(tokens[1]), tokens[2], tokens[3], 
+    																   tokens[4], teachers.get(teachers.size()-1)));
+    		}
+    		if(tokens[0].equals(DUTY_INDACATOR)) {
+    			teachers.get(teachers.size()-1).addAssignment(new Duty(tokens[1], tokens[2], tokens[3], tokens[4], 
+    														  		   tokens[5], teachers.get(teachers.size()-1), false));
+    		}
+    		if(tokens[0].equals(LUNCH_INDACATOR)) {
+    			teachers.get(teachers.size()-1).addAssignment(new Lunch(tokens[1], tokens[2], tokens[3], tokens[4], teachers.get(teachers.size()-1)));
+    		}
+    		 
+    	}
+    	
+    	return teachers;
+    	 
+   }
 }
