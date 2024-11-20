@@ -1,21 +1,28 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.time.Year;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileUtility {
 
 
     public static void main(String[] args) {
-        ArrayList<Teacher> teachers = createTeachers("src/PollingerProject-DutyData.csv");
+//        ArrayList<Teacher> teachers = new BigDuty("/Users/nmadaio26/Desktop/BigDuty2024-25.csv", true).getTeachers();
 
-        saveData(teachers);
-
-        System.out.println("Done!");
+//        downloadCurrentSchedule(teachers);
+//        readSave("/Users/nmadaio26/Desktop/BigDuty2024-25.csv");
+        
+//        System.out.println(teachers.get(0).getFrees());
+    	
+        
+//        System.out.println("Done!");
     }
 
 
@@ -31,15 +38,15 @@ public class FileUtility {
 
             for (Teacher nextTeach : getTeachersFromRowData(data.get(i))) {
 
+
+//                System.out.println(data.get(i));
                 boolean addTeacher = true;
 
                 if (nextTeach != null) {
                     for (Teacher t : teachers)
                         if (nextTeach.getLastName().equals(t.getLastName())
-                                && nextTeach.getFirstName().equals(t.getFirstName())) {
+                                && nextTeach.getFirstName().equals(t.getFirstName()))
                             addTeacher = false;
-                            break;
-                        }
                     if (addTeacher)
                         teachers.add(nextTeach);
                 }
@@ -47,11 +54,34 @@ public class FileUtility {
 
         }
 
+
+//		for(Teacher t : teachers)
+//			System.out.println(t);
+
         //add courses to teachers
 
         for (int i = 1; i < data.size(); i++) {
             addCourseToTeacher(data.get(i), teachers);
         }
+
+//		for(FileUtility line : row)
+//		{
+//			String name = line.firstName + " " + line.lastName;
+//			boolean reTeacher = checkReTeacher(line, name); //checking if there is the same teacher already
+//			
+//			
+//			if(!reTeacher) {
+//				teacher.add(new Teacher(name, new Course(line.period, line.semester,
+//						line.course, line.room, name), 1));
+//			}
+//			
+//			if(reTeacher) {
+//				teacher.get(teacher.size()-1).addCourse(new Course(line.period, line.semester,
+//						line.course, line.room, name));
+////				System.out.println("add course");
+//			}
+
+//		  }
 
         return teachers;
 
@@ -81,15 +111,13 @@ public class FileUtility {
 
                 for(Assignment a : t.getAssignments()) {
 
-                    if ((a.getDay() == tokens[4].substring(1, tokens[4].length() - 1))) {
-                        addCourse = false;
-                        break;
-                    }
+                    if((a.getDay() == tokens[4].substring(1, tokens[4].length() - 1))) addCourse = false;
 
                 }
 
             }
 
+//            System.out.println(tokens[4]);
 
             String name = tokens[6].substring(1, tokens[6].length() - 1);
             String semester = tokens[5].substring(1, tokens[5].length() - 1);
@@ -100,15 +128,12 @@ public class FileUtility {
             String department = tokens[8].substring(1, tokens[8].length() - 1);
             String room = tokens[7].substring(1, tokens[7].length() - 1);
 
-            addCourse = !name.contains("TA") && day.length() >= 5;
-            System.out.println(day);
+
 
             if(addCourse) {
-                Course nextCourse = new Course(name, courseCode, section, period, day, semester, room, department, teacher, true);
-
-                if(teacher.getAssignment(nextCourse.getDay(), nextCourse.getPeriod()) == null) {
-                    teacher.addAssignment(nextCourse);
-                }
+                Course nextCourse = new Course(name, courseCode, section, period, day,
+                        semester, room, department, teacher, true);
+                teacher.addAssignment(nextCourse);
             }
         }
 
@@ -138,8 +163,10 @@ public class FileUtility {
 
         ArrayList<Teacher> teachers = new ArrayList<>();
 
+//        System.out.println(Arrays.toString(tokens));
         if (tokens[9].length() == 2)
             return teachers;
+//        System.out.println(tokens[9]);
 
         String[] teacherStrings = tokens[9].split(";");
 
@@ -156,14 +183,41 @@ public class FileUtility {
             String department = tokens[8].substring(1, tokens[8].length() - 1);
             String room = tokens[7].substring(1, tokens[7].length() - 1);
 
+            System.out.println(department);
+            System.out.println(room);
+            
             teachers.add(new Teacher(last, first, department, room));
 
         }
 
         return teachers;
+
+//		dataPoints.add(str.substring(1, str.length()-1));
+//		dataPoints.set(dataPoints.size() - 2, dataPoints.get(dataPoints.size() - 2).substring(1));
+//		
+//		//setting the values to a teacher
+//		row.add(new FileUtility(dataPoints.get(0), dataPoints.get(1), dataPoints.get(2), Integer.parseInt(dataPoints.get(3)), 
+//								 Integer.parseInt(dataPoints.get(4)), dataPoints.get(5), dataPoints.get(6), 
+//								 dataPoints.get(7), dataPoints.get(8), dataPoints.get(9), dataPoints.get(10)));
+//		dataPoints.clear();
     }
 
-     
+    private static ArrayList<String> readData(String fileName) {
+        ArrayList<String> textData = new ArrayList<String>();
+        File filePath = new File(fileName);
+        try {
+//	         System.out.println("Reading data");
+            Scanner dataGetter = new Scanner(filePath);
+            while (dataGetter.hasNext())
+                textData.add(dataGetter.nextLine());
+            dataGetter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Cannot find data file.");
+        }
+        return textData;
+    }
+
+    
     /*
      * exporting / importing saved data -------
      */
@@ -356,4 +410,5 @@ public class FileUtility {
     	return teachers;
     	 
    }
+    
 }
