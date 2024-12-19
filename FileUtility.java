@@ -233,7 +233,7 @@ public class FileUtility {
 //            			preciseAssingmentToString = "Free: " + c.toString();
             			preciseAssingmentToString =  FREE_INDACATOR + "," + c.getPeriod() + 
             										 "," + c.getSemester() + "," + c.getName() + "," + c.getDay()
-            										 + "," + c.getTeacher().getName();
+            										 + "," + c.getTeacher().getName() + ", " + c.isLocked();
             		}
             		
             		if(a instanceof Duty) {
@@ -360,6 +360,11 @@ public class FileUtility {
     		if(tokens[0].equals(FREE_INDACATOR)) {
     			teachers.get(teachers.size()-1).addAssignment(new Free(new Period(tokens[1]), tokens[2], tokens[3], 
     																   tokens[4], teachers.get(teachers.size()-1)));
+    			Free f = (Free) teachers.get(teachers.size()-1).getAssignment(tokens[4], new Period(tokens[1]));
+    			
+    			boolean locked = tokens[6].equalsIgnoreCase("true") ? true : false;
+    			
+    			f.setLocked(locked);
     		}
     		if(tokens[0].equals(DUTY_INDACATOR)) {
     			teachers.get(teachers.size()-1).addAssignment(new Duty(tokens[1], tokens[2], tokens[3], tokens[4], 
