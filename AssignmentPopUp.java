@@ -14,7 +14,7 @@ public class AssignmentPopUp extends JPopupMenu {
     private final TeachersPanel parent;
     public AssignmentPopUp(Assignment assignment, BigDuty bigDuty, TeachersPanel parent) {
 
-        super(assignment.getName());
+        super(assignment != null ? assignment.getName() : "");
         this.assignment = assignment;
         this.bigDuty = bigDuty;
         this.parent = parent;

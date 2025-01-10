@@ -1,13 +1,17 @@
+// rollover and update social credit
+// scrollable panel 3 period data
+// add total duties column - DONE
+// colors
+// export as csv/excel
+// saving and loading on main panel
+// stating panel has load from save, or create new - DONE
+// undo
+
+
+
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -15,21 +19,11 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import java.awt.Component;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.metal.OceanTheme;
@@ -68,7 +62,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
 //   private FileReadIn dataset;
    private BigDuty bigDuty;
    //Panels
-   private CustomPanel panel1, panel2, helpPanel, panel3, panel4, teachersPanel;
+   private CustomPanel panel1, panel2, helpPanel, panel3, panel4, teachersPanel, homePanel;
 
    private static JFrame frame;
 
@@ -76,16 +70,27 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
    public GUIMain() //default constructor
    {
 
+       System.out.println(BigDuty.BACKUP_LOCATION);
+       new File(BigDuty.BACKUP_LOCATION).mkdir();
+
          //Initial Init
          this.addKeyListener(this);
          this.addMouseListener(this);
          this.setFocusable(true);
 
          this.setLayout(new BorderLayout()); //setting layout
-       bigDuty = new BigDuty("src/PollingerProject-DutyData.csv");
 
-         Component contents = this.createComponents();
-         this.add(contents);
+       bigDuty = new BigDuty("src/PollingerProject-DutyData.csv", this);
+
+
+       Component contents = this.createComponents();
+
+       JPanel panel = makeLandingScreen();
+       this.add(panel, BorderLayout.CENTER);
+
+//       this.add(contents);
+
+
    }
    public static void setWarningMsg(String text){
       Toolkit.getDefaultToolkit().beep();
@@ -126,6 +131,87 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
 
    }
 
+   public JPanel makeLandingScreen() {
+
+       JPanel frame = new JPanel();
+
+       frame.setLayout(new BorderLayout());
+
+       JButton loadPolButton = new JButton("Load from .pol");
+
+       loadPolButton.addActionListener(e -> {
+
+           JFileChooser chooser = new JFileChooser();
+
+           FileFilter filter = new FileNameExtensionFilter(".pol", "pol", "csv");
+           chooser.setFileFilter(filter);
+           chooser.showDialog(frame, "Load Save");
+
+           if(chooser.getSelectedFile() != null) {
+
+               ArrayList<Teacher> teachers = FileUtility.readSaveFile(chooser.getSelectedFile());
+               bigDuty = new BigDuty(teachers, this);
+
+               this.remove(frame);
+
+               Component screen = this.createComponents();
+
+               this.add(screen);
+               this.refreshPanels();
+
+           }
+
+
+
+
+       });
+
+       JButton loadReportButton = new JButton("Load from Genesis");
+       loadReportButton.addActionListener(e -> {
+
+           JFileChooser chooser = new JFileChooser();
+
+           FileFilter filter = new FileNameExtensionFilter(".csv",  "csv");
+           chooser.setFileFilter(filter);
+           chooser.showDialog(frame, "Load Genesis Report");
+
+           if(chooser.getSelectedFile() != null) {
+
+               this.bigDuty = new BigDuty(chooser.getSelectedFile(), this);
+
+               this.remove(frame);
+
+               Component screen = this.createComponents();
+
+               this.add(screen);
+               this.refreshPanels();
+           }
+
+
+
+       });
+
+       frame.add(loadPolButton, BorderLayout.WEST);
+       frame.add(loadReportButton, BorderLayout.EAST);
+
+
+
+       return frame;
+
+   }
+
+   public void refreshPanels() {
+
+       panel1.refreshPanel();
+       panel2.refreshPanel();
+       panel3.refreshPanel();
+       panel4.refreshPanel();
+       teachersPanel.refreshPanel();
+       helpPanel.refreshPanel();
+       homePanel.refreshPanel();
+
+   }
+
    public Component createComponents() {
     //Initial Init
 
@@ -152,25 +238,25 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
 
       //*********************PANELS BEGIN**********************//
 
+
+
        //Panel1 #homepage#
        String panel1HoverMessage = "Shows all teachers' general information";
-       panel1 = new Panel1("All Teacher View", getPreferredSize(), new BorderLayout(), bigDuty, colHeadingsPanel1, numRows, data, panel1HoverMessage);
-       panedTabs.addTab(panel1.getName(), null, panel1, ((Panel1) panel1).getHover());
+       panel1 = new Panel1("All Teacher View", getPreferredSize(), new BorderLayout(), bigDuty, colHeadingsPanel1, data, panel1HoverMessage);
+
+
+       homePanel = new HomePanel("Home Panel", getPreferredSize(), bigDuty);
 
        //panel2 #no function yet#
        String panel2HoverMessage = "Shows individual teachers' general information";
        panel2 = new Panel2("Individual Teacher View", getPreferredSize(), new BorderLayout(), bigDuty, colHeadingsPanel2, numRows, panel2HoverMessage);
-       panedTabs.addTab(panel2.getName(), null, panel2, ((Panel2)(panel2)).getHover());
 
 //       panel3
-         panel3 = new Panel3("Panel 3", new Dimension(WIDTH, HEIGHT), bigDuty);
-         panedTabs.addTab("Panel 3", panel3);
+         panel3 = new PollingerView("Pollinger View", new Dimension(WIDTH, HEIGHT), bigDuty);
 
        panel4 = new Panel4("Panel 4", new Dimension(WIDTH, HEIGHT), bigDuty);
-       panedTabs.addTab("Panel 4", panel4);
 
        teachersPanel = new TeachersPanel("Teacher View", new Dimension(WIDTH, HEIGHT), bigDuty);
-       panedTabs.addTab("Teacher View", teachersPanel);
 
 //         panel 4
 //       panel4 = new Panel4("Panel 4", new Dimension(WIDTH, HEIGHT), bigDuty);
@@ -178,6 +264,14 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener
 
        String helpPanelHoverMessage = "\" UHL \" love this help desk!";
        helpPanel = new helpPanel("Help Panel", getPreferredSize(), new BorderLayout(), helpPanelHoverMessage);
+
+
+       panedTabs.addTab(homePanel.getName(), homePanel);
+       panedTabs.addTab(panel1.getName(), null, panel1, ((Panel1) panel1).getHover());
+       panedTabs.addTab(panel2.getName(), null, panel2, ((Panel2)(panel2)).getHover());
+       panedTabs.addTab("Pollinger View", panel3);
+//       panedTabs.addTab("Panel 4", panel4);
+       panedTabs.addTab("Teacher View", teachersPanel);
        panedTabs.addTab(helpPanel.getName(), null, helpPanel, ((helpPanel)(helpPanel)).getHover());
 
        //********************PANELS END*************************//

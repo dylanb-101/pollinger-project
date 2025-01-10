@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.*;
 
 //Max Nadel
@@ -19,9 +20,59 @@ public class BigDuty
 
 	public static String[] days = {"M", "T", "W", "R", "F"};
 
+	public static String BACKUP_LOCATION = "Users/" + System.getProperty("user.name") + "/Documents/bigDuty";
+
 	private final String semester;
 
-	public BigDuty(String dataFile)
+	private GUIMain gui;
+
+	public BigDuty(ArrayList<Teacher> teachers, GUIMain gui) {
+		System.out.println("Making Big Duty...");
+
+		schedule.put("M_SCHEDULE", "01234L56789");
+		schedule.put("T_SCHEDULE", "0123L5679");
+		schedule.put("W_SCHEDULE", "0412L8569");
+		schedule.put("R_SCHEDULE", "0341L7859");
+		schedule.put("F_SCHEDULE", "0234L6789");
+
+		this.gui = gui;
+		this.semester = "S2";
+
+		System.out.println("Reading in teachers...");
+		this.teachers = teachers;
+		System.out.println("Filling In assignments...");
+		this.assignments = new ArrayList<>();
+
+		readInAssignments();
+		System.out.println("Big Duty has been made!");
+
+//		assignDuties();
+	}
+
+
+
+	public BigDuty(File file, GUIMain gui) {
+
+		schedule.put("M_SCHEDULE", "01234L56789");
+		schedule.put("T_SCHEDULE", "0123L5679");
+		schedule.put("W_SCHEDULE", "0412L8569");
+		schedule.put("R_SCHEDULE", "0341L7859");
+		schedule.put("F_SCHEDULE", "0234L6789");
+
+		this.gui = gui;
+		this.semester = "S2";
+
+		System.out.println("Reading in teachers...");
+		this.teachers = FileUtility.createTeachers(file);
+		System.out.println("Filling In assignments...");
+		this.assignments = new ArrayList<>();
+
+		fillInTeacherAssignments();
+		System.out.println("Big Duty has been made!");
+
+	}
+
+	public BigDuty(String dataFile, GUIMain gui)
 	{
 
 		System.out.println("Making Big Duty...");
@@ -32,6 +83,7 @@ public class BigDuty
 		schedule.put("R_SCHEDULE", "0341L7859");
 		schedule.put("F_SCHEDULE", "0234L6789");
 
+		this.gui = gui;
 		this.semester = "S2";
 
 		System.out.println("Reading in teachers...");
@@ -44,79 +96,23 @@ public class BigDuty
 
 		assignDuties();
 	}
-	
-	public BigDuty(String dataFile, Boolean ReOpenFile)
-   {
-	   
-	   System.out.println("Making Big Duty...");
-	   
-	   schedule.put("M_SCHEDULE", "01234L56789");
-	   schedule.put("T_SCHEDULE", "0123L5679");
-	   schedule.put("W_SCHEDULE", "0412L8569");
-	   schedule.put("R_SCHEDULE", "0341L7859");
-	   schedule.put("F_SCHEDULE", "0234L6789");
-	   
-	   System.out.println("Reading in teachers...");
-	   this.teachers = FileUtility.readSaveFile(dataFile);
-//	   System.out.println("Filling In assignments...");
-//	   this.assignments = new ArrayList<>();
-	   
-//	   fillInTeacherAssignments();
-	   System.out.println("Big Duty has been made!");
-	   
-   }
-   
-//	public void assignDuties() {
-//
-//		String[] days = {"M", "T", "W", "R", "F"};
-//
-//		ArrayList<Duty> duties = new ArrayList<>();
-//
-//		for(int d = 0; d < days.length; d++) {
-//
-//			for(int p = 1; p <= 8; p++) {
-//
-//				if(!days[d].equals("M") && (p == 4 || p == 8)) continue;
-//
-//
-//
-//
-//				for(int i = 0; i < PASCACKS_PER_PERIOD; i++) {
-//
-//					duties.add(new Duty(new Period(p), "FY", "Pascack", "CAF", days[d], DutyType.PASCACK));
-//
-//				}
-//
-//				for(int i = 0; i < HALLS_PER_PERIOD; i++) {
-//
-//					duties.add(new Duty(new Period(p), "FY", "Hall", "Hall", days[d], DutyType.HALL));
-//
-//				}
-//
-//			}
-//		}
-//
-//		for(Duty duty : duties) {
-//
-//			Teacher teacher = getBestTeacher(duty);
-//
-//			duty.setTeacher(teacher);
-//
-//			replaceAssignment(duty);
-//
-//		}
-//	}
+
+	public void refreshPanels() {
+		gui.refreshPanels();
+	}
 
 	public void assignDuties() {
 
 		assignFroshPascacks();
 
-		assignPascacks();
-
 		assignHalls();
 
+		assignPascacks();
+
 		assignCoverages();
+
 	}
+
 
 	public void assignFroshPascacks() {
 
@@ -128,9 +124,9 @@ public class BigDuty
 
 			for(int j = 0; j < FROSH_PASCACK_PERIODS.length; j++) {
 
-				int periodIndex = day.indexOf(FROSH_PASCACK_PERIODS[j]);
+				int periodIndex = day.indexOf(FROSH_PASCACK_PERIODS[j] + "");
 
-				if(periodIndex != 1 && periodIndex >= 0 && periodIndex != day.length()-2) {
+				if(periodIndex != 1 && periodIndex > 0 && periodIndex != day.length()-2) {
 
 					Duty d = new Duty(new Period(FROSH_PASCACK_PERIODS[j], days[i]), semester, "Freshman Pascack", "NONE", days[i], DutyType.FROSH_PASCACK);
 
@@ -140,7 +136,6 @@ public class BigDuty
 			}
 		}
 
-		System.out.println(duties);
 
 		fillInNonCoverageDuties(duties);
 	}
@@ -162,6 +157,8 @@ public class BigDuty
 
 		}
 
+		gui.refreshPanels();
+
 	}
 
 	private void fillInNonCoverageDuties(ArrayList<Duty> duties) {
@@ -172,14 +169,43 @@ public class BigDuty
 
 			int i = 1;
 
-			while(t.getTotalNonCoverages() >= 2) {
+			while(t != null && ((t.getTotalNonCoverages() >= 1 && !allTeachersHaveAtleastOneDuty()) || t.getTotalNonCoverages() >= 2 && allTeachersHaveAtleastOneDuty())) {
 
 				t = getBestTeacher(d, i++);
 
 			}
+
+			if(t == null) {
+
+				i = 0;
+
+				t = getBestTeacher(d, i++);
+
+				while(t.getTotalNonCoverages() >= 2) {
+
+					t = getBestTeacher(d, i++);
+
+				}
+
+			}
+
 			d.setTeacher(t);
 			replaceAssignment(d);
 		}
+	}
+
+	public boolean allTeachersHaveAtleastOneDuty() {
+
+		for(Teacher t : teachers) {
+
+			if(t.isLocked()) continue;
+
+			if(t.getDuties().size() < 1) return false;
+
+		}
+
+		return true;
+
 	}
 
 	public Teacher getBestTeacher(Assignment a, int index) {
@@ -226,7 +252,7 @@ public class BigDuty
 
 			for(int p = 1; p <= 8; p++) {
 
-				if(!day.equals("M") && p == 4 || p == 8) continue;
+				if(!day.equals("M") && (p == 4 || p == 8)) continue;
 
 				for(int i = 0; i < HALLS_PER_PERIOD; i++) duties.add(new Duty(new Period(p), semester, "Hall", "Hall", day, DutyType.HALL));
 			}
@@ -238,13 +264,62 @@ public class BigDuty
 
 	public void assignCoverages() {
 
+
 		for(Teacher t : getTeachersWithOpenDuties()) {
 
-			Free free = new Free(t.getBestFree().getAssignment());
+			while(t.getDuties().size() < 3) {
 
-			replaceAssignment(free);
+				String name = (t.getDuties().size() < 2) ? "Paid Coverage" : "Coverage";
+
+				Duty d = new Duty(t.getBestFree().getAssignment(), name, "None", DutyType.COVERAGE);
+
+				int i = 0;
+
+				while(numberOfCoveragesInPeriod(d) > 4) {
+
+					if(t.getBestFree(i) == null) {
+
+						d = new Duty(t.getBestFree().getAssignment(), name, "None", DutyType.COVERAGE);
+						break;
+
+					}
+
+					d = new Duty(t.getBestFree(i++).getAssignment(), name, "None", DutyType.COVERAGE);
+
+				}
+
+				replaceAssignment(d);
+
+			}
 
 		}
+
+	}
+
+	public ArrayList<Assignment> getAssignmentsInPeriod(Assignment assignment) {
+
+		ArrayList<Assignment> periods = new ArrayList<>();
+
+		for(Assignment a : assignments) {
+
+			if(a.getDay().equals(assignment.getDay()) && a.getPeriod().equals(assignment.getPeriod())) periods.add(a);
+
+		}
+
+		return periods;
+
+	}
+
+	public int numberOfCoveragesInPeriod(Assignment assignment) {
+
+		int coverages = 0;
+
+		for(Assignment a : assignments) {
+
+			if(a instanceof Duty && ((Duty) a).getType() == DutyType.COVERAGE) coverages += 1;
+
+		}
+		return coverages;
 
 	}
 
@@ -316,8 +391,8 @@ public class BigDuty
 		ArrayList<Teacher> freeTeachers = new ArrayList<Teacher>();
 
 		for(int i = 0; i < teachers.size(); i++)
-			for(int k = 0; k < teachers.get(i).getFrees().size(); k++)
-				if(teachers.get(i).getFrees().get(k).getDay().equals(day) && teachers.get(i).getFrees().get(k).getPeriod().equals(period))
+			for(int k = 0; k < teachers.get(i).getUnlockedFrees().size(); k++)
+				if(teachers.get(i).getUnlockedFrees().get(k).getDay().equals(day) && teachers.get(i).getUnlockedFrees().get(k).getPeriod().equals(period))
 					freeTeachers.add(teachers.get(i));
 
 		return freeTeachers;
@@ -328,6 +403,8 @@ public class BigDuty
 	public Teacher getBestTeacher(String day, Period period, int index) {
 
 		ArrayList<ScoredPeriod> p = getListOfRankedAssignments(day, period);
+
+		if(index >= p.size()) return null;
 
 		return p.get(index).getAssignment().getTeacher();
 
@@ -344,6 +421,16 @@ public class BigDuty
 
 			assignments.addAll(teacher.getAssignments());
 		}
+	}
+
+	public void readInAssignments() {
+
+		for(Teacher teacher : teachers) {
+
+			assignments.addAll(teacher.getAssignments());
+
+		}
+
 	}
 
 	public ArrayList<Teacher> getTeachers() {
@@ -392,7 +479,6 @@ public class BigDuty
 
 		for(Assignment a : assignments) {
 
-
 			if(a.getDay().equals(day) && a.getPeriod().equals(period) && a instanceof Duty) {
 				ts.add(a.getTeacher());
 			}
@@ -421,26 +507,15 @@ public class BigDuty
 
 	public void reassignDuties() {
 
-	}
+		clearDuties();
+		assignDuties();
+		refreshPanels();
 
-//	public void assignDutys()
-//	{
-//		//start by assigning the pascack periods
-//		for(int x = 0; x < schedule.size(); x++){
-//			String day = days[x];
-//			for(int i = 0; i < schedule.get(day + "_SCHEDULE").length()-1; i++) {
-//				Period period = new Period(i);
-//				if(isFreshmanPascack(day, period))
-//					getBestTeacher(day, period).replaceAssignment();
-//			}
-//
-//
-//		}
-//	}
+	}
 
 	public boolean isFreshmanPascack(String day, Period period)
 	{
-		//chekcing its period
+		//checking its period
 		int[] freshmanPascackPeriods = {4, 6, 7};
 		for(int i = 0; i < freshmanPascackPeriods.length; i++)
 		{
@@ -453,5 +528,11 @@ public class BigDuty
 		return false;
 	}
 
+	public GUIMain getGui() {
+		return gui;
+	}
 
+	public void setGui(GUIMain gui) {
+		this.gui = gui;
+	}
 }
