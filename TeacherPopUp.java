@@ -42,6 +42,7 @@ public class TeacherPopUp extends JPopupMenu {
             }
 
             panel.updateScheduleDisplay(panel.getActiveTeacher());
+            bigDuty.refreshPanels();
 
         });
 
@@ -65,10 +66,13 @@ public class TeacherPopUp extends JPopupMenu {
             }
 
             panel.updateScheduleDisplay(panel.getActiveTeacher());
+            bigDuty.refreshPanels();
+
 
         });
 
         this.add(clearDuties);
+
 
     }
 

@@ -83,7 +83,13 @@ public class TeachersPanel extends CustomPanel {
 
         Assignment assignment = activeTeacher.getAssignment(day, new Period(period));
 
-        JComponent menu = new JLabel(assignment instanceof Free ? String.valueOf(activeTeacher.scoreAssignment(assignment)) : assignment.getName());
+
+        JComponent menu = null;
+        if (assignment != null) {
+            menu = new JLabel(assignment instanceof Free ? String.valueOf(activeTeacher.scoreAssignment(assignment)) : assignment.getName());
+        } else {
+            menu = new JLabel("No assignment found");
+        }
 
         if(assignment instanceof Duty) menu.setForeground(Color.RED);
 
@@ -95,6 +101,10 @@ public class TeachersPanel extends CustomPanel {
 
         return menu;
 
+    }
+
+    public void refreshPanel() {
+        updateScheduleDisplay(activeTeacher);
     }
 
     public void updateScheduleDisplay(Teacher teacher) {

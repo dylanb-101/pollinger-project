@@ -2,7 +2,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,12 +35,12 @@ public class helpPanel extends CustomPanel
    {
       wrapper = new JPanel();
       JPanel panel = new JPanel();
-      panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+      panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // added code
       JLabel lbl = new JLabel("Help Desk Directory");
       lbl.setFont(new Font("Tratatello", Font. BOLD, 18));
       lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-      choices = new String[] {"Download Help", "Other Help", "Table Scrolling"};
+      choices = new String[] {"Download Help", "Other Help"};
       cb = new JComboBox<String>(choices);
       cb.setMaximumSize(cb.getPreferredSize()); 
       cb.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -62,6 +61,7 @@ public class helpPanel extends CustomPanel
       btn.setAlignmentX(Component.CENTER_ALIGNMENT); // added code
       btn.setFont(new Font("Tratatello", Font. BOLD, 18));
       cb.setFont(new Font("Tratatello", Font. BOLD, 14));
+      
       panel.add(lbl);
       panel.add(cb);
       panel.add(btn);
@@ -69,9 +69,6 @@ public class helpPanel extends CustomPanel
    }
    private void makeHelpDesk() {
       helpDesk = new JPanel();
-      helpDesk.setLayout(new BorderLayout());
-      JPanel extraPanel = new JPanel();
-      extraPanel.setLayout(new GridLayout(2, 1));
       JLabel lbl = new JLabel(); //exchangable
       JLabel lbl2 = new JLabel();
       if(cb.getSelectedIndex() == 0) {
@@ -80,13 +77,8 @@ public class helpPanel extends CustomPanel
       if(cb.getSelectedIndex() == 1) {
          lbl.setText("Other Tutorial");
          lbl2.setText("Nothing here yet!");}
-      if(cb.getSelectedIndex() == 2) {
-         lbl.setText("Table Scrolling Tutorial");
-         lbl2.setText("Click on the table and use arrows to scroll!");}
-      
       lbl.setFont(new Font("Tratatello", Font.PLAIN, 18));
       lbl2.setFont(new Font("Tratatello", Font.PLAIN, 18));
-      
       
       
       
@@ -104,11 +96,9 @@ public class helpPanel extends CustomPanel
         });
       btn.setAlignmentX(Component.CENTER_ALIGNMENT); // added code
       btn.setFont(new Font("Tratatello", Font. BOLD, 18));
-      extraPanel.add(lbl);
-      extraPanel.add(lbl2);
-      helpDesk.add(btn, BorderLayout.NORTH);
-      helpDesk.add(extraPanel, BorderLayout.CENTER);
-      
+      helpDesk.add(lbl2);
+      helpDesk.add(btn, BorderLayout.SOUTH);
+      helpDesk.add(lbl, BorderLayout.NORTH);
    }
    
    public void doClicked()

@@ -25,6 +25,13 @@ public class CustomPanel extends JPanel
       
       
    }
+
+   public void refreshPanel() {
+
+      repaint();
+      revalidate();
+
+   }
    
    
 //   public JComponent returnPanel(){

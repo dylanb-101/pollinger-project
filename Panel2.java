@@ -85,13 +85,9 @@ public class Panel2 extends CustomPanel
          @Override
          public void actionPerformed(ActionEvent e)
          {
-            System.out.println("Selected " + cb.getSelectedItem() + "!");
 //            GUIMain.setWarningMsg("Selected " + (String) cb.getSelectedItem() + "!");
             selectedChoiceBox = (String) cb.getSelectedItem();
-            System.out.println("selectedChoiceBox is " +  selectedChoiceBox);
-            System.out.println("ChoiceBoxIndex is " +  cb.getSelectedIndex());
-            teacherIndex = cb.getSelectedIndex(); 
-            System.out.println("teacherIndex is " + teacherIndex);
+            teacherIndex = cb.getSelectedIndex();
             doClicked();
             revalidate();
             repaint();
@@ -111,14 +107,14 @@ public class Panel2 extends CustomPanel
       tPanel.setLayout(new BorderLayout());
       
       
-      Object[][] data = new Object[numRows][colHeadings.length];
-      
-      System.out.println("Drawing teacher object " + teachers.get(teacherIndex).getName());
+
       //////////////
      
       ///////////////
 
       Teacher t = teachers.get(teacherIndex);
+
+      Object[][] data = new Object[t.getAssignments().size()][colHeadings.length];
 
       for(int i = 0; i < t.getAssignments().size(); i++) {
 
@@ -163,8 +159,7 @@ public class Panel2 extends CustomPanel
        @Override
        public void actionPerformed(ActionEvent e)
        {
-          System.out.println("Returned!");
-          
+
           returnMenu();
           repaint();
        }
@@ -177,7 +172,6 @@ public class Panel2 extends CustomPanel
        @Override
        public void actionPerformed(ActionEvent e)
        {
-          System.out.println("NEXT");
           doNext();
           repaint();
        }
@@ -189,7 +183,6 @@ public class Panel2 extends CustomPanel
        @Override
        public void actionPerformed(ActionEvent e)
        {
-          System.out.println("BACK");
           doLast();
           repaint();
        }
@@ -203,10 +196,15 @@ public class Panel2 extends CustomPanel
       this.remove(tPanel);
       
      
-      System.out.println(teacherIndex);
       makeTPanel();
+
+
       teacherIndex++;
-      
+
+      if(teacherIndex >= teachers.size()) {
+         teacherIndex = 0;
+      }
+
       this.add(tPanel);
       this.remove(wrapper);
       revalidate();
@@ -220,9 +218,14 @@ public class Panel2 extends CustomPanel
       
       
       makeTPanel();
-      
+
       teacherIndex--;
-      System.out.println(teacherIndex);
+
+
+      if(teacherIndex < 0) {
+         teacherIndex = teachers.size()-1;
+      }
+
 
       this.add(tPanel);
       this.remove(wrapper);
@@ -248,7 +251,6 @@ public class Panel2 extends CustomPanel
       this.remove(tPanel);
       this.add(wrapper);
       teacherIndex = 0;
-      System.out.println(teacherIndex);
       revalidate();
       repaint();
    }
