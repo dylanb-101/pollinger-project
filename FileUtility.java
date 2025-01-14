@@ -226,7 +226,7 @@ public class FileUtility {
             {
 
             	writer.write(TEACHER_INDACATOR + "," + t.getLastName() + "," + t.getFirstName() + "," +
-            				 t.getDepartment() + "," + t.getRoom() + "\n");
+            				 t.getDepartment() + "," + t.getRoom() + "," + t.getSocialCredit() + "\n");
 
                 int i = 0;
             	for(Assignment a : t.getAssignments())
@@ -258,7 +258,7 @@ public class FileUtility {
 //            			preciseAssingmentToString = "Duty: " + c.toString();
             			preciseAssingmentToString =  DUTY_INDACATOR + "," + c.getPeriod().getPeriod() +
             										 "," + c.getSemester() + "," + c.getName() + "," + c.getRoom()
-            										 + "," + c.getDay() + "," + c.getTeacher().getName();
+            										 + "," + c.getDay() + "," + c.getTeacher().getName() + "," + c.getType().name();
             		}
 
             		if(a instanceof Lunch) {
@@ -322,87 +322,87 @@ public class FileUtility {
 
     }
 
-    private static void save(ArrayList<Teacher> teachers, File destination, String name) {
-
-        try (FileWriter writer = new FileWriter(destination.getAbsolutePath() + "/" + name, false))
-        {
-
-            //fail safe making sure there are items to save
-            if(teachers.size() == 0) {
-                System.out.println("no teachers in list");
-                return;
-            }
-
-
-            //variable indicators
-            String TEACHER_INDACATOR = "*";
-
-            String COURSE_INDACATOR = "#";
-            String FREE_INDACATOR = "$";
-            String DUTY_INDACATOR = "@";
-            String LUNCH_INDACATOR = "&";
-
-            for(Teacher t : teachers)
-            {
-
-                writer.write(TEACHER_INDACATOR + "," + t.getLastName() + "," + t.getFirstName() + "," +
-                        t.getDepartment() + "," + t.getRoom() + "\n");
-
-                int i = 0;
-                for(Assignment a : t.getAssignments())
-                {
-                    String preciseAssingmentToString = "ERROR! PLEASE SEND FOR HELP!";
-
-                    i++;
-
-
-                    //finding the type and setting what to print
-                    if(a instanceof Course) {
-                        Course c = (Course) a;
-//            			preciseAssingmentToString = "Course: " + c.toString();
-                        preciseAssingmentToString =  COURSE_INDACATOR + "," + c.getName() + "," + c.getCourseCode() + "," + c.getSection() +
-                                "," + c.getPeriod().getPeriod() + "," + c.getDay() + "," + c.getSemester()
-                                + "," + c.getRoom() + "," + c.getDepartment() + "," + c.getTeacher().getName();
-                    }
-
-                    if(a instanceof Free) {
-                        Free c = (Free) a;
-//            			preciseAssingmentToString = "Free: " + c.toString();
-                        preciseAssingmentToString =  FREE_INDACATOR + "," + c.getPeriod().getPeriod() +
-                                "," + c.getSemester() + "," + c.getName() + "," + c.getDay()
-                                + "," + c.getTeacher().getName() + ", " + c.isLocked();
-                    }
-
-                    if(a instanceof Duty) {
-                        Duty c = (Duty) a;
-//            			preciseAssingmentToString = "Duty: " + c.toString();
-                        preciseAssingmentToString =  DUTY_INDACATOR + "," + c.getPeriod().getPeriod() +
-                                "," + c.getSemester() + "," + c.getName() + "," + c.getRoom()
-                                + "," + c.getDay() + "," + c.getTeacher().getName();
-                    }
-
-                    if(a instanceof Lunch) {
-                        Lunch c = (Lunch) a;
-//            			preciseAssingmentToString = "Duty: " + c.toString();
-                        preciseAssingmentToString =  LUNCH_INDACATOR + "," + c.getPeriod().getPeriod() +
-                                "," + c.getSemester() + "," + c.getName()
-                                + "," + c.getDay() + "," + c.getTeacher().getName();
-                    }
-
-
-
-                    //printing the data onto the save file
-                    writer.write(preciseAssingmentToString + "\n");
-                }
-
-            }
-        }
-        catch (IOException e)
-        {
-            System.out.println("no file found");
-        }
-
-    }
+//    private static void save(ArrayList<Teacher> teachers, File destination, String name) {
+//
+//        try (FileWriter writer = new FileWriter(destination.getAbsolutePath() + "/" + name, false))
+//        {
+//
+//            //fail safe making sure there are items to save
+//            if(teachers.size() == 0) {
+//                System.out.println("no teachers in list");
+//                return;
+//            }
+//
+//
+//            //variable indicators
+//            String TEACHER_INDACATOR = "*";
+//
+//            String COURSE_INDACATOR = "#";
+//            String FREE_INDACATOR = "$";
+//            String DUTY_INDACATOR = "@";
+//            String LUNCH_INDACATOR = "&";
+//
+//            for(Teacher t : teachers)
+//            {
+//
+//                writer.write(TEACHER_INDACATOR + "," + t.getLastName() + "," + t.getFirstName() + "," +
+//                        t.getDepartment() + "," + t.getRoom() + "\n");
+//
+//                int i = 0;
+//                for(Assignment a : t.getAssignments())
+//                {
+//                    String preciseAssingmentToString = "ERROR! PLEASE SEND FOR HELP!";
+//
+//                    i++;
+//
+//
+//                    //finding the type and setting what to print
+//                    if(a instanceof Course) {
+//                        Course c = (Course) a;
+////            			preciseAssingmentToString = "Course: " + c.toString();
+//                        preciseAssingmentToString =  COURSE_INDACATOR + "," + c.getName() + "," + c.getCourseCode() + "," + c.getSection() +
+//                                "," + c.getPeriod().getPeriod() + "," + c.getDay() + "," + c.getSemester()
+//                                + "," + c.getRoom() + "," + c.getDepartment() + "," + c.getTeacher().getName();
+//                    }
+//
+//                    if(a instanceof Free) {
+//                        Free c = (Free) a;
+////            			preciseAssingmentToString = "Free: " + c.toString();
+//                        preciseAssingmentToString =  FREE_INDACATOR + "," + c.getPeriod().getPeriod() +
+//                                "," + c.getSemester() + "," + c.getName() + "," + c.getDay()
+//                                + "," + c.getTeacher().getName() + ", " + c.isLocked();
+//                    }
+//
+//                    if(a instanceof Duty) {
+//                        Duty c = (Duty) a;
+////            			preciseAssingmentToString = "Duty: " + c.toString();
+//                        preciseAssingmentToString =  DUTY_INDACATOR + "," + c.getPeriod().getPeriod() +
+//                                "," + c.getSemester() + "," + c.getName() + "," + c.getRoom()
+//                                + "," + c.getDay() + "," + c.getTeacher().getName();
+//                    }
+//
+//                    if(a instanceof Lunch) {
+//                        Lunch c = (Lunch) a;
+////            			preciseAssingmentToString = "Duty: " + c.toString();
+//                        preciseAssingmentToString =  LUNCH_INDACATOR + "," + c.getPeriod().getPeriod() +
+//                                "," + c.getSemester() + "," + c.getName()
+//                                + "," + c.getDay() + "," + c.getTeacher().getName();
+//                    }
+//
+//
+//
+//                    //printing the data onto the save file
+//                    writer.write(preciseAssingmentToString + "\n");
+//                }
+//
+//            }
+//        }
+//        catch (IOException e)
+//        {
+//            System.out.println("no file found");
+//        }
+//
+//    }
 
     private static void download()
     {
@@ -492,7 +492,12 @@ public class FileUtility {
             String[] tokens = rowData.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
 
             if(tokens[0].equals(TEACHER_INDACATOR)) {
-                teachers.add(new Teacher(tokens[1], tokens[2], tokens[3], tokens[4]));
+
+                Teacher t = new Teacher(tokens[1], tokens[2], tokens[3], tokens[4]);
+                t.setSocialCredit(Integer.parseInt(tokens[5]));
+
+                teachers.add(t);
+
             }
             if(tokens[0].equals(COURSE_INDACATOR)) {
 
@@ -510,8 +515,24 @@ public class FileUtility {
                 f.setLocked(locked);
             }
             if(tokens[0].equals(DUTY_INDACATOR)) {
-                teachers.get(teachers.size()-1).addAssignment(new Duty(tokens[1], tokens[2], tokens[3], tokens[4],
-                        tokens[5], teachers.get(teachers.size()-1), false));
+                Duty a = new Duty(tokens[1], tokens[2], tokens[3], tokens[4],
+                        tokens[5], teachers.get(teachers.size() - 1), false);
+
+                if(tokens[7].equals("PASCACK")) {
+                    a.setType(DutyType.PASCACK);
+                } else if(tokens[7].equals("COVERAGE")) {
+                    a.setType(DutyType.COVERAGE);
+                } else if(tokens[7].equals("FROSH_PASCACK")) {
+                    a.setType(DutyType.FROSH_PASCACK);
+                } else if(tokens[7].equals("HALL")) {
+                    a.setType(DutyType.HALL);
+                } else if(tokens[7].equals("UNASSIGNED")) {
+                    a.setType(DutyType.UNASSIGNED);
+                }
+
+
+
+                teachers.get(teachers.size()-1).addAssignment(a);
             }
             if(tokens[0].equals(LUNCH_INDACATOR)) {
                 teachers.get(teachers.size()-1).addAssignment(new Lunch(tokens[1], tokens[2], tokens[3], tokens[4], teachers.get(teachers.size()-1)));

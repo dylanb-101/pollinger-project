@@ -76,6 +76,10 @@ public class Duty extends Assignment {
         return type;
     }
 
+    public void setType(DutyType type) {
+        this.type = type;
+    }
+
     public String toString() {
         return "Duty" + super.toString();
     }

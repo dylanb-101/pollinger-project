@@ -4,14 +4,11 @@
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 
 
 public class HomePanel extends CustomPanel {
@@ -44,11 +41,11 @@ public class HomePanel extends CustomPanel {
     public void makePanel() {
 
         //        make the sidebar
-        JPanel sidebar = new JPanel();
+        JPanel sidebar = new JPanel(new GridLayout(20, 0));
 
-        JButton button1 = new JButton("Save Data");
+        JButton saveButton = new JButton("Save Data");
 
-        button1.addActionListener(e -> {
+        saveButton.addActionListener(e -> {
 
             JFileChooser chooser = new JFileChooser();
             chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -67,7 +64,27 @@ public class HomePanel extends CustomPanel {
 
         });
 
-        sidebar.add(button1);
+        sidebar.add(saveButton);
+
+        JButton nextSemsesterButton = new JButton("Next Semester");
+
+        nextSemsesterButton.addActionListener(e -> {
+
+            if(bigDuty.getSemester().equals("S1")) {
+
+                BigDuty bd = new BigDuty(bigDuty.getTeachers(), null, "S2");
+
+                SemesterTab semesterTab = new SemesterTab(bd);
+
+//                semesterTab.addTab("S2", GUIMain.makeTeachersTabs(bd));
+
+                GUIMain.semesters.add(semesterTab);
+
+            }
+
+        });
+
+        sidebar.add(nextSemsesterButton);
 
 
         // make the center area

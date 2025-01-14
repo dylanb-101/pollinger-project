@@ -32,6 +32,7 @@ public class Panel4 extends CustomPanel {
 
         for(int x = 0; x < 5; x++) {
             weekPanels[x] = new CustomPanel(dayNames[x], new Dimension(100, 100));
+            weekPanels[x].setLayout(new BorderLayout());
             GridLayout monday = new GridLayout(9, 1);
             GridLayout other = new GridLayout(7, 1);
 
@@ -52,7 +53,7 @@ public class Panel4 extends CustomPanel {
 
             for (int y = 1; y <= ((GridLayout) (weekPanels[x].getLayout())).getRows() - offset; y++) {
 
-                JTable table = null;
+                JScrollPane table = null;
 
                 if(x != 0 && y == 4) {
                     table = createDylanTable(bigDuty.getTeacher(teacherIndex).getDayLunch(dayNames[x]));
@@ -75,7 +76,7 @@ public class Panel4 extends CustomPanel {
 
     }
 
-    public JTable createDylanTable(Assignment assignment) {
+    public JScrollPane createDylanTable(Assignment assignment) {
 
         String[][] data = new String[1][1];
 
@@ -92,7 +93,10 @@ public class Panel4 extends CustomPanel {
         JTable t = new JTable(tm);
         t.setBorder(border);
         t.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        return t;
+
+        JScrollPane sp = new JScrollPane(t);
+
+        return sp;
     }
 
 }

@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.File;
 import java.util.*;
 
@@ -22,9 +23,11 @@ public class BigDuty
 
 	public static String BACKUP_LOCATION = "Users/" + System.getProperty("user.name") + "/Documents/bigDuty";
 
-	private final String semester;
+	private String semester;
 
-	private GUIMain gui;
+//	private GUIMain gui;
+
+	private SemesterTab pane;
 
 	public BigDuty(ArrayList<Teacher> teachers, GUIMain gui) {
 		System.out.println("Making Big Duty...");
@@ -35,8 +38,8 @@ public class BigDuty
 		schedule.put("R_SCHEDULE", "0341L7859");
 		schedule.put("F_SCHEDULE", "0234L6789");
 
-		this.gui = gui;
-		this.semester = "S2";
+//		this.gui = gui;
+		this.semester = "S1";
 
 		System.out.println("Reading in teachers...");
 		this.teachers = teachers;
@@ -46,7 +49,18 @@ public class BigDuty
 		readInAssignments();
 		System.out.println("Big Duty has been made!");
 
+		this.pane = gui.makeTeachersTabs(this);
+
+
 //		assignDuties();
+	}
+
+	public BigDuty(ArrayList<Teacher> teachers, GUIMain gui, String semester) {
+
+		this(teachers, gui);
+		this.semester = semester;
+
+
 	}
 
 
@@ -59,8 +73,9 @@ public class BigDuty
 		schedule.put("R_SCHEDULE", "0341L7859");
 		schedule.put("F_SCHEDULE", "0234L6789");
 
-		this.gui = gui;
-		this.semester = "S2";
+//		this.gui = gui;
+		this.semester = "S1";
+
 
 		System.out.println("Reading in teachers...");
 		this.teachers = FileUtility.createTeachers(file);
@@ -69,6 +84,9 @@ public class BigDuty
 
 		fillInTeacherAssignments();
 		System.out.println("Big Duty has been made!");
+
+		this.pane = gui.makeTeachersTabs(this);
+
 
 	}
 
@@ -83,8 +101,8 @@ public class BigDuty
 		schedule.put("R_SCHEDULE", "0341L7859");
 		schedule.put("F_SCHEDULE", "0234L6789");
 
-		this.gui = gui;
-		this.semester = "S2";
+//		this.gui = gui;
+		this.semester = "S1";
 
 		System.out.println("Reading in teachers...");
 		this.teachers = FileUtility.createTeachers(dataFile);
@@ -95,10 +113,17 @@ public class BigDuty
 		System.out.println("Big Duty has been made!");
 
 		assignDuties();
+
+		this.pane = gui.makeTeachersTabs(this);
+
+	}
+
+	public void setPane(SemesterTab pane) {
+		this.pane = pane;
 	}
 
 	public void refreshPanels() {
-		gui.refreshPanels();
+		pane.refreshPanels();
 	}
 
 	public void assignDuties() {
@@ -157,7 +182,7 @@ public class BigDuty
 
 		}
 
-		gui.refreshPanels();
+		pane.refreshPanels();
 
 	}
 
@@ -528,11 +553,15 @@ public class BigDuty
 		return false;
 	}
 
-	public GUIMain getGui() {
-		return gui;
-	}
+//	public GUIMain getGui() {
+//		return gui;
+//	}
 
-	public void setGui(GUIMain gui) {
-		this.gui = gui;
+//	public void setGui(GUIMain gui) {
+//		this.gui = gui;
+//	}
+
+	public String getSemester() {
+		return semester;
 	}
 }
