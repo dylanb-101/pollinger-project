@@ -128,6 +128,37 @@ public class Teacher implements Comparable {
         fillInLunchesAndFrees();
 
     }
+    
+    public int getAdjustedSocialCredit()
+    {
+       int updatedSocialCredit = socialCredit;
+       
+       for(int i = 0; i < this.getDuties().size(); i++)
+       {
+          
+          Duty nextDuty = this.getDuties().get(i);
+          
+          if(nextDuty.getPeriod().getValue() == 1 || (nextDuty.getPeriod().getValue() == 8 && nextDuty.getDay().equals("M"))
+                || (nextDuty.getPeriod().getValue() == 7 && !nextDuty.getDay().equals("M")))
+                updatedSocialCredit -= 2;
+                
+          if(nextDuty.getType().equals(DutyType.FROSH_PASCACK))
+             updatedSocialCredit -= 10;
+          
+          if(nextDuty.getType().equals(DutyType.COVERAGE)) 
+          {
+             if(nextDuty.getPeriod().getValue() == 1 || (nextDuty.getPeriod().getValue() == 8 && nextDuty.getDay().equals("M"))
+                   || (nextDuty.getPeriod().getValue() == 7 && !nextDuty.getDay().equals("M")))
+                updatedSocialCredit -= 2;
+          }
+          
+          if(nextDuty.getType().equals(DutyType.HALL))
+             updatedSocialCredit += 1;       
+       }
+       
+       return updatedSocialCredit;
+    }
+    
 
     private void fillInLunchesAndFrees() {
         String[] days = {"M", "T", "W", "R", "F"};
@@ -450,7 +481,7 @@ public class Teacher implements Comparable {
 
     private int rankAssignment(Assignment assignment) {
 
-        int score = adjustForSocialCredit();
+        int score = getAdjustedSocialCredit();
 
         if(assignment instanceof Course) return -2900000;
 
