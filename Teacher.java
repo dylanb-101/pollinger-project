@@ -16,6 +16,7 @@ public class Teacher implements Comparable {
     private int socialCredit;
     private String department;
     private String room;
+    private BigDuty bigDuty;
 
     private boolean isAvailable;
 
@@ -27,7 +28,6 @@ public class Teacher implements Comparable {
         this.assignments = new ArrayList<>();
         this.socialCredit = 0;
         this.isAvailable = true;
-
     }
     
     public Teacher(String lastName, String firstName, String department, String room) {
@@ -39,6 +39,40 @@ public class Teacher implements Comparable {
         this.assignments = new ArrayList<>();
         this.socialCredit = 0;
         this.isAvailable = true;
+    }
+
+    public Teacher(Teacher teacher) {
+        this.id = nextId++;
+        this.firstName = teacher.firstName;
+        this.lastName = teacher.lastName;
+        this.department = teacher.department;
+        this.room = teacher.room;
+        this.socialCredit = teacher.socialCredit;
+        this.isAvailable = teacher.isAvailable;
+        this.assignments = new ArrayList<>();
+
+        for(Assignment assignment : teacher.assignments) {
+
+            Assignment a = null;
+
+            if(assignment instanceof Course) {
+                a = new Course((Course) assignment, this);
+            }
+            if(assignment instanceof Free) {
+                a = new Free((Free) assignment, this);
+            }
+            if(assignment instanceof Lunch) {
+                a = new Lunch((Lunch) assignment, this);
+            }
+            if(assignment instanceof Duty) {
+                a = new Free(assignment.getPeriod(), "Free", assignment.getDay(), assignment.getSemester(), this);
+                System.out.println("duty: " + a.toString());
+            }
+
+            assignments.add(a);
+
+        }
+
     }
 
     public boolean isAvailable(String day, Period period)
@@ -90,7 +124,7 @@ public class Teacher implements Comparable {
                 }
 
 
-//                check for Lunch Labs
+//              check for Lunch Labs
                 if(periods.length > 1 && (day.length() == 2 || day.contains("Lab")) && !assignment.getName().contains("AP")) {
 
                     if(day.contains("Lab")) {
@@ -128,39 +162,38 @@ public class Teacher implements Comparable {
         fillInLunchesAndFrees();
 
     }
-    
+
     public int getAdjustedSocialCredit()
     {
-       int updatedSocialCredit = socialCredit;
-       
-       for(int i = 0; i < this.getDuties().size(); i++)
-       {
-          
-          Duty nextDuty = this.getDuties().get(i);
-          
-          if(nextDuty.getPeriod().getValue() == 1 || (nextDuty.getPeriod().getValue() == 8 && nextDuty.getDay().equals("M"))
-                || (nextDuty.getPeriod().getValue() == 7 && !nextDuty.getDay().equals("M")))
-                updatedSocialCredit -= 2;
-                
-          if(nextDuty.getType().equals(DutyType.FROSH_PASCACK))
-             updatedSocialCredit -= 10;
-          
-          if(nextDuty.getType().equals(DutyType.COVERAGE)) 
-          {
-             if(nextDuty.getPeriod().getValue() == 1 || (nextDuty.getPeriod().getValue() == 8 && nextDuty.getDay().equals("M"))
-                   || (nextDuty.getPeriod().getValue() == 7 && !nextDuty.getDay().equals("M")))
-                updatedSocialCredit -= 2;
-          }
-          
-          if(nextDuty.getType().equals(DutyType.HALL))
-             updatedSocialCredit += 1;       
-       }
-       
-       return updatedSocialCredit;
-    }
-    
+        int updatedSocialCredit = socialCredit;
 
-    private void fillInLunchesAndFrees() {
+        for(int i = 0; i < this.getDuties().size(); i++)
+        {
+
+            Duty nextDuty = this.getDuties().get(i);
+
+            if(nextDuty.getPeriod().getValue() == 1 || (nextDuty.getPeriod().getValue() == 8 && nextDuty.getDay().equals("M"))
+                    || (nextDuty.getPeriod().getValue() == 7 && !nextDuty.getDay().equals("M")))
+                updatedSocialCredit -= 2;
+
+            if(nextDuty.getType().equals(DutyType.FROSH_PASCACK))
+                updatedSocialCredit -= 10;
+
+            if(nextDuty.getType().equals(DutyType.COVERAGE))
+            {
+                if(nextDuty.getPeriod().getValue() == 1 || (nextDuty.getPeriod().getValue() == 8 && nextDuty.getDay().equals("M"))
+                        || (nextDuty.getPeriod().getValue() == 7 && !nextDuty.getDay().equals("M")))
+                    updatedSocialCredit -= 2;
+            }
+
+            if(nextDuty.getType().equals(DutyType.HALL))
+                updatedSocialCredit += 1;
+        }
+
+        return updatedSocialCredit;
+    }
+
+    public void fillInLunchesAndFrees() {
         String[] days = {"M", "T", "W", "R", "F"};
 
 
@@ -170,7 +203,7 @@ public class Teacher implements Comparable {
 
             if(!dayHasLunchPeriod(day)) {
 
-                assignments.add(new Lunch(Assignment.LUNCH, "FY", "Lunch", days[i], this));
+                assignments.add(new Lunch(Assignment.LUNCH, bigDuty.getSemester(), "Lunch", days[i], this));
 
             }
 
@@ -184,7 +217,7 @@ public class Teacher implements Comparable {
                 Period period = getNextEmptyPeriod(day);
 
                 if(period.getValue() != -1) {
-                    Assignment free = new Free(period,"FY", "Free", day, this);
+                    Assignment free = new Free(period, bigDuty.getSemester(), "Free", day, this);
                     assignments.add(free);
                 }
 
@@ -213,26 +246,13 @@ public class Teacher implements Comparable {
         return true;
     }
 
-    public ArrayList<Assignment> getDayAssignments(ArrayList<Assignment> assignments, String day) {
-
-        ArrayList<Assignment> dayAssignments = new ArrayList<>();
-
-        for(Assignment a : assignments) {
-
-            if(a.getDay().equals(day))  dayAssignments.add(a);
-
-        }
-
-        return dayAssignments;
-    }
-
     public boolean dayHasLunchPeriod(String day) {
 
         ArrayList<Assignment> dayAssigments = getDayAssignments(day);
 
         for(Assignment a : dayAssigments) {
 
-            if(a.getPeriod().isLunch()) return true;
+            if(a.getPeriod().isLunch() && a.semesterMatches(bigDuty.getSemester())) return true;
 
         }
 
@@ -270,7 +290,7 @@ public class Teacher implements Comparable {
 
         for(Assignment a : assignments) {
 
-            if(a.getPeriod().getValue() == period.getValue() && a.getDay().equals(day)) return true;
+            if(a.getPeriod().getValue() == period.getValue() && a.getDay().equals(day) && a.semesterMatches(bigDuty.getSemester())) return true;
 
         }
 
@@ -288,7 +308,7 @@ public class Teacher implements Comparable {
         ArrayList<Assignment> daySchedule = new ArrayList<>();
 
         for(Assignment assignment : assignments) {
-            if(assignment.getDay().equals(day)) daySchedule.add(assignment);
+            if(assignment.getDay().equals(day) && assignment.semesterMatches(bigDuty.getSemester())) daySchedule.add(assignment);
         }
 
         return daySchedule;
@@ -297,9 +317,13 @@ public class Teacher implements Comparable {
 
     public Assignment getAssignment(String day, Period period) {
 
-        for(Assignment assignment : assignments)
-            if(assignment.getDay().equals(day) && assignment.getPeriod().equals(period))
+        for(Assignment assignment : assignments) {
+
+//            System.out.println(assignment.getSemester() + ", " + bigDuty.getSemester() + ", " + assignment.semesterMatches(bigDuty.getSemester()));
+
+            if (assignment.getDay().equals(day) && assignment.getPeriod().equals(period) && assignment.semesterMatches(bigDuty.getSemester()))
                 return assignment;
+        }
 
         return null;
     }
@@ -316,7 +340,7 @@ public class Teacher implements Comparable {
 
         for(Assignment assignment : assignments) {
 
-            if(assignment instanceof Free) frees.add((Free) assignment);
+            if(assignment instanceof Free && assignment.semesterMatches(bigDuty.getSemester())) frees.add((Free) assignment);
         }
 
         return frees;
@@ -328,7 +352,7 @@ public class Teacher implements Comparable {
 
         for(Assignment assignment : assignments) {
 
-            if(assignment instanceof Free && !((Free) assignment).isLocked()) frees.add((Free) assignment);
+            if(assignment instanceof Free && !((Free) assignment).isLocked() && assignment.semesterMatches(bigDuty.getSemester())) frees.add((Free) assignment);
         }
 
         return frees;
@@ -361,7 +385,7 @@ public class Teacher implements Comparable {
         ArrayList<Free> frees = new ArrayList<>();
 
         for(Assignment a : getAssignments()) {
-            if(a instanceof Free && a.getPeriod().getValue() != Period.AFTER_SCHOOL_NUM && a.getPeriod().getValue() != Period.P0_NUM) frees.add((Free) a);
+            if(a instanceof Free && a.getPeriod().getValue() != Period.AFTER_SCHOOL_NUM && a.getPeriod().getValue() != Period.P0_NUM && a.semesterMatches(bigDuty.getSemester())) frees.add((Free) a);
         }
 
         return frees;
@@ -373,7 +397,7 @@ public class Teacher implements Comparable {
 
         for(Assignment a : getAssignments()) {
 
-            if(a instanceof Free && a.getPeriod().getValue() != Period.AFTER_SCHOOL_NUM && a.getPeriod().getValue() != Period.P0_NUM && !((Free) a).isLocked()) frees.add((Free)a);
+            if(a instanceof Free && a.getPeriod().getValue() != Period.AFTER_SCHOOL_NUM && a.getPeriod().getValue() != Period.P0_NUM && !((Free) a).isLocked() && a.semesterMatches(bigDuty.getSemester())) frees.add((Free)a);
 
         }
 
@@ -462,7 +486,7 @@ public class Teacher implements Comparable {
         int sum = 0;
 
         for(Assignment a : assignments) {
-            if(a instanceof Duty) sum+=1;
+            if(a instanceof Duty && a.semesterMatches(bigDuty.getSemester())) sum+=1;
         }
 
         return sum;
@@ -502,6 +526,8 @@ public class Teacher implements Comparable {
         int b = getPeriodBefore(assignment).getPeriod().getValue();
 
         if(b == 0 || b == -1) score += -10;
+
+        System.out.println(assignment);
 
         int a = getPeriodAfter(assignment).getPeriod().getValue();
 
@@ -573,7 +599,7 @@ public class Teacher implements Comparable {
 
         for(Assignment a : assignments) {
 
-            if(a instanceof Duty && (((Duty)a).getType() == type)) duties.add((Duty) a);
+            if(a instanceof Duty && (((Duty)a).getType() == type) && a.semesterMatches(bigDuty.getSemester())) duties.add((Duty) a);
 
         }
 
@@ -620,7 +646,7 @@ public class Teacher implements Comparable {
         ArrayList<Duty> duties = new ArrayList<>();
 
         for(Assignment assignment : assignments) {
-            if(assignment instanceof Duty) {
+            if(assignment instanceof Duty && assignment.semesterMatches(bigDuty.getSemester())) {
                 duties.add((Duty) assignment);
             }
         }
@@ -644,7 +670,7 @@ public class Teacher implements Comparable {
 
         for(Assignment a : assignments) {
 
-            if(a instanceof Free) {
+            if(a instanceof Free && a.semesterMatches(bigDuty.getSemester())) {
 
                 ((Free) a).setLocked(true);
 
@@ -656,7 +682,7 @@ public class Teacher implements Comparable {
 
         for(Assignment a : assignments) {
 
-            if(a instanceof Free) {
+            if(a instanceof Free && a.semesterMatches(bigDuty.getSemester())) {
 
                 ((Free) a).setLocked(false);
             }
@@ -687,7 +713,7 @@ public class Teacher implements Comparable {
     private boolean hasDuty(String day)
     {
         for(Assignment a : assignments)
-            if(a.getDay().equals(day) && a instanceof Duty)
+            if(a.getDay().equals(day) && a instanceof Duty && a.semesterMatches(bigDuty.getSemester()))
                 return true;
         return false;
     }
@@ -749,8 +775,6 @@ public class Teacher implements Comparable {
         return Math.sqrt(sum/n);
 
     }
-
-
 
     public int getMeanScore() {
 
@@ -878,7 +902,6 @@ public class Teacher implements Comparable {
 
     public void printAssignments(String day) {
 
-
         for(Assignment assignment : getDayAssignments(day)) {
             System.out.println(assignment.toString());
         }
@@ -894,17 +917,6 @@ public class Teacher implements Comparable {
 
         return n1.compareTo(n2);
     }
-
-//    /**
-//     *
-//     * @param newAssignment the new assignment that is being added
-//     * @param oldAssignment the old assignment that is being removed
-//     */
-//    public void replaceAssignment(Assignment newAssignment, Assignment oldAssignment) {
-//
-//        replaceAssignment(newAssignment);
-//
-//    }
 
     /**
      *
@@ -968,7 +980,14 @@ public class Teacher implements Comparable {
 
     }
 
+    public void setBigDuty(BigDuty bigDuty) {
+
+        this.bigDuty = bigDuty;
 
     }
 
+    public BigDuty getBigDuty() {
+        return bigDuty;
+    }
 
+    }

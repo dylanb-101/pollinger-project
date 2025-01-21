@@ -1,10 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serial;
 
 // Ben Smith
 // Sep 25, 2024
 
 public class CustomPanel extends JPanel {
+
+
+    @Serial
     private static final long serialVersionUID = 1L;
 
 

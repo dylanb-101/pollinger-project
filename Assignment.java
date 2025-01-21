@@ -17,7 +17,7 @@ public abstract class Assignment {
 
 
     private final Period period;
-    private final String semester; // do we really need this?
+    private String semester;
     private final String name;
     private String day;
 
@@ -63,6 +63,14 @@ public abstract class Assignment {
     	this.name = name;
     }
 
+    public Assignment(Assignment assignment, Teacher teacher) {
+        this.period = new Period(assignment.getPeriod());
+        this.semester = assignment.semester;
+        this.name = assignment.getName();
+        this.day = assignment.getDay();
+        this.teacher = teacher;
+    }
+
     public Period getPeriod() {
         return period;
     }
@@ -96,6 +104,14 @@ public abstract class Assignment {
 
     public boolean isDuringSchool() {
         return period.getValue() != Period.P0_NUM && period.getValue() != Period.AFTER_SCHOOL_NUM;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+
+    public boolean semesterMatches(String semester) {
+        return this.semester.equals(semester) || this.semester.equals("FY");
     }
 
     public void setTeacher(Teacher teacher) {

@@ -25,6 +25,10 @@ public class Period implements Comparable {
         this.period = period +"";
     }
 
+    public Period(Period period) {
+        this.period = period.getPeriod();
+    }
+
     /**
      * Makes a period based off the Monday schedule and the day the period is on
      * @param period the period on a monday schedule
@@ -132,6 +136,10 @@ public class Period implements Comparable {
 
     public void setPeriod(String period) {
         this.period = period;
+    }
+
+    public boolean isLastPeriod(String day) {
+        return getValue() == 7 && !day.equals("M") || getValue() == 8 && day.equals("M");
     }
 
 

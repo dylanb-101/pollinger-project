@@ -2,10 +2,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-import javax.swing.BorderFactory;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
@@ -59,7 +58,7 @@ public class PollingerView extends CustomPanel
 
                  JScrollPane scroll = new JScrollPane(table);
 
-                 scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+                 scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
 
                  weekPanels[x].add(scroll);
@@ -107,8 +106,16 @@ public class PollingerView extends CustomPanel
 
                 JTable table = createDylanTable(bd.getTeachersWithDutyInPeriod(new Period(y), dayNames[x]), new Period(y), dayNames[x]);
 
+                JScrollPane scroll = new JScrollPane(table);
 
-                weekPanels[x].add(table);
+                scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//                scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+                scroll.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
+
+
+//                System.out.println(Arrays.toString(scroll.getComponents()));
+
+                weekPanels[x].add(scroll);
 
                 if (x == 0 && y == 4) {
                     weekPanels[x].add(createDylanTable(bd.getTeachersWithDutyInPeriod(new Period("L"), dayNames[x]), new Period("L"), dayNames[x]));

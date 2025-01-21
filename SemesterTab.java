@@ -4,6 +4,8 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class SemesterTab extends JTabbedPane {
@@ -12,6 +14,8 @@ public class SemesterTab extends JTabbedPane {
 
     private ArrayList<CustomPanel> panels;
 
+    public static GUIMain gui;
+
     public SemesterTab(BigDuty bigDuty) {
 
         super();
@@ -19,6 +23,8 @@ public class SemesterTab extends JTabbedPane {
         this.bigDuty = bigDuty;
         this.panels = new ArrayList<>();
         this.bigDuty.setPane(this);
+
+
 
     }
 
@@ -36,7 +42,13 @@ public class SemesterTab extends JTabbedPane {
         for (CustomPanel panel : panels) {
             panel.refreshPanel();
         }
+
     }
 
+    public void keyPressed(KeyEvent e) {
+
+        System.out.println(bigDuty.getSemester());
+
+    }
 
 }

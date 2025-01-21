@@ -18,6 +18,16 @@ public class Course extends Assignment {
         this.room = room;
     }
 
+    public Course(Course course, Teacher teacher) {
+
+        super(course, teacher);
+        this.courseCode = course.courseCode;
+        this.section = course.section;
+        this.department = course.department;
+        this.room = course.room;
+
+    }
+
 	public String getRoom() {
         return room;
     }

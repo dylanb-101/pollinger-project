@@ -9,6 +9,10 @@ public class Lunch extends Assignment {
         super(period, semester, name, day, teacher, false);
     }
 
+    public Lunch(Lunch lunch, Teacher teacher) {
+        super(lunch, teacher);
+    }
+
     @Override
     public String getRoom() {
         return "Lunch";

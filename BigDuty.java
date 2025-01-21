@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.File;
+import java.time.Year;
 import java.util.*;
 
 //Max Nadel
@@ -11,9 +12,9 @@ public class BigDuty
 
 	public static Map<String, String> schedule = new HashMap<>();
 
-	private final ArrayList<Assignment> assignments;
+	private ArrayList<Assignment> assignments;
 
-	private final ArrayList<Teacher> teachers;
+	private ArrayList<Teacher> teachers;
 
 	private static final int PASCACKS_PER_PERIOD = 2;
 	private static final int HALLS_PER_PERIOD = 1;
@@ -43,23 +44,92 @@ public class BigDuty
 
 		System.out.println("Reading in teachers...");
 		this.teachers = teachers;
+
+		for(Teacher teacher : teachers) {
+			teacher.setBigDuty(this);
+		}
+
 		System.out.println("Filling In assignments...");
 		this.assignments = new ArrayList<>();
 
 		readInAssignments();
 		System.out.println("Big Duty has been made!");
 
-		this.pane = gui.makeTeachersTabs(this);
+		this.pane = GUIMain.makeTeachersTabs(this);
 
 
 //		assignDuties();
 	}
 
+	public BigDuty(String semester) {
+		this.semester = semester;
+	}
+
 	public BigDuty(ArrayList<Teacher> teachers, GUIMain gui, String semester) {
 
-		this(teachers, gui);
+		System.out.println("Making Big Duty...");
+
+		schedule.put("M_SCHEDULE", "01234L56789");
+		schedule.put("T_SCHEDULE", "0123L5679");
+		schedule.put("W_SCHEDULE", "0412L8569");
+		schedule.put("R_SCHEDULE", "0341L7859");
+		schedule.put("F_SCHEDULE", "0234L6789");
+
 		this.semester = semester;
 
+		ArrayList<Teacher> deepCopyTeachers = new ArrayList<>();
+
+		for(Teacher teacher : teachers) {
+
+			ArrayList<Assignment> deepCopyAssignments = new ArrayList<>();
+			Teacher deepCopyTeacher = new Teacher(teacher);
+
+
+			for(Assignment assignment : teacher.getAssignments()) {
+
+				Assignment a = null;
+
+				if(assignment instanceof Course) {
+
+					Course c = (Course) assignment;
+
+					a = new Course(c.getName(), c.getCourseCode(), c.getSection(), c.getPeriod().getPeriod(), c.getDay(), semester, c.getRoom(), c.getDepartment(), deepCopyTeacher, false);
+
+				}
+
+				if(assignment instanceof Duty || assignment instanceof Free) {
+
+					a = new Free(assignment.getPeriod(), semester, "Free", assignment.getDay(), deepCopyTeacher);
+				}
+
+				if(assignment instanceof Lunch) {
+
+					Lunch l = (Lunch) assignment;
+
+					a = new Lunch(l.getPeriod().getPeriod(), l.getSemester(), l.getName(), l.getDay(), deepCopyTeacher);
+
+				}
+
+				deepCopyAssignments.add(a);
+
+			}
+
+//			i know this is really weird code bc it does the same thing in the teacher constructor but this fixed a null pointer bug so dont touch it pls
+			deepCopyTeacher.setAssignments(deepCopyAssignments);
+			deepCopyTeachers.add(deepCopyTeacher);
+
+		}
+
+		this.teachers = deepCopyTeachers;
+
+		for(Teacher teacher : this.teachers) {
+			teacher.setBigDuty(this);
+		}
+
+		this.assignments = new ArrayList<>();
+		readInAssignments();
+
+		this.pane = GUIMain.makeTeachersTabs(this);
 
 	}
 
@@ -79,6 +149,11 @@ public class BigDuty
 
 		System.out.println("Reading in teachers...");
 		this.teachers = FileUtility.createTeachers(file);
+
+		for(Teacher teacher : teachers) {
+			teacher.setBigDuty(this);
+		}
+
 		System.out.println("Filling In assignments...");
 		this.assignments = new ArrayList<>();
 
@@ -106,6 +181,9 @@ public class BigDuty
 
 		System.out.println("Reading in teachers...");
 		this.teachers = FileUtility.createTeachers(dataFile);
+		for(Teacher teacher : teachers) {
+			teacher.setBigDuty(this);
+		}
 		System.out.println("Filling In assignments...");
 		this.assignments = new ArrayList<>();
 
@@ -171,7 +249,7 @@ public class BigDuty
 
 		for(Assignment a : assignments) {
 
-			if(a instanceof Duty) {
+			if(a instanceof Duty && a.semesterMatches(semester)) {
 				dutiesToReset.add(a);
 			}
 		}
@@ -294,7 +372,9 @@ public class BigDuty
 
 			while(t.getDuties().size() < 3) {
 
-				String name = (t.getDuties().size() < 2) ? "Paid Coverage" : "Coverage";
+//				String name = (t.getDuties().size() < 2) ? "Paid Coverage" : "Coverage";
+
+				String name = "Coverage";
 
 				Duty d = new Duty(t.getBestFree().getAssignment(), name, "None", DutyType.COVERAGE);
 
@@ -417,8 +497,9 @@ public class BigDuty
 
 		for(int i = 0; i < teachers.size(); i++)
 			for(int k = 0; k < teachers.get(i).getUnlockedFrees().size(); k++)
-				if(teachers.get(i).getUnlockedFrees().get(k).getDay().equals(day) && teachers.get(i).getUnlockedFrees().get(k).getPeriod().equals(period))
+				if(teachers.get(i).getUnlockedFrees().get(k).getDay().equals(day) && teachers.get(i).getUnlockedFrees().get(k).getPeriod().equals(period) && teachers.get(i).getUnlockedFrees().get(k).semesterMatches(semester)) {
 					freeTeachers.add(teachers.get(i));
+				}
 
 		return freeTeachers;
 	}
@@ -451,6 +532,9 @@ public class BigDuty
 	public void readInAssignments() {
 
 		for(Teacher teacher : teachers) {
+
+			teacher.fillInLunchesAndFrees();
+
 
 			assignments.addAll(teacher.getAssignments());
 

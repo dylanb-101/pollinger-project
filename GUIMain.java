@@ -59,11 +59,11 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
     //Panels
     private CustomPanel panel1, panel2, helpPanel, panel3, panel4, teachersPanel, homePanel;
 
-    private JTabbedPane semesterTabs;
+    public JTabbedPane semesterTabs;
 
     private static JFrame frame;
 
-    public static ArrayList<SemesterTab> semesters;
+    public ArrayList<SemesterTab> semesters;
 
 
     public GUIMain() //default constructor
@@ -91,6 +91,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
 
 //       this.add(contents);
 
+        SemesterTab.gui = this;
 
     }
 
@@ -258,7 +259,6 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
         //panel2 #no function yet#
         String panel2HoverMessage = "Shows individual teachers' general information";
         CustomPanel panel2 = new Panel2("Individual Teacher View", new Dimension(WIDTH, HEIGHT), new BorderLayout(), bigDuty, colHeadingsPanel2, numRows, panel2HoverMessage);
-
 //       panel3
         CustomPanel panel3 = new PollingerView("Pollinger View", new Dimension(WIDTH, HEIGHT), bigDuty);
 
@@ -271,7 +271,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
 //       panedTabs.addTab("Panel 4", panel4);
 
         String helpPanelHoverMessage = "\" UHL \" love this help desk!";
-        CustomPanel helpPanel = new helpPanel("Help Panel", new Dimension(WIDTH, HEIGHT), new BorderLayout(), helpPanelHoverMessage);
+        CustomPanel helpPanel = new HelpPanel("Help Panel", new Dimension(WIDTH, HEIGHT), new BorderLayout(), helpPanelHoverMessage);
 
 
         panedTabs.addTab(homePanel.getName(), homePanel);
@@ -419,6 +419,9 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
     public void keyPressed(KeyEvent e) {
 
 //        bigDuty.rankTeacher("Uhl");
+        for(SemesterTab tab : semesters) {
+            tab.keyPressed(e);
+        }
 
     }
 
