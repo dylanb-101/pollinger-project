@@ -41,6 +41,11 @@ public class Duty extends Assignment {
 
     }
 
+    public Duty(Duty duty, Teacher teacher, String semester) {
+        super(duty, teacher);
+        this.room = duty.room;
+    }
+
 
 
     public Duty(String period, String semester, String name, String room, String day, Teacher teacher, boolean adjustPeriod, DutyType type) {

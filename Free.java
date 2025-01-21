@@ -21,6 +21,11 @@ public class Free extends Assignment {
 
     }
 
+    public Free(Free free, Teacher teacher) {
+        super(free, teacher);
+        this.isLocked = free.isLocked;
+    }
+
 
     @Override
     public String getRoom() {

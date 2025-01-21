@@ -9,6 +9,7 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 
 public class HomePanel extends CustomPanel {
@@ -72,13 +73,29 @@ public class HomePanel extends CustomPanel {
 
             if(bigDuty.getSemester().equals("S1")) {
 
-                BigDuty bd = new BigDuty(bigDuty.getTeachers(), null, "S2");
+//                ArrayList<Teacher> teachers = new ArrayList<>(bigDuty.getTeachers());
+//                ArrayList<Teacher> deepCopyTeachers = new ArrayList<>();
+//
+//                for(Teacher t : teachers) {
+//                    Teacher deepCopyTeacher = new Teacher(t);
+//                    deepCopyTeacher.fillFreesInForSemester("S2");
+//                    deepCopyTeachers.add(deepCopyTeacher);
+//
+//                }
 
-                SemesterTab semesterTab = new SemesterTab(bd);
+                ArrayList<Teacher> teachersCopy = new ArrayList<>();
 
-//                semesterTab.addTab("S2", GUIMain.makeTeachersTabs(bd));
+                teachersCopy.addAll(bigDuty.getTeachers());
 
-                GUIMain.semesters.add(semesterTab);
+                BigDuty bd = new BigDuty(teachersCopy, null, "S2");
+
+                SemesterTab semesterTab = GUIMain.makeTeachersTabs(bd);
+
+
+                SemesterTab.gui.getSemesterTabs().add(bd.getSemester(), semesterTab);
+                SemesterTab.gui.semesters.add(semesterTab);
+
+
 
             }
 

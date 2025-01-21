@@ -166,7 +166,9 @@ public class FileUtility {
             String department = tokens[8].substring(1, tokens[8].length() - 1);
             String room = tokens[7].substring(1, tokens[7].length() - 1);
 
-            teachers.add(new Teacher(last, first, department, room));
+            Teacher t = new Teacher(last, first, department, room);
+            t.setBigDuty(new BigDuty("S1"));
+            teachers.add(t);
 
         }
 
@@ -495,6 +497,7 @@ public class FileUtility {
 
                 Teacher t = new Teacher(tokens[1], tokens[2], tokens[3], tokens[4]);
                 t.setSocialCredit(Integer.parseInt(tokens[5]));
+                t.setBigDuty(new BigDuty("S1"));
 
                 teachers.add(t);
 
@@ -506,9 +509,9 @@ public class FileUtility {
                 teachers.get(teachers.size()-1).addAssignment(course);
             }
             if(tokens[0].equals(FREE_INDACATOR)) {
-                teachers.get(teachers.size()-1).addAssignment(new Free(new Period(tokens[1]), tokens[2], tokens[3],
-                        tokens[4], teachers.get(teachers.size()-1)));
-                Free f = (Free) teachers.get(teachers.size()-1).getAssignment(tokens[4], new Period(tokens[1]));
+                Free f = new Free(new Period(tokens[1]), tokens[2], tokens[3],
+                        tokens[4], teachers.get(teachers.size() - 1));
+                teachers.get(teachers.size()-1).addAssignment(f);
 
                 boolean locked = tokens[6].equalsIgnoreCase("true");
 
