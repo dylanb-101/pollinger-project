@@ -1,5 +1,5 @@
 // rollover and update social credit
-// scrollable panel 3 period data
+// scrollable panel 3 period data - DONE
 // add total duties column - DONE
 // colors
 // export as csv/excel
@@ -134,9 +134,41 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
 
         JPanel frame = new JPanel();
 
-        frame.setLayout(new BorderLayout());
+        frame.setLayout(new GridLayout(3, 0));
 
-        JButton loadPolButton = new JButton("Load from .pol");
+
+        JButton loadNewPolButton = new JButton("Load save from .pol");
+
+        loadNewPolButton.addActionListener(e -> {
+            JFileChooser chooser = new JFileChooser();
+
+            FileFilter filter = new FileNameExtensionFilter(".pol", "pol", "csv");
+            chooser.setFileFilter(filter);
+            chooser.showDialog(frame, "Load Save");
+
+            if(chooser.getSelectedFile() != null) {
+
+                ArrayList<BigDuty> duties = FileUtility.createBigDuties(chooser.getSelectedFile(), this);
+
+
+                this.remove(frame);
+
+                Component screen = this.createComponents(duties);
+
+
+                this.add(screen);
+
+                refreshPanels();
+
+
+            }
+
+        });
+
+        frame.add(loadNewPolButton);
+
+
+        JButton loadPolButton = new JButton("Load OLD save from .pol(remove this button before we send to pollinger)");
 
         loadPolButton.addActionListener(e -> {
 
@@ -156,7 +188,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
                 Component screen = this.createComponents(bd);
 
                 this.add(screen);
-                bd.refreshPanels();
+                refreshPanels();
 
             }
 
@@ -197,13 +229,12 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
 
     public void refreshPanels() {
 
-        panel1.refreshPanel();
-        panel2.refreshPanel();
-        panel3.refreshPanel();
-        panel4.refreshPanel();
-        teachersPanel.refreshPanel();
-        helpPanel.refreshPanel();
-        homePanel.refreshPanel();
+        for(SemesterTab tab : semesters) {
+            tab.refreshPanels();
+        }
+
+        repaint();
+        revalidate();
 
     }
 
@@ -222,12 +253,40 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
         semesters.add(panedTabs);
 
         //Initialization
-        semesterTabs.add(panedTabs, "S1");
+        semesterTabs.add(panedTabs, panedTabs.getName());
 
         pane.add(semesterTabs);
 
 
         return pane;
+    }
+
+    public Component createComponents(ArrayList<BigDuty> duties) {
+
+        JPanel pane = new JPanel(new BorderLayout());
+
+        semesterTabs = new JTabbedPane();
+        semesterTabs.setVisible(true);
+        pane.add(semesterTabs);
+
+        for(BigDuty bd : duties) {
+            SemesterTab panedTabs = makeTeachersTabs(bd);
+
+            bd.setPane(panedTabs);
+
+            semesters.add(panedTabs);
+
+            //Initialization
+            semesterTabs.add(panedTabs, panedTabs.getName());
+        }
+
+
+
+        pane.add(semesterTabs);
+
+
+        return pane;
+
     }
 
     public static SemesterTab makeTeachersTabs(BigDuty bigDuty) {
@@ -240,7 +299,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
         int numRows = data.length; //number of rows
 
 
-        SemesterTab panedTabs = new SemesterTab(bigDuty);
+        SemesterTab panedTabs = new SemesterTab(bigDuty, bigDuty.getSemester());
         panedTabs.setVisible(true);
 
 //      panedTabs.setPreferredSize(new Dimension(0, 100));
@@ -255,6 +314,7 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
 
 
         CustomPanel homePanel = new HomePanel("Home Panel", new Dimension(WIDTH, HEIGHT), bigDuty);
+        CustomPanel semesterConfig = new SemesterConfigPanel("Semester Config", new Dimension(WIDTH, HEIGHT), bigDuty);
 
         //panel2 #no function yet#
         String panel2HoverMessage = "Shows individual teachers' general information";
@@ -266,6 +326,8 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
 
         CustomPanel teachersPanel = new TeachersPanel("Teacher View", new Dimension(WIDTH, HEIGHT), bigDuty);
 
+        CustomPanel freePanel = new FreesView("Frees View", new Dimension(WIDTH, HEIGHT), bigDuty);
+
 //         panel 4
 //       panel4 = new Panel4("Panel 4", new Dimension(WIDTH, HEIGHT), bigDuty);
 //       panedTabs.addTab("Panel 4", panel4);
@@ -275,12 +337,14 @@ public class GUIMain extends JPanel implements KeyListener, MouseListener {
 
 
         panedTabs.addTab(homePanel.getName(), homePanel);
+        panedTabs.addTab(semesterConfig.getName(), semesterConfig);
         panedTabs.addTab(panel1.getName(), panel1);
         panedTabs.addTab(panel2.getName(), panel2);
         panedTabs.addTab("Pollinger View", panel3);
 //       panedTabs.addTab("Panel 4", panel4);
         panedTabs.addTab("Teacher View", teachersPanel);
-        panedTabs.addTab(helpPanel.getName(), helpPanel);
+//        panedTabs.addTab(helpPanel.getName(), helpPanel);
+        panedTabs.addTab("Frees View", freePanel);
 
         return panedTabs;
     }

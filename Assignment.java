@@ -118,4 +118,8 @@ public abstract class Assignment {
         this.teacher = teacher;
     }
 
+    public boolean sameTimeAs(Assignment assignment) {
+        return assignment.getPeriod().equals(this.period) && assignment.semesterMatches(this.semester) && assignment.getDay().equals(this.day);
+    }
+
 }

@@ -56,6 +56,16 @@ public class Duty extends Assignment {
 
     }
 
+    public static String getName(DutyType type) {
+        switch (type) {
+            case PASCACK: return "Pascack";
+            case FROSH_PASCACK: return "Frosh Pascack";
+            case HALL: return "Hall";
+            case COVERAGE: return "Coverage";
+            default: return "NONE";
+        }
+    }
+
     @Override
     public String getRoom() {
         return room;
