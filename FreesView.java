@@ -1,18 +1,14 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.ArrayList;
 
 //Benjamin Smith
 //Program Description:
 //Oct 21, 2024
 
-public class PollingerView extends CustomPanel
+public class FreesView extends CustomPanel
 {
    private JScrollPane pane;
    private int numRows;
@@ -20,7 +16,7 @@ public class PollingerView extends CustomPanel
    private String[] column;
    protected BigDuty bd;
 
-   public PollingerView(String panelName, Dimension d, BigDuty bd)
+   public FreesView(String panelName, Dimension d, BigDuty bd)
    {
       super(panelName, d);
       
@@ -54,7 +50,7 @@ public class PollingerView extends CustomPanel
 
              for (int y = 1; y <= ((GridLayout) (weekPanels[x].getLayout())).getRows() - offset; y++) {
 
-                 JTable table = createDylanTable(bd.getTeachersWithDutyInPeriod(new Period(y), dayNames[x]), new Period(y), dayNames[x]);
+                 JTable table = createDylanTable(bd.getTeachersWithFreeInPeriod(new Period(y), dayNames[x]), new Period(y), dayNames[x]);
 
                  JScrollPane scroll = new JScrollPane(table);
 
@@ -64,7 +60,7 @@ public class PollingerView extends CustomPanel
                  weekPanels[x].add(scroll);
 
                  if (x == 0 && y == 4) {
-                     weekPanels[x].add(createDylanTable(bd.getTeachersWithDutyInPeriod(new Period("L"), dayNames[x]), new Period("L"), dayNames[x]));
+                     weekPanels[x].add(createDylanTable(bd.getTeachersWithFreeInPeriod(new Period("L"), dayNames[x]), new Period("L"), dayNames[x]));
                  }
 
 
@@ -104,7 +100,7 @@ public class PollingerView extends CustomPanel
 
             for (int y = 1; y <= ((GridLayout) (weekPanels[x].getLayout())).getRows() - offset; y++) {
 
-                JTable table = createDylanTable(bd.getTeachersWithDutyInPeriod(new Period(y), dayNames[x]), new Period(y), dayNames[x]);
+                JTable table = createDylanTable(bd.getTeachersWithFreeInPeriod(new Period(y), dayNames[x]), new Period(y), dayNames[x]);
 
                 JScrollPane scroll = new JScrollPane(table);
 
@@ -118,7 +114,7 @@ public class PollingerView extends CustomPanel
                 weekPanels[x].add(scroll);
 
                 if (x == 0 && y == 4) {
-                    weekPanels[x].add(createDylanTable(bd.getTeachersWithDutyInPeriod(new Period("L"), dayNames[x]), new Period("L"), dayNames[x]));
+                    weekPanels[x].add(createDylanTable(bd.getTeachersWithFreeInPeriod(new Period("L"), dayNames[x]), new Period("L"), dayNames[x]));
                 }
 
 

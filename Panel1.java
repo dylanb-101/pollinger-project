@@ -45,6 +45,7 @@ public class Panel1 extends CustomPanel
          System.out.println("Smartly Sorted!");
          bigduty.clearDuties();
          bigduty.assignDuties();
+         bigduty.getPane().refreshPanels();
       });
       JButton b2 = new JButton("Clear Duties"); //demo
       b2.addActionListener(e -> {

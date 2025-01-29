@@ -1,6 +1,4 @@
-import javax.swing.*;
 import java.io.File;
-import java.time.Year;
 import java.util.*;
 
 //Max Nadel
@@ -11,6 +9,8 @@ public class BigDuty
 {
 
 	public static Map<String, String> schedule = new HashMap<>();
+
+	private ArrayList<DutySlot> dutySlots = new ArrayList<>();
 
 	private ArrayList<Assignment> assignments;
 
@@ -29,6 +29,8 @@ public class BigDuty
 //	private GUIMain gui;
 
 	private SemesterTab pane;
+
+	private boolean stopRefresh = false;
 
 	public BigDuty(ArrayList<Teacher> teachers, GUIMain gui) {
 		System.out.println("Making Big Duty...");
@@ -83,6 +85,8 @@ public class BigDuty
 
 			ArrayList<Assignment> deepCopyAssignments = new ArrayList<>();
 			Teacher deepCopyTeacher = new Teacher(teacher);
+
+			deepCopyTeacher.setSocialCredit(teacher.getAdjustedSocialCredit());
 
 
 			for(Assignment assignment : teacher.getAssignments()) {
@@ -196,23 +200,149 @@ public class BigDuty
 
 	}
 
+	public BigDuty(ArrayList<Teacher> teachers, String semester) {
+
+		System.out.println("Making Big Duty...");
+
+		schedule.put("M_SCHEDULE", "01234L56789");
+		schedule.put("T_SCHEDULE", "0123L5679");
+		schedule.put("W_SCHEDULE", "0412L8569");
+		schedule.put("R_SCHEDULE", "0341L7859");
+		schedule.put("F_SCHEDULE", "0234L6789");
+
+		this.semester = semester;
+
+		this.teachers = teachers;
+
+		this.assignments = new ArrayList<>();
+
+		for(Teacher teacher : teachers) {
+			teacher.setBigDuty(this);
+			assignments.addAll(teacher.getAssignments());
+		}
+
+
+		System.out.println("Filling In assignments...");
+//		fillInTeacherAssignments();
+
+		System.out.println("Big Duty has been made!");
+
+
+	}
+
 	public void setPane(SemesterTab pane) {
 		this.pane = pane;
 	}
 
 	public void refreshPanels() {
-		pane.refreshPanels();
+
+		if(!stopRefresh) {
+			pane.refreshPanels();
+		}
+
 	}
 
 	public void assignDuties() {
 
-		assignFroshPascacks();
+		stopRefresh = true;
+//
+		assignDutiesOfType(DutyType.FROSH_PASCACK);
+		System.out.println("Done with frosh pascacks!");
 
-		assignHalls();
+		assignDutiesOfType(DutyType.PASCACK);
+		System.out.println("Done with pascacks!");
 
-		assignPascacks();
+		assignDutiesOfType(DutyType.HALL);
+		System.out.println("Done with halls!");
 
-		assignCoverages();
+		assignDutiesOfType(DutyType.COVERAGE);
+		System.out.println("Done with coverages!");
+
+		stopRefresh = false;
+
+
+
+	}
+
+	public ArrayList<Teacher> getTeachersWithFreeInPeriod(Period period, String day) {
+
+		ArrayList<Teacher> teachers = new ArrayList<>();
+
+		for(Assignment a : assignments) {
+
+			if(a instanceof Free && a.getPeriod().equals(period) && a.getDay().equals(day)) {
+				teachers.add(a.getTeacher());
+			}
+
+		}
+
+		return teachers;
+
+	}
+
+	public DutySlot getDutySlot(Period period, String day, DutyType type) {
+		for(DutySlot slot : this.dutySlots) {
+
+			if(slot.equals(new DutySlot(type, period, day, 0))) return slot;
+
+		}
+
+		return null;
+	}
+
+	public ArrayList<Teacher> getUnlockedTeachers() {
+
+		ArrayList<Teacher> unlockedTeachers = new ArrayList<>();
+
+		for(Teacher teacher : teachers) {
+
+			if(!teacher.isLocked()) {
+				unlockedTeachers.add(teacher);
+			}
+
+		}
+
+		return unlockedTeachers;
+
+	}
+
+	public ArrayList<DutySlot> getDutySlots() {
+		return dutySlots;
+	}
+
+	public void addDutySlot(Period period, String day, DutyType type, int amount) {
+		addDutySlot(new DutySlot(type, period, day, amount));
+	}
+
+	public int getNumberOfDutySlots() {
+
+		int num = 0;
+
+		for(DutySlot slot : dutySlots) {
+			num += slot.getAmount();
+		}
+
+		return num;
+
+	}
+
+	public void addDutySlot(DutySlot dutySlot) {
+
+		boolean add = true;
+
+		for(DutySlot slot : dutySlots) {
+
+			if(slot.equals(dutySlot)) {
+
+				slot.setAmount(dutySlot.getAmount());
+				add = false;
+			}
+
+		}
+
+		if(add) {
+			dutySlots.add(dutySlot);
+		}
 
 	}
 
@@ -221,26 +351,74 @@ public class BigDuty
 
 		ArrayList<Duty> duties = new ArrayList<>();
 
-		for(int i = 0; i < schedule.size(); i++) {
+//		for(int i = 0; i < schedule.size(); i++) {
+//
+//			String day = schedule.get(days[i]+"_SCHEDULE");
+//
+//			for(int j = 0; j < FROSH_PASCACK_PERIODS.length; j++) {
+//
+//				int periodIndex = day.indexOf(FROSH_PASCACK_PERIODS[j] + "");
+//
+//				if(periodIndex != 1 && periodIndex > 0 && periodIndex != day.length()-2) {
+//
+//					Duty d = new Duty(new Period(FROSH_PASCACK_PERIODS[j], days[i]), semester, "Freshman Pascack", "NONE", days[i], DutyType.FROSH_PASCACK);
+//
+//					duties.add(d);
+//
+//				}
+//			}
+//		}
 
-			String day = schedule.get(days[i]+"_SCHEDULE");
-
-			for(int j = 0; j < FROSH_PASCACK_PERIODS.length; j++) {
-
-				int periodIndex = day.indexOf(FROSH_PASCACK_PERIODS[j] + "");
-
-				if(periodIndex != 1 && periodIndex > 0 && periodIndex != day.length()-2) {
-
-					Duty d = new Duty(new Period(FROSH_PASCACK_PERIODS[j], days[i]), semester, "Freshman Pascack", "NONE", days[i], DutyType.FROSH_PASCACK);
-
-					duties.add(d);
-
-				}
-			}
+		for(DutySlot slot : dutySlots) {
+			if(slot.getType() == DutyType.FROSH_PASCACK) duties.add(slot.makeEmptyDuty(semester));
 		}
 
 
-		fillInNonCoverageDuties(duties);
+		fillInDuties(duties);
+	}
+
+	public void assignDutiesOfType(DutyType type) {
+
+		ArrayList<Duty> duties = new ArrayList<>();
+
+		for(DutySlot slot : dutySlots) {
+
+			if(slot.getType() == type) {
+
+				for(int i = 0; i < slot.getAmount(); i++) {
+					duties.add(slot.makeEmptyDuty(semester));
+				}
+
+			}
+
+		}
+
+		duties.sort((o1, o2) -> {
+
+			double o1Ratio = (double) getFreeTeachers(o1.getDay(), o1.getPeriod()).size() / getDutiesForPeriod(o1);
+			double o2Ratio = (double) getFreeTeachers(o2.getDay(), o2.getPeriod()).size() / getDutiesForPeriod(o2);
+			System.out.println(o1Ratio + "," + o2Ratio+ ", " + getDutiesForPeriod(o1));
+
+			return (int) ((o1Ratio - o2Ratio) * 1000);
+
+        });
+
+		fillInDuties(duties);
+
+	}
+
+	public int getDutiesForPeriod(Duty duty) {
+
+		int duties = 0;
+
+		for(DutySlot slot : dutySlots) {
+
+			if(slot.getPeriod().equals(duty.getPeriod()) && slot.getDay().equals(duty.getDay())) duties+= slot.getAmount();
+
+		}
+
+		return duties;
+
 	}
 
 	public void clearDuties() {
@@ -254,47 +432,101 @@ public class BigDuty
 			}
 		}
 
+		stopRefresh = true;
+
 		for(Assignment a : dutiesToReset) {
 
 			replaceAssignment(new Free(a));
 
 		}
 
+		stopRefresh = false;
+
 		pane.refreshPanels();
 
 	}
 
-	private void fillInNonCoverageDuties(ArrayList<Duty> duties) {
+	private void fillInDuties(ArrayList<Duty> duties) {
 
 		for(Duty d : duties) {
 
-			Teacher t = getBestTeacher(d);
 
-			int i = 1;
+			fillInDuty(d);
+			System.out.println(d);
+		}
 
-			while(t != null && ((t.getTotalNonCoverages() >= 1 && !allTeachersHaveAtleastOneDuty()) || t.getTotalNonCoverages() >= 2 && allTeachersHaveAtleastOneDuty())) {
+	}
 
-				t = getBestTeacher(d, i++);
+	public void fillInDuty(Duty duty) {
 
-			}
+		Teacher t = getBestTeacher(duty);
 
-			if(t == null) {
+		int i = 0;
 
-				i = 0;
+		while(t != null && ((t.getTotalNonCoverages() >= 1 && !allTeachersHaveAtleastOneDuty()) || t.getTotalNonCoverages() >= 2 && allTeachersHaveAtleastOneDuty())
+		&& t.getDuties().size() >= 3) {
 
-				t = getBestTeacher(d, i++);
+			System.out.println("hi im in the first loop" + t.getName());
 
-				while(t.getTotalNonCoverages() >= 2) {
+			t = getBestTeacher(duty, i++);
 
-					t = getBestTeacher(d, i++);
+		}
 
+		if(t == null) {
+
+			i = 0;
+
+
+            do {
+
+				System.out.println("hi im in the second loop");
+
+                t = getBestTeacher(duty, i++);
+
+				if(t == null) {
+
+					t = getBestTeacher(duty);
+
+					Duty oldDuty = t.getBestDutyToReplace(duty);
+
+					fillInDuty(oldDuty);
+
+					replaceAssignment(new Free(oldDuty.getPeriod(), semester, "Free", oldDuty.getDay(), t));
+					break;
 				}
 
-			}
+            } while (t.getTotalNonCoverages() >= 2);
 
-			d.setTeacher(t);
-			replaceAssignment(d);
+
+
 		}
+
+		if(t.getDuties().size() == t.getMaxDuties()) {
+
+			Duty oldDuty = t.getBestDutyToReplace(duty);
+
+			fillInDuty(oldDuty);
+
+			replaceAssignment(new Free(oldDuty.getPeriod(), semester, "Free", oldDuty.getDay(), t));
+
+		}
+
+		duty.setTeacher(t);
+		replaceAssignment(duty);
+
+
+	}
+
+	public String dutySlotsToSaveString() {
+
+		String str = "";
+
+		for(DutySlot slot : dutySlots) {
+			str += slot.toSaveString() + ";";
+		}
+
+		return str;
+
 	}
 
 	public boolean allTeachersHaveAtleastOneDuty() {
@@ -341,7 +573,7 @@ public class BigDuty
 			}
 		}
 
-		fillInNonCoverageDuties(duties);
+		fillInDuties(duties);
 
 	}
 
@@ -361,11 +593,31 @@ public class BigDuty
 			}
 		}
 
-		fillInNonCoverageDuties(duties);
+		fillInDuties(duties);
 
 	}
 
 	public void assignCoverages() {
+
+		ArrayList<Duty> duties = new ArrayList<>();
+
+		for(int d = 0; d < days.length; d++) {
+
+			String day = days[d];
+
+			for(int p = 1; p <= 8; p++) {
+
+				if(!day.equals("M") && (p == 4 || p == 8)) continue;
+
+				for(int i = 0; i < 2; i++) duties.add(new Duty(new Period(p), semester, "Coverage", "None", day, DutyType.COVERAGE));
+			}
+		}
+
+		fillInDuties(duties);
+
+	}
+
+	public void fillInExtraCoverages() {
 
 
 		for(Teacher t : getTeachersWithOpenDuties()) {
@@ -380,7 +632,7 @@ public class BigDuty
 
 				int i = 0;
 
-				while(numberOfCoveragesInPeriod(d) > 4) {
+				while(numberOfCoveragesInPeriod(d) > 2) {
 
 					if(t.getBestFree(i) == null) {
 
@@ -398,6 +650,8 @@ public class BigDuty
 			}
 
 		}
+
+		refreshPanels();
 
 	}
 
@@ -611,6 +865,8 @@ public class BigDuty
 		assignments.add(assignment);
 		t.addAssignment(assignment);
 
+		refreshPanels();
+
 
 	}
 
@@ -648,4 +904,9 @@ public class BigDuty
 	public String getSemester() {
 		return semester;
 	}
+
+	public SemesterTab getPane() {
+		return pane;
+	}
+
 }

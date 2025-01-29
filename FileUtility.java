@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.time.Year;
@@ -24,6 +23,136 @@ public class FileUtility {
 //
 //
 //        System.out.println("Done!");
+
+
+    private static String TEACHER_INDICATOR = "*";
+    private static String SEMESTER_INDICATOR = "^";
+
+    private static String COURSE_INDICATOR = "#";
+    private static String FREE_INDICATOR = "$";
+    private static String DUTY_INDICATOR = "@";
+    private static String LUNCH_INDICATOR = "&";
+
+    public static ArrayList<BigDuty> createBigDuties(File file, GUIMain gui) {
+        ArrayList<BigDuty> semesters = new ArrayList<>();
+
+        ArrayList<String> data = readData(file);
+
+        int i = 0;
+
+        while(i < data.size()) {
+
+            String line = data.get(i);
+
+            if(line.charAt(0) == SEMESTER_INDICATOR.charAt(0)) {
+
+                ArrayList<Teacher> teachers = new ArrayList<>();
+
+                ArrayList<DutySlot> slots = new ArrayList<>();
+
+                for(int m = 0; m < line.split(",")[2].split(";").length; m++) {
+
+                    String[] parts = line.split(",")[2].split(";")[m].split("\\|");
+
+                    DutyType type = DutyType.valueOf(parts[0]);
+                    Period p = new Period(parts[1]);
+                    String day  = parts[2];
+                    int number = Integer.parseInt(parts[3]);
+
+                    slots.add(new DutySlot(type, p, day, number));
+
+                }
+
+                int j = i+1;
+
+                System.out.println("heyy");
+                while(j < data.size() && data.get(j).charAt(0) != SEMESTER_INDICATOR.charAt(0)) {
+
+                    String[] tokens = data.get(j).split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+
+                    if(tokens[0].equals(TEACHER_INDICATOR)) {
+
+                        Teacher t = new Teacher(tokens[1], tokens[2], tokens[3], tokens[4]);
+                        t.setSocialCredit(Integer.parseInt(tokens[5]));
+
+                        try {
+                            t.setMaxDuties(Integer.parseInt(tokens[6]));
+
+                        } catch (Exception e) {
+                            System.out.println("ERROR READING IN TEACHER DATA SOME DATA WILL BE MISSING BECAUSE OF OLD FILE FORMAT");
+                        }
+                        t.setBigDuty(new BigDuty(line.split(",")[1]));
+
+                        teachers.add(t);
+
+                    }
+                    if (tokens[0].equals(COURSE_INDICATOR)) {
+
+                        Course course = new Course(tokens[1], tokens[2], Integer.parseInt(tokens[3]), tokens[4], tokens[5],
+                                tokens[6], tokens[7], tokens[8], teachers.get(teachers.size() - 1), false);
+
+                        teachers.get(teachers.size() - 1).addAssignment(course);
+                    }
+                    if (tokens[0].equals(FREE_INDICATOR)) {
+                        Free f = new Free(new Period(tokens[1]), tokens[2], tokens[3],
+                                tokens[4], teachers.get(teachers.size() - 1));
+                        teachers.get(teachers.size() - 1).addAssignment(f);
+
+                        boolean locked = tokens[6].equalsIgnoreCase(" true");
+                        System.out.println(tokens[6]);
+
+                        f.setLocked(locked);
+                    }
+                    if (tokens[0].equals(DUTY_INDICATOR)) {
+                        Duty a = new Duty(tokens[1], tokens[2], tokens[3], tokens[4],
+                                tokens[5], teachers.get(teachers.size() - 1), false);
+
+                        if (tokens[7].equals("PASCACK")) {
+                            a.setType(DutyType.PASCACK);
+                        } else if (tokens[7].equals("COVERAGE")) {
+                            a.setType(DutyType.COVERAGE);
+                        } else if (tokens[7].equals("FROSH_PASCACK")) {
+                            a.setType(DutyType.FROSH_PASCACK);
+                        } else if (tokens[7].equals("HALL")) {
+                            a.setType(DutyType.HALL);
+                        } else if (tokens[7].equals("UNASSIGNED")) {
+                            a.setType(DutyType.UNASSIGNED);
+                        }
+
+
+                        teachers.get(teachers.size() - 1).addAssignment(a);
+                    }
+                    if (tokens[0].equals(LUNCH_INDICATOR)) {
+                        teachers.get(teachers.size() - 1).addAssignment(new Lunch(tokens[1], tokens[2], tokens[3], tokens[4], teachers.get(teachers.size() - 1)));
+                    }
+
+
+                    j++;
+
+                }
+
+                BigDuty duty = new BigDuty(teachers, line.split(",")[1]);
+
+                for(DutySlot d : slots) {
+                    duty.addDutySlot(d);
+                }
+
+
+                semesters.add(duty);
+
+                i = j;
+
+
+
+            }
+
+        }
+
+        return semesters;
+
+
+
+    }
 
     public static ArrayList<Teacher> createTeachers(File file) {
 
@@ -148,7 +277,9 @@ public class FileUtility {
 
         ArrayList<Teacher> teachers = new ArrayList<>();
 
-        if (tokens[9].length() == 2)
+        System.out.print(Arrays.toString(tokens));
+
+        if(tokens[9].length() == 2)
             return teachers;
 
         String[] teacherStrings = tokens[9].split(";");
@@ -202,81 +333,79 @@ public class FileUtility {
      */
 
 
-    //saving data
-    public static void saveData(ArrayList<Teacher> teachers)
+    // saving data
+    public static void saveData(GUIMain gui)
     {
     	//saving all the data, append being false as it clears the file so there is no conflict
     	try (FileWriter writer = new FileWriter("src/saveData.csv", false))
     	{
 
     		//fail safe making sure there are items to save
-            if(teachers.size() == 0) {
-            	System.out.println("no teachers in list");
+            if(gui.semesters.size() == 0) {
+            	System.out.println("no semesters in list");
             	return;
             }
 
 
             //variable indicators
-            String TEACHER_INDACATOR = "*";
-
-            String COURSE_INDACATOR = "#";
-            String FREE_INDACATOR = "$";
-            String DUTY_INDACATOR = "@";
-            String LUNCH_INDACATOR = "&";
-
-            for(Teacher t : teachers)
-            {
-
-            	writer.write(TEACHER_INDACATOR + "," + t.getLastName() + "," + t.getFirstName() + "," +
-            				 t.getDepartment() + "," + t.getRoom() + "," + t.getSocialCredit() + "\n");
-
-                int i = 0;
-            	for(Assignment a : t.getAssignments())
-            	{
-            		String preciseAssingmentToString = "ERROR! PLEASE SEND FOR HELP!";
-
-                    i++;
 
 
-            		//finding the type and setting what to print
-            		if(a instanceof Course) {
-            			Course c = (Course) a;
+
+            for(SemesterTab semester : gui.semesters) {
+
+                writer.write(SEMESTER_INDICATOR + "," + semester.getName() + "," + semester.getBigDuty().dutySlotsToSaveString() + "\n");
+
+                for (Teacher t : semester.getBigDuty().getTeachers()) {
+
+                    writer.write(TEACHER_INDICATOR + "," + t.getLastName() + "," + t.getFirstName() + "," +
+                            t.getDepartment() + "," + t.getRoom() + "," + t.getSocialCredit() + "," + t.getMaxDuties() + "\n");
+
+                    int i = 0;
+                    for (Assignment a : t.getAssignments()) {
+                        String preciseAssingmentToString = "ERROR! PLEASE SEND FOR HELP!";
+
+                        i++;
+
+
+                        //finding the type and setting what to print
+                        if (a instanceof Course) {
+                            Course c = (Course) a;
 //            			preciseAssingmentToString = "Course: " + c.toString();
-            			preciseAssingmentToString =  COURSE_INDACATOR + "," + c.getName() + "," + c.getCourseCode() + "," + c.getSection() +
-            										 "," + c.getPeriod().getPeriod() + "," + c.getDay() + "," + c.getSemester()
-    												 + "," + c.getRoom() + "," + c.getDepartment() + "," + c.getTeacher().getName();
-            		}
+                            preciseAssingmentToString = COURSE_INDICATOR + "," + c.getName() + "," + c.getCourseCode() + "," + c.getSection() +
+                                    "," + c.getPeriod().getPeriod() + "," + c.getDay() + "," + c.getSemester()
+                                    + "," + c.getRoom() + "," + c.getDepartment() + "," + c.getTeacher().getName();
+                        }
 
-            		if(a instanceof Free) {
-            			Free c = (Free) a;
+                        if (a instanceof Free) {
+                            Free c = (Free) a;
 //            			preciseAssingmentToString = "Free: " + c.toString();
-            			preciseAssingmentToString =  FREE_INDACATOR + "," + c.getPeriod().getPeriod() +
-            										 "," + c.getSemester() + "," + c.getName() + "," + c.getDay()
-            										 + "," + c.getTeacher().getName() + ", " + c.isLocked();
-            		}
+                            preciseAssingmentToString = FREE_INDICATOR + "," + c.getPeriod().getPeriod() +
+                                    "," + c.getSemester() + "," + c.getName() + "," + c.getDay()
+                                    + "," + c.getTeacher().getName() + ", " + c.isLocked();
+                        }
 
-            		if(a instanceof Duty) {
-            			Duty c = (Duty) a;
+                        if (a instanceof Duty) {
+                            Duty c = (Duty) a;
 //            			preciseAssingmentToString = "Duty: " + c.toString();
-            			preciseAssingmentToString =  DUTY_INDACATOR + "," + c.getPeriod().getPeriod() +
-            										 "," + c.getSemester() + "," + c.getName() + "," + c.getRoom()
-            										 + "," + c.getDay() + "," + c.getTeacher().getName() + "," + c.getType().name();
-            		}
+                            preciseAssingmentToString = DUTY_INDICATOR + "," + c.getPeriod().getPeriod() +
+                                    "," + c.getSemester() + "," + c.getName() + "," + c.getRoom()
+                                    + "," + c.getDay() + "," + c.getTeacher().getName() + "," + c.getType().name();
+                        }
 
-            		if(a instanceof Lunch) {
-            			Lunch c = (Lunch) a;
+                        if (a instanceof Lunch) {
+                            Lunch c = (Lunch) a;
 //            			preciseAssingmentToString = "Duty: " + c.toString();
-            			preciseAssingmentToString =  LUNCH_INDACATOR + "," + c.getPeriod().getPeriod() +
-            					"," + c.getSemester() + "," + c.getName()
-            					+ "," + c.getDay() + "," + c.getTeacher().getName();
-            		}
+                            preciseAssingmentToString = LUNCH_INDICATOR + "," + c.getPeriod().getPeriod() +
+                                    "," + c.getSemester() + "," + c.getName()
+                                    + "," + c.getDay() + "," + c.getTeacher().getName();
+                        }
 
 
+                        //printing the data onto the save file
+                        writer.write(preciseAssingmentToString + "\n");
+                    }
 
-            		//printing the data onto the save file
-            		writer.write(preciseAssingmentToString + "\n");
-            	}
-
+                }
             }
         }
     	catch (IOException e)
@@ -426,16 +555,16 @@ public class FileUtility {
 //        System.out.println("File copied successfully to your desktop!");
     }
 
-    public static void downloadCurrentSchedule(ArrayList<Teacher> teachers)
+    public static void downloadCurrentSchedule(GUIMain gui)
     {
         //saving a new set of data
-        saveData(teachers);
+        saveData(gui);
     	download();
     }
 
-    public static void downloadCurrentSchedule(ArrayList<Teacher> teachers, File file) {
+    public static void downloadCurrentSchedule(GUIMain gui, File file) {
 
-        saveData(teachers);
+        saveData(gui);
         download(file);
 
     }

@@ -19,6 +19,8 @@ public class TeachersPanel extends CustomPanel {
 
     private CustomPanel schedule;
 
+    private JPanel sidebarContainer;
+
     public TeachersPanel(String panelName, Dimension d, BigDuty bigDuty) {
         super(panelName, d);
 
@@ -39,7 +41,7 @@ public class TeachersPanel extends CustomPanel {
 
 //        teacher sidebar
 
-        JPanel sidebarContainer = new JPanel(new GridBagLayout());
+        sidebarContainer = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -51,7 +53,21 @@ public class TeachersPanel extends CustomPanel {
             JButton button = new JButton();
 
             button.setText(t.getName());
-            button.addActionListener(e -> updateScheduleDisplay(t));
+            button.addActionListener(e -> {
+                updateScheduleDisplay(t);
+
+                for(Component c : sidebarContainer.getComponents()) {
+
+                    if(c instanceof JButton) {
+                        c.setForeground(Color.BLACK);
+                    }
+
+                }
+
+                button.setForeground(Color.RED);
+
+
+            });
 
             button.setComponentPopupMenu(new TeacherPopUp(t, bigDuty, this));
 
@@ -59,6 +75,8 @@ public class TeachersPanel extends CustomPanel {
             gbc.gridy++;
 
         }
+
+        sidebarContainer.getComponent(0).setForeground(Color.RED);
 
         JScrollPane sideBar = new JScrollPane(sidebarContainer);
 
@@ -86,7 +104,16 @@ public class TeachersPanel extends CustomPanel {
 
         JComponent menu = null;
         if (assignment != null) {
-            menu = new JLabel(assignment instanceof Free ? String.valueOf(activeTeacher.scoreAssignment(assignment)) : assignment.getName());
+
+            String text = assignment.getName();
+
+            if(assignment instanceof Free && !((Free) assignment).isLocked()) {
+                text = "<html>Free <br>" + activeTeacher.scoreAssignment(assignment) + "</html>";
+            } else if(assignment instanceof Free && ((Free) assignment).isLocked()) {
+                text = "<html> <font color=#0000ff>Locked Free</font></html>";
+            }
+
+            menu = new JLabel(text);
         } else {
             menu = new JLabel("No assignment found");
         }
@@ -105,6 +132,20 @@ public class TeachersPanel extends CustomPanel {
 
     public void refreshPanel() {
         updateScheduleDisplay(activeTeacher);
+
+//        for(int i = 0; i < sidebarContainer.getComponents().length; i++) {
+//
+//            Component c  = sidebarContainer.getComponents()[i];
+//
+//            if(c instanceof JButton && c.getForeground() != Color.RED && bigDuty.getTeacher(i).isLocked()) {
+//                c.setForeground(Color.BLUE);
+//            } else if(c instanceof JButton && c.getForeground() != Color.RED) {
+//                c.setForeground(Color.BLACK);
+//            }
+//
+//        }
+
+        super.refreshPanel();
     }
 
     public void updateScheduleDisplay(Teacher teacher) {

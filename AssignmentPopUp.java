@@ -23,6 +23,7 @@ public class AssignmentPopUp extends JPopupMenu {
         addAssignDuty();
         addRemoveDuty();
 
+
     }
 
     public void addLockingFree() {
@@ -44,6 +45,9 @@ public class AssignmentPopUp extends JPopupMenu {
 
                 if(((Free) assignment).isLocked()) item.setText("Unlock Free");
                 else item.setText("Lock Free");
+
+                bigDuty.refreshPanels();
+
 
             });
 
@@ -75,6 +79,8 @@ public class AssignmentPopUp extends JPopupMenu {
             Duty duty = new Duty(assignment, "Pascack", "Caf", DutyType.PASCACK);
 
             replaceAssignment(duty);
+
+
         });
         menu.add(pascack);
 
@@ -89,11 +95,25 @@ public class AssignmentPopUp extends JPopupMenu {
         froshPascack.addActionListener(e -> {
             Duty duty = new Duty(assignment, Duty.FROSH_PASCACK, "Caf", DutyType.FROSH_PASCACK);
 
-            replaceAssignment(duty);
+            if(assignment.getTeacher().getDuties().size() >= assignment.getTeacher().getMaxDuties() && !(assignment instanceof Duty)) {
+                int n = JOptionPane.showConfirmDialog(this, "Your about to assign another duty to a teacher that already has their max number of duties! You need to increase their max duties in the Home Panel!", "Teacher at Max Duties!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+
+                if(n == 0) {
+                    bigDuty.getPane().setSelectedIndex(0);
+                    bigDuty.refreshPanels();
+                }
+
+            } else {
+                replaceAssignment(duty);
+            }
+
+
+
         });
         menu.add(froshPascack);
 
         this.add(menu);
+
 
     }
 
@@ -110,6 +130,7 @@ public class AssignmentPopUp extends JPopupMenu {
         });
         this.add(removeDuty);
 
+
     }
 
     public void replaceAssignment(Assignment assignment) {
@@ -119,6 +140,7 @@ public class AssignmentPopUp extends JPopupMenu {
         this.assignment = assignment;
 
         parent.updateScheduleDisplay(assignment.getTeacher());
+
 
     }
 

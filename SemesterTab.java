@@ -16,13 +16,16 @@ public class SemesterTab extends JTabbedPane {
 
     public static GUIMain gui;
 
-    public SemesterTab(BigDuty bigDuty) {
+    private String name;
 
-        super();
+    public SemesterTab(BigDuty bigDuty, String name) {
+
 
         this.bigDuty = bigDuty;
         this.panels = new ArrayList<>();
         this.bigDuty.setPane(this);
+        this.name = name;
+
 
 
 
@@ -49,6 +52,14 @@ public class SemesterTab extends JTabbedPane {
 
         System.out.println(bigDuty.getSemester());
 
+    }
+
+    public BigDuty getBigDuty() {
+        return bigDuty;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }

@@ -1,5 +1,5 @@
 ^,S1,PASCACK|1|M|1;FROSH_PASCACK|1|M|0;HALL|1|M|1;COVERAGE|1|M|3;PASCACK|2|M|2;FROSH_PASCACK|2|M|0;HALL|2|M|1;COVERAGE|2|M|3;PASCACK|3|M|2;FROSH_PASCACK|3|M|0;HALL|3|M|1;COVERAGE|3|M|3;PASCACK|4|M|2;FROSH_PASCACK|4|M|1;HALL|4|M|1;COVERAGE|4|M|3;PASCACK|5|M|2;FROSH_PASCACK|5|M|0;HALL|5|M|1;COVERAGE|5|M|3;PASCACK|6|M|2;FROSH_PASCACK|6|M|0;HALL|6|M|1;COVERAGE|6|M|3;PASCACK|7|M|2;FROSH_PASCACK|7|M|0;HALL|7|M|1;COVERAGE|7|M|3;PASCACK|8|M|2;FROSH_PASCACK|8|M|0;HALL|8|M|1;COVERAGE|8|M|3;PASCACK|1|T|1;FROSH_PASCACK|1|T|2;HALL|1|T|1;COVERAGE|1|T|3;PASCACK|2|T|2;FROSH_PASCACK|2|T|0;HALL|2|T|1;COVERAGE|2|T|3;PASCACK|3|T|2;FROSH_PASCACK|3|T|0;HALL|3|T|1;COVERAGE|3|T|3;PASCACK|5|T|2;FROSH_PASCACK|5|T|0;HALL|5|T|1;COVERAGE|5|T|3;PASCACK|6|T|2;FROSH_PASCACK|6|T|0;HALL|6|T|1;COVERAGE|6|T|3;PASCACK|7|T|2;FROSH_PASCACK|7|T|0;HALL|7|T|1;COVERAGE|7|T|3;PASCACK|1|W|1;FROSH_PASCACK|1|W|0;HALL|1|W|1;COVERAGE|1|W|3;PASCACK|2|W|2;FROSH_PASCACK|2|W|0;HALL|2|W|1;COVERAGE|2|W|3;PASCACK|3|W|2;FROSH_PASCACK|3|W|0;HALL|3|W|1;COVERAGE|3|W|3;PASCACK|5|W|2;FROSH_PASCACK|5|W|0;HALL|5|W|1;COVERAGE|5|W|3;PASCACK|6|W|2;FROSH_PASCACK|6|W|0;HALL|6|W|1;COVERAGE|6|W|3;PASCACK|7|W|2;FROSH_PASCACK|7|W|0;HALL|7|W|1;COVERAGE|7|W|3;PASCACK|1|R|1;FROSH_PASCACK|1|R|0;HALL|1|R|1;COVERAGE|1|R|3;PASCACK|2|R|2;FROSH_PASCACK|2|R|0;HALL|2|R|1;COVERAGE|2|R|3;PASCACK|3|R|2;FROSH_PASCACK|3|R|0;HALL|3|R|1;COVERAGE|3|R|3;PASCACK|5|R|2;FROSH_PASCACK|5|R|0;HALL|5|R|1;COVERAGE|5|R|3;PASCACK|6|R|2;FROSH_PASCACK|6|R|0;HALL|6|R|1;COVERAGE|6|R|3;PASCACK|7|R|2;FROSH_PASCACK|7|R|0;HALL|7|R|1;COVERAGE|7|R|3;PASCACK|1|F|1;FROSH_PASCACK|1|F|0;HALL|1|F|1;COVERAGE|1|F|3;PASCACK|2|F|2;FROSH_PASCACK|2|F|0;HALL|2|F|1;COVERAGE|2|F|3;PASCACK|3|F|2;FROSH_PASCACK|3|F|0;HALL|3|F|1;COVERAGE|3|F|3;PASCACK|5|F|2;FROSH_PASCACK|5|F|0;HALL|5|F|1;COVERAGE|5|F|3;PASCACK|6|F|2;FROSH_PASCACK|6|F|0;HALL|6|F|1;COVERAGE|6|F|3;PASCACK|7|F|2;FROSH_PASCACK|7|F|0;HALL|7|F|1;COVERAGE|7|F|3;
-*,Abahazy, Julia,SCIE,141,0,3
+*,Abahazy, Julia,SCIE,141,0
 #,Physics,SC3400,3,2,M,FY,141,SCIE, Julia Abahazy
 #,Physics,SC3400,3,2,T,FY,141,SCIE, Julia Abahazy
 #,Physics,SC3400,3,3,W,FY,141,SCIE, Julia Abahazy
@@ -47,7 +47,7 @@ $,9,FY,Free,F, Julia Abahazy, false
 @,1,S1,Pascack,Caf,T, Julia Abahazy,PASCACK
 @,1,FY,Paid Coverage,None,M, Julia Abahazy,COVERAGE
 @,3,FY,Coverage,None,R, Julia Abahazy,COVERAGE
-*,Adams, Anastasia,SPEC,130,0,3
+*,Adams, Anastasia,SPEC,130,0
 #,Study Skills 9-12,CC8143,1,1,M,FY,130,SPEC, Anastasia Adams
 #,Study Skills 9-12,CC8143,1,1,T,FY,130,SPEC, Anastasia Adams
 #,Study Skills 9-12,CC8143,1,2,W,FY,130,SPEC, Anastasia Adams
@@ -95,7 +95,7 @@ $,9,FY,Free,F, Anastasia Adams, false
 @,1,S1,Hall,Hall,F, Anastasia Adams,HALL
 @,2,FY,Paid Coverage,None,M, Anastasia Adams,COVERAGE
 @,2,FY,Coverage,None,T, Anastasia Adams,COVERAGE
-*,Alexander, Brooks W,ENG,222,0,3
+*,Alexander, Brooks W,ENG,222,0
 #,American Studies,CC5401,1,1,M,FY,222,ENG, Brooks W Alexander
 #,American Studies,CC5401,1,1,T,FY,222,ENG, Brooks W Alexander
 #,American Studies,CC5401,1,2,W,FY,222,ENG, Brooks W Alexander
@@ -147,7 +147,7 @@ $,4,S1,Free,M, Brooks W Alexander, false
 $,1,S1,Free,W, Brooks W Alexander, false
 $,2,S1,Free,R, Brooks W Alexander, false
 $,3,S1,Free,F, Brooks W Alexander, false
-*,Aliprantis, Anthony J,PEHL,GYM,0,3
+*,Aliprantis, Anthony J,PEHL,GYM,0
 #,Physical Education/Health 9,PE1050,4,6,M,FY,GYM,PEHL, Anthony J Aliprantis
 #,Physical Education/Health 9,PE1050,4,6,T,FY,GYM,PEHL, Anthony J Aliprantis
 #,Physical Education/Health 9,PE1050,4,7,W,FY,GYM,PEHL, Anthony J Aliprantis
@@ -195,7 +195,7 @@ $,9,FY,Free,F, Anthony J Aliprantis, false
 @,7,S1,Pascack,Caf,M, Anthony J Aliprantis,PASCACK
 @,6,FY,Paid Coverage,None,R, Anthony J Aliprantis,COVERAGE
 @,6,FY,Coverage,None,F, Anthony J Aliprantis,COVERAGE
-*,Amato, Dana,PEHL,GYM,0,3
+*,Amato, Dana,PEHL,GYM,0
 #,Physical Education/Health 11,PE3050,9,1,M,FY,GYM,PEHL, Dana Amato
 #,Physical Education/Health 11,PE3050,9,1,T,FY,GYM,PEHL, Dana Amato
 #,Physical Education/Health 11,PE3050,9,2,W,FY,GYM,PEHL, Dana Amato
@@ -243,7 +243,7 @@ $,9,FY,Free,F, Dana Amato, false
 @,6,S1,Hall,Hall,W, Dana Amato,HALL
 @,6,FY,Paid Coverage,None,M, Dana Amato,COVERAGE
 @,6,FY,Coverage,None,T, Dana Amato,COVERAGE
-*,Apanosian, Vani,SPEC,228,0,3
+*,Apanosian, Vani,SPEC,228,0
 #,RISE Study Skills,CC8145,1,5,M,FY,228,SPEC, Vani Apanosian
 #,RISE Study Skills,CC8145,1,5,T,FY,228,SPEC, Vani Apanosian
 #,RISE Study Skills,CC8145,1,6,W,FY,228,SPEC, Vani Apanosian
@@ -291,7 +291,7 @@ $,9,FY,Free,F, Vani Apanosian, false
 @,2,S1,Pascack,Caf,T, Vani Apanosian,PASCACK
 @,1,FY,Paid Coverage,None,F, Vani Apanosian,COVERAGE
 @,3,FY,Coverage,None,W, Vani Apanosian,COVERAGE
-*,Bruh, Mathew S,PEHL,GYM,0,3
+*,Bruh, Mathew S,PEHL,GYM,0
 #,Physical Education/Health 9,PE1050,10,8,M,FY,GYM,PEHL, Mathew S Bruh
 #,Physical Education/Health 9,PE1050,10,5,W,FY,GYM,PEHL, Mathew S Bruh
 #,Physical Education/Health 9,PE1050,10,6,R,FY,GYM,PEHL, Mathew S Bruh
@@ -339,7 +339,7 @@ $,9,FY,Free,F, Mathew S Bruh, false
 @,2,S1,Freshman Pascack,NONE,R, Mathew S Bruh,FROSH_PASCACK
 @,2,S1,Pascack,Caf,F, Mathew S Bruh,PASCACK
 @,3,FY,Coverage,None,M, Mathew S Bruh,COVERAGE
-*,Bucco, David A,ENG,130,0,3
+*,Bucco, David A,ENG,130,0
 #,Honors English II,EN2600,1,5,M,FY,130,ENG, David A Bucco
 #,Honors English II,EN2600,1,5,T,FY,130,ENG, David A Bucco
 #,Honors English II,EN2600,1,6,W,FY,130,ENG, David A Bucco
@@ -387,7 +387,7 @@ $,9,FY,Free,F, David A Bucco, false
 @,4,S1,Hall,Hall,M, David A Bucco,HALL
 @,5,S1,Pascack,Caf,F, David A Bucco,PASCACK
 @,2,FY,Coverage,None,R, David A Bucco,COVERAGE
-*,Caminiti, Kimberly,MATH,244,0,3
+*,Caminiti, Kimberly,MATH,244,0
 #,Algebra I,MA2300,2,5,M,FY,244,MATH, Kimberly Caminiti
 #,Algebra I,MA2300,2,5,T,FY,244,MATH, Kimberly Caminiti
 #,Algebra I,MA2300,2,6,W,FY,244,MATH, Kimberly Caminiti
@@ -435,7 +435,7 @@ $,9,FY,Free,F, Kimberly Caminiti, false
 @,1,S1,Hall,Hall,W, Kimberly Caminiti,HALL
 @,2,FY,Paid Coverage,None,R, Kimberly Caminiti,COVERAGE
 @,1,FY,Coverage,None,M, Kimberly Caminiti,COVERAGE
-*,Cleary, James J,SOST,225,0,3
+*,Cleary, James J,SOST,225,0
 #,World History,SS1400,5,1,M,FY,225,SOST, James J Cleary
 #,World History,SS1400,5,1,T,FY,225,SOST, James J Cleary
 #,World History,SS1400,5,2,W,FY,225,SOST, James J Cleary
@@ -483,7 +483,7 @@ $,9,FY,Free,F, James J Cleary, false
 @,3,S1,Hall,Hall,W, James J Cleary,HALL
 @,3,S1,Pascack,Caf,F, James J Cleary,PASCACK
 @,4,FY,Coverage,None,M, James J Cleary,COVERAGE
-*,Cohen, Jamie,SPEC,128,0,3
+*,Cohen, Jamie,SPEC,128,0
 #,Study Skills 9-12,CC8143,2,4,M,FY,128,SPEC, Jamie Cohen
 #,Study Skills 9-12,CC8143,2,1,W,FY,128,SPEC, Jamie Cohen
 #,Study Skills 9-12,CC8143,2,2,R,FY,128,SPEC, Jamie Cohen
@@ -531,7 +531,7 @@ $,9,FY,Free,F, Jamie Cohen, false
 @,5,S1,Pascack,Caf,T, Jamie Cohen,PASCACK
 @,6,FY,Paid Coverage,None,W, Jamie Cohen,COVERAGE
 @,6,FY,Coverage,None,R, Jamie Cohen,COVERAGE
-*,Comanto, Stephen,SCIE,150,0,3
+*,Comanto, Stephen,SCIE,150,0
 #,Biology,SC1400,1,7,M,FY,150,SCIE, Stephen Comanto
 #,Biology,SC1400,1,7,T,FY,150,SCIE, Stephen Comanto
 #,Biology,SC1400,1,5,R,FY,150,SCIE, Stephen Comanto
@@ -580,7 +580,7 @@ $,9,FY,Free,F, Stephen Comanto, false
 @,3,S1,Freshman Pascack,NONE,F, Stephen Comanto,FROSH_PASCACK
 @,2,FY,Paid Coverage,None,M, Stephen Comanto,COVERAGE
 @,2,FY,Coverage,None,T, Stephen Comanto,COVERAGE
-*,Comitto, Melissa,WLNG,226,0,3
+*,Comitto, Melissa,WLNG,226,0
 #,Spanish I,WL1410,1,5,M,FY,226,WLNG, Melissa Comitto
 #,Spanish I,WL1410,1,5,T,FY,226,WLNG, Melissa Comitto
 #,Spanish I,WL1410,1,6,W,FY,226,WLNG, Melissa Comitto
@@ -628,7 +628,7 @@ $,9,FY,Free,F, Melissa Comitto, false
 @,2,S1,Hall,Hall,T, Melissa Comitto,HALL
 @,2,FY,Paid Coverage,None,M, Melissa Comitto,COVERAGE
 @,2,FY,Coverage,None,F, Melissa Comitto,COVERAGE
-*,DelSanto, Kenneth,MATH,250,0,3
+*,DelSanto, Kenneth,MATH,250,0
 #,Advanced Topics in Calculus (H),MA6604,1,4,M,FY,250,MATH, Kenneth DelSanto
 #,Advanced Topics in Calculus (H),MA6604,1,-1,T,FY,250,MATH, Kenneth DelSanto
 #,Advanced Topics in Calculus (H),MA6604,1,1,W,FY,250,MATH, Kenneth DelSanto
@@ -677,7 +677,7 @@ $,9,FY,Free,F, Kenneth DelSanto, false
 @,5,S1,Hall,Hall,M, Kenneth DelSanto,HALL
 @,6,FY,Paid Coverage,None,W, Kenneth DelSanto,COVERAGE
 @,6,FY,Coverage,None,R, Kenneth DelSanto,COVERAGE
-*,Donahue, Katherine H,ENG,124,0,3
+*,Donahue, Katherine H,ENG,124,0
 #,English II,EN2400,1,5,M,FY,124,ENG, Katherine H Donahue
 #,English II,EN2400,1,5,T,FY,124,ENG, Katherine H Donahue
 #,English II,EN2400,1,6,W,FY,124,ENG, Katherine H Donahue
@@ -725,7 +725,7 @@ $,9,FY,Free,F, Katherine H Donahue, false
 @,7,S1,Hall,Hall,W, Katherine H Donahue,HALL
 @,8,FY,Paid Coverage,None,M, Katherine H Donahue,COVERAGE
 @,1,FY,Coverage,None,R, Katherine H Donahue,COVERAGE
-*,Dore, Ryan,MUS,210,0,3
+*,Dore, Ryan,MUS,210,0
 #,Concert Band,MU1401,1,4,M,FY,210,MUS, Ryan Dore
 #,Concert Band,MU1401,1,1,W,FY,210,MUS, Ryan Dore
 #,Concert Band,MU1401,1,2,R,FY,210,MUS, Ryan Dore
@@ -773,7 +773,7 @@ $,9,FY,Free,F, Ryan Dore, false
 @,6,S1,Freshman Pascack,NONE,M, Ryan Dore,FROSH_PASCACK
 @,7,S1,Pascack,Caf,W, Ryan Dore,PASCACK
 @,6,FY,Coverage,None,T, Ryan Dore,COVERAGE
-*,Downes, Julianne,BUS,124,0,3
+*,Downes, Julianne,BUS,124,0
 #,Financial Literacy,BU2401,2,8,M,S1,124,BUS, Julianne Downes
 #,Financial Literacy,BU2401,2,5,W,S1,124,BUS, Julianne Downes
 #,Financial Literacy,BU2401,2,6,R,S1,124,BUS, Julianne Downes
@@ -821,7 +821,7 @@ $,9,FY,Free,F, Julianne Downes, false
 @,6,S1,Freshman Pascack,NONE,T, Julianne Downes,FROSH_PASCACK
 @,5,S1,Pascack,Caf,F, Julianne Downes,PASCACK
 @,6,FY,Coverage,None,M, Julianne Downes,COVERAGE
-*,Elkin, Margarita,MUS,204,0,3
+*,Elkin, Margarita,MUS,204,0
 #,Chamber Choir,MU2403,1,8,M,FY,204,MUS, Margarita Elkin
 #,Chamber Choir,MU2403,1,5,W,FY,204,MUS, Margarita Elkin
 #,Chamber Choir,MU2403,1,6,R,FY,204,MUS, Margarita Elkin
@@ -869,7 +869,7 @@ $,9,FY,Free,F, Margarita Elkin, false
 @,2,S1,Pascack,Caf,M, Margarita Elkin,PASCACK
 @,2,FY,Paid Coverage,None,T, Margarita Elkin,COVERAGE
 @,2,FY,Coverage,None,F, Margarita Elkin,COVERAGE
-*,Forte, Marcia A,SPEC,135,0,3
+*,Forte, Marcia A,SPEC,135,0
 #,Study Skills 9-12,CC8143,3,6,M,FY,135,SPEC, Marcia A Forte
 #,Study Skills 9-12,CC8143,3,6,T,FY,135,SPEC, Marcia A Forte
 #,Study Skills 9-12,CC8143,3,7,W,FY,135,SPEC, Marcia A Forte
@@ -917,7 +917,7 @@ $,9,FY,Free,F, Marcia A Forte, false
 @,5,S1,Hall,Hall,W, Marcia A Forte,HALL
 @,7,S1,Pascack,Caf,R, Marcia A Forte,PASCACK
 @,7,FY,Coverage,None,M, Marcia A Forte,COVERAGE
-*,Frangiosa, David,SCIE,141,0,3
+*,Frangiosa, David,SCIE,141,0
 #,Conceptual Physics,SC3301,1,5,M,FY,141,SCIE, David Frangiosa
 #,Conceptual Physics,SC3301,1,5,T,FY,141,SCIE, David Frangiosa
 #,Conceptual Physics,SC3301,1,6,W,FY,141,SCIE, David Frangiosa
@@ -966,7 +966,7 @@ $,9,FY,Free,F, David Frangiosa, false
 @,5,S1,Freshman Pascack,NONE,R, David Frangiosa,FROSH_PASCACK
 @,7,FY,Paid Coverage,None,M, David Frangiosa,COVERAGE
 @,6,FY,Coverage,None,F, David Frangiosa,COVERAGE
-*,Gaeta, Michelle,MATH,250,0,3
+*,Gaeta, Michelle,MATH,250,0
 #,Statistics I,MA6409,5,1,M,S1,250,MATH, Michelle Gaeta
 #,Statistics I,MA6409,5,1,T,S1,250,MATH, Michelle Gaeta
 #,Statistics I,MA6409,5,2,W,S1,250,MATH, Michelle Gaeta
@@ -1014,7 +1014,7 @@ $,9,FY,Free,F, Michelle Gaeta, false
 @,7,S1,Pascack,Caf,M, Michelle Gaeta,PASCACK
 @,6,FY,Paid Coverage,None,R, Michelle Gaeta,COVERAGE
 @,6,FY,Coverage,None,F, Michelle Gaeta,COVERAGE
-*,Gamgort, Corin C,BUS,126,0,3
+*,Gamgort, Corin C,BUS,126,0
 #,Financial Investment,BU2410,1,6,M,S1,126,BUS, Corin C Gamgort
 #,Financial Investment,BU2410,1,6,T,S1,126,BUS, Corin C Gamgort
 #,Financial Investment,BU2410,1,7,W,S1,126,BUS, Corin C Gamgort
@@ -1070,7 +1070,7 @@ $,4,S1,Free,M, Corin C Gamgort, false
 $,1,S1,Free,W, Corin C Gamgort, false
 $,2,S1,Free,R, Corin C Gamgort, false
 $,3,S1,Free,F, Corin C Gamgort, false
-*,Ganz, Eric M,SPEC,230,0,3
+*,Ganz, Eric M,SPEC,230,0
 #,Study Skills 9-12,CC8143,6,5,M,FY,230,SPEC, Eric M Ganz
 #,Study Skills 9-12,CC8143,6,5,T,FY,230,SPEC, Eric M Ganz
 #,Study Skills 9-12,CC8143,6,6,W,FY,230,SPEC, Eric M Ganz
@@ -1118,7 +1118,7 @@ $,9,FY,Free,F, Eric M Ganz, false
 @,7,S1,Pascack,Caf,F, Eric M Ganz,PASCACK
 @,8,FY,Paid Coverage,None,M, Eric M Ganz,COVERAGE
 @,6,FY,Coverage,None,R, Eric M Ganz,COVERAGE
-*,Garbaccio, Brooke,SPEC,122,0,3
+*,Garbaccio, Brooke,SPEC,122,0
 #,Gen Ed Study Skills 9/10/11/12,CC8144,1,3,M,FY,122,SPEC, Brooke Garbaccio
 #,Gen Ed Study Skills 9/10/11/12,CC8144,1,3,T,FY,122,SPEC, Brooke Garbaccio
 #,Gen Ed Study Skills 9/10/11/12,CC8144,1,1,R,FY,122,SPEC, Brooke Garbaccio
@@ -1167,7 +1167,7 @@ $,9,FY,Free,F, Brooke Garbaccio, false
 @,7,S1,Pascack,Caf,T, Brooke Garbaccio,PASCACK
 @,5,FY,Paid Coverage,None,R, Brooke Garbaccio,COVERAGE
 @,1,FY,Coverage,None,M, Brooke Garbaccio,COVERAGE
-*,Garretson, Danielle,ART,202,0,3
+*,Garretson, Danielle,ART,202,0
 #,Photography,AR5410,1,6,M,FY,202,ART, Danielle Garretson
 #,Photography,AR5410,1,6,T,FY,202,ART, Danielle Garretson
 #,Photography,AR5410,1,7,W,FY,202,ART, Danielle Garretson
@@ -1215,7 +1215,7 @@ $,9,FY,Free,F, Danielle Garretson, false
 @,3,S1,Pascack,Caf,W, Danielle Garretson,PASCACK
 @,1,FY,Paid Coverage,None,F, Danielle Garretson,COVERAGE
 @,8,FY,Coverage,None,M, Danielle Garretson,COVERAGE
-*,Goodman, Janet,MATH,253,0,3
+*,Goodman, Janet,MATH,253,0
 #,Geometry Enhanced,MA3400,2,3,M,FY,253,MATH, Janet Goodman
 #,Geometry Enhanced,MA3400,2,3,T,FY,253,MATH, Janet Goodman
 #,Geometry Enhanced,MA3400,2,1,R,FY,253,MATH, Janet Goodman
@@ -1263,7 +1263,7 @@ $,9,FY,Free,F, Janet Goodman, false
 @,1,S1,Pascack,Caf,W, Janet Goodman,PASCACK
 @,7,FY,Paid Coverage,None,M, Janet Goodman,COVERAGE
 @,6,FY,Coverage,None,R, Janet Goodman,COVERAGE
-*,Goodman, Douglas,SOST,231,0,3
+*,Goodman, Douglas,SOST,231,0
 #,Honors United States History II,SS3600,1,3,M,FY,231,SOST, Douglas Goodman
 #,Honors United States History II,SS3600,1,3,T,FY,231,SOST, Douglas Goodman
 #,Honors United States History II,SS3600,1,1,R,FY,231,SOST, Douglas Goodman
@@ -1311,7 +1311,7 @@ $,9,FY,Free,F, Douglas Goodman, false
 @,4,S1,Pascack,Caf,M, Douglas Goodman,PASCACK
 @,3,S1,Pascack,Caf,F, Douglas Goodman,PASCACK
 @,1,FY,Coverage,None,W, Douglas Goodman,COVERAGE
-*,Guardabascio, Vita G,WLNG,227,0,3
+*,Guardabascio, Vita G,WLNG,227,0
 #,English as a Second Language,EN1201,1,5,M,FY,227,WLNG, Vita G Guardabascio
 #,English as a Second Language,EN1201,1,5,T,FY,227,WLNG, Vita G Guardabascio
 #,English as a Second Language,EN1201,1,6,W,FY,227,WLNG, Vita G Guardabascio
@@ -1359,7 +1359,7 @@ $,9,FY,Free,F, Vita G Guardabascio, false
 @,6,S1,Pascack,Caf,T, Vita G Guardabascio,PASCACK
 @,1,FY,Paid Coverage,None,M, Vita G Guardabascio,COVERAGE
 @,7,FY,Coverage,None,W, Vita G Guardabascio,COVERAGE
-*,Haveron, Owen,BUS,247,0,3
+*,Haveron, Owen,BUS,247,0
 #,Financial Literacy,BU2401,1,7,M,S2,247,BUS, Owen Haveron
 #,Financial Literacy,BU2401,1,7,T,S2,247,BUS, Owen Haveron
 #,Financial Literacy,BU2401,1,5,R,S2,247,BUS, Owen Haveron
@@ -1415,7 +1415,7 @@ $,1,S1,Free,R, Owen Haveron, false
 $,5,S1,Free,R, Owen Haveron, false
 $,2,S1,Free,F, Owen Haveron, false
 $,6,S1,Free,F, Owen Haveron, false
-*,Hawkins, Patricia,MATH,244,0,3
+*,Hawkins, Patricia,MATH,244,0
 #,Geometry,MA3300,1,2,M,FY,244,MATH, Patricia Hawkins
 #,Geometry,MA3300,1,2,T,FY,244,MATH, Patricia Hawkins
 #,Geometry,MA3300,1,3,W,FY,244,MATH, Patricia Hawkins
@@ -1463,7 +1463,7 @@ $,9,FY,Free,F, Patricia Hawkins, false
 @,2,S1,Hall,Hall,R, Patricia Hawkins,HALL
 @,2,FY,Paid Coverage,None,W, Patricia Hawkins,COVERAGE
 @,1,FY,Coverage,None,M, Patricia Hawkins,COVERAGE
-*,Henry, Paul D,SCIE,168,0,3
+*,Henry, Paul D,SCIE,168,0
 #,Chemistry in the Community,SC2300,1,1,M,FY,168,SCIE, Paul D Henry
 #,Chemistry in the Community,SC2300,1,1,T,FY,168,SCIE, Paul D Henry
 #,Chemistry in the Community,SC2300,1,2,W,FY,168,SCIE, Paul D Henry
@@ -1522,7 +1522,7 @@ $,9,FY,Free,F, Paul D Henry, false
 @,3,S1,Hall,Hall,M, Paul D Henry,HALL
 @,2,FY,Paid Coverage,None,R, Paul D Henry,COVERAGE
 @,2,FY,Coverage,None,F, Paul D Henry,COVERAGE
-*,Horn, Deborah L,SOST,235,0,3
+*,Horn, Deborah L,SOST,235,0
 #,Honors United States History I,SS2600,1,1,M,FY,235,SOST, Deborah L Horn
 #,Honors United States History I,SS2600,1,1,T,FY,235,SOST, Deborah L Horn
 #,Honors United States History I,SS2600,1,2,W,FY,235,SOST, Deborah L Horn
@@ -1570,7 +1570,7 @@ $,9,FY,Free,F, Deborah L Horn, false
 @,5,S1,Hall,Hall,T, Deborah L Horn,HALL
 @,6,FY,Paid Coverage,None,W, Deborah L Horn,COVERAGE
 @,6,FY,Coverage,None,M, Deborah L Horn,COVERAGE
-*,Johnson, Tyler,PEHL,GYM,0,3
+*,Johnson, Tyler,PEHL,GYM,0
 #,Physical Education/Health 9,PE1050,2,1,M,FY,GYM,PEHL, Tyler Johnson
 #,Physical Education/Health 9,PE1050,2,1,T,FY,GYM,PEHL, Tyler Johnson
 #,Physical Education/Health 9,PE1050,2,2,W,FY,GYM,PEHL, Tyler Johnson
@@ -1618,7 +1618,7 @@ $,9,FY,Free,F, Tyler Johnson, false
 @,6,S1,Hall,Hall,M, Tyler Johnson,HALL
 @,6,S1,Pascack,Caf,T, Tyler Johnson,PASCACK
 @,6,FY,Coverage,None,W, Tyler Johnson,COVERAGE
-*,Kanova, Ivica,WLNG,223,0,3
+*,Kanova, Ivica,WLNG,223,0
 #,Spanish III,WL1430,1,3,M,FY,223,WLNG, Ivica Kanova
 #,Spanish III,WL1430,1,3,T,FY,223,WLNG, Ivica Kanova
 #,Spanish III,WL1430,1,1,R,FY,223,WLNG, Ivica Kanova
@@ -1666,7 +1666,7 @@ $,9,FY,Free,F, Ivica Kanova, false
 @,7,S1,Hall,Hall,F, Ivica Kanova,HALL
 @,8,FY,Paid Coverage,None,M, Ivica Kanova,COVERAGE
 @,7,FY,Coverage,None,W, Ivica Kanova,COVERAGE
-*,Killian, Kevin,MATH,246,0,3
+*,Killian, Kevin,MATH,246,0
 #,Algebra I Enhanced,MA2400,1,6,M,FY,246,MATH, Kevin Killian
 #,Algebra I Enhanced,MA2400,1,6,T,FY,246,MATH, Kevin Killian
 #,Algebra I Enhanced,MA2400,1,7,W,FY,246,MATH, Kevin Killian
@@ -1714,7 +1714,7 @@ $,9,FY,Free,F, Kevin Killian, false
 @,7,S1,Hall,Hall,T, Kevin Killian,HALL
 @,1,FY,Paid Coverage,None,W, Kevin Killian,COVERAGE
 @,7,FY,Coverage,None,R, Kevin Killian,COVERAGE
-*,Kirkby, Kevin M,MATH,254,0,3
+*,Kirkby, Kevin M,MATH,254,0
 #,Honors Algebra II with Trigonometry,MA4600,1,3,M,FY,254,MATH, Kevin M Kirkby
 #,Honors Algebra II with Trigonometry,MA4600,1,3,T,FY,254,MATH, Kevin M Kirkby
 #,Honors Algebra II with Trigonometry,MA4600,1,1,R,FY,254,MATH, Kevin M Kirkby
@@ -1762,7 +1762,7 @@ $,9,FY,Free,F, Kevin M Kirkby, false
 @,8,S1,Hall,Hall,M, Kevin M Kirkby,HALL
 @,6,FY,Paid Coverage,None,W, Kevin M Kirkby,COVERAGE
 @,6,FY,Coverage,None,T, Kevin M Kirkby,COVERAGE
-*,Lampert, Evan M,SPEC,110,0,3
+*,Lampert, Evan M,SPEC,110,0
 #,Study Skills 9-12,CC8143,7,2,M,FY,110,SPEC, Evan M Lampert
 #,Study Skills 9-12,CC8143,7,2,T,FY,110,SPEC, Evan M Lampert
 #,Study Skills 9-12,CC8143,7,3,W,FY,110,SPEC, Evan M Lampert
@@ -1810,7 +1810,7 @@ $,9,FY,Free,F, Evan M Lampert, false
 @,3,S1,Hall,Hall,T, Evan M Lampert,HALL
 @,1,FY,Paid Coverage,None,M, Evan M Lampert,COVERAGE
 @,1,FY,Coverage,None,R, Evan M Lampert,COVERAGE
-*,Leibfried, Cassandra,MATH,248,0,3
+*,Leibfried, Cassandra,MATH,248,0
 #,Algebra II with Trigonometry,MA4300,1,6,M,FY,248,MATH, Cassandra Leibfried
 #,Algebra II with Trigonometry,MA4300,1,6,T,FY,248,MATH, Cassandra Leibfried
 #,Algebra II with Trigonometry,MA4300,1,7,W,FY,248,MATH, Cassandra Leibfried
@@ -1858,7 +1858,7 @@ $,9,FY,Free,F, Cassandra Leibfried, false
 @,1,S1,Hall,Hall,R, Cassandra Leibfried,HALL
 @,2,S1,Pascack,Caf,F, Cassandra Leibfried,PASCACK
 @,3,FY,Coverage,None,M, Cassandra Leibfried,COVERAGE
-*,Lutz, Heather,ENG,132,0,3
+*,Lutz, Heather,ENG,132,0
 #,English I,EN1400,1,6,M,FY,132,ENG, Heather Lutz
 #,English I,EN1400,1,6,T,FY,132,ENG, Heather Lutz
 #,English I,EN1400,1,7,W,FY,132,ENG, Heather Lutz
@@ -1906,7 +1906,7 @@ $,9,FY,Free,F, Heather Lutz, false
 @,2,S1,Pascack,Caf,W, Heather Lutz,PASCACK
 @,6,FY,Paid Coverage,None,R, Heather Lutz,COVERAGE
 @,8,FY,Coverage,None,M, Heather Lutz,COVERAGE
-*,Macke, Natalie,SCIE,145,0,3
+*,Macke, Natalie,SCIE,145,0
 #,Chemistry,SC2400,1,1,M,FY,145,SCIE, Natalie Macke
 #,Chemistry,SC2400,1,1,T,FY,145,SCIE, Natalie Macke
 #,Chemistry,SC2400,1,2,W,FY,145,SCIE, Natalie Macke
@@ -1955,7 +1955,7 @@ $,9,FY,Free,F, Natalie Macke, false
 @,4,S1,Pascack,Caf,M, Natalie Macke,PASCACK
 @,1,FY,Paid Coverage,None,W, Natalie Macke,COVERAGE
 @,1,FY,Coverage,None,F, Natalie Macke,COVERAGE
-*,Mahaffey, Kaitlyn,SOST,245,0,3
+*,Mahaffey, Kaitlyn,SOST,245,0
 #,United States History II,SS3400,3,6,M,FY,245,SOST, Kaitlyn Mahaffey
 #,United States History II,SS3400,3,6,T,FY,245,SOST, Kaitlyn Mahaffey
 #,United States History II,SS3400,3,7,W,FY,245,SOST, Kaitlyn Mahaffey
@@ -2003,7 +2003,7 @@ $,9,FY,Free,F, Kaitlyn Mahaffey, false
 @,6,S1,Hall,Hall,R, Kaitlyn Mahaffey,HALL
 @,7,FY,Paid Coverage,None,M, Kaitlyn Mahaffey,COVERAGE
 @,6,FY,Coverage,None,F, Kaitlyn Mahaffey,COVERAGE
-*,Mallya, Aarti,SCIE,153,0,3
+*,Mallya, Aarti,SCIE,153,0
 #,AP Biology Lab,SC1700,1,1,R,FY,153,SCIE, Aarti Mallya
 #,AP Biology,SC1700,1,4,M,FY,153,SCIE, Aarti Mallya
 #,AP Biology,SC1700,1,1,W,FY,153,SCIE, Aarti Mallya
@@ -2051,7 +2051,7 @@ $,6,FY,Free,F, Aarti Mallya, false
 @,1,S1,Hall,Hall,T, Aarti Mallya,HALL
 @,2,FY,Paid Coverage,None,M, Aarti Mallya,COVERAGE
 @,2,FY,Coverage,None,W, Aarti Mallya,COVERAGE
-*,Manzella, Elizabeth,TCED,213,0,3
+*,Manzella, Elizabeth,TCED,213,0
 #,Video Production,TE1300,1,6,M,FY,213,TCED, Elizabeth Manzella
 #,Video Production,TE1300,1,6,T,FY,213,TCED, Elizabeth Manzella
 #,Video Production,TE1300,1,7,W,FY,213,TCED, Elizabeth Manzella
@@ -2099,7 +2099,7 @@ $,9,FY,Free,F, Elizabeth Manzella, false
 @,1,S1,Pascack,Caf,M, Elizabeth Manzella,PASCACK
 @,1,FY,Paid Coverage,None,T, Elizabeth Manzella,COVERAGE
 @,1,FY,Coverage,None,R, Elizabeth Manzella,COVERAGE
-*,Marini, Matthew G,MATH,248,0,3
+*,Marini, Matthew G,MATH,248,0
 #,Geometry,MA3309,1,1,M,FY,248,MATH, Matthew G Marini
 #,Geometry,MA3309,1,1,T,FY,248,MATH, Matthew G Marini
 #,Geometry,MA3309,1,2,W,FY,248,MATH, Matthew G Marini
@@ -2147,7 +2147,7 @@ $,9,FY,Free,F, Matthew G Marini, false
 @,2,S1,Pascack,Caf,R, Matthew G Marini,PASCACK
 @,7,FY,Paid Coverage,None,M, Matthew G Marini,COVERAGE
 @,6,FY,Coverage,None,F, Matthew G Marini,COVERAGE
-*,Marootian, Jamie A,ENG,134,0,3
+*,Marootian, Jamie A,ENG,134,0
 #,English I,EN1400,4,3,M,FY,134,ENG, Jamie A Marootian
 #,English I,EN1400,4,3,T,FY,134,ENG, Jamie A Marootian
 #,English I,EN1400,4,1,R,FY,134,ENG, Jamie A Marootian
@@ -2195,7 +2195,7 @@ $,9,FY,Free,F, Jamie A Marootian, false
 @,2,S1,Pascack,Caf,T, Jamie A Marootian,PASCACK
 @,1,FY,Paid Coverage,None,F, Jamie A Marootian,COVERAGE
 @,3,FY,Coverage,None,W, Jamie A Marootian,COVERAGE
-*,Martinez, Vanessa,WLNG,232,0,3
+*,Martinez, Vanessa,WLNG,232,0
 #,Spanish IV,WL1440,1,2,M,FY,232,WLNG, Vanessa Martinez
 #,Spanish IV,WL1440,1,2,T,FY,232,WLNG, Vanessa Martinez
 #,Spanish IV,WL1440,1,3,W,FY,232,WLNG, Vanessa Martinez
@@ -2243,7 +2243,7 @@ $,9,FY,Free,F, Vanessa Martinez, false
 @,5,S1,Hall,Hall,F, Vanessa Martinez,HALL
 @,6,FY,Paid Coverage,None,M, Vanessa Martinez,COVERAGE
 @,6,FY,Coverage,None,T, Vanessa Martinez,COVERAGE
-*,Mazan, Claire,FACS,101,0,3
+*,Mazan, Claire,FACS,101,0
 #,Clothing Construction,FA1401,1,1,M,FY,101,FACS, Claire Mazan
 #,Clothing Construction,FA1401,1,1,T,FY,101,FACS, Claire Mazan
 #,Clothing Construction,FA1401,1,2,W,FY,101,FACS, Claire Mazan
@@ -2299,7 +2299,7 @@ $,5,S1,Free,R, Claire Mazan, false
 $,6,S1,Free,R, Claire Mazan, false
 $,6,S1,Free,F, Claire Mazan, false
 $,7,S1,Free,F, Claire Mazan, false
-*,Naramore, Elise B,SCIE,144,0,3
+*,Naramore, Elise B,SCIE,144,0
 #,Physics,SC3400,1,1,M,FY,144,SCIE, Elise B Naramore
 #,Physics,SC3400,1,1,T,FY,144,SCIE, Elise B Naramore
 #,Physics,SC3400,1,2,W,FY,144,SCIE, Elise B Naramore
@@ -2348,7 +2348,7 @@ $,9,FY,Free,F, Elise B Naramore, false
 @,6,S1,Hall,Hall,T, Elise B Naramore,HALL
 @,6,FY,Paid Coverage,None,W, Elise B Naramore,COVERAGE
 @,2,FY,Coverage,None,R, Elise B Naramore,COVERAGE
-*,O'Neill, Liam T,MATH,221,0,3
+*,O'Neill, Liam T,MATH,221,0
 #,Algebra I,MA8210,1,2,M,FY,221,MATH, Liam T O'Neill
 #,Algebra I,MA8210,1,2,T,FY,221,MATH, Liam T O'Neill
 #,Algebra I,MA8210,1,3,W,FY,221,MATH, Liam T O'Neill
@@ -2396,7 +2396,7 @@ $,9,FY,Free,F, Liam T O'Neill, false
 @,7,S1,Freshman Pascack,NONE,M, Liam T O'Neill,FROSH_PASCACK
 @,5,S1,Pascack,Caf,R, Liam T O'Neill,PASCACK
 @,6,FY,Coverage,None,F, Liam T O'Neill,COVERAGE
-*,Olshalsky, Nicole,PEHL,243,0,3
+*,Olshalsky, Nicole,PEHL,243,0
 #,Physical Education/Driver Ed 10,PE2050,4,4,M,FY,243,PEHL, Nicole Olshalsky
 #,Physical Education/Driver Ed 10,PE2050,4,1,W,FY,243,PEHL, Nicole Olshalsky
 #,Physical Education/Driver Ed 10,PE2050,4,2,R,FY,243,PEHL, Nicole Olshalsky
@@ -2444,7 +2444,7 @@ $,9,FY,Free,F, Nicole Olshalsky, false
 @,5,S1,Hall,Hall,R, Nicole Olshalsky,HALL
 @,6,S1,Pascack,Caf,F, Nicole Olshalsky,PASCACK
 @,7,FY,Coverage,None,M, Nicole Olshalsky,COVERAGE
-*,Ostrowski, Adam,TCED,104,0,3
+*,Ostrowski, Adam,TCED,104,0
 #,Architecture,TE1305,1,1,M,FY,104,TCED, Adam Ostrowski
 #,Architecture,TE1305,1,1,T,FY,104,TCED, Adam Ostrowski
 #,Architecture,TE1305,1,2,W,FY,104,TCED, Adam Ostrowski
@@ -2492,7 +2492,7 @@ $,9,FY,Free,F, Adam Ostrowski, false
 @,8,S1,Pascack,Caf,M, Adam Ostrowski,PASCACK
 @,5,FY,Paid Coverage,None,W, Adam Ostrowski,COVERAGE
 @,7,FY,Coverage,None,F, Adam Ostrowski,COVERAGE
-*,Panarello Siempira, Dilma,WLNG,226,0,3
+*,Panarello Siempira, Dilma,WLNG,226,0
 #,Spanish II,WL1420,1,2,M,FY,226,WLNG, Dilma Panarello Siempira
 #,Spanish II,WL1420,1,2,T,FY,226,WLNG, Dilma Panarello Siempira
 #,Spanish II,WL1420,1,3,W,FY,226,WLNG, Dilma Panarello Siempira
@@ -2540,7 +2540,7 @@ $,9,FY,Free,F, Dilma Panarello Siempira, false
 @,6,S1,Freshman Pascack,NONE,F, Dilma Panarello Siempira,FROSH_PASCACK
 @,5,S1,Pascack,Caf,R, Dilma Panarello Siempira,PASCACK
 @,6,FY,Coverage,None,M, Dilma Panarello Siempira,COVERAGE
-*,Pelli, Stephanie,SCIE,142,0,3
+*,Pelli, Stephanie,SCIE,142,0
 #,Honors Biology,SC1600,1,4,M,FY,142,SCIE, Stephanie Pelli
 #,Honors Biology,SC1600,1,1,W,FY,142,SCIE, Stephanie Pelli
 #,Honors Biology,SC1600,1,2,R,FY,142,SCIE, Stephanie Pelli
@@ -2588,7 +2588,7 @@ $,9,FY,Free,F, Stephanie Pelli, false
 @,5,S1,Pascack,Caf,M, Stephanie Pelli,PASCACK
 @,6,FY,Paid Coverage,None,W, Stephanie Pelli,COVERAGE
 @,6,FY,Coverage,None,T, Stephanie Pelli,COVERAGE
-*,Pfleging, Alexandra,ENG,122,0,3
+*,Pfleging, Alexandra,ENG,122,0
 #,Honors English II,EN2600,3,4,M,FY,122,ENG, Alexandra Pfleging
 #,Honors English II,EN2600,3,1,W,FY,122,ENG, Alexandra Pfleging
 #,Honors English II,EN2600,3,2,R,FY,122,ENG, Alexandra Pfleging
@@ -2636,7 +2636,7 @@ $,9,FY,Free,F, Alexandra Pfleging, false
 @,3,S1,Pascack,Caf,T, Alexandra Pfleging,PASCACK
 @,1,FY,Paid Coverage,None,M, Alexandra Pfleging,COVERAGE
 @,1,FY,Coverage,None,R, Alexandra Pfleging,COVERAGE
-*,Pugliese, Leslie Ann,SCIE,168,0,3
+*,Pugliese, Leslie Ann,SCIE,168,0
 #,Chemistry in the Community,SC2300,1,1,M,FY,168,SCIE, Leslie Ann Pugliese
 #,Chemistry in the Community,SC2300,1,1,T,FY,168,SCIE, Leslie Ann Pugliese
 #,Chemistry in the Community,SC2300,1,2,W,FY,168,SCIE, Leslie Ann Pugliese
@@ -2696,7 +2696,7 @@ $,9,FY,Free,F, Leslie Ann Pugliese, false
 @,3,S1,Pascack,Caf,M, Leslie Ann Pugliese,PASCACK
 @,6,FY,Paid Coverage,None,T, Leslie Ann Pugliese,COVERAGE
 @,6,FY,Coverage,None,W, Leslie Ann Pugliese,COVERAGE
-*,Reale, Michele K,SPEC,127,0,3
+*,Reale, Michele K,SPEC,127,0
 #,LLD Modified English 1 Level 1,EN8120,1,2,M,FY,127,SPEC, Michele K Reale
 #,LLD Modified English 1 Level 1,EN8120,1,2,T,FY,127,SPEC, Michele K Reale
 #,LLD Modified English 1 Level 1,EN8120,1,3,W,FY,127,SPEC, Michele K Reale
@@ -2744,7 +2744,7 @@ $,9,FY,Free,F, Michele K Reale, false
 @,6,S1,Pascack,Caf,W, Michele K Reale,PASCACK
 @,6,FY,Paid Coverage,None,R, Michele K Reale,COVERAGE
 @,8,FY,Coverage,None,M, Michele K Reale,COVERAGE
-*,Rossi, Angela E,ART,201,0,3
+*,Rossi, Angela E,ART,201,0
 #,Ceramics & Sculpture I,AR6411,1,1,M,FY,201,ART, Angela E Rossi
 #,Ceramics & Sculpture I,AR6411,1,1,T,FY,201,ART, Angela E Rossi
 #,Ceramics & Sculpture I,AR6411,1,2,W,FY,201,ART, Angela E Rossi
@@ -2792,7 +2792,7 @@ $,9,FY,Free,F, Angela E Rossi, false
 @,6,S1,Pascack,Caf,R, Angela E Rossi,PASCACK
 @,8,FY,Paid Coverage,None,M, Angela E Rossi,COVERAGE
 @,7,FY,Coverage,None,F, Angela E Rossi,COVERAGE
-*,Rossi, Virena,ENG,125,0,3
+*,Rossi, Virena,ENG,125,0
 #,Honors English I,EN1600,1,2,M,FY,125,ENG, Virena Rossi
 #,Honors English I,EN1600,1,2,T,FY,125,ENG, Virena Rossi
 #,Honors English I,EN1600,1,3,W,FY,125,ENG, Virena Rossi
@@ -2840,7 +2840,7 @@ $,9,FY,Free,F, Virena Rossi, false
 @,6,S1,Pascack,Caf,M, Virena Rossi,PASCACK
 @,6,FY,Paid Coverage,None,T, Virena Rossi,COVERAGE
 @,6,FY,Coverage,None,F, Virena Rossi,COVERAGE
-*,Runge, Lindsay M,MATH,248,0,3
+*,Runge, Lindsay M,MATH,248,0
 #,Algebra II with Trigonometry,MA4300,1,6,M,FY,248,MATH, Lindsay M Runge
 #,Algebra II with Trigonometry,MA4300,1,6,T,FY,248,MATH, Lindsay M Runge
 #,Algebra II with Trigonometry,MA4300,1,7,W,FY,248,MATH, Lindsay M Runge
@@ -2888,7 +2888,7 @@ $,9,FY,Free,F, Lindsay M Runge, false
 @,2,S1,Hall,Hall,F, Lindsay M Runge,HALL
 @,2,FY,Paid Coverage,None,M, Lindsay M Runge,COVERAGE
 @,2,FY,Coverage,None,T, Lindsay M Runge,COVERAGE
-*,Sachs-Serfess, Jessica,ENG,128,0,3
+*,Sachs-Serfess, Jessica,ENG,128,0
 #,English II,EN2400,2,7,M,FY,128,ENG, Jessica Sachs-Serfess
 #,English II,EN2400,2,7,T,FY,128,ENG, Jessica Sachs-Serfess
 #,English II,EN2400,2,5,R,FY,128,ENG, Jessica Sachs-Serfess
@@ -2936,7 +2936,7 @@ $,9,FY,Free,F, Jessica Sachs-Serfess, false
 @,3,S1,Hall,Hall,F, Jessica Sachs-Serfess,HALL
 @,1,FY,Paid Coverage,None,W, Jessica Sachs-Serfess,COVERAGE
 @,4,FY,Coverage,None,M, Jessica Sachs-Serfess,COVERAGE
-*,Salgado, Robert,SPEC,221,0,3
+*,Salgado, Robert,SPEC,221,0
 #,Gen Ed Study Skills 9/10/11/12,CC8144,4,8,M,FY,221,SPEC, Robert Salgado
 #,Gen Ed Study Skills 9/10/11/12,CC8144,4,5,W,FY,221,SPEC, Robert Salgado
 #,Gen Ed Study Skills 9/10/11/12,CC8144,4,6,R,FY,221,SPEC, Robert Salgado
@@ -2984,7 +2984,7 @@ $,9,FY,Free,F, Robert Salgado, false
 @,2,S1,Pascack,Caf,R, Robert Salgado,PASCACK
 @,1,FY,Paid Coverage,None,W, Robert Salgado,COVERAGE
 @,4,FY,Coverage,None,M, Robert Salgado,COVERAGE
-*,Sandhage, Lorrie,PEHL,GYM,0,3
+*,Sandhage, Lorrie,PEHL,GYM,0
 #,Physical Education/Health 9,PE1050,1,7,M,FY,GYM,PEHL, Lorrie Sandhage
 #,Physical Education/Health 9,PE1050,1,7,T,FY,GYM,PEHL, Lorrie Sandhage
 #,Physical Education/Health 9,PE1050,1,5,R,FY,GYM,PEHL, Lorrie Sandhage
@@ -3032,7 +3032,7 @@ $,9,FY,Free,F, Lorrie Sandhage, false
 @,5,S1,Pascack,Caf,M, Lorrie Sandhage,PASCACK
 @,6,FY,Paid Coverage,None,T, Lorrie Sandhage,COVERAGE
 @,6,FY,Coverage,None,W, Lorrie Sandhage,COVERAGE
-*,Sandt, Edward J,ENG,247,0,3
+*,Sandt, Edward J,ENG,247,0
 #,American Studies,CC5401,2,5,M,FY,247,ENG, Edward J Sandt
 #,American Studies,CC5401,2,5,T,FY,247,ENG, Edward J Sandt
 #,American Studies,CC5401,2,6,W,FY,247,ENG, Edward J Sandt
@@ -3080,7 +3080,7 @@ $,9,FY,Free,F, Edward J Sandt, false
 @,6,S1,Hall,Hall,F, Edward J Sandt,HALL
 @,7,FY,Paid Coverage,None,M, Edward J Sandt,COVERAGE
 @,6,FY,Coverage,None,R, Edward J Sandt,COVERAGE
-*,Sandt, Axelle,WLNG,224,0,3
+*,Sandt, Axelle,WLNG,224,0
 #,French IV,WL3340,1,4,M,FY,224,WLNG, Axelle Sandt
 #,French IV,WL3340,1,1,W,FY,224,WLNG, Axelle Sandt
 #,French IV,WL3340,1,2,R,FY,224,WLNG, Axelle Sandt
@@ -3128,7 +3128,7 @@ $,9,FY,Free,F, Axelle Sandt, false
 @,3,S1,Pascack,Caf,T, Axelle Sandt,PASCACK
 @,7,FY,Paid Coverage,None,M, Axelle Sandt,COVERAGE
 @,6,FY,Coverage,None,R, Axelle Sandt,COVERAGE
-*,Saxon, Jordan I,ENG,222,0,3
+*,Saxon, Jordan I,ENG,222,0
 #,American Studies,CC5401,1,1,M,FY,222,ENG, Jordan I Saxon
 #,American Studies,CC5401,1,1,T,FY,222,ENG, Jordan I Saxon
 #,American Studies,CC5401,1,2,W,FY,222,ENG, Jordan I Saxon
@@ -3176,7 +3176,7 @@ $,9,FY,Free,F, Jordan I Saxon, false
 @,6,S1,Pascack,Caf,M, Jordan I Saxon,PASCACK
 @,6,FY,Paid Coverage,None,T, Jordan I Saxon,COVERAGE
 @,6,FY,Coverage,None,F, Jordan I Saxon,COVERAGE
-*,Scerbo, Nicholas,ART,110,0,3
+*,Scerbo, Nicholas,ART,110,0
 #,AP Art History,AR6700,1,1,M,FY,110,ART, Nicholas Scerbo
 #,AP Art History,AR6700,1,1,T,FY,110,ART, Nicholas Scerbo
 #,AP Art History,AR6700,1,2,W,FY,110,ART, Nicholas Scerbo
@@ -3232,7 +3232,7 @@ $,7,S1,Free,W, Nicholas Scerbo, false
 $,2,S1,Free,R, Nicholas Scerbo, false
 $,3,S1,Free,F, Nicholas Scerbo, false
 $,5,S1,Free,F, Nicholas Scerbo, false
-*,Schmidt, Margaret,WLNG,224,0,3
+*,Schmidt, Margaret,WLNG,224,0
 #,French II,WL3420,1,8,M,FY,224,WLNG, Margaret Schmidt
 #,French II,WL3420,1,5,W,FY,224,WLNG, Margaret Schmidt
 #,French II,WL3420,1,6,R,FY,224,WLNG, Margaret Schmidt
@@ -3280,7 +3280,7 @@ $,9,FY,Free,F, Margaret Schmidt, false
 @,3,S1,Pascack,Caf,M, Margaret Schmidt,PASCACK
 @,2,FY,Paid Coverage,None,R, Margaret Schmidt,COVERAGE
 @,2,FY,Coverage,None,F, Margaret Schmidt,COVERAGE
-*,Schultz, Allison M,SPEC,135,0,3
+*,Schultz, Allison M,SPEC,135,0
 #,LLD Daily Living Skills 1,FA8110,1,4,M,FY,135,SPEC, Allison M Schultz
 #,LLD Daily Living Skills 1,FA8110,1,1,W,FY,135,SPEC, Allison M Schultz
 #,LLD Daily Living Skills 1,FA8110,1,2,R,FY,135,SPEC, Allison M Schultz
@@ -3328,7 +3328,7 @@ $,9,FY,Free,F, Allison M Schultz, false
 @,1,S1,Hall,Hall,M, Allison M Schultz,HALL
 @,1,S1,Pascack,Caf,F, Allison M Schultz,PASCACK
 @,2,FY,Coverage,None,T, Allison M Schultz,COVERAGE
-*,Schwartzman, Charleen,MATH,254,0,3
+*,Schwartzman, Charleen,MATH,254,0
 #,Algebra I,MA2300,1,6,M,FY,254,MATH, Charleen Schwartzman
 #,Algebra I,MA2300,1,6,T,FY,254,MATH, Charleen Schwartzman
 #,Algebra I,MA2300,1,7,W,FY,254,MATH, Charleen Schwartzman
@@ -3376,7 +3376,7 @@ $,9,FY,Free,F, Charleen Schwartzman, false
 @,4,S1,Freshman Pascack,NONE,M, Charleen Schwartzman,FROSH_PASCACK
 @,3,S1,Pascack,Caf,R, Charleen Schwartzman,PASCACK
 @,2,FY,Coverage,None,W, Charleen Schwartzman,COVERAGE
-*,Scorese, Mary E,SCIE,150,0,3
+*,Scorese, Mary E,SCIE,150,0
 #,Biology,SC1400,4,5,M,FY,150,SCIE, Mary E Scorese
 #,Biology,SC1400,4,5,T,FY,150,SCIE, Mary E Scorese
 #,Biology,SC1400,4,6,W,FY,150,SCIE, Mary E Scorese
@@ -3425,7 +3425,7 @@ $,9,FY,Free,F, Mary E Scorese, false
 @,1,S1,Pascack,Caf,R, Mary E Scorese,PASCACK
 @,1,FY,Paid Coverage,None,M, Mary E Scorese,COVERAGE
 @,1,FY,Coverage,None,T, Mary E Scorese,COVERAGE
-*,Soltmann, James M,SCIE,164,0,3
+*,Soltmann, James M,SCIE,164,0
 #,Honors Chemistry,SC2600,1,4,M,FY,164,SCIE, James M Soltmann
 #,Honors Chemistry,SC2600,1,1,W,FY,164,SCIE, James M Soltmann
 #,Honors Chemistry,SC2600,1,2,R,FY,164,SCIE, James M Soltmann
@@ -3474,7 +3474,7 @@ $,9,FY,Free,F, James M Soltmann, false
 @,6,S1,Pascack,Caf,W, James M Soltmann,PASCACK
 @,6,FY,Paid Coverage,None,R, James M Soltmann,COVERAGE
 @,1,FY,Coverage,None,M, James M Soltmann,COVERAGE
-*,Sularz, Patricia Rodriguez,WLNG,234,0,3
+*,Sularz, Patricia Rodriguez,WLNG,234,0
 #,Spanish II,WL1420,5,3,M,FY,234,WLNG, Patricia Rodriguez Sularz
 #,Spanish II,WL1420,5,3,T,FY,234,WLNG, Patricia Rodriguez Sularz
 #,Spanish II,WL1420,5,1,R,FY,234,WLNG, Patricia Rodriguez Sularz
@@ -3522,7 +3522,7 @@ $,9,FY,Free,F, Patricia Rodriguez Sularz, false
 @,2,S1,Hall,Hall,W, Patricia Rodriguez Sularz,HALL
 @,2,FY,Paid Coverage,None,R, Patricia Rodriguez Sularz,COVERAGE
 @,1,FY,Coverage,None,M, Patricia Rodriguez Sularz,COVERAGE
-*,Szabo, Melissa,FACS,111,0,3
+*,Szabo, Melissa,FACS,111,0
 #,Early Childhood & Family Education I,FA2410,1,1,M,FY,111,FACS, Melissa Szabo
 #,Early Childhood & Family Education I,FA2410,1,1,T,FY,111,FACS, Melissa Szabo
 #,Early Childhood & Family Education I,FA2410,1,2,W,FY,111,FACS, Melissa Szabo
@@ -3570,7 +3570,7 @@ $,9,FY,Free,F, Melissa Szabo, false
 @,7,S1,Hall,Hall,M, Melissa Szabo,HALL
 @,6,S1,Pascack,Caf,F, Melissa Szabo,PASCACK
 @,6,FY,Coverage,None,R, Melissa Szabo,COVERAGE
-*,Uhl, John,MATH,255,0,3
+*,Uhl, John,MATH,255,0
 #,Honors Computer Science,MA6404,1,4,M,FY,255,MATH, John Uhl
 #,Honors Computer Science,MA6404,1,1,W,FY,255,MATH, John Uhl
 #,Honors Computer Science,MA6404,1,2,R,FY,255,MATH, John Uhl
@@ -3618,7 +3618,7 @@ $,9,FY,Free,F, John Uhl, false
 @,5,S1,Pascack,Caf,W, John Uhl,PASCACK
 @,1,FY,Paid Coverage,None,F, John Uhl,COVERAGE
 @,8,FY,Coverage,None,M, John Uhl,COVERAGE
-*,Vargo, Katherine A,MATH,244,0,3
+*,Vargo, Katherine A,MATH,244,0
 #,Geometry,MA3300,1,2,M,FY,244,MATH, Katherine A Vargo
 #,Geometry,MA3300,1,2,T,FY,244,MATH, Katherine A Vargo
 #,Geometry,MA3300,1,3,W,FY,244,MATH, Katherine A Vargo
@@ -3666,7 +3666,7 @@ $,9,FY,Free,F, Katherine A Vargo, false
 @,5,S1,Pascack,Caf,T, Katherine A Vargo,PASCACK
 @,6,FY,Paid Coverage,None,M, Katherine A Vargo,COVERAGE
 @,6,FY,Coverage,None,W, Katherine A Vargo,COVERAGE
-*,Volk, Christopher,BUS,211,0,3
+*,Volk, Christopher,BUS,211,0
 #,LLD Elements of Financial Literacy,BU8110,2,7,M,FY,211,BUS, Christopher Volk
 #,LLD Elements of Financial Literacy,BU8110,2,7,T,FY,211,BUS, Christopher Volk
 #,LLD Elements of Financial Literacy,BU8110,2,5,R,FY,211,BUS, Christopher Volk
@@ -3714,7 +3714,7 @@ $,9,FY,Free,F, Christopher Volk, false
 @,3,S1,Hall,Hall,R, Christopher Volk,HALL
 @,1,FY,Paid Coverage,None,M, Christopher Volk,COVERAGE
 @,1,FY,Coverage,None,T, Christopher Volk,COVERAGE
-*,Whitfield, James R,SCIE,152,0,3
+*,Whitfield, James R,SCIE,152,0
 #,Biological Science (CP),SC1503,1,4,M,FY,152,SCIE, James R Whitfield
 #,Biological Science (CP),SC1503,1,1,W,FY,152,SCIE, James R Whitfield
 #,Biological Science (CP),SC1503,1,2,R,FY,152,SCIE, James R Whitfield
@@ -3763,7 +3763,7 @@ $,9,FY,Free,F, James R Whitfield, false
 @,5,S1,Freshman Pascack,NONE,F, James R Whitfield,FROSH_PASCACK
 @,6,FY,Paid Coverage,None,M, James R Whitfield,COVERAGE
 @,6,FY,Coverage,None,T, James R Whitfield,COVERAGE
-*,Yao, Yi Ping,WLNG,221,0,3
+*,Yao, Yi Ping,WLNG,221,0
 #,Chinese IV,WL4440,1,7,M,FY,221,WLNG, Yi Ping Yao
 #,Chinese IV,WL4440,1,7,T,FY,221,WLNG, Yi Ping Yao
 #,Chinese IV,WL4440,1,5,R,FY,221,WLNG, Yi Ping Yao
@@ -3811,7 +3811,7 @@ $,9,FY,Free,F, Yi Ping Yao, false
 @,2,S1,Hall,Hall,M, Yi Ping Yao,HALL
 @,3,S1,Pascack,Caf,R, Yi Ping Yao,PASCACK
 @,2,FY,Coverage,None,T, Yi Ping Yao,COVERAGE
-*,Yeam, Jane M,SOST,233,0,3
+*,Yeam, Jane M,SOST,233,0
 #,World History,SS1400,4,7,M,FY,233,SOST, Jane M Yeam
 #,World History,SS1400,4,7,T,FY,233,SOST, Jane M Yeam
 #,World History,SS1400,4,5,R,FY,233,SOST, Jane M Yeam
@@ -3859,8 +3859,8 @@ $,9,FY,Free,F, Jane M Yeam, false
 @,6,S1,Pascack,Caf,R, Jane M Yeam,PASCACK
 @,6,FY,Paid Coverage,None,W, Jane M Yeam,COVERAGE
 @,8,FY,Coverage,None,M, Jane M Yeam,COVERAGE
-^,S2,PASCACK|1|M|2;FROSH_PASCACK|1|M|0;HALL|1|M|1;COVERAGE|1|M|2;PASCACK|2|M|2;FROSH_PASCACK|2|M|0;HALL|2|M|1;COVERAGE|2|M|2;PASCACK|3|M|2;FROSH_PASCACK|3|M|0;HALL|3|M|1;COVERAGE|3|M|2;PASCACK|4|M|2;FROSH_PASCACK|4|M|1;HALL|4|M|1;COVERAGE|4|M|2;PASCACK|5|M|2;FROSH_PASCACK|5|M|0;HALL|5|M|2;COVERAGE|5|M|2;PASCACK|6|M|2;FROSH_PASCACK|6|M|1;HALL|6|M|2;COVERAGE|6|M|2;PASCACK|7|M|2;FROSH_PASCACK|7|M|1;HALL|7|M|1;COVERAGE|7|M|2;PASCACK|8|M|2;FROSH_PASCACK|8|M|0;HALL|8|M|1;COVERAGE|8|M|2;PASCACK|1|T|1;FROSH_PASCACK|1|T|0;HALL|1|T|1;COVERAGE|1|T|2;PASCACK|2|T|2;FROSH_PASCACK|2|T|0;HALL|2|T|1;COVERAGE|2|T|2;PASCACK|3|T|2;FROSH_PASCACK|3|T|0;HALL|3|T|1;COVERAGE|3|T|2;PASCACK|5|T|2;FROSH_PASCACK|5|T|0;HALL|5|T|2;COVERAGE|5|T|2;PASCACK|6|T|2;FROSH_PASCACK|6|T|1;HALL|6|T|1;COVERAGE|6|T|2;PASCACK|7|T|1;FROSH_PASCACK|7|T|0;HALL|7|T|1;COVERAGE|7|T|2;PASCACK|1|W|1;FROSH_PASCACK|1|W|0;HALL|1|W|1;COVERAGE|1|W|2;PASCACK|2|W|2;FROSH_PASCACK|2|W|0;HALL|2|W|1;COVERAGE|2|W|2;PASCACK|3|W|2;FROSH_PASCACK|3|W|0;HALL|3|W|1;COVERAGE|3|W|2;PASCACK|5|W|2;FROSH_PASCACK|5|W|0;HALL|5|W|1;COVERAGE|5|W|2;PASCACK|6|W|2;FROSH_PASCACK|6|W|0;HALL|6|W|2;COVERAGE|6|W|2;PASCACK|7|W|1;FROSH_PASCACK|7|W|0;HALL|7|W|1;COVERAGE|7|W|2;PASCACK|1|R|1;FROSH_PASCACK|1|R|0;HALL|1|R|1;COVERAGE|1|R|2;PASCACK|2|R|2;FROSH_PASCACK|2|R|0;HALL|2|R|1;COVERAGE|2|R|2;PASCACK|3|R|2;FROSH_PASCACK|3|R|0;HALL|3|R|1;COVERAGE|3|R|2;PASCACK|5|R|2;FROSH_PASCACK|5|R|1;HALL|5|R|1;COVERAGE|5|R|2;PASCACK|6|R|2;FROSH_PASCACK|6|R|0;HALL|6|R|1;COVERAGE|6|R|2;PASCACK|7|R|1;FROSH_PASCACK|7|R|0;HALL|7|R|2;COVERAGE|7|R|2;PASCACK|1|F|2;FROSH_PASCACK|1|F|0;HALL|1|F|1;COVERAGE|1|F|2;PASCACK|2|F|2;FROSH_PASCACK|2|F|0;HALL|2|F|1;COVERAGE|2|F|2;PASCACK|3|F|2;FROSH_PASCACK|3|F|1;HALL|3|F|1;COVERAGE|3|F|2;PASCACK|5|F|2;FROSH_PASCACK|5|F|1;HALL|5|F|2;COVERAGE|5|F|2;PASCACK|6|F|2;FROSH_PASCACK|6|F|1;HALL|6|F|1;COVERAGE|6|F|2;PASCACK|7|F|2;FROSH_PASCACK|7|F|0;HALL|7|F|1;COVERAGE|7|F|2;
-*,Abahazy, Julia,SCIE,141,-6,3
+^,S2,PASCACK|1|M|1;FROSH_PASCACK|1|M|0;HALL|1|M|1;COVERAGE|1|M|2;PASCACK|2|M|2;FROSH_PASCACK|2|M|0;HALL|2|M|1;COVERAGE|2|M|2;PASCACK|3|M|2;FROSH_PASCACK|3|M|0;HALL|3|M|1;COVERAGE|3|M|2;PASCACK|4|M|2;FROSH_PASCACK|4|M|1;HALL|4|M|1;COVERAGE|4|M|2;PASCACK|5|M|2;FROSH_PASCACK|5|M|0;HALL|5|M|2;COVERAGE|5|M|2;PASCACK|6|M|2;FROSH_PASCACK|6|M|1;HALL|6|M|2;COVERAGE|6|M|2;PASCACK|7|M|2;FROSH_PASCACK|7|M|1;HALL|7|M|1;COVERAGE|7|M|2;PASCACK|8|M|1;FROSH_PASCACK|8|M|0;HALL|8|M|1;COVERAGE|8|M|2;PASCACK|1|T|1;FROSH_PASCACK|1|T|0;HALL|1|T|1;COVERAGE|1|T|2;PASCACK|2|T|2;FROSH_PASCACK|2|T|0;HALL|2|T|1;COVERAGE|2|T|2;PASCACK|3|T|2;FROSH_PASCACK|3|T|0;HALL|3|T|1;COVERAGE|3|T|2;PASCACK|5|T|2;FROSH_PASCACK|5|T|0;HALL|5|T|2;COVERAGE|5|T|2;PASCACK|6|T|2;FROSH_PASCACK|6|T|1;HALL|6|T|1;COVERAGE|6|T|2;PASCACK|7|T|2;FROSH_PASCACK|7|T|0;HALL|7|T|1;COVERAGE|7|T|2;PASCACK|1|W|1;FROSH_PASCACK|1|W|0;HALL|1|W|1;COVERAGE|1|W|2;PASCACK|2|W|2;FROSH_PASCACK|2|W|0;HALL|2|W|1;COVERAGE|2|W|2;PASCACK|3|W|2;FROSH_PASCACK|3|W|0;HALL|3|W|1;COVERAGE|3|W|2;PASCACK|5|W|2;FROSH_PASCACK|5|W|0;HALL|5|W|1;COVERAGE|5|W|2;PASCACK|6|W|2;FROSH_PASCACK|6|W|0;HALL|6|W|2;COVERAGE|6|W|2;PASCACK|7|W|2;FROSH_PASCACK|7|W|0;HALL|7|W|1;COVERAGE|7|W|2;PASCACK|1|R|1;FROSH_PASCACK|1|R|0;HALL|1|R|1;COVERAGE|1|R|2;PASCACK|2|R|2;FROSH_PASCACK|2|R|1;HALL|2|R|1;COVERAGE|2|R|2;PASCACK|3|R|2;FROSH_PASCACK|3|R|0;HALL|3|R|1;COVERAGE|3|R|2;PASCACK|5|R|2;FROSH_PASCACK|5|R|1;HALL|5|R|1;COVERAGE|5|R|2;PASCACK|6|R|2;FROSH_PASCACK|6|R|0;HALL|6|R|1;COVERAGE|6|R|2;PASCACK|7|R|2;FROSH_PASCACK|7|R|0;HALL|7|R|2;COVERAGE|7|R|2;PASCACK|1|F|1;FROSH_PASCACK|1|F|0;HALL|1|F|1;COVERAGE|1|F|2;PASCACK|2|F|2;FROSH_PASCACK|2|F|0;HALL|2|F|1;COVERAGE|2|F|2;PASCACK|3|F|2;FROSH_PASCACK|3|F|1;HALL|3|F|1;COVERAGE|3|F|2;PASCACK|5|F|2;FROSH_PASCACK|5|F|1;HALL|5|F|2;COVERAGE|5|F|2;PASCACK|6|F|2;FROSH_PASCACK|6|F|1;HALL|6|F|1;COVERAGE|6|F|2;PASCACK|7|F|1;FROSH_PASCACK|7|F|0;HALL|7|F|1;COVERAGE|7|F|2;
+*,Abahazy, Julia,SCIE,141,-6
 #,Physics,SC3400,3,2,M,S2,141,SCIE, Julia Abahazy
 #,Physics,SC3400,3,2,T,S2,141,SCIE, Julia Abahazy
 #,Physics,SC3400,3,3,W,S2,141,SCIE, Julia Abahazy
@@ -3884,6 +3884,7 @@ $,9,FY,Free,F, Jane M Yeam, false
 &,L,FY,Lunch,M, Julia Abahazy
 $,0,S2,Free,M, Julia Abahazy, false
 $,3,S2,Free,M, Julia Abahazy, false
+$,5,S2,Free,M, Julia Abahazy, false
 $,7,S2,Free,M, Julia Abahazy, false
 $,9,S2,Free,M, Julia Abahazy, false
 &,L,FY,Lunch,T, Julia Abahazy
@@ -3892,6 +3893,7 @@ $,3,S2,Free,T, Julia Abahazy, false
 $,5,S2,Free,T, Julia Abahazy, false
 $,9,S2,Free,T, Julia Abahazy, false
 $,0,S2,Free,W, Julia Abahazy, false
+$,2,S2,Free,W, Julia Abahazy, false
 $,6,S2,Free,W, Julia Abahazy, true
 $,9,S2,Free,W, Julia Abahazy, false
 &,L,FY,Lunch,R, Julia Abahazy
@@ -3903,12 +3905,10 @@ $,0,S2,Free,F, Julia Abahazy, false
 $,2,S2,Free,F, Julia Abahazy, false
 $,6,S2,Free,F, Julia Abahazy, false
 $,9,S2,Free,F, Julia Abahazy, false
+$,1,S2,Free,T, Julia Abahazy, false
 $,1,S2,Free,M, Julia Abahazy, false
 $,3,S2,Free,R, Julia Abahazy, false
-@,1,S2,Pascack,???,T, Julia Abahazy,PASCACK
-@,5,S2,Hall,???,M, Julia Abahazy,HALL
-@,2,S2,Coverage,???,W, Julia Abahazy,COVERAGE
-*,Adams, Anastasia,SPEC,130,-1,3
+*,Adams, Anastasia,SPEC,130,-1
 #,Study Skills 9-12,CC8143,1,1,M,S2,130,SPEC, Anastasia Adams
 #,Study Skills 9-12,CC8143,1,1,T,S2,130,SPEC, Anastasia Adams
 #,Study Skills 9-12,CC8143,1,2,W,S2,130,SPEC, Anastasia Adams
@@ -3937,6 +3937,7 @@ $,9,S2,Free,M, Anastasia Adams, false
 &,L,FY,Lunch,T, Anastasia Adams
 $,0,S2,Free,T, Anastasia Adams, false
 $,3,S2,Free,T, Anastasia Adams, false
+$,5,S2,Free,T, Anastasia Adams, false
 $,9,S2,Free,T, Anastasia Adams, false
 &,L,FY,Lunch,W, Anastasia Adams
 $,0,S2,Free,W, Anastasia Adams, false
@@ -3946,17 +3947,16 @@ $,9,S2,Free,W, Anastasia Adams, false
 &,L,FY,Lunch,R, Anastasia Adams
 $,0,S2,Free,R, Anastasia Adams, false
 $,1,S2,Free,R, Anastasia Adams, false
+$,7,S2,Free,R, Anastasia Adams, false
 $,9,S2,Free,R, Anastasia Adams, false
 &,L,FY,Lunch,F, Anastasia Adams
 $,0,S2,Free,F, Anastasia Adams, false
 $,2,S2,Free,F, Anastasia Adams, false
 $,9,S2,Free,F, Anastasia Adams, false
+$,1,S2,Free,F, Anastasia Adams, false
 $,2,S2,Free,M, Anastasia Adams, false
 $,2,S2,Free,T, Anastasia Adams, false
-@,1,S2,Pascack,???,F, Anastasia Adams,PASCACK
-@,5,S2,Hall,???,T, Anastasia Adams,HALL
-@,7,S2,Coverage,???,R, Anastasia Adams,COVERAGE
-*,Alexander, Brooks W,ENG,222,-1,3
+*,Alexander, Brooks W,ENG,222,-1
 #,American Studies,CC5401,1,1,M,S2,222,ENG, Brooks W Alexander
 #,American Studies,CC5401,1,1,T,S2,222,ENG, Brooks W Alexander
 #,American Studies,CC5401,1,2,W,S2,222,ENG, Brooks W Alexander
@@ -4001,14 +4001,14 @@ $,0,S2,Free,F, Brooks W Alexander, false
 $,2,S2,Free,F, Brooks W Alexander, false
 $,6,S2,Free,F, Brooks W Alexander, false
 $,9,S2,Free,F, Brooks W Alexander, false
+$,7,S2,Free,R, Brooks W Alexander, false
+$,5,S2,Free,M, Brooks W Alexander, false
+$,5,S2,Free,T, Brooks W Alexander, false
 $,4,S2,Free,M, Brooks W Alexander, false
 $,1,S2,Free,W, Brooks W Alexander, false
 $,2,S2,Free,R, Brooks W Alexander, false
 $,3,S2,Free,F, Brooks W Alexander, false
-@,7,S2,Pascack,???,R, Brooks W Alexander,PASCACK
-@,5,S2,Hall,???,M, Brooks W Alexander,HALL
-@,5,S2,Coverage,???,T, Brooks W Alexander,COVERAGE
-*,Aliprantis, Anthony J,PEHL,GYM,0,3
+*,Aliprantis, Anthony J,PEHL,GYM,0
 #,Physical Education/Health 9,PE1050,4,6,M,S2,GYM,PEHL, Anthony J Aliprantis
 #,Physical Education/Health 9,PE1050,4,6,T,S2,GYM,PEHL, Anthony J Aliprantis
 #,Physical Education/Health 9,PE1050,4,7,W,S2,GYM,PEHL, Anthony J Aliprantis
@@ -4046,17 +4046,17 @@ $,9,S2,Free,W, Anthony J Aliprantis, false
 &,L,FY,Lunch,R, Anthony J Aliprantis
 $,0,S2,Free,R, Anthony J Aliprantis, false
 $,1,S2,Free,R, Anthony J Aliprantis, false
+$,5,S2,Free,R, Anthony J Aliprantis, false
 $,9,S2,Free,R, Anthony J Aliprantis, false
 &,L,FY,Lunch,F, Anthony J Aliprantis
 $,0,S2,Free,F, Anthony J Aliprantis, false
 $,2,S2,Free,F, Anthony J Aliprantis, false
 $,7,S2,Free,F, Anthony J Aliprantis, false
 $,9,S2,Free,F, Anthony J Aliprantis, false
+$,7,S2,Free,M, Anthony J Aliprantis, false
 $,6,S2,Free,R, Anthony J Aliprantis, false
-@,5,S2,Pascack,???,R, Anthony J Aliprantis,PASCACK
-@,6,S2,Hall,???,F, Anthony J Aliprantis,HALL
-@,7,S2,Coverage,???,M, Anthony J Aliprantis,COVERAGE
-*,Amato, Dana,PEHL,GYM,1,3
+$,6,S2,Free,F, Anthony J Aliprantis, false
+*,Amato, Dana,PEHL,GYM,1
 #,Physical Education/Health 11,PE3050,9,1,M,S2,GYM,PEHL, Dana Amato
 #,Physical Education/Health 11,PE3050,9,1,T,S2,GYM,PEHL, Dana Amato
 #,Physical Education/Health 11,PE3050,9,2,W,S2,GYM,PEHL, Dana Amato
@@ -4100,11 +4100,11 @@ $,0,S2,Free,F, Dana Amato, false
 $,1,S2,Free,F, Dana Amato, false
 $,5,S2,Free,F, Dana Amato, false
 $,9,S2,Free,F, Dana Amato, false
-$,5,S2,Free,M, Dana Amato, false
-@,6,S2,Pascack,???,M, Dana Amato,PASCACK
-@,6,S2,Hall,???,W, Dana Amato,HALL
-@,6,S2,Coverage,???,T, Dana Amato,COVERAGE
-*,Apanosian, Vani,SPEC,228,-4,3
+$,6,S2,Free,W, Dana Amato, false
+$,6,S2,Free,M, Dana Amato, false
+$,6,S2,Free,T, Dana Amato, false
+@,5,S2,Hall,Hall,M, Dana Amato,HALL
+*,Apanosian, Vani,SPEC,228,-4
 #,RISE Study Skills,CC8145,1,5,M,S2,228,SPEC, Vani Apanosian
 #,RISE Study Skills,CC8145,1,5,T,S2,228,SPEC, Vani Apanosian
 #,RISE Study Skills,CC8145,1,6,W,S2,228,SPEC, Vani Apanosian
@@ -4132,6 +4132,7 @@ $,5,S2,Free,M, Dana Amato, false
 &,L,FY,Lunch,M, Vani Apanosian
 $,0,S2,Free,M, Vani Apanosian, false
 $,2,S2,Free,M, Vani Apanosian, false
+$,6,S2,Free,M, Vani Apanosian, false
 $,9,S2,Free,M, Vani Apanosian, false
 &,L,FY,Lunch,T, Vani Apanosian
 $,0,S2,Free,T, Vani Apanosian, false
@@ -4149,10 +4150,9 @@ $,0,S2,Free,F, Vani Apanosian, false
 $,5,S2,Free,F, Vani Apanosian, false
 $,9,S2,Free,F, Vani Apanosian, false
 $,2,S2,Free,T, Vani Apanosian, false
-@,1,S2,Hall,???,F, Vani Apanosian,HALL
-@,3,S2,Coverage,???,W, Vani Apanosian,COVERAGE
-@,6,S2,Coverage,???,M, Vani Apanosian,COVERAGE
-*,Bruh, Mathew S,PEHL,GYM,-10,3
+$,1,S2,Free,F, Vani Apanosian, false
+$,3,S2,Free,W, Vani Apanosian, false
+*,Bruh, Mathew S,PEHL,GYM,-10
 #,Physical Education/Health 9,PE1050,10,8,M,S2,GYM,PEHL, Mathew S Bruh
 #,Physical Education/Health 9,PE1050,10,5,W,S2,GYM,PEHL, Mathew S Bruh
 #,Physical Education/Health 9,PE1050,10,6,R,S2,GYM,PEHL, Mathew S Bruh
@@ -4180,6 +4180,7 @@ $,6,S2,Free,M, Mathew S Bruh, false
 $,9,S2,Free,M, Mathew S Bruh, false
 &,L,FY,Lunch,T, Mathew S Bruh
 $,0,S2,Free,T, Mathew S Bruh, false
+$,3,S2,Free,T, Mathew S Bruh, false
 $,6,S2,Free,T, Mathew S Bruh, false
 $,9,S2,Free,T, Mathew S Bruh, false
 &,L,FY,Lunch,W, Mathew S Bruh
@@ -4196,11 +4197,10 @@ $,0,S2,Free,F, Mathew S Bruh, false
 $,3,S2,Free,F, Mathew S Bruh, false
 $,5,S2,Free,F, Mathew S Bruh, false
 $,9,S2,Free,F, Mathew S Bruh, false
+$,2,S2,Free,R, Mathew S Bruh, false
 $,2,S2,Free,F, Mathew S Bruh, false
-@,2,S2,Pascack,???,R, Mathew S Bruh,PASCACK
-@,3,S2,Hall,???,M, Mathew S Bruh,HALL
-@,3,S2,Coverage,???,T, Mathew S Bruh,COVERAGE
-*,Bucco, David A,ENG,130,1,3
+$,3,S2,Free,M, Mathew S Bruh, false
+*,Bucco, David A,ENG,130,1
 #,Honors English II,EN2600,1,5,M,S2,130,ENG, David A Bucco
 #,Honors English II,EN2600,1,5,T,S2,130,ENG, David A Bucco
 #,Honors English II,EN2600,1,6,W,S2,130,ENG, David A Bucco
@@ -4223,6 +4223,7 @@ $,2,S2,Free,F, Mathew S Bruh, false
 #,English IV: World Literature & Culture,EN8450,1,2,F,S2,130,ENG, David A Bucco
 &,L,FY,Lunch,M, David A Bucco
 $,0,S2,Free,M, David A Bucco, false
+$,1,S2,Free,M, David A Bucco, false
 $,6,S2,Free,M, David A Bucco, false
 $,9,S2,Free,M, David A Bucco, false
 &,L,FY,Lunch,T, David A Bucco
@@ -4238,17 +4239,16 @@ $,7,S2,Free,W, David A Bucco, false
 $,9,S2,Free,W, David A Bucco, false
 &,L,FY,Lunch,R, David A Bucco
 $,0,S2,Free,R, David A Bucco, false
+$,3,S2,Free,R, David A Bucco, false
 $,9,S2,Free,R, David A Bucco, false
 &,L,FY,Lunch,F, David A Bucco
 $,0,S2,Free,F, David A Bucco, false
 $,3,S2,Free,F, David A Bucco, false
 $,9,S2,Free,F, David A Bucco, false
 $,4,S2,Free,M, David A Bucco, false
+$,5,S2,Free,F, David A Bucco, false
 $,2,S2,Free,R, David A Bucco, false
-@,5,S2,Pascack,???,F, David A Bucco,PASCACK
-@,1,S2,Hall,???,M, David A Bucco,HALL
-@,3,S2,Coverage,???,R, David A Bucco,COVERAGE
-*,Caminiti, Kimberly,MATH,244,-5,3
+*,Caminiti, Kimberly,MATH,244,-5
 #,Algebra I,MA2300,2,5,M,S2,244,MATH, Kimberly Caminiti
 #,Algebra I,MA2300,2,5,T,S2,244,MATH, Kimberly Caminiti
 #,Algebra I,MA2300,2,6,W,S2,244,MATH, Kimberly Caminiti
@@ -4271,6 +4271,7 @@ $,2,S2,Free,R, David A Bucco, false
 #,Algebra II,MA8410,1,7,F,S2,244,MATH, Kimberly Caminiti
 &,L,FY,Lunch,M, Kimberly Caminiti
 $,0,S2,Free,M, Kimberly Caminiti, false
+$,4,S2,Free,M, Kimberly Caminiti, false
 $,7,S2,Free,M, Kimberly Caminiti, false
 $,9,S2,Free,M, Kimberly Caminiti, false
 &,L,FY,Lunch,T, Kimberly Caminiti
@@ -4292,11 +4293,10 @@ $,0,S2,Free,F, Kimberly Caminiti, false
 $,3,S2,Free,F, Kimberly Caminiti, false
 $,6,S2,Free,F, Kimberly Caminiti, false
 $,9,S2,Free,F, Kimberly Caminiti, false
+$,1,S2,Free,W, Kimberly Caminiti, false
 $,2,S2,Free,R, Kimberly Caminiti, false
-@,4,S2,Pascack,???,M, Kimberly Caminiti,PASCACK
-@,1,S2,Pascack,???,W, Kimberly Caminiti,PASCACK
-@,1,S2,Coverage,???,M, Kimberly Caminiti,COVERAGE
-*,Cleary, James J,SOST,225,1,3
+$,1,S2,Free,M, Kimberly Caminiti, false
+*,Cleary, James J,SOST,225,1
 #,World History,SS1400,5,1,M,S2,225,SOST, James J Cleary
 #,World History,SS1400,5,1,T,S2,225,SOST, James J Cleary
 #,World History,SS1400,5,2,W,S2,225,SOST, James J Cleary
@@ -4341,10 +4341,10 @@ $,0,S2,Free,F, James J Cleary, false
 $,1,S2,Free,F, James J Cleary, false
 $,7,S2,Free,F, James J Cleary, false
 $,9,S2,Free,F, James J Cleary, false
-@,3,S2,Pascack,???,W, James J Cleary,PASCACK
-@,3,S2,Hall,???,F, James J Cleary,HALL
-@,4,S2,Coverage,???,M, James J Cleary,COVERAGE
-*,Cohen, Jamie,SPEC,128,0,3
+$,3,S2,Free,W, James J Cleary, false
+$,3,S2,Free,F, James J Cleary, false
+$,4,S2,Free,M, James J Cleary, false
+*,Cohen, Jamie,SPEC,128,0
 #,Study Skills 9-12,CC8143,2,4,M,S2,128,SPEC, Jamie Cohen
 #,Study Skills 9-12,CC8143,2,1,W,S2,128,SPEC, Jamie Cohen
 #,Study Skills 9-12,CC8143,2,2,R,S2,128,SPEC, Jamie Cohen
@@ -4387,12 +4387,12 @@ $,7,S2,Free,R, Jamie Cohen, false
 $,9,S2,Free,R, Jamie Cohen, false
 &,L,FY,Lunch,F, Jamie Cohen
 $,0,S2,Free,F, Jamie Cohen, false
+$,7,S2,Free,F, Jamie Cohen, false
 $,9,S2,Free,F, Jamie Cohen, false
 $,5,S2,Free,T, Jamie Cohen, false
-@,6,S2,Pascack,???,W, Jamie Cohen,PASCACK
-@,6,S2,Hall,???,R, Jamie Cohen,HALL
-@,7,S2,Coverage,???,F, Jamie Cohen,COVERAGE
-*,Comanto, Stephen,SCIE,150,-10,3
+$,6,S2,Free,W, Jamie Cohen, false
+$,6,S2,Free,R, Jamie Cohen, false
+*,Comanto, Stephen,SCIE,150,-10
 #,Biology,SC1400,1,7,M,S2,150,SCIE, Stephen Comanto
 #,Biology,SC1400,1,7,T,S2,150,SCIE, Stephen Comanto
 #,Biology,SC1400,1,5,R,S2,150,SCIE, Stephen Comanto
@@ -4415,6 +4415,7 @@ $,5,S2,Free,T, Jamie Cohen, false
 &,L,FY,Lunch,M, Stephen Comanto
 $,0,S2,Free,M, Stephen Comanto, false
 $,3,S2,Free,M, Stephen Comanto, false
+$,4,S2,Free,M, Stephen Comanto, false
 $,5,S2,Free,M, Stephen Comanto, false
 $,9,S2,Free,M, Stephen Comanto, false
 &,L,FY,Lunch,T, Stephen Comanto
@@ -4435,13 +4436,12 @@ $,7,S2,Free,R, Stephen Comanto, true
 $,9,S2,Free,R, Stephen Comanto, false
 $,0,S2,Free,F, Stephen Comanto, false
 $,1,S2,Free,F, Stephen Comanto, false
+$,2,S2,Free,F, Stephen Comanto, false
 $,9,S2,Free,F, Stephen Comanto, false
 $,3,S2,Free,F, Stephen Comanto, true
 $,2,S2,Free,M, Stephen Comanto, false
-@,4,S2,Frosh Pascack,???,M, Stephen Comanto,FROSH_PASCACK
-@,2,S2,Pascack,???,F, Stephen Comanto,PASCACK
-@,2,S2,Coverage,???,T, Stephen Comanto,COVERAGE
-*,Comitto, Melissa,WLNG,226,1,3
+$,2,S2,Free,T, Stephen Comanto, false
+*,Comitto, Melissa,WLNG,226,1
 #,Spanish I,WL1410,1,5,M,S2,226,WLNG, Melissa Comitto
 #,Spanish I,WL1410,1,5,T,S2,226,WLNG, Melissa Comitto
 #,Spanish I,WL1410,1,6,W,S2,226,WLNG, Melissa Comitto
@@ -4486,10 +4486,10 @@ $,0,S2,Free,F, Melissa Comitto, false
 $,1,S2,Free,F, Melissa Comitto, false
 $,7,S2,Free,F, Melissa Comitto, false
 $,9,S2,Free,F, Melissa Comitto, false
-@,2,S2,Pascack,???,T, Melissa Comitto,PASCACK
-@,2,S2,Pascack,???,F, Melissa Comitto,PASCACK
-@,2,S2,Coverage,???,M, Melissa Comitto,COVERAGE
-*,DelSanto, Kenneth,MATH,250,1,3
+$,2,S2,Free,T, Melissa Comitto, false
+$,2,S2,Free,M, Melissa Comitto, false
+$,2,S2,Free,F, Melissa Comitto, false
+*,DelSanto, Kenneth,MATH,250,1
 #,Advanced Topics in Calculus (H),MA6604,1,4,M,S2,250,MATH, Kenneth DelSanto
 #,Advanced Topics in Calculus (H),MA6604,1,-1,T,S2,250,MATH, Kenneth DelSanto
 #,Advanced Topics in Calculus (H),MA6604,1,1,W,S2,250,MATH, Kenneth DelSanto
@@ -4538,7 +4538,7 @@ $,9,S2,Free,F, Kenneth DelSanto, true
 $,5,S2,Free,M, Kenneth DelSanto, true
 $,6,S2,Free,W, Kenneth DelSanto, true
 $,6,S2,Free,R, Kenneth DelSanto, true
-*,Donahue, Katherine H,ENG,124,-9,3
+*,Donahue, Katherine H,ENG,124,-9
 #,English II,EN2400,1,5,M,S2,124,ENG, Katherine H Donahue
 #,English II,EN2400,1,5,T,S2,124,ENG, Katherine H Donahue
 #,English II,EN2400,1,6,W,S2,124,ENG, Katherine H Donahue
@@ -4581,12 +4581,12 @@ $,9,S2,Free,R, Katherine H Donahue, false
 $,0,S2,Free,F, Katherine H Donahue, false
 $,2,S2,Free,F, Katherine H Donahue, false
 $,5,S2,Free,F, Katherine H Donahue, false
+$,7,S2,Free,F, Katherine H Donahue, false
 $,9,S2,Free,F, Katherine H Donahue, false
+$,7,S2,Free,W, Katherine H Donahue, false
+$,8,S2,Free,M, Katherine H Donahue, false
 $,1,S2,Free,R, Katherine H Donahue, false
-@,8,S2,Pascack,???,M, Katherine H Donahue,PASCACK
-@,7,S2,Hall,???,W, Katherine H Donahue,HALL
-@,7,S2,Coverage,???,F, Katherine H Donahue,COVERAGE
-*,Dore, Ryan,MUS,210,-12,3
+*,Dore, Ryan,MUS,210,-12
 #,Concert Band,MU1401,1,4,M,S2,210,MUS, Ryan Dore
 #,Concert Band,MU1401,1,1,W,S2,210,MUS, Ryan Dore
 #,Concert Band,MU1401,1,2,R,S2,210,MUS, Ryan Dore
@@ -4612,6 +4612,7 @@ $,8,S2,Free,M, Ryan Dore, true
 $,9,S2,Free,M, Ryan Dore, false
 &,L,FY,Lunch,T, Ryan Dore
 $,3,S2,Free,T, Ryan Dore, false
+$,5,S2,Free,T, Ryan Dore, false
 $,7,S2,Free,T, Ryan Dore, true
 $,9,S2,Free,T, Ryan Dore, false
 &,L,FY,Lunch,W, Ryan Dore
@@ -4626,15 +4627,14 @@ $,7,S2,Free,R, Ryan Dore, true
 $,9,S2,Free,R, Ryan Dore, false
 &,L,FY,Lunch,F, Ryan Dore
 $,2,S2,Free,F, Ryan Dore, false
+$,5,S2,Free,F, Ryan Dore, false
 $,6,S2,Free,F, Ryan Dore, false
 $,7,S2,Free,F, Ryan Dore, true
 $,9,S2,Free,F, Ryan Dore, false
+$,6,S2,Free,M, Ryan Dore, false
 $,7,S2,Free,W, Ryan Dore, true
 $,6,S2,Free,T, Ryan Dore, false
-@,6,S2,Pascack,???,M, Ryan Dore,PASCACK
-@,5,S2,Pascack,???,T, Ryan Dore,PASCACK
-@,5,S2,Coverage,???,F, Ryan Dore,COVERAGE
-*,Downes, Julianne,BUS,124,-10,3
+*,Downes, Julianne,BUS,124,-10
 #,Financial Literacy,BU2401,2,8,M,S2,124,BUS, Julianne Downes
 #,Financial Literacy,BU2401,2,5,W,S2,124,BUS, Julianne Downes
 #,Financial Literacy,BU2401,2,6,R,S2,124,BUS, Julianne Downes
@@ -4679,10 +4679,10 @@ $,9,S2,Free,R, Julianne Downes, false
 $,0,S2,Free,F, Julianne Downes, false
 $,6,S2,Free,F, Julianne Downes, false
 $,9,S2,Free,F, Julianne Downes, false
-@,6,S2,Frosh Pascack,???,T, Julianne Downes,FROSH_PASCACK
-@,5,S2,Hall,???,F, Julianne Downes,HALL
-@,6,S2,Coverage,???,M, Julianne Downes,COVERAGE
-*,Elkin, Margarita,MUS,204,0,3
+$,6,S2,Free,T, Julianne Downes, false
+$,5,S2,Free,F, Julianne Downes, false
+$,6,S2,Free,M, Julianne Downes, false
+*,Elkin, Margarita,MUS,204,0
 #,Chamber Choir,MU2403,1,8,M,S2,204,MUS, Margarita Elkin
 #,Chamber Choir,MU2403,1,5,W,S2,204,MUS, Margarita Elkin
 #,Chamber Choir,MU2403,1,6,R,S2,204,MUS, Margarita Elkin
@@ -4707,15 +4707,18 @@ $,7,S2,Free,M, Margarita Elkin, false
 $,9,S2,Free,M, Margarita Elkin, false
 &,L,FY,Lunch,T, Margarita Elkin
 $,0,S2,Free,T, Margarita Elkin, false
+$,3,S2,Free,T, Margarita Elkin, false
 $,6,S2,Free,T, Margarita Elkin, false
 $,7,S2,Free,T, Margarita Elkin, false
 $,9,S2,Free,T, Margarita Elkin, false
 &,L,FY,Lunch,W, Margarita Elkin
 $,0,S2,Free,W, Margarita Elkin, false
 $,3,S2,Free,W, Margarita Elkin, false
+$,7,S2,Free,W, Margarita Elkin, false
 $,9,S2,Free,W, Margarita Elkin, false
 &,L,FY,Lunch,R, Margarita Elkin
 $,0,S2,Free,R, Margarita Elkin, false
+$,1,S2,Free,R, Margarita Elkin, false
 $,5,S2,Free,R, Margarita Elkin, false
 $,9,S2,Free,R, Margarita Elkin, false
 &,L,FY,Lunch,F, Margarita Elkin
@@ -4727,10 +4730,7 @@ $,9,S2,Free,F, Margarita Elkin, false
 $,2,S2,Free,M, Margarita Elkin, false
 $,2,S2,Free,T, Margarita Elkin, false
 $,2,S2,Free,F, Margarita Elkin, false
-@,3,S2,Pascack,???,T, Margarita Elkin,PASCACK
-@,1,S2,Hall,???,R, Margarita Elkin,HALL
-@,7,S2,Coverage,???,W, Margarita Elkin,COVERAGE
-*,Forte, Marcia A,SPEC,135,-1,3
+*,Forte, Marcia A,SPEC,135,-1
 #,Study Skills 9-12,CC8143,3,6,M,S2,135,SPEC, Marcia A Forte
 #,Study Skills 9-12,CC8143,3,6,T,S2,135,SPEC, Marcia A Forte
 #,Study Skills 9-12,CC8143,3,7,W,S2,135,SPEC, Marcia A Forte
@@ -4766,6 +4766,7 @@ $,6,S2,Free,W, Marcia A Forte, false
 $,9,S2,Free,W, Marcia A Forte, false
 &,L,FY,Lunch,R, Marcia A Forte
 $,0,S2,Free,R, Marcia A Forte, false
+$,5,S2,Free,R, Marcia A Forte, false
 $,6,S2,Free,R, Marcia A Forte, false
 $,9,S2,Free,R, Marcia A Forte, false
 &,L,FY,Lunch,F, Marcia A Forte
@@ -4774,11 +4775,10 @@ $,1,S2,Free,F, Marcia A Forte, false
 $,6,S2,Free,F, Marcia A Forte, false
 $,7,S2,Free,F, Marcia A Forte, false
 $,9,S2,Free,F, Marcia A Forte, false
+$,5,S2,Free,W, Marcia A Forte, false
 $,7,S2,Free,R, Marcia A Forte, false
-@,5,S2,Pascack,???,R, Marcia A Forte,PASCACK
-@,5,S2,Pascack,???,W, Marcia A Forte,PASCACK
-@,7,S2,Coverage,???,M, Marcia A Forte,COVERAGE
-*,Frangiosa, David,SCIE,141,-10,3
+$,7,S2,Free,M, Marcia A Forte, false
+*,Frangiosa, David,SCIE,141,-10
 #,Conceptual Physics,SC3301,1,5,M,S2,141,SCIE, David Frangiosa
 #,Conceptual Physics,SC3301,1,5,T,S2,141,SCIE, David Frangiosa
 #,Conceptual Physics,SC3301,1,6,W,S2,141,SCIE, David Frangiosa
@@ -4827,7 +4827,7 @@ $,9,S2,Free,F, David Frangiosa, true
 $,5,S2,Free,R, David Frangiosa, true
 $,7,S2,Free,M, David Frangiosa, true
 $,6,S2,Free,F, David Frangiosa, true
-*,Gaeta, Michelle,MATH,250,0,3
+*,Gaeta, Michelle,MATH,250,0
 #,Statistics I,MA6409,5,1,M,S2,250,MATH, Michelle Gaeta
 #,Statistics I,MA6409,5,1,T,S2,250,MATH, Michelle Gaeta
 #,Statistics I,MA6409,5,2,W,S2,250,MATH, Michelle Gaeta
@@ -4865,17 +4865,17 @@ $,9,S2,Free,W, Michelle Gaeta, false
 &,L,FY,Lunch,R, Michelle Gaeta
 $,0,S2,Free,R, Michelle Gaeta, false
 $,2,S2,Free,R, Michelle Gaeta, false
+$,5,S2,Free,R, Michelle Gaeta, false
 $,9,S2,Free,R, Michelle Gaeta, false
 &,L,FY,Lunch,F, Michelle Gaeta
 $,0,S2,Free,F, Michelle Gaeta, false
 $,3,S2,Free,F, Michelle Gaeta, false
+$,7,S2,Free,F, Michelle Gaeta, false
 $,9,S2,Free,F, Michelle Gaeta, false
+$,7,S2,Free,M, Michelle Gaeta, false
 $,6,S2,Free,R, Michelle Gaeta, false
 $,6,S2,Free,F, Michelle Gaeta, false
-@,7,S2,Pascack,???,M, Michelle Gaeta,PASCACK
-@,7,S2,Hall,???,F, Michelle Gaeta,HALL
-@,5,S2,Coverage,???,R, Michelle Gaeta,COVERAGE
-*,Gamgort, Corin C,BUS,126,-8,3
+*,Gamgort, Corin C,BUS,126,-8
 #,Financial Investment,BU2410,1,6,M,S2,126,BUS, Corin C Gamgort
 #,Financial Investment,BU2410,1,6,T,S2,126,BUS, Corin C Gamgort
 #,Financial Investment,BU2410,1,7,W,S2,126,BUS, Corin C Gamgort
@@ -4931,7 +4931,7 @@ $,4,S2,Free,M, Corin C Gamgort, true
 $,1,S2,Free,W, Corin C Gamgort, true
 $,2,S2,Free,R, Corin C Gamgort, true
 $,3,S2,Free,F, Corin C Gamgort, true
-*,Ganz, Eric M,SPEC,230,-6,3
+*,Ganz, Eric M,SPEC,230,-6
 #,Study Skills 9-12,CC8143,6,5,M,S2,230,SPEC, Eric M Ganz
 #,Study Skills 9-12,CC8143,6,5,T,S2,230,SPEC, Eric M Ganz
 #,Study Skills 9-12,CC8143,6,6,W,S2,230,SPEC, Eric M Ganz
@@ -4979,7 +4979,7 @@ $,9,S2,Free,F, Eric M Ganz, true
 $,7,S2,Free,F, Eric M Ganz, true
 $,8,S2,Free,M, Eric M Ganz, true
 $,6,S2,Free,R, Eric M Ganz, true
-*,Garbaccio, Brooke,SPEC,122,-6,3
+*,Garbaccio, Brooke,SPEC,122,-6
 #,Gen Ed Study Skills 9/10/11/12,CC8144,1,3,M,S2,122,SPEC, Brooke Garbaccio
 #,Gen Ed Study Skills 9/10/11/12,CC8144,1,3,T,S2,122,SPEC, Brooke Garbaccio
 #,Gen Ed Study Skills 9/10/11/12,CC8144,1,1,R,S2,122,SPEC, Brooke Garbaccio
@@ -5028,7 +5028,7 @@ $,9,S2,Free,F, Brooke Garbaccio, true
 $,7,S2,Free,T, Brooke Garbaccio, true
 $,5,S2,Free,R, Brooke Garbaccio, true
 $,1,S2,Free,M, Brooke Garbaccio, true
-*,Garretson, Danielle,ART,202,-8,3
+*,Garretson, Danielle,ART,202,-8
 #,Photography,AR5410,1,6,M,S2,202,ART, Danielle Garretson
 #,Photography,AR5410,1,6,T,S2,202,ART, Danielle Garretson
 #,Photography,AR5410,1,7,W,S2,202,ART, Danielle Garretson
@@ -5076,7 +5076,7 @@ $,9,S2,Free,F, Danielle Garretson, true
 $,3,S2,Free,W, Danielle Garretson, true
 $,1,S2,Free,F, Danielle Garretson, true
 $,8,S2,Free,M, Danielle Garretson, true
-*,Goodman, Janet,MATH,253,-2,3
+*,Goodman, Janet,MATH,253,-2
 #,Geometry Enhanced,MA3400,2,3,M,S2,253,MATH, Janet Goodman
 #,Geometry Enhanced,MA3400,2,3,T,S2,253,MATH, Janet Goodman
 #,Geometry Enhanced,MA3400,2,1,R,S2,253,MATH, Janet Goodman
@@ -5099,10 +5099,12 @@ $,8,S2,Free,M, Danielle Garretson, true
 #,Pre-Calculus,MA6406,3,3,R,S2,253,MATH, Janet Goodman
 &,L,FY,Lunch,M, Janet Goodman
 $,0,S2,Free,M, Janet Goodman, false
+$,4,S2,Free,M, Janet Goodman, false
 $,8,S2,Free,M, Janet Goodman, false
 $,9,S2,Free,M, Janet Goodman, false
 &,L,FY,Lunch,T, Janet Goodman
 $,0,S2,Free,T, Janet Goodman, false
+$,7,S2,Free,T, Janet Goodman, false
 $,9,S2,Free,T, Janet Goodman, false
 &,L,FY,Lunch,W, Janet Goodman
 $,0,S2,Free,W, Janet Goodman, false
@@ -5117,14 +5119,12 @@ $,9,S2,Free,R, Janet Goodman, false
 $,0,S2,Free,F, Janet Goodman, false
 $,3,S2,Free,F, Janet Goodman, false
 $,6,S2,Free,F, Janet Goodman, false
+$,7,S2,Free,F, Janet Goodman, false
 $,9,S2,Free,F, Janet Goodman, false
 $,1,S2,Free,W, Janet Goodman, false
 $,7,S2,Free,M, Janet Goodman, false
-@,7,S2,Pascack,???,F, Janet Goodman,PASCACK
-@,6,S2,Coverage,???,R, Janet Goodman,COVERAGE
-$,4,S2,Free,M, Janet Goodman, false
-@,7,S2,Coverage,???,T, Janet Goodman,COVERAGE
-*,Goodman, Douglas,SOST,231,-4,3
+$,6,S2,Free,R, Janet Goodman, false
+*,Goodman, Douglas,SOST,231,-4
 #,Honors United States History II,SS3600,1,3,M,S2,231,SOST, Douglas Goodman
 #,Honors United States History II,SS3600,1,3,T,S2,231,SOST, Douglas Goodman
 #,Honors United States History II,SS3600,1,1,R,S2,231,SOST, Douglas Goodman
@@ -5156,6 +5156,7 @@ $,2,S2,Free,T, Douglas Goodman, false
 $,9,S2,Free,T, Douglas Goodman, false
 &,L,FY,Lunch,W, Douglas Goodman
 $,0,S2,Free,W, Douglas Goodman, false
+$,3,S2,Free,W, Douglas Goodman, false
 $,5,S2,Free,W, Douglas Goodman, false
 $,9,S2,Free,W, Douglas Goodman, false
 &,L,FY,Lunch,R, Douglas Goodman
@@ -5168,11 +5169,10 @@ $,0,S2,Free,F, Douglas Goodman, false
 $,1,S2,Free,F, Douglas Goodman, false
 $,7,S2,Free,F, Douglas Goodman, false
 $,9,S2,Free,F, Douglas Goodman, false
+$,4,S2,Free,M, Douglas Goodman, false
+$,3,S2,Free,F, Douglas Goodman, false
 $,1,S2,Free,W, Douglas Goodman, false
-@,3,S2,Pascack,???,W, Douglas Goodman,PASCACK
-@,4,S2,Hall,???,M, Douglas Goodman,HALL
-@,3,S2,Coverage,???,F, Douglas Goodman,COVERAGE
-*,Guardabascio, Vita G,WLNG,227,-8,3
+*,Guardabascio, Vita G,WLNG,227,-8
 #,English as a Second Language,EN1201,1,5,M,S2,227,WLNG, Vita G Guardabascio
 #,English as a Second Language,EN1201,1,5,T,S2,227,WLNG, Vita G Guardabascio
 #,English as a Second Language,EN1201,1,6,W,S2,227,WLNG, Vita G Guardabascio
@@ -5220,7 +5220,7 @@ $,9,S2,Free,F, Vita G Guardabascio, true
 $,6,S2,Free,T, Vita G Guardabascio, true
 $,1,S2,Free,M, Vita G Guardabascio, true
 $,7,S2,Free,W, Vita G Guardabascio, true
-*,Haveron, Owen,BUS,247,-4,3
+*,Haveron, Owen,BUS,247,-4
 #,Financial Literacy,BU2401,1,7,M,S2,247,BUS, Owen Haveron
 #,Financial Literacy,BU2401,1,7,T,S2,247,BUS, Owen Haveron
 #,Financial Literacy,BU2401,1,5,R,S2,247,BUS, Owen Haveron
@@ -5276,7 +5276,7 @@ $,1,S2,Free,R, Owen Haveron, true
 $,5,S2,Free,R, Owen Haveron, true
 $,2,S2,Free,F, Owen Haveron, true
 $,6,S2,Free,F, Owen Haveron, true
-*,Hawkins, Patricia,MATH,244,-3,3
+*,Hawkins, Patricia,MATH,244,-3
 #,Geometry,MA3300,1,2,M,S2,244,MATH, Patricia Hawkins
 #,Geometry,MA3300,1,2,T,S2,244,MATH, Patricia Hawkins
 #,Geometry,MA3300,1,3,W,S2,244,MATH, Patricia Hawkins
@@ -5314,6 +5314,7 @@ $,6,S2,Free,W, Patricia Hawkins, false
 $,9,S2,Free,W, Patricia Hawkins, false
 &,L,FY,Lunch,R, Patricia Hawkins
 $,0,S2,Free,R, Patricia Hawkins, false
+$,3,S2,Free,R, Patricia Hawkins, false
 $,7,S2,Free,R, Patricia Hawkins, false
 $,9,S2,Free,R, Patricia Hawkins, false
 &,L,FY,Lunch,F, Patricia Hawkins
@@ -5321,10 +5322,9 @@ $,0,S2,Free,F, Patricia Hawkins, false
 $,3,S2,Free,F, Patricia Hawkins, false
 $,9,S2,Free,F, Patricia Hawkins, false
 $,2,S2,Free,R, Patricia Hawkins, false
-@,1,S2,Pascack,???,M, Patricia Hawkins,PASCACK
-@,2,S2,Hall,???,W, Patricia Hawkins,HALL
-@,3,S2,Coverage,???,R, Patricia Hawkins,COVERAGE
-*,Henry, Paul D,SCIE,168,1,3
+$,2,S2,Free,W, Patricia Hawkins, false
+$,1,S2,Free,M, Patricia Hawkins, false
+*,Henry, Paul D,SCIE,168,1
 #,Chemistry in the Community,SC2300,1,1,M,S2,168,SCIE, Paul D Henry
 #,Chemistry in the Community,SC2300,1,1,T,S2,168,SCIE, Paul D Henry
 #,Chemistry in the Community,SC2300,1,2,W,S2,168,SCIE, Paul D Henry
@@ -5377,13 +5377,13 @@ $,5,S2,Free,R, Paul D Henry, false
 $,9,S2,Free,R, Paul D Henry, false
 &,L,FY,Lunch,F, Paul D Henry
 $,0,S2,Free,F, Paul D Henry, false
+$,3,S2,Free,F, Paul D Henry, false
 $,6,S2,Free,F, Paul D Henry, false
 $,9,S2,Free,F, Paul D Henry, false
+$,3,S2,Free,M, Paul D Henry, false
+$,2,S2,Free,R, Paul D Henry, false
 $,2,S2,Free,F, Paul D Henry, false
-@,3,S2,Pascack,???,F, Paul D Henry,PASCACK
-@,3,S2,Pascack,???,M, Paul D Henry,PASCACK
-@,2,S2,Coverage,???,R, Paul D Henry,COVERAGE
-*,Horn, Deborah L,SOST,235,1,3
+*,Horn, Deborah L,SOST,235,1
 #,Honors United States History I,SS2600,1,1,M,S2,235,SOST, Deborah L Horn
 #,Honors United States History I,SS2600,1,1,T,S2,235,SOST, Deborah L Horn
 #,Honors United States History I,SS2600,1,2,W,S2,235,SOST, Deborah L Horn
@@ -5412,6 +5412,7 @@ $,9,S2,Free,M, Deborah L Horn, false
 &,L,FY,Lunch,T, Deborah L Horn
 $,0,S2,Free,T, Deborah L Horn, false
 $,3,S2,Free,T, Deborah L Horn, false
+$,6,S2,Free,T, Deborah L Horn, false
 $,9,S2,Free,T, Deborah L Horn, false
 &,L,FY,Lunch,W, Deborah L Horn
 $,0,S2,Free,W, Deborah L Horn, false
@@ -5428,10 +5429,9 @@ $,2,S2,Free,F, Deborah L Horn, false
 $,5,S2,Free,F, Deborah L Horn, false
 $,9,S2,Free,F, Deborah L Horn, false
 $,5,S2,Free,T, Deborah L Horn, false
-@,6,S2,Pascack,???,T, Deborah L Horn,PASCACK
-@,6,S2,Hall,???,M, Deborah L Horn,HALL
-@,6,S2,Coverage,???,W, Deborah L Horn,COVERAGE
-*,Johnson, Tyler,PEHL,GYM,1,3
+$,6,S2,Free,W, Deborah L Horn, false
+$,6,S2,Free,M, Deborah L Horn, false
+*,Johnson, Tyler,PEHL,GYM,1
 #,Physical Education/Health 9,PE1050,2,1,M,S2,GYM,PEHL, Tyler Johnson
 #,Physical Education/Health 9,PE1050,2,1,T,S2,GYM,PEHL, Tyler Johnson
 #,Physical Education/Health 9,PE1050,2,2,W,S2,GYM,PEHL, Tyler Johnson
@@ -5460,6 +5460,7 @@ $,9,S2,Free,M, Tyler Johnson, false
 &,L,FY,Lunch,T, Tyler Johnson
 $,0,S2,Free,T, Tyler Johnson, false
 $,5,S2,Free,T, Tyler Johnson, false
+$,7,S2,Free,T, Tyler Johnson, false
 $,9,S2,Free,T, Tyler Johnson, false
 &,L,FY,Lunch,W, Tyler Johnson
 $,0,S2,Free,W, Tyler Johnson, false
@@ -5472,14 +5473,13 @@ $,7,S2,Free,R, Tyler Johnson, false
 $,9,S2,Free,R, Tyler Johnson, false
 &,L,FY,Lunch,F, Tyler Johnson
 $,0,S2,Free,F, Tyler Johnson, false
+$,5,S2,Free,F, Tyler Johnson, false
 $,6,S2,Free,F, Tyler Johnson, false
 $,9,S2,Free,F, Tyler Johnson, false
+$,6,S2,Free,M, Tyler Johnson, false
 $,6,S2,Free,T, Tyler Johnson, false
 $,6,S2,Free,W, Tyler Johnson, false
-@,5,S2,Frosh Pascack,???,F, Tyler Johnson,FROSH_PASCACK
-@,6,S2,Hall,???,M, Tyler Johnson,HALL
-@,7,S2,Hall,???,T, Tyler Johnson,HALL
-*,Kanova, Ivica,WLNG,223,-9,3
+*,Kanova, Ivica,WLNG,223,-9
 #,Spanish III,WL1430,1,3,M,S2,223,WLNG, Ivica Kanova
 #,Spanish III,WL1430,1,3,T,S2,223,WLNG, Ivica Kanova
 #,Spanish III,WL1430,1,1,R,S2,223,WLNG, Ivica Kanova
@@ -5502,6 +5502,7 @@ $,6,S2,Free,W, Tyler Johnson, false
 #,Honors Spanish III,WL1630,1,1,F,S2,223,WLNG, Ivica Kanova
 &,L,FY,Lunch,M, Ivica Kanova
 $,0,S2,Free,M, Ivica Kanova, false
+$,4,S2,Free,M, Ivica Kanova, false
 $,6,S2,Free,M, Ivica Kanova, false
 $,9,S2,Free,M, Ivica Kanova, false
 &,L,FY,Lunch,T, Ivica Kanova
@@ -5511,6 +5512,7 @@ $,9,S2,Free,T, Ivica Kanova, false
 &,L,FY,Lunch,W, Ivica Kanova
 $,0,S2,Free,W, Ivica Kanova, false
 $,1,S2,Free,W, Ivica Kanova, false
+$,5,S2,Free,W, Ivica Kanova, false
 $,9,S2,Free,W, Ivica Kanova, false
 &,L,FY,Lunch,R, Ivica Kanova
 $,0,S2,Free,R, Ivica Kanova, false
@@ -5520,14 +5522,12 @@ $,9,S2,Free,R, Ivica Kanova, false
 &,L,FY,Lunch,F, Ivica Kanova
 $,0,S2,Free,F, Ivica Kanova, false
 $,3,S2,Free,F, Ivica Kanova, false
+$,5,S2,Free,F, Ivica Kanova, false
 $,9,S2,Free,F, Ivica Kanova, false
 $,7,S2,Free,F, Ivica Kanova, false
 $,8,S2,Free,M, Ivica Kanova, false
 $,7,S2,Free,W, Ivica Kanova, false
-@,5,S2,Hall,???,F, Ivica Kanova,HALL
-@,4,S2,Coverage,???,M, Ivica Kanova,COVERAGE
-@,5,S2,Coverage,???,W, Ivica Kanova,COVERAGE
-*,Killian, Kevin,MATH,246,-9,3
+*,Killian, Kevin,MATH,246,-9
 #,Algebra I Enhanced,MA2400,1,6,M,S2,246,MATH, Kevin Killian
 #,Algebra I Enhanced,MA2400,1,6,T,S2,246,MATH, Kevin Killian
 #,Algebra I Enhanced,MA2400,1,7,W,S2,246,MATH, Kevin Killian
@@ -5572,10 +5572,10 @@ $,0,S2,Free,F, Kevin Killian, false
 $,3,S2,Free,F, Kevin Killian, false
 $,6,S2,Free,F, Kevin Killian, false
 $,9,S2,Free,F, Kevin Killian, false
-@,7,S2,Pascack,???,T, Kevin Killian,PASCACK
-@,7,S2,Hall,???,R, Kevin Killian,HALL
-@,1,S2,Coverage,???,W, Kevin Killian,COVERAGE
-*,Kirkby, Kevin M,MATH,254,-1,3
+$,7,S2,Free,T, Kevin Killian, false
+$,1,S2,Free,W, Kevin Killian, false
+$,7,S2,Free,R, Kevin Killian, false
+*,Kirkby, Kevin M,MATH,254,-1
 #,Honors Algebra II with Trigonometry,MA4600,1,3,M,S2,254,MATH, Kevin M Kirkby
 #,Honors Algebra II with Trigonometry,MA4600,1,3,T,S2,254,MATH, Kevin M Kirkby
 #,Honors Algebra II with Trigonometry,MA4600,1,1,R,S2,254,MATH, Kevin M Kirkby
@@ -5599,6 +5599,7 @@ $,9,S2,Free,F, Kevin Killian, false
 &,L,FY,Lunch,M, Kevin M Kirkby
 $,0,S2,Free,M, Kevin M Kirkby, false
 $,5,S2,Free,M, Kevin M Kirkby, false
+$,6,S2,Free,M, Kevin M Kirkby, false
 $,9,S2,Free,M, Kevin M Kirkby, false
 &,L,FY,Lunch,T, Kevin M Kirkby
 $,0,S2,Free,T, Kevin M Kirkby, false
@@ -5607,6 +5608,7 @@ $,9,S2,Free,T, Kevin M Kirkby, false
 &,L,FY,Lunch,W, Kevin M Kirkby
 $,0,S2,Free,W, Kevin M Kirkby, false
 $,5,S2,Free,W, Kevin M Kirkby, false
+$,7,S2,Free,W, Kevin M Kirkby, false
 $,9,S2,Free,W, Kevin M Kirkby, false
 &,L,FY,Lunch,R, Kevin M Kirkby
 $,0,S2,Free,R, Kevin M Kirkby, false
@@ -5620,10 +5622,8 @@ $,7,S2,Free,F, Kevin M Kirkby, false
 $,9,S2,Free,F, Kevin M Kirkby, false
 $,8,S2,Free,M, Kevin M Kirkby, false
 $,6,S2,Free,W, Kevin M Kirkby, false
-@,6,S2,Frosh Pascack,???,M, Kevin M Kirkby,FROSH_PASCACK
-@,7,S2,Pascack,???,W, Kevin M Kirkby,PASCACK
-@,6,S2,Coverage,???,T, Kevin M Kirkby,COVERAGE
-*,Lampert, Evan M,SPEC,110,-7,3
+$,6,S2,Free,T, Kevin M Kirkby, false
+*,Lampert, Evan M,SPEC,110,-7
 #,Study Skills 9-12,CC8143,7,2,M,S2,110,SPEC, Evan M Lampert
 #,Study Skills 9-12,CC8143,7,2,T,S2,110,SPEC, Evan M Lampert
 #,Study Skills 9-12,CC8143,7,3,W,S2,110,SPEC, Evan M Lampert
@@ -5654,6 +5654,7 @@ $,3,S2,Free,M, Evan M Lampert, false
 $,9,S2,Free,M, Evan M Lampert, false
 &,L,FY,Lunch,T, Evan M Lampert
 $,0,S2,Free,T, Evan M Lampert, false
+$,1,S2,Free,T, Evan M Lampert, false
 $,9,S2,Free,T, Evan M Lampert, false
 &,L,FY,Lunch,W, Evan M Lampert
 $,0,S2,Free,W, Evan M Lampert, false
@@ -5661,17 +5662,16 @@ $,2,S2,Free,W, Evan M Lampert, false
 $,9,S2,Free,W, Evan M Lampert, false
 &,L,FY,Lunch,R, Evan M Lampert
 $,0,S2,Free,R, Evan M Lampert, false
+$,3,S2,Free,R, Evan M Lampert, false
 $,9,S2,Free,R, Evan M Lampert, false
 &,L,FY,Lunch,F, Evan M Lampert
 $,0,S2,Free,F, Evan M Lampert, false
 $,2,S2,Free,F, Evan M Lampert, false
 $,9,S2,Free,F, Evan M Lampert, false
 $,3,S2,Free,T, Evan M Lampert, false
+$,1,S2,Free,M, Evan M Lampert, false
 $,1,S2,Free,R, Evan M Lampert, false
-@,1,S2,Pascack,???,M, Evan M Lampert,PASCACK
-@,3,S2,Hall,???,R, Evan M Lampert,HALL
-@,1,S2,Coverage,???,T, Evan M Lampert,COVERAGE
-*,Leibfried, Cassandra,MATH,248,-1,3
+*,Leibfried, Cassandra,MATH,248,-1
 #,Algebra II with Trigonometry,MA4300,1,6,M,S2,248,MATH, Cassandra Leibfried
 #,Algebra II with Trigonometry,MA4300,1,6,T,S2,248,MATH, Cassandra Leibfried
 #,Algebra II with Trigonometry,MA4300,1,7,W,S2,248,MATH, Cassandra Leibfried
@@ -5709,17 +5709,17 @@ $,6,S2,Free,W, Cassandra Leibfried, false
 $,9,S2,Free,W, Cassandra Leibfried, false
 &,L,FY,Lunch,R, Cassandra Leibfried
 $,0,S2,Free,R, Cassandra Leibfried, false
+$,2,S2,Free,R, Cassandra Leibfried, false
 $,7,S2,Free,R, Cassandra Leibfried, false
 $,9,S2,Free,R, Cassandra Leibfried, false
 &,L,FY,Lunch,F, Cassandra Leibfried
 $,0,S2,Free,F, Cassandra Leibfried, false
+$,3,S2,Free,F, Cassandra Leibfried, false
 $,9,S2,Free,F, Cassandra Leibfried, false
 $,1,S2,Free,R, Cassandra Leibfried, false
 $,2,S2,Free,F, Cassandra Leibfried, false
-@,3,S2,Pascack,???,F, Cassandra Leibfried,PASCACK
-@,3,S2,Pascack,???,M, Cassandra Leibfried,PASCACK
-@,2,S2,Coverage,???,R, Cassandra Leibfried,COVERAGE
-*,Lutz, Heather,ENG,132,-4,3
+$,3,S2,Free,M, Cassandra Leibfried, false
+*,Lutz, Heather,ENG,132,-4
 #,English I,EN1400,1,6,M,S2,132,ENG, Heather Lutz
 #,English I,EN1400,1,6,T,S2,132,ENG, Heather Lutz
 #,English I,EN1400,1,7,W,S2,132,ENG, Heather Lutz
@@ -5753,10 +5753,12 @@ $,9,S2,Free,T, Heather Lutz, false
 &,L,FY,Lunch,W, Heather Lutz
 $,0,S2,Free,W, Heather Lutz, false
 $,5,S2,Free,W, Heather Lutz, false
+$,6,S2,Free,W, Heather Lutz, false
 $,9,S2,Free,W, Heather Lutz, false
 &,L,FY,Lunch,R, Heather Lutz
 $,0,S2,Free,R, Heather Lutz, false
 $,3,S2,Free,R, Heather Lutz, false
+$,7,S2,Free,R, Heather Lutz, false
 $,9,S2,Free,R, Heather Lutz, false
 &,L,FY,Lunch,F, Heather Lutz
 $,0,S2,Free,F, Heather Lutz, false
@@ -5764,10 +5766,8 @@ $,7,S2,Free,F, Heather Lutz, false
 $,9,S2,Free,F, Heather Lutz, false
 $,2,S2,Free,W, Heather Lutz, false
 $,6,S2,Free,R, Heather Lutz, false
-@,6,S2,Pascack,???,W, Heather Lutz,PASCACK
-@,7,S2,Hall,???,R, Heather Lutz,HALL
-@,8,S2,Coverage,???,M, Heather Lutz,COVERAGE
-*,Macke, Natalie,SCIE,145,-8,3
+$,8,S2,Free,M, Heather Lutz, false
+*,Macke, Natalie,SCIE,145,-8
 #,Chemistry,SC2400,1,1,M,S2,145,SCIE, Natalie Macke
 #,Chemistry,SC2400,1,1,T,S2,145,SCIE, Natalie Macke
 #,Chemistry,SC2400,1,2,W,S2,145,SCIE, Natalie Macke
@@ -5801,6 +5801,7 @@ $,9,S2,Free,T, Natalie Macke, false
 &,L,FY,Lunch,W, Natalie Macke
 $,0,S2,Free,W, Natalie Macke, false
 $,3,S2,Free,W, Natalie Macke, false
+$,5,S2,Free,W, Natalie Macke, false
 $,7,S2,Free,W, Natalie Macke, false
 $,9,S2,Free,W, Natalie Macke, false
 $,0,S2,Free,R, Natalie Macke, false
@@ -5813,10 +5814,9 @@ $,5,S2,Free,F, Natalie Macke, false
 $,7,S2,Free,F, Natalie Macke, true
 $,9,S2,Free,F, Natalie Macke, false
 $,4,S2,Free,M, Natalie Macke, false
-@,5,S2,Pascack,???,W, Natalie Macke,PASCACK
-@,1,S2,Coverage,???,F, Natalie Macke,COVERAGE
-@,1,S2,Coverage,???,W, Natalie Macke,COVERAGE
-*,Mahaffey, Kaitlyn,SOST,245,1,3
+$,1,S2,Free,W, Natalie Macke, false
+$,1,S2,Free,F, Natalie Macke, false
+*,Mahaffey, Kaitlyn,SOST,245,1
 #,United States History II,SS3400,3,6,M,S2,245,SOST, Kaitlyn Mahaffey
 #,United States History II,SS3400,3,6,T,S2,245,SOST, Kaitlyn Mahaffey
 #,United States History II,SS3400,3,7,W,S2,245,SOST, Kaitlyn Mahaffey
@@ -5864,7 +5864,7 @@ $,9,S2,Free,F, Kaitlyn Mahaffey, true
 $,6,S2,Free,R, Kaitlyn Mahaffey, true
 $,7,S2,Free,M, Kaitlyn Mahaffey, true
 $,6,S2,Free,F, Kaitlyn Mahaffey, true
-*,Mallya, Aarti,SCIE,153,-1,3
+*,Mallya, Aarti,SCIE,153,-1
 #,AP Biology Lab,SC1700,1,1,R,S2,153,SCIE, Aarti Mallya
 #,AP Biology,SC1700,1,4,M,S2,153,SCIE, Aarti Mallya
 #,AP Biology,SC1700,1,1,W,S2,153,SCIE, Aarti Mallya
@@ -5892,11 +5892,13 @@ $,3,S2,Free,M, Aarti Mallya, false
 $,6,S2,Free,M, Aarti Mallya, false
 $,7,S2,Free,M, Aarti Mallya, false
 $,0,S2,Free,T, Aarti Mallya, false
+$,2,S2,Free,T, Aarti Mallya, false
 $,3,S2,Free,T, Aarti Mallya, false
 $,6,S2,Free,T, Aarti Mallya, true
 $,7,S2,Free,T, Aarti Mallya, false
 &,L,FY,Lunch,W, Aarti Mallya
 $,0,S2,Free,W, Aarti Mallya, false
+$,3,S2,Free,W, Aarti Mallya, false
 $,7,S2,Free,W, Aarti Mallya, false
 &,L,FY,Lunch,R, Aarti Mallya
 $,0,S2,Free,R, Aarti Mallya, false
@@ -5908,11 +5910,9 @@ $,2,S2,Free,F, Aarti Mallya, false
 $,5,S2,Free,F, Aarti Mallya, false
 $,6,S2,Free,F, Aarti Mallya, false
 $,1,S2,Free,T, Aarti Mallya, true
+$,2,S2,Free,M, Aarti Mallya, false
 $,2,S2,Free,W, Aarti Mallya, false
-@,2,S2,Pascack,???,M, Aarti Mallya,PASCACK
-@,2,S2,Hall,???,T, Aarti Mallya,HALL
-@,3,S2,Coverage,???,W, Aarti Mallya,COVERAGE
-*,Manzella, Elizabeth,TCED,213,-10,3
+*,Manzella, Elizabeth,TCED,213,-10
 #,Video Production,TE1300,1,6,M,S2,213,TCED, Elizabeth Manzella
 #,Video Production,TE1300,1,6,T,S2,213,TCED, Elizabeth Manzella
 #,Video Production,TE1300,1,7,W,S2,213,TCED, Elizabeth Manzella
@@ -5940,6 +5940,7 @@ $,7,S2,Free,M, Elizabeth Manzella, false
 $,9,S2,Free,M, Elizabeth Manzella, false
 &,L,FY,Lunch,T, Elizabeth Manzella
 $,0,S2,Free,T, Elizabeth Manzella, false
+$,3,S2,Free,T, Elizabeth Manzella, false
 $,7,S2,Free,T, Elizabeth Manzella, false
 $,9,S2,Free,T, Elizabeth Manzella, false
 &,L,FY,Lunch,W, Elizabeth Manzella
@@ -5953,14 +5954,13 @@ $,5,S2,Free,R, Elizabeth Manzella, false
 $,9,S2,Free,R, Elizabeth Manzella, false
 &,L,FY,Lunch,F, Elizabeth Manzella
 $,0,S2,Free,F, Elizabeth Manzella, false
+$,2,S2,Free,F, Elizabeth Manzella, false
 $,6,S2,Free,F, Elizabeth Manzella, false
 $,9,S2,Free,F, Elizabeth Manzella, false
-$,1,S2,Free,T, Elizabeth Manzella, false
-@,3,S2,Pascack,???,T, Elizabeth Manzella,PASCACK
-@,2,S2,Coverage,???,F, Elizabeth Manzella,COVERAGE
 $,1,S2,Free,M, Elizabeth Manzella, false
-@,1,S2,Coverage,???,R, Elizabeth Manzella,COVERAGE
-*,Marini, Matthew G,MATH,248,0,3
+$,1,S2,Free,T, Elizabeth Manzella, false
+$,1,S2,Free,R, Elizabeth Manzella, false
+*,Marini, Matthew G,MATH,248,0
 #,Geometry,MA3309,1,1,M,S2,248,MATH, Matthew G Marini
 #,Geometry,MA3309,1,1,T,S2,248,MATH, Matthew G Marini
 #,Geometry,MA3309,1,2,W,S2,248,MATH, Matthew G Marini
@@ -5992,6 +5992,7 @@ $,7,S2,Free,T, Matthew G Marini, false
 $,9,S2,Free,T, Matthew G Marini, false
 &,L,FY,Lunch,W, Matthew G Marini
 $,0,S2,Free,W, Matthew G Marini, false
+$,1,S2,Free,W, Matthew G Marini, false
 $,5,S2,Free,W, Matthew G Marini, false
 $,9,S2,Free,W, Matthew G Marini, false
 &,L,FY,Lunch,R, Matthew G Marini
@@ -6005,10 +6006,9 @@ $,3,S2,Free,F, Matthew G Marini, false
 $,7,S2,Free,F, Matthew G Marini, false
 $,9,S2,Free,F, Matthew G Marini, false
 $,2,S2,Free,R, Matthew G Marini, false
-@,7,S2,Pascack,???,M, Matthew G Marini,PASCACK
-@,1,S2,Hall,???,W, Matthew G Marini,HALL
-@,6,S2,Coverage,???,F, Matthew G Marini,COVERAGE
-*,Marootian, Jamie A,ENG,134,-4,3
+$,7,S2,Free,M, Matthew G Marini, false
+$,6,S2,Free,F, Matthew G Marini, false
+*,Marootian, Jamie A,ENG,134,-4
 #,English I,EN1400,4,3,M,S2,134,ENG, Jamie A Marootian
 #,English I,EN1400,4,3,T,S2,134,ENG, Jamie A Marootian
 #,English I,EN1400,4,1,R,S2,134,ENG, Jamie A Marootian
@@ -6056,7 +6056,7 @@ $,9,S2,Free,F, Jamie A Marootian, true
 $,2,S2,Free,T, Jamie A Marootian, true
 $,1,S2,Free,F, Jamie A Marootian, true
 $,3,S2,Free,W, Jamie A Marootian, true
-*,Martinez, Vanessa,WLNG,232,1,3
+*,Martinez, Vanessa,WLNG,232,1
 #,Spanish IV,WL1440,1,2,M,S2,232,WLNG, Vanessa Martinez
 #,Spanish IV,WL1440,1,2,T,S2,232,WLNG, Vanessa Martinez
 #,Spanish IV,WL1440,1,3,W,S2,232,WLNG, Vanessa Martinez
@@ -6104,7 +6104,7 @@ $,9,S2,Free,F, Vanessa Martinez, true
 $,5,S2,Free,F, Vanessa Martinez, true
 $,6,S2,Free,M, Vanessa Martinez, true
 $,6,S2,Free,T, Vanessa Martinez, true
-*,Mazan, Claire,FACS,101,0,3
+*,Mazan, Claire,FACS,101,0
 #,Clothing Construction,FA1401,1,1,M,S2,101,FACS, Claire Mazan
 #,Clothing Construction,FA1401,1,1,T,S2,101,FACS, Claire Mazan
 #,Clothing Construction,FA1401,1,2,W,S2,101,FACS, Claire Mazan
@@ -6149,6 +6149,9 @@ $,0,S2,Free,F, Claire Mazan, false
 $,1,S2,Free,F, Claire Mazan, false
 $,5,S2,Free,F, Claire Mazan, false
 $,9,S2,Free,F, Claire Mazan, false
+$,2,S2,Free,M, Claire Mazan, false
+$,2,S2,Free,T, Claire Mazan, false
+$,2,S2,Free,F, Claire Mazan, false
 $,7,S2,Free,M, Claire Mazan, false
 $,8,S2,Free,M, Claire Mazan, false
 $,7,S2,Free,T, Claire Mazan, false
@@ -6157,10 +6160,7 @@ $,5,S2,Free,R, Claire Mazan, false
 $,6,S2,Free,R, Claire Mazan, false
 $,6,S2,Free,F, Claire Mazan, false
 $,7,S2,Free,F, Claire Mazan, false
-@,2,S2,Pascack,???,T, Claire Mazan,PASCACK
-@,2,S2,Hall,???,F, Claire Mazan,HALL
-@,2,S2,Coverage,???,M, Claire Mazan,COVERAGE
-*,Naramore, Elise B,SCIE,144,1,3
+*,Naramore, Elise B,SCIE,144,1
 #,Physics,SC3400,1,1,M,S2,144,SCIE, Elise B Naramore
 #,Physics,SC3400,1,1,T,S2,144,SCIE, Elise B Naramore
 #,Physics,SC3400,1,2,W,S2,144,SCIE, Elise B Naramore
@@ -6185,6 +6185,7 @@ $,7,S2,Free,F, Claire Mazan, false
 $,0,S2,Free,M, Elise B Naramore, false
 $,3,S2,Free,M, Elise B Naramore, false
 $,4,S2,Free,M, Elise B Naramore, false
+$,5,S2,Free,M, Elise B Naramore, false
 $,6,S2,Free,M, Elise B Naramore, false
 $,9,S2,Free,M, Elise B Naramore, false
 &,L,FY,Lunch,T, Elise B Naramore
@@ -6205,11 +6206,10 @@ $,2,S2,Free,F, Elise B Naramore, false
 $,3,S2,Free,F, Elise B Naramore, false
 $,5,S2,Free,F, Elise B Naramore, false
 $,9,S2,Free,F, Elise B Naramore, false
+$,6,S2,Free,T, Elise B Naramore, false
 $,6,S2,Free,W, Elise B Naramore, true
-@,6,S2,Pascack,???,T, Elise B Naramore,PASCACK
-@,2,S2,Hall,???,R, Elise B Naramore,HALL
-@,5,S2,Coverage,???,M, Elise B Naramore,COVERAGE
-*,O'Neill, Liam T,MATH,221,-10,3
+$,2,S2,Free,R, Elise B Naramore, false
+*,O'Neill, Liam T,MATH,221,-10
 #,Algebra I,MA8210,1,2,M,S2,221,MATH, Liam T O'Neill
 #,Algebra I,MA8210,1,2,T,S2,221,MATH, Liam T O'Neill
 #,Algebra I,MA8210,1,3,W,S2,221,MATH, Liam T O'Neill
@@ -6257,7 +6257,7 @@ $,9,S2,Free,F, Liam T O'Neill, true
 $,7,S2,Free,M, Liam T O'Neill, true
 $,5,S2,Free,R, Liam T O'Neill, true
 $,6,S2,Free,F, Liam T O'Neill, true
-*,Olshalsky, Nicole,PEHL,243,1,3
+*,Olshalsky, Nicole,PEHL,243,1
 #,Physical Education/Driver Ed 10,PE2050,4,4,M,S2,243,PEHL, Nicole Olshalsky
 #,Physical Education/Driver Ed 10,PE2050,4,1,W,S2,243,PEHL, Nicole Olshalsky
 #,Physical Education/Driver Ed 10,PE2050,4,2,R,S2,243,PEHL, Nicole Olshalsky
@@ -6302,10 +6302,10 @@ $,9,S2,Free,R, Nicole Olshalsky, false
 $,0,S2,Free,F, Nicole Olshalsky, false
 $,7,S2,Free,F, Nicole Olshalsky, true
 $,9,S2,Free,F, Nicole Olshalsky, false
-@,5,S2,Frosh Pascack,???,R, Nicole Olshalsky,FROSH_PASCACK
-@,7,S2,Hall,???,M, Nicole Olshalsky,HALL
-@,6,S2,Coverage,???,F, Nicole Olshalsky,COVERAGE
-*,Ostrowski, Adam,TCED,104,-6,3
+$,5,S2,Free,R, Nicole Olshalsky, false
+$,6,S2,Free,F, Nicole Olshalsky, false
+$,7,S2,Free,M, Nicole Olshalsky, false
+*,Ostrowski, Adam,TCED,104,-6
 #,Architecture,TE1305,1,1,M,S2,104,TCED, Adam Ostrowski
 #,Architecture,TE1305,1,1,T,S2,104,TCED, Adam Ostrowski
 #,Architecture,TE1305,1,2,W,S2,104,TCED, Adam Ostrowski
@@ -6350,10 +6350,10 @@ $,0,S2,Free,F, Adam Ostrowski, false
 $,1,S2,Free,F, Adam Ostrowski, false
 $,5,S2,Free,F, Adam Ostrowski, false
 $,9,S2,Free,F, Adam Ostrowski, false
-@,7,S2,Pascack,???,F, Adam Ostrowski,PASCACK
-@,8,S2,Hall,???,M, Adam Ostrowski,HALL
-@,5,S2,Coverage,???,W, Adam Ostrowski,COVERAGE
-*,Panarello Siempira, Dilma,WLNG,226,-10,3
+$,8,S2,Free,M, Adam Ostrowski, false
+$,5,S2,Free,W, Adam Ostrowski, false
+$,7,S2,Free,F, Adam Ostrowski, false
+*,Panarello Siempira, Dilma,WLNG,226,-10
 #,Spanish II,WL1420,1,2,M,S2,226,WLNG, Dilma Panarello Siempira
 #,Spanish II,WL1420,1,2,T,S2,226,WLNG, Dilma Panarello Siempira
 #,Spanish II,WL1420,1,3,W,S2,226,WLNG, Dilma Panarello Siempira
@@ -6401,7 +6401,7 @@ $,9,S2,Free,F, Dilma Panarello Siempira, true
 $,6,S2,Free,F, Dilma Panarello Siempira, true
 $,5,S2,Free,R, Dilma Panarello Siempira, true
 $,6,S2,Free,M, Dilma Panarello Siempira, true
-*,Pelli, Stephanie,SCIE,142,0,3
+*,Pelli, Stephanie,SCIE,142,0
 #,Honors Biology,SC1600,1,4,M,S2,142,SCIE, Stephanie Pelli
 #,Honors Biology,SC1600,1,1,W,S2,142,SCIE, Stephanie Pelli
 #,Honors Biology,SC1600,1,2,R,S2,142,SCIE, Stephanie Pelli
@@ -6431,9 +6431,11 @@ $,9,S2,Free,M, Stephanie Pelli, false
 $,0,S2,Free,T, Stephanie Pelli, false
 $,1,S2,Free,T, Stephanie Pelli, false
 $,3,S2,Free,T, Stephanie Pelli, false
+$,5,S2,Free,T, Stephanie Pelli, false
 $,9,S2,Free,T, Stephanie Pelli, false
 $,0,S2,Free,W, Stephanie Pelli, false
 $,2,S2,Free,W, Stephanie Pelli, false
+$,7,S2,Free,W, Stephanie Pelli, false
 $,9,S2,Free,W, Stephanie Pelli, false
 $,0,S2,Free,R, Stephanie Pelli, false
 $,1,S2,Free,R, Stephanie Pelli, false
@@ -6444,12 +6446,10 @@ $,0,S2,Free,F, Stephanie Pelli, false
 $,2,S2,Free,F, Stephanie Pelli, false
 $,5,S2,Free,F, Stephanie Pelli, true
 $,9,S2,Free,F, Stephanie Pelli, false
+$,5,S2,Free,M, Stephanie Pelli, false
 $,6,S2,Free,W, Stephanie Pelli, true
 $,6,S2,Free,T, Stephanie Pelli, false
-@,5,S2,Pascack,???,M, Stephanie Pelli,PASCACK
-@,5,S2,Hall,???,T, Stephanie Pelli,HALL
-@,7,S2,Coverage,???,W, Stephanie Pelli,COVERAGE
-*,Pfleging, Alexandra,ENG,122,-8,3
+*,Pfleging, Alexandra,ENG,122,-8
 #,Honors English II,EN2600,3,4,M,S2,122,ENG, Alexandra Pfleging
 #,Honors English II,EN2600,3,1,W,S2,122,ENG, Alexandra Pfleging
 #,Honors English II,EN2600,3,2,R,S2,122,ENG, Alexandra Pfleging
@@ -6472,6 +6472,7 @@ $,6,S2,Free,T, Stephanie Pelli, false
 #,AP English Language and Composition,EN4700,6,7,F,S2,122,ENG, Alexandra Pfleging
 &,L,FY,Lunch,M, Alexandra Pfleging
 $,0,S2,Free,M, Alexandra Pfleging, false
+$,3,S2,Free,M, Alexandra Pfleging, false
 $,5,S2,Free,M, Alexandra Pfleging, false
 $,9,S2,Free,M, Alexandra Pfleging, false
 &,L,FY,Lunch,T, Alexandra Pfleging
@@ -6486,18 +6487,17 @@ $,6,S2,Free,W, Alexandra Pfleging, false
 $,9,S2,Free,W, Alexandra Pfleging, false
 &,L,FY,Lunch,R, Alexandra Pfleging
 $,0,S2,Free,R, Alexandra Pfleging, false
+$,3,S2,Free,R, Alexandra Pfleging, false
 $,7,S2,Free,R, Alexandra Pfleging, false
 $,9,S2,Free,R, Alexandra Pfleging, false
 &,L,FY,Lunch,F, Alexandra Pfleging
 $,0,S2,Free,F, Alexandra Pfleging, false
 $,2,S2,Free,F, Alexandra Pfleging, false
 $,9,S2,Free,F, Alexandra Pfleging, false
+$,3,S2,Free,T, Alexandra Pfleging, false
 $,1,S2,Free,M, Alexandra Pfleging, false
 $,1,S2,Free,R, Alexandra Pfleging, false
-@,3,S2,Pascack,???,R, Alexandra Pfleging,PASCACK
-@,3,S2,Hall,???,T, Alexandra Pfleging,HALL
-@,3,S2,Coverage,???,M, Alexandra Pfleging,COVERAGE
-*,Pugliese, Leslie Ann,SCIE,168,0,3
+*,Pugliese, Leslie Ann,SCIE,168,0
 #,Chemistry in the Community,SC2300,1,1,M,S2,168,SCIE, Leslie Ann Pugliese
 #,Chemistry in the Community,SC2300,1,1,T,S2,168,SCIE, Leslie Ann Pugliese
 #,Chemistry in the Community,SC2300,1,2,W,S2,168,SCIE, Leslie Ann Pugliese
@@ -6531,11 +6531,13 @@ $,1,S2,Free,R, Alexandra Pfleging, false
 &,L,FY,Lunch,M, Leslie Ann Pugliese
 $,0,S2,Free,M, Leslie Ann Pugliese, false
 $,4,S2,Free,M, Leslie Ann Pugliese, false
+$,5,S2,Free,M, Leslie Ann Pugliese, false
 $,6,S2,Free,M, Leslie Ann Pugliese, false
 $,9,S2,Free,M, Leslie Ann Pugliese, false
 &,L,FY,Lunch,T, Leslie Ann Pugliese
 $,0,S2,Free,T, Leslie Ann Pugliese, false
 $,3,S2,Free,T, Leslie Ann Pugliese, false
+$,5,S2,Free,T, Leslie Ann Pugliese, false
 $,9,S2,Free,T, Leslie Ann Pugliese, false
 $,0,S2,Free,W, Leslie Ann Pugliese, false
 $,1,S2,Free,W, Leslie Ann Pugliese, false
@@ -6543,6 +6545,7 @@ $,7,S2,Free,W, Leslie Ann Pugliese, false
 $,9,S2,Free,W, Leslie Ann Pugliese, false
 $,0,S2,Free,R, Leslie Ann Pugliese, false
 $,1,S2,Free,R, Leslie Ann Pugliese, false
+$,2,S2,Free,R, Leslie Ann Pugliese, false
 $,7,S2,Free,R, Leslie Ann Pugliese, true
 $,9,S2,Free,R, Leslie Ann Pugliese, false
 &,L,FY,Lunch,F, Leslie Ann Pugliese
@@ -6554,10 +6557,7 @@ $,9,S2,Free,F, Leslie Ann Pugliese, false
 $,3,S2,Free,M, Leslie Ann Pugliese, false
 $,6,S2,Free,T, Leslie Ann Pugliese, false
 $,6,S2,Free,W, Leslie Ann Pugliese, true
-@,2,S2,Pascack,???,R, Leslie Ann Pugliese,PASCACK
-@,5,S2,Pascack,???,T, Leslie Ann Pugliese,PASCACK
-@,5,S2,Coverage,???,M, Leslie Ann Pugliese,COVERAGE
-*,Reale, Michele K,SPEC,127,-4,3
+*,Reale, Michele K,SPEC,127,-4
 #,LLD Modified English 1 Level 1,EN8120,1,2,M,S2,127,SPEC, Michele K Reale
 #,LLD Modified English 1 Level 1,EN8120,1,2,T,S2,127,SPEC, Michele K Reale
 #,LLD Modified English 1 Level 1,EN8120,1,3,W,S2,127,SPEC, Michele K Reale
@@ -6602,10 +6602,10 @@ $,9,S2,Free,R, Michele K Reale, false
 $,0,S2,Free,F, Michele K Reale, false
 $,7,S2,Free,F, Michele K Reale, false
 $,9,S2,Free,F, Michele K Reale, false
-@,6,S2,Pascack,???,R, Michele K Reale,PASCACK
-@,6,S2,Hall,???,W, Michele K Reale,HALL
-@,8,S2,Coverage,???,M, Michele K Reale,COVERAGE
-*,Rossi, Angela E,ART,201,-8,3
+$,6,S2,Free,W, Michele K Reale, false
+$,6,S2,Free,R, Michele K Reale, false
+$,8,S2,Free,M, Michele K Reale, false
+*,Rossi, Angela E,ART,201,-8
 #,Ceramics & Sculpture I,AR6411,1,1,M,S2,201,ART, Angela E Rossi
 #,Ceramics & Sculpture I,AR6411,1,1,T,S2,201,ART, Angela E Rossi
 #,Ceramics & Sculpture I,AR6411,1,2,W,S2,201,ART, Angela E Rossi
@@ -6653,7 +6653,7 @@ $,9,S2,Free,F, Angela E Rossi, true
 $,6,S2,Free,R, Angela E Rossi, true
 $,8,S2,Free,M, Angela E Rossi, true
 $,7,S2,Free,F, Angela E Rossi, true
-*,Rossi, Virena,ENG,125,0,3
+*,Rossi, Virena,ENG,125,0
 #,Honors English I,EN1600,1,2,M,S2,125,ENG, Virena Rossi
 #,Honors English I,EN1600,1,2,T,S2,125,ENG, Virena Rossi
 #,Honors English I,EN1600,1,3,W,S2,125,ENG, Virena Rossi
@@ -6682,6 +6682,7 @@ $,9,S2,Free,M, Virena Rossi, false
 &,L,FY,Lunch,T, Virena Rossi
 $,0,S2,Free,T, Virena Rossi, false
 $,3,S2,Free,T, Virena Rossi, false
+$,7,S2,Free,T, Virena Rossi, false
 $,9,S2,Free,T, Virena Rossi, false
 &,L,FY,Lunch,W, Virena Rossi
 $,0,S2,Free,W, Virena Rossi, false
@@ -6689,19 +6690,18 @@ $,7,S2,Free,W, Virena Rossi, false
 $,9,S2,Free,W, Virena Rossi, false
 &,L,FY,Lunch,R, Virena Rossi
 $,0,S2,Free,R, Virena Rossi, false
+$,1,S2,Free,R, Virena Rossi, false
 $,5,S2,Free,R, Virena Rossi, false
 $,9,S2,Free,R, Virena Rossi, false
 &,L,FY,Lunch,F, Virena Rossi
 $,0,S2,Free,F, Virena Rossi, false
+$,2,S2,Free,F, Virena Rossi, false
 $,5,S2,Free,F, Virena Rossi, false
 $,9,S2,Free,F, Virena Rossi, false
-$,6,S2,Free,T, Virena Rossi, false
-@,6,S2,Pascack,???,F, Virena Rossi,PASCACK
 $,6,S2,Free,M, Virena Rossi, false
-@,2,S2,Coverage,???,F, Virena Rossi,COVERAGE
-$,7,S2,Free,T, Virena Rossi, false
-@,1,S2,Coverage,???,R, Virena Rossi,COVERAGE
-*,Runge, Lindsay M,MATH,248,1,3
+$,6,S2,Free,T, Virena Rossi, false
+$,6,S2,Free,F, Virena Rossi, false
+*,Runge, Lindsay M,MATH,248,1
 #,Algebra II with Trigonometry,MA4300,1,6,M,S2,248,MATH, Lindsay M Runge
 #,Algebra II with Trigonometry,MA4300,1,6,T,S2,248,MATH, Lindsay M Runge
 #,Algebra II with Trigonometry,MA4300,1,7,W,S2,248,MATH, Lindsay M Runge
@@ -6744,12 +6744,12 @@ $,7,S2,Free,R, Lindsay M Runge, false
 $,9,S2,Free,R, Lindsay M Runge, false
 &,L,FY,Lunch,F, Lindsay M Runge
 $,0,S2,Free,F, Lindsay M Runge, false
+$,1,S2,Free,F, Lindsay M Runge, false
 $,9,S2,Free,F, Lindsay M Runge, false
 $,2,S2,Free,F, Lindsay M Runge, false
-@,1,S2,Pascack,???,F, Lindsay M Runge,PASCACK
-@,2,S2,Hall,???,M, Lindsay M Runge,HALL
-@,2,S2,Coverage,???,T, Lindsay M Runge,COVERAGE
-*,Sachs-Serfess, Jessica,ENG,128,-3,3
+$,2,S2,Free,M, Lindsay M Runge, false
+$,2,S2,Free,T, Lindsay M Runge, false
+*,Sachs-Serfess, Jessica,ENG,128,-3
 #,English II,EN2400,2,7,M,S2,128,ENG, Jessica Sachs-Serfess
 #,English II,EN2400,2,7,T,S2,128,ENG, Jessica Sachs-Serfess
 #,English II,EN2400,2,5,R,S2,128,ENG, Jessica Sachs-Serfess
@@ -6778,9 +6778,11 @@ $,9,S2,Free,M, Jessica Sachs-Serfess, false
 &,L,FY,Lunch,T, Jessica Sachs-Serfess
 $,0,S2,Free,T, Jessica Sachs-Serfess, false
 $,2,S2,Free,T, Jessica Sachs-Serfess, false
+$,5,S2,Free,T, Jessica Sachs-Serfess, false
 $,9,S2,Free,T, Jessica Sachs-Serfess, false
 &,L,FY,Lunch,W, Jessica Sachs-Serfess
 $,0,S2,Free,W, Jessica Sachs-Serfess, false
+$,3,S2,Free,W, Jessica Sachs-Serfess, false
 $,6,S2,Free,W, Jessica Sachs-Serfess, false
 $,9,S2,Free,W, Jessica Sachs-Serfess, false
 &,L,FY,Lunch,R, Jessica Sachs-Serfess
@@ -6792,12 +6794,10 @@ $,9,S2,Free,R, Jessica Sachs-Serfess, false
 $,0,S2,Free,F, Jessica Sachs-Serfess, false
 $,1,S2,Free,F, Jessica Sachs-Serfess, false
 $,9,S2,Free,F, Jessica Sachs-Serfess, false
+$,3,S2,Free,F, Jessica Sachs-Serfess, false
 $,1,S2,Free,W, Jessica Sachs-Serfess, false
 $,4,S2,Free,M, Jessica Sachs-Serfess, false
-@,3,S2,Frosh Pascack,???,F, Jessica Sachs-Serfess,FROSH_PASCACK
-@,3,S2,Hall,???,W, Jessica Sachs-Serfess,HALL
-@,5,S2,Coverage,???,T, Jessica Sachs-Serfess,COVERAGE
-*,Salgado, Robert,SPEC,221,-4,3
+*,Salgado, Robert,SPEC,221,-4
 #,Gen Ed Study Skills 9/10/11/12,CC8144,4,8,M,S2,221,SPEC, Robert Salgado
 #,Gen Ed Study Skills 9/10/11/12,CC8144,4,5,W,S2,221,SPEC, Robert Salgado
 #,Gen Ed Study Skills 9/10/11/12,CC8144,4,6,R,S2,221,SPEC, Robert Salgado
@@ -6845,7 +6845,7 @@ $,9,S2,Free,F, Robert Salgado, true
 $,2,S2,Free,R, Robert Salgado, true
 $,1,S2,Free,W, Robert Salgado, true
 $,4,S2,Free,M, Robert Salgado, true
-*,Sandhage, Lorrie,PEHL,GYM,0,3
+*,Sandhage, Lorrie,PEHL,GYM,0
 #,Physical Education/Health 9,PE1050,1,7,M,S2,GYM,PEHL, Lorrie Sandhage
 #,Physical Education/Health 9,PE1050,1,7,T,S2,GYM,PEHL, Lorrie Sandhage
 #,Physical Education/Health 9,PE1050,1,5,R,S2,GYM,PEHL, Lorrie Sandhage
@@ -6893,7 +6893,7 @@ $,9,S2,Free,F, Lorrie Sandhage, true
 $,5,S2,Free,M, Lorrie Sandhage, true
 $,6,S2,Free,T, Lorrie Sandhage, true
 $,6,S2,Free,W, Lorrie Sandhage, true
-*,Sandt, Edward J,ENG,247,1,3
+*,Sandt, Edward J,ENG,247,1
 #,American Studies,CC5401,2,5,M,S2,247,ENG, Edward J Sandt
 #,American Studies,CC5401,2,5,T,S2,247,ENG, Edward J Sandt
 #,American Studies,CC5401,2,6,W,S2,247,ENG, Edward J Sandt
@@ -6926,22 +6926,22 @@ $,7,S2,Free,T, Edward J Sandt, false
 $,9,S2,Free,T, Edward J Sandt, false
 &,L,FY,Lunch,W, Edward J Sandt
 $,0,S2,Free,W, Edward J Sandt, false
+$,2,S2,Free,W, Edward J Sandt, false
 $,5,S2,Free,W, Edward J Sandt, false
 $,9,S2,Free,W, Edward J Sandt, false
 &,L,FY,Lunch,R, Edward J Sandt
 $,0,S2,Free,R, Edward J Sandt, false
 $,3,S2,Free,R, Edward J Sandt, false
+$,5,S2,Free,R, Edward J Sandt, false
 $,9,S2,Free,R, Edward J Sandt, false
 &,L,FY,Lunch,F, Edward J Sandt
 $,0,S2,Free,F, Edward J Sandt, false
 $,7,S2,Free,F, Edward J Sandt, false
 $,9,S2,Free,F, Edward J Sandt, false
+$,6,S2,Free,F, Edward J Sandt, false
 $,7,S2,Free,M, Edward J Sandt, false
 $,6,S2,Free,R, Edward J Sandt, false
-@,6,S2,Frosh Pascack,???,F, Edward J Sandt,FROSH_PASCACK
-@,5,S2,Hall,???,R, Edward J Sandt,HALL
-@,2,S2,Coverage,???,W, Edward J Sandt,COVERAGE
-*,Sandt, Axelle,WLNG,224,0,3
+*,Sandt, Axelle,WLNG,224,0
 #,French IV,WL3340,1,4,M,S2,224,WLNG, Axelle Sandt
 #,French IV,WL3340,1,1,W,S2,224,WLNG, Axelle Sandt
 #,French IV,WL3340,1,2,R,S2,224,WLNG, Axelle Sandt
@@ -6978,18 +6978,18 @@ $,9,S2,Free,W, Axelle Sandt, false
 &,L,FY,Lunch,R, Axelle Sandt
 $,0,S2,Free,R, Axelle Sandt, false
 $,1,S2,Free,R, Axelle Sandt, false
+$,5,S2,Free,R, Axelle Sandt, false
 $,9,S2,Free,R, Axelle Sandt, false
 &,L,FY,Lunch,F, Axelle Sandt
 $,0,S2,Free,F, Axelle Sandt, false
 $,2,S2,Free,F, Axelle Sandt, false
+$,6,S2,Free,F, Axelle Sandt, false
 $,7,S2,Free,F, Axelle Sandt, false
 $,9,S2,Free,F, Axelle Sandt, false
+$,3,S2,Free,T, Axelle Sandt, false
 $,7,S2,Free,M, Axelle Sandt, false
 $,6,S2,Free,R, Axelle Sandt, false
-@,6,S2,Pascack,???,F, Axelle Sandt,PASCACK
-@,5,S2,Coverage,???,R, Axelle Sandt,COVERAGE
-@,3,S2,Coverage,???,T, Axelle Sandt,COVERAGE
-*,Saxon, Jordan I,ENG,222,0,3
+*,Saxon, Jordan I,ENG,222,0
 #,American Studies,CC5401,1,1,M,S2,222,ENG, Jordan I Saxon
 #,American Studies,CC5401,1,1,T,S2,222,ENG, Jordan I Saxon
 #,American Studies,CC5401,1,2,W,S2,222,ENG, Jordan I Saxon
@@ -7018,6 +7018,7 @@ $,9,S2,Free,M, Jordan I Saxon, false
 &,L,FY,Lunch,T, Jordan I Saxon
 $,0,S2,Free,T, Jordan I Saxon, false
 $,3,S2,Free,T, Jordan I Saxon, false
+$,7,S2,Free,T, Jordan I Saxon, false
 $,9,S2,Free,T, Jordan I Saxon, false
 &,L,FY,Lunch,W, Jordan I Saxon
 $,0,S2,Free,W, Jordan I Saxon, false
@@ -7025,19 +7026,18 @@ $,7,S2,Free,W, Jordan I Saxon, false
 $,9,S2,Free,W, Jordan I Saxon, false
 &,L,FY,Lunch,R, Jordan I Saxon
 $,0,S2,Free,R, Jordan I Saxon, false
+$,1,S2,Free,R, Jordan I Saxon, false
 $,5,S2,Free,R, Jordan I Saxon, false
 $,9,S2,Free,R, Jordan I Saxon, false
 &,L,FY,Lunch,F, Jordan I Saxon
 $,0,S2,Free,F, Jordan I Saxon, false
 $,2,S2,Free,F, Jordan I Saxon, false
+$,5,S2,Free,F, Jordan I Saxon, false
 $,9,S2,Free,F, Jordan I Saxon, false
 $,6,S2,Free,M, Jordan I Saxon, false
 $,6,S2,Free,T, Jordan I Saxon, false
 $,6,S2,Free,F, Jordan I Saxon, false
-@,1,S2,Pascack,???,R, Jordan I Saxon,PASCACK
-@,5,S2,Coverage,???,F, Jordan I Saxon,COVERAGE
-@,7,S2,Coverage,???,T, Jordan I Saxon,COVERAGE
-*,Scerbo, Nicholas,ART,110,-8,3
+*,Scerbo, Nicholas,ART,110,-8
 #,AP Art History,AR6700,1,1,M,S2,110,ART, Nicholas Scerbo
 #,AP Art History,AR6700,1,1,T,S2,110,ART, Nicholas Scerbo
 #,AP Art History,AR6700,1,2,W,S2,110,ART, Nicholas Scerbo
@@ -7093,7 +7093,7 @@ $,7,S2,Free,W, Nicholas Scerbo, true
 $,2,S2,Free,R, Nicholas Scerbo, true
 $,3,S2,Free,F, Nicholas Scerbo, true
 $,5,S2,Free,F, Nicholas Scerbo, true
-*,Schmidt, Margaret,WLNG,224,0,3
+*,Schmidt, Margaret,WLNG,224,0
 #,French II,WL3420,1,8,M,S2,224,WLNG, Margaret Schmidt
 #,French II,WL3420,1,5,W,S2,224,WLNG, Margaret Schmidt
 #,French II,WL3420,1,6,R,S2,224,WLNG, Margaret Schmidt
@@ -7141,7 +7141,7 @@ $,9,S2,Free,F, Margaret Schmidt, true
 $,3,S2,Free,M, Margaret Schmidt, true
 $,2,S2,Free,R, Margaret Schmidt, true
 $,2,S2,Free,F, Margaret Schmidt, true
-*,Schultz, Allison M,SPEC,135,-3,3
+*,Schultz, Allison M,SPEC,135,-3
 #,LLD Daily Living Skills 1,FA8110,1,4,M,S2,135,SPEC, Allison M Schultz
 #,LLD Daily Living Skills 1,FA8110,1,1,W,S2,135,SPEC, Allison M Schultz
 #,LLD Daily Living Skills 1,FA8110,1,2,R,S2,135,SPEC, Allison M Schultz
@@ -7164,6 +7164,7 @@ $,2,S2,Free,F, Margaret Schmidt, true
 #,Algebra I,MA2300,3,7,F,S2,254,MATH, Allison M Schultz
 &,L,FY,Lunch,M, Allison M Schultz
 $,0,S2,Free,M, Allison M Schultz, false
+$,2,S2,Free,M, Allison M Schultz, false
 $,3,S2,Free,M, Allison M Schultz, false
 $,9,S2,Free,M, Allison M Schultz, false
 &,L,FY,Lunch,T, Allison M Schultz
@@ -7173,6 +7174,7 @@ $,3,S2,Free,T, Allison M Schultz, false
 $,9,S2,Free,T, Allison M Schultz, false
 &,L,FY,Lunch,W, Allison M Schultz
 $,0,S2,Free,W, Allison M Schultz, false
+$,2,S2,Free,W, Allison M Schultz, false
 $,3,S2,Free,W, Allison M Schultz, false
 $,9,S2,Free,W, Allison M Schultz, false
 &,L,FY,Lunch,R, Allison M Schultz
@@ -7185,11 +7187,9 @@ $,0,S2,Free,F, Allison M Schultz, false
 $,2,S2,Free,F, Allison M Schultz, false
 $,9,S2,Free,F, Allison M Schultz, false
 $,1,S2,Free,M, Allison M Schultz, false
+$,1,S2,Free,F, Allison M Schultz, false
 $,2,S2,Free,T, Allison M Schultz, false
-@,2,S2,Pascack,???,M, Allison M Schultz,PASCACK
-@,2,S2,Pascack,???,W, Allison M Schultz,PASCACK
-@,1,S2,Coverage,???,F, Allison M Schultz,COVERAGE
-*,Schwartzman, Charleen,MATH,254,-10,3
+*,Schwartzman, Charleen,MATH,254,-10
 #,Algebra I,MA2300,1,6,M,S2,254,MATH, Charleen Schwartzman
 #,Algebra I,MA2300,1,6,T,S2,254,MATH, Charleen Schwartzman
 #,Algebra I,MA2300,1,7,W,S2,254,MATH, Charleen Schwartzman
@@ -7237,7 +7237,7 @@ $,9,S2,Free,F, Charleen Schwartzman, true
 $,4,S2,Free,M, Charleen Schwartzman, true
 $,3,S2,Free,R, Charleen Schwartzman, true
 $,2,S2,Free,W, Charleen Schwartzman, true
-*,Scorese, Mary E,SCIE,150,-10,3
+*,Scorese, Mary E,SCIE,150,-10
 #,Biology,SC1400,4,5,M,S2,150,SCIE, Mary E Scorese
 #,Biology,SC1400,4,5,T,S2,150,SCIE, Mary E Scorese
 #,Biology,SC1400,4,6,W,S2,150,SCIE, Mary E Scorese
@@ -7286,7 +7286,7 @@ $,9,S2,Free,F, Mary E Scorese, true
 $,1,S2,Free,R, Mary E Scorese, true
 $,1,S2,Free,M, Mary E Scorese, true
 $,1,S2,Free,T, Mary E Scorese, true
-*,Soltmann, James M,SCIE,164,-4,3
+*,Soltmann, James M,SCIE,164,-4
 #,Honors Chemistry,SC2600,1,4,M,S2,164,SCIE, James M Soltmann
 #,Honors Chemistry,SC2600,1,1,W,S2,164,SCIE, James M Soltmann
 #,Honors Chemistry,SC2600,1,2,R,S2,164,SCIE, James M Soltmann
@@ -7309,6 +7309,8 @@ $,1,S2,Free,T, Mary E Scorese, true
 #,AP Chemistry Lab,SC2700,1,3,T,S2,164,SCIE, James M Soltmann
 &,L,FY,Lunch,M, James M Soltmann
 $,0,S2,Free,M, James M Soltmann, false
+$,3,S2,Free,M, James M Soltmann, false
+$,5,S2,Free,M, James M Soltmann, false
 $,8,S2,Free,M, James M Soltmann, false
 $,9,S2,Free,M, James M Soltmann, false
 &,L,FY,Lunch,T, James M Soltmann
@@ -7319,6 +7321,7 @@ $,9,S2,Free,T, James M Soltmann, false
 &,L,FY,Lunch,W, James M Soltmann
 $,0,S2,Free,W, James M Soltmann, false
 $,2,S2,Free,W, James M Soltmann, false
+$,5,S2,Free,W, James M Soltmann, false
 $,9,S2,Free,W, James M Soltmann, false
 $,0,S2,Free,R, James M Soltmann, false
 $,1,S2,Free,R, James M Soltmann, false
@@ -7332,10 +7335,7 @@ $,9,S2,Free,F, James M Soltmann, false
 $,6,S2,Free,W, James M Soltmann, false
 $,6,S2,Free,R, James M Soltmann, true
 $,1,S2,Free,M, James M Soltmann, false
-@,5,S2,Pascack,???,M, James M Soltmann,PASCACK
-@,5,S2,Hall,???,W, James M Soltmann,HALL
-@,3,S2,Coverage,???,M, James M Soltmann,COVERAGE
-*,Sularz, Patricia Rodriguez,WLNG,234,-3,3
+*,Sularz, Patricia Rodriguez,WLNG,234,-3
 #,Spanish II,WL1420,5,3,M,S2,234,WLNG, Patricia Rodriguez Sularz
 #,Spanish II,WL1420,5,3,T,S2,234,WLNG, Patricia Rodriguez Sularz
 #,Spanish II,WL1420,5,1,R,S2,234,WLNG, Patricia Rodriguez Sularz
@@ -7358,10 +7358,12 @@ $,1,S2,Free,M, James M Soltmann, false
 #,AP Spanish Language & Culture,WL1700,1,5,F,S2,234,WLNG, Patricia Rodriguez Sularz
 &,L,FY,Lunch,M, Patricia Rodriguez Sularz
 $,0,S2,Free,M, Patricia Rodriguez Sularz, false
+$,4,S2,Free,M, Patricia Rodriguez Sularz, false
 $,7,S2,Free,M, Patricia Rodriguez Sularz, false
 $,9,S2,Free,M, Patricia Rodriguez Sularz, false
 &,L,FY,Lunch,T, Patricia Rodriguez Sularz
 $,0,S2,Free,T, Patricia Rodriguez Sularz, false
+$,1,S2,Free,T, Patricia Rodriguez Sularz, false
 $,7,S2,Free,T, Patricia Rodriguez Sularz, false
 $,9,S2,Free,T, Patricia Rodriguez Sularz, false
 &,L,FY,Lunch,W, Patricia Rodriguez Sularz
@@ -7378,12 +7380,10 @@ $,0,S2,Free,F, Patricia Rodriguez Sularz, false
 $,3,S2,Free,F, Patricia Rodriguez Sularz, false
 $,6,S2,Free,F, Patricia Rodriguez Sularz, false
 $,9,S2,Free,F, Patricia Rodriguez Sularz, false
+$,2,S2,Free,W, Patricia Rodriguez Sularz, false
 $,2,S2,Free,R, Patricia Rodriguez Sularz, false
 $,1,S2,Free,M, Patricia Rodriguez Sularz, false
-@,4,S2,Pascack,???,M, Patricia Rodriguez Sularz,PASCACK
-@,2,S2,Pascack,???,W, Patricia Rodriguez Sularz,PASCACK
-@,1,S2,Coverage,???,T, Patricia Rodriguez Sularz,COVERAGE
-*,Szabo, Melissa,FACS,111,1,3
+*,Szabo, Melissa,FACS,111,1
 #,Early Childhood & Family Education I,FA2410,1,1,M,S2,111,FACS, Melissa Szabo
 #,Early Childhood & Family Education I,FA2410,1,1,T,S2,111,FACS, Melissa Szabo
 #,Early Childhood & Family Education I,FA2410,1,2,W,S2,111,FACS, Melissa Szabo
@@ -7417,6 +7417,7 @@ $,9,S2,Free,T, Melissa Szabo, false
 &,L,FY,Lunch,W, Melissa Szabo
 $,0,S2,Free,W, Melissa Szabo, false
 $,5,S2,Free,W, Melissa Szabo, false
+$,6,S2,Free,W, Melissa Szabo, false
 $,9,S2,Free,W, Melissa Szabo, false
 &,L,FY,Lunch,R, Melissa Szabo
 $,0,S2,Free,R, Melissa Szabo, false
@@ -7427,11 +7428,10 @@ $,9,S2,Free,R, Melissa Szabo, false
 $,0,S2,Free,F, Melissa Szabo, false
 $,7,S2,Free,F, Melissa Szabo, false
 $,9,S2,Free,F, Melissa Szabo, false
+$,7,S2,Free,M, Melissa Szabo, false
 $,6,S2,Free,F, Melissa Szabo, false
-@,7,S2,Frosh Pascack,???,M, Melissa Szabo,FROSH_PASCACK
-@,6,S2,Pascack,???,R, Melissa Szabo,PASCACK
-@,6,S2,Coverage,???,W, Melissa Szabo,COVERAGE
-*,Uhl, John,MATH,255,-8,3
+$,6,S2,Free,R, Melissa Szabo, false
+*,Uhl, John,MATH,255,-8
 #,Honors Computer Science,MA6404,1,4,M,S2,255,MATH, John Uhl
 #,Honors Computer Science,MA6404,1,1,W,S2,255,MATH, John Uhl
 #,Honors Computer Science,MA6404,1,2,R,S2,255,MATH, John Uhl
@@ -7479,7 +7479,7 @@ $,9,S2,Free,F, John Uhl, true
 $,5,S2,Free,W, John Uhl, true
 $,1,S2,Free,F, John Uhl, true
 $,8,S2,Free,M, John Uhl, true
-*,Vargo, Katherine A,MATH,244,0,3
+*,Vargo, Katherine A,MATH,244,0
 #,Geometry,MA3300,1,2,M,S2,244,MATH, Katherine A Vargo
 #,Geometry,MA3300,1,2,T,S2,244,MATH, Katherine A Vargo
 #,Geometry,MA3300,1,3,W,S2,244,MATH, Katherine A Vargo
@@ -7507,6 +7507,7 @@ $,5,S2,Free,M, Katherine A Vargo, false
 $,9,S2,Free,M, Katherine A Vargo, false
 &,L,FY,Lunch,T, Katherine A Vargo
 $,0,S2,Free,T, Katherine A Vargo, false
+$,6,S2,Free,T, Katherine A Vargo, false
 $,9,S2,Free,T, Katherine A Vargo, false
 &,L,FY,Lunch,W, Katherine A Vargo
 $,0,S2,Free,W, Katherine A Vargo, false
@@ -7516,18 +7517,17 @@ $,9,S2,Free,W, Katherine A Vargo, false
 &,L,FY,Lunch,R, Katherine A Vargo
 $,0,S2,Free,R, Katherine A Vargo, false
 $,2,S2,Free,R, Katherine A Vargo, false
+$,7,S2,Free,R, Katherine A Vargo, false
 $,9,S2,Free,R, Katherine A Vargo, false
 &,L,FY,Lunch,F, Katherine A Vargo
 $,0,S2,Free,F, Katherine A Vargo, false
 $,3,S2,Free,F, Katherine A Vargo, false
+$,5,S2,Free,F, Katherine A Vargo, false
 $,9,S2,Free,F, Katherine A Vargo, false
 $,5,S2,Free,T, Katherine A Vargo, false
 $,6,S2,Free,M, Katherine A Vargo, false
 $,6,S2,Free,W, Katherine A Vargo, false
-@,5,S2,Pascack,???,F, Katherine A Vargo,PASCACK
-@,6,S2,Hall,???,T, Katherine A Vargo,HALL
-@,7,S2,Coverage,???,R, Katherine A Vargo,COVERAGE
-*,Volk, Christopher,BUS,211,-7,3
+*,Volk, Christopher,BUS,211,-7
 #,LLD Elements of Financial Literacy,BU8110,2,7,M,S2,211,BUS, Christopher Volk
 #,LLD Elements of Financial Literacy,BU8110,2,7,T,S2,211,BUS, Christopher Volk
 #,LLD Elements of Financial Literacy,BU8110,2,5,R,S2,211,BUS, Christopher Volk
@@ -7572,10 +7572,10 @@ $,0,S2,Free,F, Christopher Volk, false
 $,2,S2,Free,F, Christopher Volk, false
 $,5,S2,Free,F, Christopher Volk, false
 $,9,S2,Free,F, Christopher Volk, false
-@,3,S2,Pascack,???,R, Christopher Volk,PASCACK
-@,1,S2,Hall,???,T, Christopher Volk,HALL
-@,1,S2,Coverage,???,M, Christopher Volk,COVERAGE
-*,Whitfield, James R,SCIE,152,-10,3
+$,3,S2,Free,R, Christopher Volk, false
+$,1,S2,Free,M, Christopher Volk, false
+$,1,S2,Free,T, Christopher Volk, false
+*,Whitfield, James R,SCIE,152,-10
 #,Biological Science (CP),SC1503,1,4,M,S2,152,SCIE, James R Whitfield
 #,Biological Science (CP),SC1503,1,1,W,S2,152,SCIE, James R Whitfield
 #,Biological Science (CP),SC1503,1,2,R,S2,152,SCIE, James R Whitfield
@@ -7624,7 +7624,7 @@ $,9,S2,Free,F, James R Whitfield, true
 $,5,S2,Free,F, James R Whitfield, true
 $,6,S2,Free,M, James R Whitfield, true
 $,6,S2,Free,T, James R Whitfield, true
-*,Yao, Yi Ping,WLNG,221,1,3
+*,Yao, Yi Ping,WLNG,221,1
 #,Chinese IV,WL4440,1,7,M,S2,221,WLNG, Yi Ping Yao
 #,Chinese IV,WL4440,1,7,T,S2,221,WLNG, Yi Ping Yao
 #,Chinese IV,WL4440,1,5,R,S2,221,WLNG, Yi Ping Yao
@@ -7672,7 +7672,7 @@ $,9,S2,Free,F, Yi Ping Yao, true
 $,2,S2,Free,M, Yi Ping Yao, true
 $,3,S2,Free,R, Yi Ping Yao, true
 $,2,S2,Free,T, Yi Ping Yao, true
-*,Yeam, Jane M,SOST,233,-4,3
+*,Yeam, Jane M,SOST,233,-4
 #,World History,SS1400,4,7,M,S2,233,SOST, Jane M Yeam
 #,World History,SS1400,4,7,T,S2,233,SOST, Jane M Yeam
 #,World History,SS1400,4,5,R,S2,233,SOST, Jane M Yeam
@@ -7714,9 +7714,9 @@ $,7,S2,Free,R, Jane M Yeam, false
 $,9,S2,Free,R, Jane M Yeam, false
 &,L,FY,Lunch,F, Jane M Yeam
 $,0,S2,Free,F, Jane M Yeam, false
+$,3,S2,Free,F, Jane M Yeam, false
 $,7,S2,Free,F, Jane M Yeam, false
 $,9,S2,Free,F, Jane M Yeam, false
+$,6,S2,Free,R, Jane M Yeam, false
 $,6,S2,Free,W, Jane M Yeam, false
-@,8,S2,Pascack,???,M, Jane M Yeam,PASCACK
-@,3,S2,Coverage,???,F, Jane M Yeam,COVERAGE
-@,6,S2,Coverage,???,R, Jane M Yeam,COVERAGE
+$,8,S2,Free,M, Jane M Yeam, false
