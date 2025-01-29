@@ -18,8 +18,8 @@ public class TeachersPanel extends CustomPanel {
     private Teacher activeTeacher;
 
     private CustomPanel schedule;
-
-    private JPanel sidebarContainer;
+    
+    protected Color color;
 
     public TeachersPanel(String panelName, Dimension d, BigDuty bigDuty) {
         super(panelName, d);
@@ -27,9 +27,9 @@ public class TeachersPanel extends CustomPanel {
         this.bigDuty = bigDuty;
         this.border = BorderFactory.createLineBorder(Color.BLACK);
         this.activeTeacher = bigDuty.getTeacher(0);
+        color = new Color(144, 238, 144);
 
         initView();
-
 
 
     }
@@ -41,7 +41,7 @@ public class TeachersPanel extends CustomPanel {
 
 //        teacher sidebar
 
-        sidebarContainer = new JPanel(new GridBagLayout());
+        JPanel sidebarContainer = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -51,32 +51,33 @@ public class TeachersPanel extends CustomPanel {
         for(Teacher t : bigDuty.getTeachers()) {
 
             JButton button = new JButton();
-
+            
+            button.setBackground(color);
             button.setText(t.getName());
-            button.addActionListener(e -> {
-                updateScheduleDisplay(t);
-
-                for(Component c : sidebarContainer.getComponents()) {
-
-                    if(c instanceof JButton) {
-                        c.setForeground(Color.BLACK);
-                    }
-
-                }
-
-                button.setForeground(Color.RED);
-
-
-            });
+            button.addActionListener(e -> updateScheduleDisplay(t));
+           
 
             button.setComponentPopupMenu(new TeacherPopUp(t, bigDuty, this));
+            Timer timer = new Timer(100, new ActionListener() {
+               @Override
+               public void actionPerformed(ActionEvent e)
+               {
+                  if(((TeacherPopUp) button.getComponentPopupMenu()).getTeacher().isLocked())
+                     button.setBackground(Color.red);
+                  else
+                     button.setBackground(color);
+                  repaint();
+                  revalidate();
+               }
+              });
+            timer.start();
+
+               
 
             sidebarContainer.add(button, gbc);
             gbc.gridy++;
 
         }
-
-        sidebarContainer.getComponent(0).setForeground(Color.RED);
 
         JScrollPane sideBar = new JScrollPane(sidebarContainer);
 
@@ -104,16 +105,7 @@ public class TeachersPanel extends CustomPanel {
 
         JComponent menu = null;
         if (assignment != null) {
-
-            String text = assignment.getName();
-
-            if(assignment instanceof Free && !((Free) assignment).isLocked()) {
-                text = "<html>Free <br>" + activeTeacher.scoreAssignment(assignment) + "</html>";
-            } else if(assignment instanceof Free && ((Free) assignment).isLocked()) {
-                text = "<html> <font color=#0000ff>Locked Free</font></html>";
-            }
-
-            menu = new JLabel(text);
+            menu = new JLabel(assignment instanceof Free ? String.valueOf(activeTeacher.scoreAssignment(assignment)) : assignment.getName());
         } else {
             menu = new JLabel("No assignment found");
         }
@@ -132,20 +124,6 @@ public class TeachersPanel extends CustomPanel {
 
     public void refreshPanel() {
         updateScheduleDisplay(activeTeacher);
-
-//        for(int i = 0; i < sidebarContainer.getComponents().length; i++) {
-//
-//            Component c  = sidebarContainer.getComponents()[i];
-//
-//            if(c instanceof JButton && c.getForeground() != Color.RED && bigDuty.getTeacher(i).isLocked()) {
-//                c.setForeground(Color.BLUE);
-//            } else if(c instanceof JButton && c.getForeground() != Color.RED) {
-//                c.setForeground(Color.BLACK);
-//            }
-//
-//        }
-
-        super.refreshPanel();
     }
 
     public void updateScheduleDisplay(Teacher teacher) {
