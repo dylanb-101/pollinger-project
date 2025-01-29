@@ -2,16 +2,28 @@
 //Description
 //11/17/24
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 
 public class HomePanel extends CustomPanel {
@@ -19,22 +31,25 @@ public class HomePanel extends CustomPanel {
     private BigDuty bigDuty;
     private final Border border;
 
-    private String[] headings = {"TEACHER", "CREDIT",  "COURSES", "MAX DUTIES", "TOTAL", "PASCACKS", "HALLS", "COVERAGES", "FROSH PASCACKS"}; //tables
+    private String[] headings = {"TEACHER", "COURSES", "TOTAL", "PASCACKS", "HALLS", "COVERAGES", "FROSH PASCACKS"}; //tables
 
-    private String[][] data;
+    private Object[][] data;
+    
+    private ArrayList<JButton> tableButtons;
 
-
+    int r, c;
+    
     public HomePanel(String panelName, Dimension d, BigDuty bigDuty) {
         super(panelName, d);
 
         this.bigDuty = bigDuty;
-        this.data = new String[bigDuty.getTeachers().size()][headings.length];
+        this.data = new Object[bigDuty.getTeachers().size()][headings.length];
 
         BorderLayout layout = new BorderLayout(1, 1);
         this.setLayout(layout);
 
         this.border = BorderFactory.createLineBorder(Color.BLACK);
-
+        tableButtons = new ArrayList<JButton>();
 
         makePanel();
 
@@ -43,12 +58,8 @@ public class HomePanel extends CustomPanel {
 
     public void makePanel() {
 
-        GridLayout layout = new GridLayout(20, 0);
-        layout.setVgap(2);
-
         //        make the sidebar
-        JPanel sidebar = new JPanel(layout);
-
+        JPanel sidebar = new JPanel(new GridLayout(20, 0));
 
         JButton saveButton = new JButton("Save Data");
 
@@ -60,12 +71,10 @@ public class HomePanel extends CustomPanel {
 
 //            chooser.showSaveDialog(this);
 
-            System.out.println(bigDuty.dutySlotsToSaveString());
-
             if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 
                 System.out.println(chooser.getSelectedFile().getAbsolutePath());
-                FileUtility.downloadCurrentSchedule(SemesterTab.gui, chooser.getSelectedFile());
+                FileUtility.downloadCurrentSchedule(bigDuty.getTeachers(), chooser.getSelectedFile());
 
             }
 
@@ -79,88 +88,21 @@ public class HomePanel extends CustomPanel {
 
         nextSemsesterButton.addActionListener(e -> {
 
-            int n = JOptionPane.showConfirmDialog(this, "Are you sure you want to start the next semester? This will lock Semester 1 and no more changes will be able to be made.", "Start New Semester?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(bigDuty.getSemester().equals("S1")) {
 
+                BigDuty bd = new BigDuty(bigDuty.getTeachers(), null, "S2");
 
+                SemesterTab semesterTab = new SemesterTab(bd);
 
-            if(bigDuty.getSemester().equals("S1") && n == 0) {
+//                semesterTab.addTab("S2", GUIMain.makeTeachersTabs(bd));
 
-                ArrayList<Teacher> teachersCopy = new ArrayList<>();
-
-                teachersCopy.addAll(bigDuty.getTeachers());
-
-                BigDuty bd = new BigDuty(teachersCopy, null, "S2");
-
-                SemesterTab semesterTab = GUIMain.makeTeachersTabs(bd);
-
-
-                SemesterTab.gui.getSemesterTabs().add(bd.getSemester(), semesterTab);
-                SemesterTab.gui.semesters.add(semesterTab);
-
-
+                GUIMain.semesters.add(semesterTab);
 
             }
 
         });
 
-        if(!bigDuty.getSemester().equals("S2")) {
-            sidebar.add(nextSemsesterButton);
-        }
-
-
-        JButton reassignDutiesButton = new JButton("Reassign Duties");
-        reassignDutiesButton.addActionListener(e -> {
-            int n = JOptionPane.showConfirmDialog(this, "Are you sure you want to assign duties? This will clear any previously assigned duties. Make sure you have configured everything!", "Assign Duties?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-            if(n == 0) {
-
-                if(bigDuty.getNumberOfDutySlots() > bigDuty.getUnlockedTeachers().size()*3) {
-
-                    n = JOptionPane.showConfirmDialog(this, "You have more duties that need to be filled than there are available teachers! If you continue all teachers WILL have 3 duties but not all available slots will be filled! You can go back and configure the duty slots if this is not OK.", "Assign Duties?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-
-                }
-
-                if(n == 0) {
-                    bigDuty.reassignDuties();
-
-                }
-
-            }
-
-        });
-
-        sidebar.add(reassignDutiesButton);
-
-        JButton assignDutiesButton = new JButton("Assign Duties");
-
-        assignDutiesButton.addActionListener(e -> {
-
-            bigDuty.assignDuties();
-            bigDuty.refreshPanels();
-
-        });
-
-        sidebar.add(assignDutiesButton);
-
-        JButton clearDutiesButton = new JButton("Clear Duties");
-
-        clearDutiesButton.addActionListener(e -> {
-
-            int n = JOptionPane.showConfirmDialog(this, "Are you SURE you want to clear all duties? This will remove all duties, even ones assigned manually!", "Clear Duties?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-            if(n == 0) {
-                System.out.println("Clearing duties");
-                bigDuty.clearDuties();
-                System.out.println("Done Clearing duties");
-                bigDuty.refreshPanels();
-            }
-
-        });
-        sidebar.add(clearDutiesButton);
-
-
-
-
+        sidebar.add(nextSemsesterButton);
 
 
         // make the center area
@@ -180,45 +122,44 @@ public class HomePanel extends CustomPanel {
             }
 
             public boolean isCellEditable(int row, int column) {
-
-                if(column == 3 || column == 1) return true;
-
-                return false;
+                return true;
             }
-
         };
-
-        model.addTableModelListener(e -> {
-
-            int val = (int) model.getValueAt(e.getFirstRow(), e.getColumn());
-            Teacher t = bigDuty.getTeachers().get(e.getFirstRow());
-
-
-            if(e.getFirstRow() == 1) { // changing the teachers social credit
-                t.setSocialCredit(val);
-            } else if(e.getFirstRow() == 3) { // changing the teachers max duties
-
-                if(t.getDuties().size() > val) {
-                    int n = JOptionPane.showConfirmDialog(this, "<html>Your about to change this teachers max duties but the teacher already has  <b>" + t.getDuties().size() + "</b> duties assigned! </html>", "Duties already assigned!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-
-                    if(n == 0) {
-                        t.setMaxDuties(val);
-                    } else {
-                        model.setValueAt(t.getMaxDuties(), e.getFirstRow(), e.getColumn());
-                    }
-                } else {
-                    t.setMaxDuties(val);
-
-                }
-
-            }
-
-        });
 
         JTable table = new JTable(model);
         table.setVisible(true);
         table.setAutoCreateRowSorter(true);
         table.setFont(new Font("Tratatello", Font.PLAIN, 14));
+        
+        //Instantiate an actionlistener
+        
+        table.addMouseListener(new MouseAdapter() {
+
+           public void MousePressed(MouseEvent e) {
+
+                r = table.rowAtPoint(e.getPoint());
+                c = table.columnAtPoint(e.getPoint());
+
+               System.out.println(r + ", " + c);
+
+           }
+
+       });
+
+        Action doClicked = new AbstractAction()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+               
+               bigDuty.getSemesterPane().changeTabTo(2);
+               Panel2 panel = (Panel2) bigDuty.getSemesterPane().getSelectedComponent();
+               panel.setTeacherIndex(table.getSelectedRow());
+               panel.doClicked();
+            }
+        };
+        
+        table.getColumn("TEACHER").setCellRenderer(new ButtonRenderer());
+        table.getColumn("TEACHER").setCellEditor(new ButtonEditor(new JCheckBox(), doClicked));
 
         JTableHeader header = table.getTableHeader();
         header.setBackground(Color.yellow);
@@ -229,19 +170,7 @@ public class HomePanel extends CustomPanel {
         table.setComponentPopupMenu(new HomePopUp(bigDuty, table, this));
 
 
-        table.addMouseListener(new MouseAdapter() {
-
-            public void MousePressed(MouseEvent e) {
-
-                int r = table.rowAtPoint(e.getPoint());
-                int c = table.columnAtPoint(e.getPoint());
-
-                System.out.println(r + ", " + c);
-
-            }
-
-        });
-
+        
 
 
 
@@ -252,24 +181,37 @@ public class HomePanel extends CustomPanel {
 
         this.add(sidebar, BorderLayout.WEST);
         this.add(pane, BorderLayout.CENTER);
+        
+        
+        //TESTING FOR GETTING TO TEACHER VIEW jan17 jy
+        
+        JButton j = new JButton("TEST");
+        j.addActionListener(doClicked);
+        this.add(j, BorderLayout.NORTH);
+        
 
     }
-
+    
+  
     public void populateData() {
-
+       
+       
+          
+        
         for(int r = 0; r < data.length; r++) {
 
             Teacher t = bigDuty.getTeacher(r);
+           
 
-            data[r][0] = t.getLastName();
-            data[r][1] = String.valueOf(t.getSocialCredit());
-            data[r][2] = String.valueOf(t.totalCourses());
-            data[r][3] = String.valueOf(t.getMaxDuties());
-            data[r][4] = String.valueOf(t.totalDuties());
-            data[r][5] = String.valueOf(t.getPascacks().size());
-            data[r][6] = String.valueOf(t.getHalls().size());
-            data[r][7] = String.valueOf(t.getCoverages().size());
-            data[r][8] = String.valueOf(t.getFroshPascacks().size());
+            data[r][0] = String.valueOf(t.getName());
+               
+            data[r][1] = String.valueOf(t.totalCourses());
+            data[r][2] = String.valueOf(t.totalDuties());
+            data[r][3] = String.valueOf(t.getPascacks().size());
+            System.out.println(t.getPascacks().size());
+            data[r][4] = String.valueOf(t.getHalls().size());
+            data[r][5] = String.valueOf(t.getCoverages().size());
+            data[r][6] = String.valueOf(t.getFroshPascacks().size());
 
 
 
@@ -283,7 +225,6 @@ public class HomePanel extends CustomPanel {
     public void refreshPanel() {
 
         makePanel();
-        System.out.println("updateing home panel");
 
         super.refreshPanel();
     }
