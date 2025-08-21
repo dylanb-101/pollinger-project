@@ -15,14 +15,14 @@ import javax.swing.JPanel;
 //Program Description:
 //Oct 30, 2024
 
-public class HelpPanel extends CustomPanel
+public class helpPanel extends CustomPanel
 {
    private JPanel wrapper, helpDesk;
    private JComboBox<String> cb;
    private String[] choices;
    
    private String hover;
-   public HelpPanel(String panelName, Dimension d, BorderLayout bl, String hover)
+   public helpPanel(String panelName, Dimension d, BorderLayout bl, String hover)
    {
       super(panelName, d, bl);
       this.hover = hover;
